@@ -5,13 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.User;
 import model.dao.InforestUserDAO;
 import model.dto.InforestUser;
 import model.service.PasswordMismatchException;
 import model.service.UserAnalysis;
-import model.service.UserDAOImpl;
-import model.service.UserManager;
 import model.service.UserNotFoundException;
 import model.dto.InforestUser;
 
