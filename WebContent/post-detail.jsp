@@ -5,32 +5,12 @@
 <html>
 <head>
    <title>Post Detail</title>
-   <meta charset="UTF-8">
+  <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->   
-   <link rel="icon" type="image/png" href="images/icons/forest.png"/>
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->   
-   <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
    <link rel="stylesheet" type="text/css" href="css/util.css">
    <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+
 </head>
 <body class="animsition">
    
@@ -49,42 +29,43 @@
                <!-- Menu desktop -->
                <div class="menu-desktop">
                   <ul class="main-menu">
-                     <li>
-                        <a href="home.jsp">HOME</a>
+                 <li>
+                         <a href="<c:url value='/main'/>" style="color:white">HOME</a>
                      </li>
 
                      <li>
-                        <a href="rank.jsp">RANK</a>
-                     </li>
+                      <a href="<c:url value='/rank'/>" style="color:white">RANK</a>
+                        </li>
 
                      <li>
-                        <a href="product.jsp">PRODUCT</a>
-                     </li>
+                      <a href="<c:url value='/product'/>" style="color:white">PRODUCT</a>
+                          </li>
 
                      <li>
-                        <a href="post.jsp">POST</a>
-                     </li>
+                      <a href="<c:url value='/post'/>" style="color:white">POST</a>
+                       </li>
 
                      <li>
-                        <a href="mypage.jsp">MYPAGE</a>
-                     </li>
-                       <li>
-                    	 <a href="sign-in.jsp">SIGN IN</a>
-                     </li>  
+                       <a href="<c:url value='/mypage'/>" style="color:white">MY PAGE</a>
+                         </li>
+                     
+                     <li>
+                        <a href="<c:url value='/signIn'/>" style="color:white">SIGN IN</a>
+                         </li>
                   </ul>
                </div>   
 
           <!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="3">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</div>
+               <div class="wrap-icon-header flex-w flex-r-m">
+                  <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="3">
+                     <i class="zmdi zmdi-favorite-outline"></i>
+                  </div>
 
-					</div>
+               </div>
 
-				</nav>
-			</div>	
-		</div>
+            </nav>
+         </div>   
+      </div>
 
       <!-- Modal Search -->
       <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
@@ -104,7 +85,7 @@
    </header>
 
   <!-- Cart -->
-	 <div class="wrap-header-cart js-panel-cart">
+    <div class="wrap-header-cart js-panel-cart">
       <div class="s-full js-hide-cart"></div>
 
       <div class="header-cart flex-col-l p-l-65 p-r-25">
