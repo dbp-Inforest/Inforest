@@ -189,7 +189,7 @@ function userList(targetUri) {
    <tr class="table_row">
       <td class="column-1">
          <div class="flex-c-m stext-101 cl2 size-submit bg8 bor13 hov-btn3  trans-04 pointer m-tb-5">
-        <button type="button" onClick="userList('<c:url value='/signIn'/>')">Back To Log-In</button>
+        <button type="button" onClick="userList('<c:url value='/signIn'/>')">Back To Login</button>
                </div>
       </td>
       <td class="column-2">

@@ -29,19 +29,19 @@
                <div class="menu-desktop">
                   <ul class="main-menu">
                      <li>
-                        <a href="home.jsp">HOME</a>
+                        <a href="<c:url value='/main'/>">HOME</a>
                      </li>
 
                      <li>
-                        <a href="rank.jsp">RANK</a>
+                        <a href="<c:url value='/rank'/>">RANK</a>
                      </li>
 
                      <li>
-                        <a href="product.jsp">PRODUCT</a>
+                        <a href="<c:url value='/product'/>">PRODUCT</a>
                      </li>
 
                      <li>
-                        <a href="post.jsp">POST</a>
+                        <a href="<c:url value='/post'/>">POST</a>
                      </li>
 
                      <li>

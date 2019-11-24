@@ -12,6 +12,14 @@
    <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
+<script>
+	function p_view(targetUri) {
+	    alert(targetUri);   
+	    form.action = targetUri;
+	    form.submit();
+	 }
+</script>
+
 </head>
 <body class="animsition">
       <!-- Header -->
@@ -73,16 +81,16 @@
 	
 	<div class="flex-w flex-c-m m-tb-10">
 		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type=button><font style="font-size:25px" onclick="location.href='phone.jsp' ">Phone</font>
+			<input type=button onClick="p_view('<c:url value='/productList'/>')"><font style="font-size:25px">Phone</font>
 		</div>
 		<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type=button><font style="font-size:25px" onclick="location.href='laptop.jsp' ">Laptop</font>
+			<input type=button onClick="p_view('<c:url value='/productList'/>')"><font style="font-size:25px">Laptop</font>
 		</div>
 		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type=button><font style="font-size:25px" onclick="location.href='camera.jsp' ">Camera</font>
+			<input type=button onClick="p_view('<c:url value='/productList'/>')"><font style="font-size:25px">Camera</font>
 		</div>
 		<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type=button><font style="font-size:25px" onclick="location.href='tablet.jsp' ">Tablet</font>
+			<input type=button onClick="p_view('<c:url value='/productList'/>')"><font style="font-size:25px">Tablet</font>
 		</div>
 	</div>
 	

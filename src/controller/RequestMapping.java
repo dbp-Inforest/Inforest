@@ -5,6 +5,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import controller.user.*;
+import controller.product.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -30,6 +31,9 @@ public class RequestMapping {
         mappings.put("/user_list", new ListUserController());
         mappings.put("/user_view", new ViewUserController());
         
+        /* Product 관련  Mapping*/
+        mappings.put("/productList", new ListProductController());
+        
         /* Home Header 관련  Mapping*/
         mappings.put("/rank", new ForwardController("/rank.jsp"));   //rank.jsp이동
         mappings.put("/product", new ForwardController("/product.jsp"));   //product.jsp이동
@@ -37,12 +41,7 @@ public class RequestMapping {
         mappings.put("/mypage", new ForwardController("/mypage.jsp"));   //mypage.jsp이동
         
         
-        
 
-        
-
-
-       
         logger.info("Initialized Request Mapping!");
     }
 

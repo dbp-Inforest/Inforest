@@ -131,7 +131,7 @@
       </td>
       <td class="column-2">
          <div class="flex-c-m stext-101 cl2 size-submit bg8 bor13 hov-btn3  trans-04 pointer m-tb-10">
-            <button type="button">LOGIN</button>
+            <button type="button" onclick="login()")>LOGIN</button>
          </div>
       </td>
    </tr>

@@ -33,15 +33,19 @@ public class ListProductController implements Controller {
     		if(kind.equals("0")) { //phone
     			List phone = phoneDAO.getPhoneList();
     			request.setAttribute("phone", phone);
+    			return "/phone.jsp";	
     		}else if(kind.equals("1")){ //laptop
     			List laptop = laptopDAO.getLaptopList();
     			request.setAttribute("laptop", laptop);
+    			return "/laptop.jsp";	
     		}else if(kind.equals("2")) { //camera
     			List camera = cameraDAO.getCameraList();
     			request.setAttribute("camera", camera);
+    			return "/camera.jsp";	
     		}else if(kind.equals("3")) { //tablet
     			List tablet = tabletDAO.getTabletList();
     			request.setAttribute("tablet", tablet);
+    			return "/tablet.jsp";	
     		}else if(kind.equals("4")) { //all
     			List phone = phoneDAO.getPhoneList();
     			List laptop = laptopDAO.getLaptopList();
@@ -51,8 +55,8 @@ public class ListProductController implements Controller {
     			request.setAttribute("laptop", laptop);
     			request.setAttribute("camera", camera);
     			request.setAttribute("tablet", tablet);
-    		}
-    			
-            return "/Inforest/product.jsp";			
+    			return "/product.jsp";	
+    		}	
+    		return "/product.jsp";
     }
 }
