@@ -125,7 +125,7 @@
       <tr class="table_row">
       <td class="column-1">
          <div class="flex-c-m stext-101 cl2 size-submit bg8 bor13 hov-btn3  trans-04 pointer m-tb-5">
-       <button type="button" onClick="userCreate('<c:url value='/register_form'/>')">GO TO SIGHN-UP</button>
+       <button type="button" onClick="userCreate('<c:url value='/signUp'/>')">GO TO SIGN-UP</button>
                  
          </div>
       </td>

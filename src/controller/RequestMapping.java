@@ -19,7 +19,7 @@ public class RequestMapping {
         
         /* User 관련 Mapping */
         mappings.put("/signIn", new ForwardController("/sign-in.jsp"));   // 로그인
-        mappings.put("/signUp", new ForwardController("/sign-up.jsp")); // 회원가입 창 jsp 바꿔야됨
+        mappings.put("/signUp", new ForwardController("/sign-up.jsp")); // 회원가입 창
         mappings.put("/register", new RegisterUserController()); // 회원가입 완료 (DB저장)
         mappings.put("/user_update_form", new UpdateUserFormController()); //
         mappings.put("/user_update", new UpdateUserController());
