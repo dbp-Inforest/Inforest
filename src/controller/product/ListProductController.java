@@ -8,14 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import controller.Controller;
 import controller.user.UserSessionUtils;
-import model.dao.CameraDAO;
-import model.dao.LaptopDAO;
-import model.dao.PhoneDAO;
-import model.dao.TabletDAO;
-import model.dto.Camera;
-import model.dto.Laptop;
-import model.dto.Phone;
-import model.dto.Tablet;
+import model.dao.*;
+import model.dto.*;
 
 public class ListProductController implements Controller {
 	// private static final int countPerPage = 100;	// 한 화면에 출력할 사용자 수

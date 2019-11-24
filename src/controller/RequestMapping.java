@@ -32,7 +32,7 @@ public class RequestMapping {
         mappings.put("/user_view", new ViewUserController());
         
         /* Product 관련  Mapping*/
-        mappings.put("/productList", new ListProductController());
+//        mappings.put("/productList", new ListProductController());
         
         /* Home Header 관련  Mapping*/
         mappings.put("/rank", new ForwardController("/rank.jsp"));   //rank.jsp이동
