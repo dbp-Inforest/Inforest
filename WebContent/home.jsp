@@ -26,22 +26,28 @@
                </a>
 
                <!-- Menu desktop -->
+              
+              
+ 
+              <!-- 질문하기 여긴 왜 연결이 안되나요? <c태그>  -->
+              
+              
                <div class="menu-desktop">
                   <ul class="main-menu">
                      <li>
-                        <a href="<c:url value='/main'/>">HOME</a>
+                        <a href="home.jsp">HOME</a>
                      </li>
 
                      <li>
-                        <a href="<c:url value='/rank'/>">RANK</a>
+                        <a href="rank.jsp">RANK</a>
                      </li>
 
                      <li>
-                        <a href="<c:url value='/product'/>">PRODUCT</a>
+                        <a href="product.jsp">PRODUCT</a>
                      </li>
 
                      <li>
-                        <a href="<c:url value='/post'/>">POST</a>
+                        <a href="post.jsp">POST</a>
                      </li>
 
                      <li>
