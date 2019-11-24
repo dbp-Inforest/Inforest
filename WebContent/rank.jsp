@@ -8,28 +8,6 @@
    <title>INFOREST</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->   
-   <link rel="icon" type="image/png" href="images/icons/forest.png"/>
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->   
-   <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-   
-<!--===============================================================================================-->
-   <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
    <link rel="stylesheet" type="text/css" href="css/util.css">
    <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
@@ -77,108 +55,12 @@
                          </li>
                   </ul>
                </div>   
-
-                 <!-- Icon header -->
-               <div class="wrap-icon-header flex-w flex-r-m">
-
-                  <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="3">
-                     <i class="zmdi zmdi-favorite-outline"></i>
-                  </div>
-
-               </div>
-
             </nav>
          </div>   
       </div>
-
-      <!-- Modal Search -->
-      <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-         <div class="container-search-header">
-            <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-               <img src="images/icons/icon-close2.png" alt="CLOSE">
-            </button>
-
-            <form class="wrap-search-header flex-w p-l-15">
-               <button class="flex-c-m trans-04">
-                  <i class="zmdi zmdi-search"></i>
-               </button>
-               <input class="plh3" type="text" name="search" placeholder="Search...">
-            </form>
-         </div>
-      </div>
    </header>
 
-   <!-- Cart -->
-    <div class="wrap-header-cart js-panel-cart">
-      <div class="s-full js-hide-cart"></div>
-
-      <div class="header-cart flex-col-l p-l-65 p-r-25">
-         <div class="header-cart-title flex-w flex-sb-m p-b-8">
-            <span class="mtext-103 cl2">
-               ♡ LIKE ♡
-            </span>
-
-            <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-               <i class="zmdi zmdi-close"></i>
-            </div>
-         </div>
-         
-         <div class="header-cart-content flex-w js-pscroll">
-            <ul class="header-cart-wrapitem w-full">
-               <li class="header-cart-item flex-w flex-t m-b-12">
-                  <div class="header-cart-item-img">
-                     <img src="images/item-cart-01.jpg" alt="IMG">
-                  </div>
-
-                  <div class="header-cart-item-txt p-t-8">
-                     <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                        White Shirt Pleat
-                     </a>
-
-                     <span class="header-cart-item-info">
-                        1 x $19.00
-                     </span>
-                  </div>
-               </li>
-
-               <li class="header-cart-item flex-w flex-t m-b-12">
-                  <div class="header-cart-item-img">
-                     <img src="images/item-cart-02.jpg" alt="IMG">
-                  </div>
-
-                  <div class="header-cart-item-txt p-t-8">
-                     <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                        Converse All Star
-                     </a>
-
-                     <span class="header-cart-item-info">
-                        1 x $39.00
-                     </span>
-                  </div>
-               </li>
-
-               <li class="header-cart-item flex-w flex-t m-b-12">
-                  <div class="header-cart-item-img">
-                     <img src="images/item-cart-03.jpg" alt="IMG">
-                  </div>
-
-                  <div class="header-cart-item-txt p-t-8">
-                     <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                        Nixon Porter Leather
-                     </a>
-
-                     <span class="header-cart-item-info">
-                        1 x $17.00
-                     </span>
-                  </div>
-               </li>
-            </ul>
-         </div>
-      </div>
-   </div>
-
-
-
+   
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/rank_bg.png');">
       <h2 class="ltext-105 cl0 txt-center">
@@ -190,12 +72,12 @@
 
 <!-- Rank -->
 <!-- 이미지 크기는 80*80 픽셀 (.jpg) -->
-<form class="bg0 p-t-75 p-b-85">
-      <div class="container">
-         <div class="row">
-            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-               <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-                  <h4 class="mtext-109 cl2 p-b-12">
+<form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -515px;">
+		<div class="container" >
+			<div class="row"  style="display:inline">
+				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:500px">
+					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+						<h4 class="mtext-109 cl2 p-b-12">
                      Phone
                   </h4>
                   <hr>
@@ -298,9 +180,9 @@
                   </table>
                </div>
             </div>
-            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-               <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-                  <h4 class="mtext-109 cl2 p-b-12">
+          <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:500px">
+					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+						<h4 class="mtext-109 cl2 p-b-12">
                      LapTop
                   </h4>
                   <hr>
@@ -406,10 +288,10 @@
          </div>
       </div>
       <div class="container">
-         <div class="row">
-            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-               <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-                  <h4 class="mtext-109 cl2 p-b-12">
+         <div class="row" style="display:inline">
+				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:500px">
+					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+						<h4 class="mtext-109 cl2 p-b-12">
                      Camera
                   </h4>
                   <hr>
@@ -512,9 +394,9 @@
                   </table>
                </div>
             </div>
-            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-               <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-                  <h4 class="mtext-109 cl2 p-b-12">
+            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50"  style="display:inline;float:left;width:500px">
+					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+						<h4 class="mtext-109 cl2 p-b-12">
                      Tablet
                   </h4>
                   <hr>
