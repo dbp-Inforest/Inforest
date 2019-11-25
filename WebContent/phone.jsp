@@ -57,20 +57,14 @@
    </header>
 
 
+
+
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/product_bg.jpg');">
       <h2 class="ltext-105 cl0 txt-center">
          Phone
       </h2>
-   </section>   
-   <%
-      PhoneDAO phoneDAO = new PhoneDAO();
-      Phone phone = phoneDAO.getPhoneById("LMV500");
-      
-      %>
-    <%= phone.getColor() %>
-   
-   
+   </section>      
    
    <form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -510px;">
       <div class="container" >
@@ -88,17 +82,38 @@
                                     <th class="column-2"><p style="padding-left:75px">Brand</p></th>
                                     <th class="column-3"><p style="padding-left:60px">Price</p></th>
                         </tr>
-                        <tr class="table_row" style="height:70px;">
-                                       <td class="column-0" style="padding-left:30px">
-                                          <a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                             <font style="font-size:20px">iPhone 11</font>
-                                          </a>
-                           </td>
-                                    <td class="column-1" style="padding-left:50px">A2221</td>
-                                    <td class="column-2" style="padding-left:87px">APPLE</td>   
-                                    <td class="column-3" style="padding-left:87px">990, 000부터</td>   
-                              </tr>
-                              <tr class="table_row" style="height:70px;">
+                       
+						<c:if test="${phoneList.size() == 0 }">
+						<tfoot>
+						<tr>
+						<td colspan="3">현재 데이터가 없습니다.</td>
+						</tr>
+						</tfoot>
+						</c:if>
+						<!-- //request.getAttribute("List") == ${List} -->
+						<tbody> 
+						<c:forEach var="phone" items="${phoneList}" varStatus="status">
+						<tr class="table_row" style="height:70px;">
+						<td class="column-0" style="padding-left:30px">
+                                <a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                      <font style="font-size:20px">
+                                      	<c:out value="${phone.name }"/>
+                                      </font>
+                                 </a>
+                        </td>
+                       <td class="column-1" style="padding-left:50px"><c:out value="${phone.productId }"/></td>
+                       <td class="column-2" style="padding-left:87px"><c:out value="${phone.brand}"/></td>   
+                       <td class="column-3" style="padding-left:87px"><c:out value="${phone.price}"/></td>
+                 
+						</tr>
+						</c:forEach>
+						</tbody>
+						</table>
+
+    
+                      
+                              
+                             <!--  <tr class="table_row" style="height:70px;">
                                        <td class="column-0" style="padding-left:30px">
                                           <a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                              <font style="font-size:20px">iPhone 11 pro</font>
@@ -207,7 +222,9 @@
                                     <td class="column-1" style="padding-left:50px">LMV510</td>
                                     <td class="column-2" style="padding-left:87px">LG</td>   
                                     <td class="column-3" style="padding-left:87px">1, 199, 000부터</td>
-                              </tr>
+                              </tr> -->
+                              
+                             
                   </table>
                </div>
             </div>

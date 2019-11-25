@@ -88,7 +88,42 @@
                      Tablet
                   </h4>
                   <hr>
-                  <table>
+                    <table>
+                     <tr class="table_head">
+                        <th class="column-0" >Name</th>
+                                    <th class="column-1" style="padding-left:50px">Product Id</th>
+                                    <th class="column-2"><p style="padding-left:75px">Brand</p></th>
+                                    <th class="column-3"><p style="padding-left:60px">Price</p></th>
+                        </tr>
+                       
+						<c:if test="${tabletList.size() == 0 }">
+						<tfoot>
+						<tr>
+						<td colspan="3">현재 데이터가 없습니다.</td>
+						</tr>
+						</tfoot>
+						</c:if>
+						<!-- //request.getAttribute("List") == ${List} -->
+						<tbody> 
+						<c:forEach var="tablet" items="${tabletList}" varStatus="status">
+						<tr class="table_row" style="height:70px;">
+						<td class="column-0" style="padding-left:30px">
+                                <a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                      <font style="font-size:20px">
+                                      	<c:out value="${tablet.name}"/>
+                                      </font>
+                                 </a>
+                        </td>
+                       <td class="column-1" style="padding-left:50px"><c:out value="${tablet.productId }"/></td>
+                       <td class="column-2" style="padding-left:87px"><c:out value="${tablet.brand}"/></td>   
+                       <td class="column-3" style="padding-left:87px"><c:out value="${tablet.price}"/></td>
+                 
+						</tr>
+						</c:forEach>
+						</tbody>
+						</table>                 
+                  
+                  <!-- <table>
                      <tr class="table_head">
                         <th class="column-0" >Name</th>
                                     <th class="column-1" style="padding-left:50px">Product Id</th>
@@ -215,7 +250,7 @@
                                     <td class="column-2" style="padding-left:87px">LG</td>   
                                     <td class="column-3" style="padding-left:87px">1, 199, 000부터</td>
                               </tr>
-                  </table>
+                  </table> -->
                </div>
             </div>
          </div>

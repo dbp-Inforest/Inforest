@@ -28,20 +28,20 @@ public class ListProductController implements Controller {
     		
     		if(kind.equals("0")) { //phone
     			System.out.println(kind + " debugtest in kind = 0");
-    			List<Phone> phone = phoneDAO.getPhoneList();
-    			request.setAttribute("phone", phone);
+    			List<Phone> phoneList = phoneDAO.getPhoneList();
+    			request.setAttribute("phoneList", phoneList);
     			return "/phone.jsp";	
     		}else if(kind.equals("1")){ //laptop
-    			List<Laptop> laptop = laptopDAO.getLaptopList();
-    			request.setAttribute("laptop", laptop);
+    			List<Laptop> laptopList = laptopDAO.getLaptopList();
+    			request.setAttribute("laptopList", laptopList);
     			return "/laptop.jsp";	
     		}else if(kind.equals("2")) { //camera
-    			List<Camera> camera = cameraDAO.getCameraList();
-    			request.setAttribute("camera", camera);
+    			List<Camera> cameraList = cameraDAO.getCameraList();
+    			request.setAttribute("cameraList", cameraList);
     			return "/camera.jsp";	
     		}else if(kind.equals("3")) { //tablet
-    			List<Tablet> tablet = tabletDAO.getTabletList();
-    			request.setAttribute("tablet", tablet);
+    			List<Tablet> tabletList = tabletDAO.getTabletList();
+    			request.setAttribute("tabletList", tabletList);
     			return "/tablet.jsp";	
     		}
     		
