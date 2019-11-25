@@ -83,16 +83,16 @@
 	<input type="hidden" name="kind2" value="10"/>
 	<div class="flex-w flex-c-m m-tb-10"> <!-- a태그로 하거나  -->
 		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type="button" onClick="p_view(0, '<c:url value='/productList'><c:param name='kind' value='0'/></c:url>')" style="font-size:25pt; background-color:transparent;" value="Phone"/>
+			<input type="button" onClick="p_view(0, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value="Phone"/>
 		</div>
 		<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type="button" onClick="p_view(1, '<c:url value='/productList'><c:param name='kind' value='1'/></c:url>')" style="font-size:25pt; background-color:transparent;" value="Laptop"/>
+			<input type="button" onClick="p_view(1, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value="Laptop"/>
 		</div>
 		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type="button" onClick="p_view(2, '<c:url value='/productList'><c:param name='kind' value='2'/></c:url>')" style="font-size:25pt; background-color:transparent;" value="Camera"/>
+			<input type="button" onClick="p_view(2, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value="Camera"/>
 		</div>
 		<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type="button" onClick="p_view(3, '<c:url value='/productList'><c:param name='kind' value='3'/></c:url>')" style="font-size:25pt; background-color:transparent;" value='Tablet'/>
+			<input type="button" onClick="p_view(3, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value='Tablet'/>
 		</div>
 	</div>
 	</form>
