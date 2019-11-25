@@ -13,9 +13,9 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
-		<!-- Header -->
+	<!-- Header -->
 	<header class="header-v3">
-		<!-- Header desktop -->
+		<!"WebContent/camera.jsp"-- Header desktop -->
 		<div class="container-menu-desktop">
 			<div class ="wrap-menu-desktop how-shadow1">
 				<nav class="limiter-menu-desktop container">

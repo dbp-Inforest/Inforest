@@ -13,33 +13,25 @@ import model.service.UserNotFoundException;
 public class LoginController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    	
     	String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
+		InforestUserDAO userDAO = new InforestUserDAO();
 		
-		//try {
-			System.out.print(userId + password);
-		
-			boolean user = new InforestUserDAO().login(userId, password);
-			
-			if(user == true) {
+		try {
+			if(userDAO.login(userId, password) == true) {
+				HttpSession session = request.getSession();
+	            session.setAttribute(UserSessionUtils.USER_SESSION_KEY, userId);
 				return "redirect:/main";
-			}
-			else {
-				//request.setAttribute("loginFailed", true);
-				//request.setAttribute("exception", e);
-	            return "/Inforest/sign-in.jsp";
-			}
-			
-			// 세션에 사용자 이이디 저장
-			//HttpSession session = request.getSession();
-            //session.setAttribute(UserSessionUtils.USER_SESSION_KEY, userId);
-            
-            			
-		//} catch (Exception e) {
+			}	
+			return "/sign-in.jsp";
+		} catch (Exception e) {
 			/* UserNotFoundException이나 PasswordMismatchException 발생 시
 			 * 다시 login form을 사용자에게 전송하고 오류 메세지도 출력
 			 */
-            			
-		//}	
+			request.setAttribute("loginFailed", true);
+			request.setAttribute("exception", e);
+            return "/sign-in.jsp";  			
+		}	
     }
 }

@@ -75,21 +75,22 @@
 	<div style="height:50px;">&nbsp;</div><div style="height:50px;">&nbsp;</div>
 	
 	
-	
+	<form name="product_list" action="GET">
 	<div class="flex-w flex-c-m m-tb-10">
 		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type=button onClick="p_view('<c:url value='/productList'/>')"><font style="font-size:25px">Phone</font>
+			<input type=button onClick="p_view('<c:url value='/productList'><c:param name='kind' value='0'/></c:url>)'"><font style="font-size:25px">Phone</font>
 		</div>
 		<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type=button onClick="p_view('<c:url value='/productList'/>')"><font style="font-size:25px">Laptop</font>
+			<input type=button onClick="p_view('<c:url value='/productList'><c:param name='kind' value='1'/></c:url>)'"><font style="font-size:25px">Laptop</font>
 		</div>
 		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type=button onClick="p_view('<c:url value='/productList'/>')"><font style="font-size:25px">Camera</font>
+			<input type=button onClick="p_view('<c:url value='/productList'><c:param name='kind' value='2'/></c:url>)'"><font style="font-size:25px">Camera</font>
 		</div>
 		<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type=button onClick="p_view('<c:url value='/productList'/>')"><font style="font-size:25px">Tablet</font>
+			<input type=button onClick="p_view('<c:url value='/productList'><c:param name='kind' value='3'/></c:url>)'"><font style="font-size:25px">Tablet</font>
 		</div>
 	</div>
+	</form>
 	
 	
 	
