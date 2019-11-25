@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Phone</title>
+	<title>INFOREST</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
@@ -24,35 +24,35 @@
 					
 					<!-- Logo desktop -->		
 					<a href="<c:url value='/main'/>"class="logo">
-                  	<img src="images/icons/inforest_logo.png" alt="IMG-LOGO">
+                  	<img src="images/icons/logo.png" alt="IMG-LOGO">
                		</a>
 
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="<c:url value='/main'/>" style="color:white">HOME</a>
-							</li>
+                     		   <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
+                  		   </li>
 
-							<li>
-								<a href="<c:url value='/rank'/>" style="color:white">RANK</a>
-							</li>
-
-							<li>
-								<a href="<c:url value='/product'/>" style="color:white">PRODUCT</a>
-							</li>
-
-							<li>
-								<a href="<c:url value='/post'/>" style="color:white">POST</a>
-							</li>
-
-							<li>
-								<a href="<c:url value='/mypage'/>" style="color:white">MYPAGE</a>
-							</li>
-							
-							<li>
-                        		<a href="<c:url value='/signIn'/>" style="color:white">SIGN IN</a>
-                     		</li>  
+		                     <li>
+		                   	   <a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
+		                     </li>
+		
+		                     <li>
+		                    	  <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
+		                     </li>
+		
+		                     <li>
+		                     	 <a href="<c:url value='/post'/>" style="text-decoration:none">POST</a>
+		                     </li>
+		
+		                     <li>
+		                     	  <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
+		                     </li>
+		                     
+		                     <li>
+		                       	 <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
+		                     </li> 
 						</ul>
 					</div>
 				</nav>

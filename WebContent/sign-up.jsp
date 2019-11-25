@@ -56,34 +56,34 @@ function userList(targetUri) {
                
                <!-- Logo desktop -->      
                <a href="home.jsp" class="logo">
-                     <img src="images/icons/inforest_logo.png" alt="IMG-LOGO">
-                     </a>
+                    <img src="images/icons/logo.png" alt="IMG-LOGO">
+               </a>
 
                <!-- Menu desktop -->
                <div class="menu-desktop">
                   <ul class="main-menu">
                       <li>
-                      <button type="button" onClick="userList('<c:url value='/main'/>')" style="color:white">HOME</button>
+                      <button type="button" onClick="userList('<c:url value='/main'/>')" style="text-decoration:none">HOME</button>
                      </li>
 
                      <li>
-                       <button type="button" onClick="userList('<c:url value='/rank'/>')" style="color:white">RANK</button>
+                       <button type="button" onClick="userList('<c:url value='/rank'/>')" style="text-decoration:none">RANK</button>
                      </li>
 
                      <li>
-                       <button type="button" onClick="userList('<c:url value='/product'/>')" style="color:white">PRODUCT</button>
+                       <button type="button" onClick="userList('<c:url value='/product'/>')" style="text-decoration:none">PRODUCT</button>
                      </li>
 
                      <li>
-                        <button type="button" onClick="userList('<c:url value='/post'/>')" style="color:white">POST</button>
+                        <button type="button" onClick="userList('<c:url value='/post'/>')" style="text-decoration:none">POST</button>
                      </li>
 
                      <li>
-                        <button type="button" onClick="userList('<c:url value='/mypage'/>')" style="color:white">MYPAGE</button>
+                        <button type="button" onClick="userList('<c:url value='/mypage'/>')" style="text-decoration:none">MYPAGE</button>
                      </li>
                      
                      <li>
-                        <button type="button" onClick="userList('<c:url value='/signIn'/>')" style="color:white">SIGN-IN</button>
+                        <button type="button" onClick="userList('<c:url value='/signIn'/>')" style="text-decoration:none">SIGN-IN</button>
                     </li>
                      
                   </ul>

@@ -29,7 +29,7 @@
                
                <!-- Logo desktop -->      
                <a href="home.jsp" class="logo">
-                  <img src="images/icons/inforest_logo.png" alt="IMG-LOGO">
+                  <img src="images/icons/logo.png" alt="IMG-LOGO">
                </a>
 
                <!-- Menu desktop -->
@@ -42,22 +42,22 @@
                <div class="menu-desktop">
                   <ul class="main-menu">
                    	 <li>
-                      <a href="<c:url value='/main'/>" style="color:white">HOME</a>
+                      <a href="home.jsp" style="text-decoration:none">HOME</a>
                      </li>
                      <li>
-                      <a href="<c:url value='/rank'/>" style="color:white">RANK</a>
+                      <a href="rank.jsp" style="text-decoration:none">RANK</a>
                      </li>
                      <li>
-                      <a href="<c:url value='/product'/>" style="color:white">PRODUCT</a>
+                      <a href="product.jsp" style="text-decoration:none">PRODUCT</a>
                      </li>
                      <li>
-                      <a href="<c:url value='/post'/>" style="color:white">POST</a>
+                      <a href="post.jsp" style="text-decoration:none">POST</a>
                      </li>
                      <li>
-                       <a href="<c:url value='/mypage'/>" style="color:white">MY PAGE</a>
+                       <a href="mypage.jsp" style="text-decoration:none">MY PAGE</a>
                      </li> 
                      <li>
-                       <a href="<c:url value='/signIn'/>" style="color:white">SIGN IN</a>
+                       <a href="sign-in" style="text-decoration:none">SIGN IN</a>
                      </li>  
                   </ul>
                </div>    

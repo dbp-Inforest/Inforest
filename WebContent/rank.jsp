@@ -37,23 +37,23 @@
 
                      <li>
                       <a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
-                        </li>
+                     </li>
 
                      <li>
                       <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
-                          </li>
+                     </li>
 
                      <li>
                       <a href="<c:url value='/post'/>" style="text-decoration:none">POST</a>
-                       </li>
+                     </li>
 
                      <li>
                        <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
-                         </li>
+                     </li>
                      
                      <li>
                         <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
-                         </li>
+                     </li>
                   </ul>
                </div>   
             </nav>
