@@ -56,7 +56,19 @@
       </div>
    </header>
 
-
+   <%
+   		LaptopDAO laptopDAO = new LaptopDAO();
+   		Laptop laptop = new Laptop();
+   		
+   		List<Laptop> tabletList = laptopDAO.getLaptopList();
+   		System.out.println(tabletList.get(0).getName());
+   		List<Laptop> tabletList2 = laptopDAO.getLaptopByName("그램");
+   		System.out.println(tabletList2.get(0).getName());
+   		Laptop tabletList3 = laptopDAO.getLaptopById("NT930XBV-A58A");
+   		System.out.println(tabletList3.getName());
+   %>
+   
+   
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/product_bg.jpg');">
       <h2 class="ltext-105 cl0 txt-center">

@@ -66,8 +66,8 @@
    		System.out.println(tabletList.get(0).getName());
    		List<Tablet> tabletList2 = tabletDAO.getTabletByName("탭");
    		System.out.println(tabletList2.get(0).getName());
-   		List<Tablet> tabletList3 = tabletDAO.getTabletById("A");
-   		System.out.println(tabletList3.get(0).getName());
+   		Tablet tabletList3 = tabletDAO.getTabletById("A");
+   		System.out.println(tabletList3.getName());
    %>
    
    <!-- Title page -->

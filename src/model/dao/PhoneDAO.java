@@ -214,19 +214,20 @@ public class PhoneDAO{
       return 0;
    }
 
-   public Phone getPhoneByName(String phName) {
+   public List<Phone> getPhoneByName(String phName) {
       // TODO Auto-generated method stub
       String searchQuery = query + "FROM PHONE H, PRODUCT P " +
-              "WHERE H.PRODUCT_ID = P.PRODUCT_ID  AND P.NAME = ?";  
-      Object[] param = new Object[] {phName};
+              "WHERE H.PRODUCT_ID = P.PRODUCT_ID  AND P.PRODUCT_ID LIKE ?";  
+      Object[] param = new Object[] { "%" + phName + "%"};
 
       jdbcUtil.setSql(searchQuery);
       jdbcUtil.setParameters(param);
    
       try {
          ResultSet rs = jdbcUtil.executeQuery();
-         Phone dto = new Phone();
+         List<Phone> list = new ArrayList<Phone>();
          while (rs.next()) {
+        	Phone dto = new Phone();
             dto.setpBattery(rs.getString("PHONE_BATTERY"));
             dto.setpMemory(rs.getString("PHONE_MEMORY"));
             dto.setpDisplay(rs.getString("PHONE_DISPLAY"));
@@ -243,8 +244,10 @@ public class PhoneDAO{
             dto.setReleased_date(rs.getDate("PHONE_RELEASED_DATE"));
             dto.setWeight(rs.getDouble("PHONE_WEIGHT"));
             dto.setpKind(rs.getInt("PHONE_KIND"));
+            
+            list.add(dto);
          }
-         return dto;
+         return list;
       } catch (Exception ex) {
          ex.printStackTrace();
       } finally {
@@ -255,7 +258,7 @@ public class PhoneDAO{
    }
 
    
-     public List<Phone> getPhoneById(String phId) {
+     public Phone getPhoneById(String phId) {
          // TODO Auto-generated method stub
          String searchQuery = query + "FROM PHONE H, PRODUCT P " +
                  "WHERE H.PRODUCT_ID = P.PRODUCT_ID  AND H.PRODUCT_ID = ?";   
@@ -269,10 +272,9 @@ public class PhoneDAO{
       
          try {
             ResultSet rs = jdbcUtil.executeQuery();
-            List<Phone> list = new ArrayList<Phone>();
+            Phone dto = new Phone();
             System.out.println("PHONEDAO");
-            while (rs.next()) {
-               Phone dto = new Phone();
+            if (rs.next()) {
                dto.setpBattery(rs.getString("PHONE_BATTERY"));
                dto.setpMemory(rs.getString("PHONE_MEMORY"));
                dto.setpDisplay(rs.getString("PHONE_DISPLAY"));
@@ -290,11 +292,9 @@ public class PhoneDAO{
                dto.setWeight(rs.getDouble("PHONE_WEIGHT"));
                dto.setpKind(rs.getInt("PHONE_KIND"));
                
-               System.out.println(dto.getColor());
-               list.add(dto);      // list 객체에 정보를 설정한 LaptopDTO 객체 저장
+               System.out.println(dto.getColor());    // list 객체에 정보를 설정한 LaptopDTO 객체 저장
             }
-            System.out.println(list.get(0).getColor());
-            return list;   
+            return dto;   
          } catch (Exception ex) {
             ex.printStackTrace();
          } finally {

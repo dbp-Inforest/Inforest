@@ -85,7 +85,7 @@ public class TabletDAO{
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행
 			List<Tablet> list = new ArrayList<Tablet>();		// TabletDTO 객체들을 담기위한 list 객체
-			if (rs.next()) {						// 찾은 카메라의 정보를 TabletDTO 객체에 설정
+			while (rs.next()) {						// 찾은 카메라의 정보를 TabletDTO 객체에 설정
 				Tablet dto = new Tablet();
 				dto.setProductId(rs.getString("TABLET_ID"));
 				System.out.println("dto : " + dto.getProductId());
@@ -113,20 +113,19 @@ public class TabletDAO{
 
 	
 	// 모델명으로 정보를 검색하여 해당 태블릿의 정보를 갖고 있는 TabletDTO 객체를 반환하는 메소드
-	public List<Tablet> getTabletById(String tId) {
+	public Tablet getTabletById(String tId) {
 		// 기본 쿼리와 합쳐져  tId를 포함하는 name을 가진 tablet 정보를 가져오는 테이블
 		String searchQuery = query + "FROM TABLET, PRODUCT "
-				+ "WHERE TABLET.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.PRODUCT_ID LIKE ? ";	 
+				+ "WHERE TABLET.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.PRODUCT_ID = ?"; 	 
 		jdbcUtil.setSql(searchQuery);	// JDBCUtil 에 query 문 설정
 		System.out.println("tId: " + tId);
-		Object[] param = new Object[] { ("%" + tId + "%") };		// 태블릿을 찾기 위한 조건으로 이름을 설정
+		Object[] param = new Object[] { tId };		// 태블릿을 찾기 위한 조건으로 이름을 설정
 		jdbcUtil.setParameters(param);				// JDBCUtil 에 query문의 매개변수 값으로 사용할 매개변수 설정
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행
-			List<Tablet> list = new ArrayList<Tablet>();		// TabletDTO 객체들을 담기위한 list 객체
+			Tablet dto = new Tablet();		// TabletDTO 객체들을 담기위한 list 객체
 			if (rs.next()) {						// 찾은 학생의 정보를 TabletDTO 객체에 설정
-				Tablet dto = new Tablet();
 				dto.setProductId(rs.getString("TABLET_ID"));
 				dto.settBattery(rs.getString("TABLET_BATTERY"));
 				dto.settMemory(rs.getString("TABLET_MEMORY"));
@@ -139,9 +138,8 @@ public class TabletDAO{
 				dto.setBrand(rs.getString("TABLET_BRAND"));
 				dto.setReleased_date(rs.getDate("TABLET_RELEASED_DATE"));
 				dto.setWeight(rs.getDouble("TABLET_WEIGHT"));
-				list.add(dto);
 			}
-			return list;				// 찾은 학생의 정보를 담고 있는 TabletDTO 객체 반환
+			return dto;				// 찾은 학생의 정보를 담고 있는 TabletDTO 객체 반환
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

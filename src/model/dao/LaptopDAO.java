@@ -217,11 +217,11 @@ public class LaptopDAO{
 	public List<Laptop> getLaptopByName(String lName) {
 		// TODO Auto-generated method stub
 		String searchQuery = query  + "FROM LAPTOP l, PRODUCT P " +
-				"WHERE l.PRODUCT_ID = P.PRODUCT_ID " + "AND P.Name = ?";
-		Object[] param = new Object[] {lName};
+				"WHERE l.PRODUCT_ID = P.PRODUCT_ID " + "AND P.Name LIKE ?";
+		Object[] param = new Object[] { "%" + lName + "%" };
 
 		jdbcUtil.setSql(searchQuery);
-		jdbcUtil.setParameters(param);
+		jdbcUtil.setParameters(param); 
 	
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
@@ -255,10 +255,10 @@ public class LaptopDAO{
 		return null;
 	}
 
-	public List<Laptop> getLaptopById(String lId) {
+	public Laptop getLaptopById(String lId) {
 		// TODO Auto-generated method stub
-		String searchQuery = query + ", " + "FROM LAPTOP l, PRODUCT P " +
-				"WHERE l.PRODUCT_ID = P.PRODUCT_ID " + "AND P.PRODUCT_ID = ?";
+		String searchQuery = query + "FROM LAPTOP l, PRODUCT P " +
+				"WHERE l.PRODUCT_ID = P.PRODUCT_ID AND P.PRODUCT_ID = ?";
 		Object[] param = new Object[] {lId};
 
 		jdbcUtil.setSql(searchQuery);
@@ -266,9 +266,8 @@ public class LaptopDAO{
 	
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
-			List<Laptop> list = new ArrayList<Laptop>();
+			Laptop dto = new Laptop();
 			while (rs.next()) {
-				Laptop dto = new Laptop();
 				dto.setlPurpose(rs.getString("LAPTOP_PURPOSE"));
 				dto.setlDisplay(rs.getString("LAPTOP_DISPLAY"));
 				dto.setlCPU(rs.getString("LAPTOP_CPU"));
@@ -284,10 +283,8 @@ public class LaptopDAO{
 				dto.setReleased_date(rs.getDate("LAPTOP_RELEASED_DATE"));
 				dto.setWeight(rs.getDouble("LAPTOP_WEIGHT"));
 				dto.setpKind(rs.getInt("LAPTOP_KIND"));
-				
-				list.add(dto);		// list 객체에 정보를 설정한 Laptop 객체 저장
 			}
-			return list;	
+			return dto;	
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

@@ -65,10 +65,10 @@
    </section>   
    <%
       PhoneDAO phoneDAO = new PhoneDAO();
-      List<Phone> phone = phoneDAO.getPhoneById("LMV500");
+      Phone phone = phoneDAO.getPhoneById("LMV500");
       
       %>
-    <%= phone.get(0).getColor() %>
+    <%= phone.getColor() %>
    
    
    
