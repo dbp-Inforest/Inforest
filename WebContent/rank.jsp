@@ -8,8 +8,9 @@
    <title>INFOREST</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" type="text/css" href="css/util.css">
-   <link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
 </head>
@@ -20,38 +21,38 @@
       <!-- Header desktop -->
       <div class="container-menu-desktop">
          <div class="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop container">
+            <nav class="limiter-menu-desktop p-l-45">
                
                <!-- Logo desktop -->      
                <a href="home.jsp" class="logo">
-                  <img src="images/icons/inforest_logo.png" alt="IMG-LOGO">
+                  <img src="images/icons/logo.png" alt="IMG-LOGO">
                </a>
-
+              
                <!-- Menu desktop -->
                <div class="menu-desktop">
                   <ul class="main-menu">
                      <li>
-                         <a href="<c:url value='/main'/>" style="color:white">HOME</a>
+                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
                      </li>
 
                      <li>
-                      <a href="<c:url value='/rank'/>" style="color:white">RANK</a>
+                      <a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
                         </li>
 
                      <li>
-                      <a href="<c:url value='/product'/>" style="color:white">PRODUCT</a>
+                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                           </li>
 
                      <li>
-                      <a href="<c:url value='/post'/>" style="color:white">POST</a>
+                      <a href="<c:url value='/post'/>" style="text-decoration:none">POST</a>
                        </li>
 
                      <li>
-                       <a href="<c:url value='/mypage'/>" style="color:white">MY PAGE</a>
+                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                          </li>
                      
                      <li>
-                        <a href="<c:url value='/signIn'/>" style="color:white">SIGN IN</a>
+                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
                          </li>
                   </ul>
                </div>   
@@ -62,7 +63,7 @@
 
    
    <!-- Title page -->
-   <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/rank_bg.png');">
+   <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/rank_bg.png'); " >
       <h2 class="ltext-105 cl0 txt-center">
          Rank
       </h2>
