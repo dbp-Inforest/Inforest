@@ -19,7 +19,8 @@ public class DeleteUserController implements Controller {
 		String deleteId = request.getParameter("userId");
     	log.debug("Delete User : {}", deleteId);
 
-		InforestUserDAO manager = new InforestUserDAO();		
+		InforestUserDAO manager = new InforestUserDAO();
+		int rslt = manager.deleteInforestUser(deleteId);
 		HttpSession session = request.getSession();	
 	
 		/* 나중에 구현할 내용

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import = "java.util.List" %>
+<%@page import = "model.dao.*" %>
+<%@page import = "model.dto.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,6 +22,19 @@
 	  height : 50px;
 	}
 </style>
+
+<script>
+	function manageView(userId, targetUri) {
+	    alert(targetUri);   
+	    form.action = targetUri;
+
+	    form.userId.value = userId;
+	    alert(form.userId.value);
+	
+	    form.submit();
+	 }
+</script>
+
 </head>
 <body class="animsition">
    <!-- Header -->
@@ -79,17 +95,24 @@
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/mypage_bg.png');">
       <h2 class="ltext-105 cl0 txt-center">
-         Mypage
+         My page
       </h2>
    </section>  
     
 	<br><br>
-	<form name="form" action="<c:url value='/signUpdate'/>">
  	<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
        <div class="p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
        		<h4 class="mtext-109 cl2 p-b-30">
                 My Accounts
             </h4>
+            <%
+            	InforestUserDAO userDAO = new InforestUserDAO();
+            	InforestUser user = userDAO.getInforestUserById((String)session.getAttribute("userId"));
+            	String pos = "user";
+            	if(user.getPosition() == 0) {
+            		pos = "admin";
+            	}
+            %>
             <table id="account-table">
 	          <div class="flex-w flex-t bor12 p-b-13">
 	            <div class="size-210">
@@ -99,7 +122,7 @@
 	                </div></th>
 	               <td id="account-table">
 	               <div class="stext-117 cl2">
-                         		애쁠
+                         		<%= user.getUserId() %>
 	                </div></td></tr>
 	                </div>
 	                <tr></tr>
@@ -110,7 +133,7 @@
 	                 </div></th>
 	                 <td id="account-table">
 	                 <div class="stext-117 cl2">
-	                           	愛+
+	                           <%= user.getName() %>
 	                 </div></td></tr></div>
 	                 <tr></tr>
 	                 <div>
@@ -119,24 +142,26 @@
 	                           POSITION  :
 	                 </div></th>
 	                 <td id="account-table"><div class="stext-117 cl2">
-	                        	  ADMIN
+	                        	<%= pos %>
 	                 </div></td></tr>                               
 	              </div>
 	            </div>
            </table>
            <br><br>
-           <input type="hidden" name="kind2" value="10"/>
+           <input type="hidden" name="userId" value="<%= session.getAttribute("userId") %>"/>
+           <form name="form" action="<c:url value='/signUpdate'/>">
 	       <div class="flex-w flex-t p-b-13">
-				<!-- User Update -->
-					<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" onClick="manageView(0, '<c:url value='/insertProduct'/>')">
+				<!-- User Update -->		
+				<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" onClick="manageView(<%= session.getAttribute("userId") %>, '<c:url value='/user_update'/>')">
 					        User Update </button>
 				<!-- User Delete -->
-				<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" onClick="manageView(0, '<c:url value='/insertProduct'/>')">
+				<form name="form" action="<c:url value='/user_delete'/>">
+				<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" onClick="manageView(<%= session.getAttribute("userId") %>, '<c:url value='/user_delete'/>')">
 					User Delete </button>   
-			</div>         
+			</div>    
+			</form>     
          </div>
        </div>
-   </form>
    <br><br>
    <!-- ProductLike -->
    <form class="bg0 p-t-75 p-b-85">

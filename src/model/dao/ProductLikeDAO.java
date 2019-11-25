@@ -76,7 +76,7 @@ public class ProductLikeDAO {
 				dto.setUserId(rs.getString("USER_ID"));	
 				
 				String pId = dto.getProductId();
-				System.out.println("pId: " + pId);
+				System.out.println("pId: " + map.containsKey(pId));
 				if (map.containsKey(pId)) {	//key 값이 이미 존재하면(true)
 					like_count = map.get(pId);	//value값 (map.get(pId)) : "like_count"
 					like_count ++;	//카운트 += 1;
@@ -99,21 +99,20 @@ public class ProductLikeDAO {
 		    
 		    System.out.println("===========<< 내림차순 test 결과창 >>============");
 		    for ( String key : map.keySet() ) {
-		        System.out.println("방법1) key : " + key +" / value : " + map.get(key));
+		        System.out.println("key : " + key +" / value : " + map.get(key));
 		    }
 		    System.out.println("=======================");
 		    
 		    int c = 0;
+		    
 		    for ( String key : map.keySet() ) {
-		    	if(c > 10) {
-		    		break;
-		    	}
-		    	else {
+		    	if(c <= 10) {
 		    		lList.setProductId(key);
 		    		lList.setLikeCount(map.get(key));
 		    		list.add(lList);
 		    		c ++;
 		    	}
+		    	else {break;}
 		    }
 		    return list;
 		    
@@ -200,7 +199,7 @@ public class ProductLikeDAO {
 				
 				String pId = dto.getProductId();
 				if (map.containsKey(pId)) {	//key 값이 이미 존재하면(true)
-					like_count = map.get(pId);	//value값 (map.get(pId)) : "like_count"
+					like_count = (int)map.get(pId);	//value값 (map.get(pId)) : "like_count"
 					like_count ++;	//카운트 += 1;
 				}
 				else {	//key 값이 존재안하면 (false)
