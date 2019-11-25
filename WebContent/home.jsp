@@ -57,7 +57,6 @@
 	                        <a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
 	                     </li> 
                      	<% } %>	
-                     	<%= session.getAttribute("position") %>
 	                     </ul>
 	                     <div class="menu-desktop" style="float:right">
 	                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;

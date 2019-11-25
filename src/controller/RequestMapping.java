@@ -21,6 +21,7 @@ public class RequestMapping {
         /* User 관련 Mapping */
         mappings.put("/signIn", new ForwardController("/sign-in.jsp"));   // 로그인
         mappings.put("/signUp", new ForwardController("/sign-up.jsp")); // 회원가입 창
+        mappings.put("/signUpdate", new ForwardController("/sign-update.jsp")); // 유저 정보 수정
         mappings.put("/register", new RegisterUserController()); // 회원가입 완료 (DB저장)
         mappings.put("/login", new LoginController());
         mappings.put("/logout", new LogoutController());
@@ -42,6 +43,7 @@ public class RequestMapping {
         mappings.put("/product", new ForwardController("/product.jsp"));   //product.jsp이동
         mappings.put("/post", new ForwardController("/post.jsp"));   //post.jsp이동
         mappings.put("/mypage", new ForwardController("/mypage.jsp"));   //mypage.jsp이동
+        mappings.put("/management", new ForwardController("/manage.jsp"));   //management.jsp로 이동
         
         
 
