@@ -29,7 +29,7 @@
 
 
 <body>
-     <!-- Header -->
+   <!-- Header -->
    <header class="header-v3">
       <!-- Header desktop -->
       <div class="container-menu-desktop">
@@ -42,7 +42,7 @@
                </a>
               
                <!-- Menu desktop -->
-               <div class="menu-desktop">
+               <div class="menu-desktop" style="float:left">
                   <ul class="main-menu">
                      <li>
                          <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
@@ -56,14 +56,27 @@
                       <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
 
-                    <li>
+                     <li>
                        <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
-                     
-                     <li>
-                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
-                     </li>
-                  </ul>
+                     <%
+                     	if(session.getAttribute("userId") == null) { %>
+	                     <li>
+	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
+	                     </li> 
+	                     </ul> 
+                     <% } else {
+	                	 	if((int)session.getAttribute("position") == 0) { %>
+	                     <li>
+	                        <a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
+	                     </li> 
+                     	<% } %>	
+	                     </ul>
+	                     <div class="menu-desktop" style="float:right">
+	                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
+	                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
+	                     </div>
+					 <% } %>		 
                </div>   
             </nav>
          </div>   
@@ -92,17 +105,6 @@
 		<!-- Product Update -->
 		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
 			<input type="button" onClick="manageView(0, '<c:url value='/updateProduct'/>')" style="font-size:25pt; background-color:transparent;" value="Update Product"/>
-		</div>
-		
-		<!-- Product Select -->
-		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type="button" onClick="manageView(0, '<c:url value='/deleteProduct'/>')" style="font-size:25pt; background-color:transparent;" value="Delete Product"/>
-		</div>
-	</div>
-	<div class="flex-w flex-c-m m-tb-10">
-		<!-- Product Select -->
-		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type="button" onClick="manageView(0, '<c:url value='/deleteProduct'/>')" style="font-size:25pt; background-color:transparent;" value="Delete Product"/>
 		</div>
 		
 		<!-- Product Select -->

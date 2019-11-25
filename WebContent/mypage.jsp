@@ -21,22 +21,22 @@
 </style>
 </head>
 <body class="animsition">
-      <!-- Header -->
-  <header class="header-v3">
+   <!-- Header -->
+   <header class="header-v3">
       <!-- Header desktop -->
       <div class="container-menu-desktop">
          <div class="wrap-menu-desktop how-shadow1">
             <nav class="limiter-menu-desktop p-l-45">
-                 
+               
                <!-- Logo desktop -->      
                <a href="home.jsp" class="logo">
-                     <img src="images/icons/logo.png" alt="IMG-LOGO">
-                     </a>
-
+                  <img src="images/icons/logo.png" alt="IMG-LOGO">
+               </a>
+              
                <!-- Menu desktop -->
-               <div class="menu-desktop">
+               <div class="menu-desktop" style="float:left">
                   <ul class="main-menu">
-                      <li>
+                     <li>
                          <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
                      </li>
 
@@ -48,15 +48,28 @@
                       <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
 
-                      <li>
+                     <li>
                        <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
-                     
-                     <li>
-                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
-                     </li>
-                  </ul>
-               </div>
+                     <%
+                     	if(session.getAttribute("userId") == null) { %>
+	                     <li>
+	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
+	                     </li> 
+	                     </ul> 
+                     <% } else {
+	                	 	if((int)session.getAttribute("position") == 0) { %>
+	                     <li>
+	                        <a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
+	                     </li> 
+                     	<% } %>	
+	                     </ul>
+	                     <div class="menu-desktop" style="float:right">
+	                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
+	                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
+	                     </div>
+					 <% } %>		 
+               </div>   
             </nav>
          </div>   
       </div>
