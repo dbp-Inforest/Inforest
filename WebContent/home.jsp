@@ -47,17 +47,23 @@
                      </li>
                      <%
                      	if(session.getAttribute("userId") == null) { %>
-                     <li>
-                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
-                     </li> 
-                     </ul>
-                     <% } else { %>
-                     </ul>
-                     <div class="menu-desktop" style="float:right">
-                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
-                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
-                     </div>
-					 <% } %>
+	                     <li>
+	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
+	                     </li> 
+	                     </ul> 
+                     <% } else {
+	                	 	if((int)session.getAttribute("position") == 0) { %>
+	                     <li>
+	                        <a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
+	                     </li> 
+                     	<% } %>	
+                     	<%= session.getAttribute("position") %>
+	                     </ul>
+	                     <div class="menu-desktop" style="float:right">
+	                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
+	                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
+	                     </div>
+					 <% } %>		 
                </div>   
             </nav>
          </div>   

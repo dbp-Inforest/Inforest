@@ -16,12 +16,16 @@ public class LoginController implements Controller {
     	
     	String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
+		InforestUser user = new InforestUser();
 		InforestUserDAO userDAO = new InforestUserDAO();
 		
 		try {
 			if(userDAO.login(userId, password) == true) {
 				HttpSession session = request.getSession();
+				user = userDAO.getInforestUserById(userId);
 	            session.setAttribute(UserSessionUtils.USER_SESSION_KEY, userId);
+	            session.setAttribute(UserSessionUtils.USER_POSITION_KEY, user.getPosition());
+	            System.out.println("userPosition : " + user.getPosition());
 				return "redirect:/main";
 			}	
 			return "/sign-in.jsp";
