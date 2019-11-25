@@ -217,7 +217,7 @@ public class PhoneDAO{
    public List<Phone> getPhoneByName(String phName) {
       // TODO Auto-generated method stub
       String searchQuery = query + "FROM PHONE H, PRODUCT P " +
-              "WHERE H.PRODUCT_ID = P.PRODUCT_ID  AND P.PRODUCT_ID LIKE ?";  
+              "WHERE H.PRODUCT_ID = P.PRODUCT_ID  AND P.Name LIKE ?";  
       Object[] param = new Object[] { "%" + phName + "%"};
 
       jdbcUtil.setSql(searchQuery);

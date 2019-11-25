@@ -63,20 +63,55 @@
       </h2>
    </section>   
 
-   
-   <!-- Product -->
-   <div class="bg0 m-t-23 p-b-140">
-      <div class="container">
-         <div class="flex-w flex-sb-m p-b-52">
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-                  Result
-               </button>
+
+   <form class="bg0 p-t-40 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -510px;">
+      <div class="container" >
+         <div class="row"  style="display:inline">
+            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:1050px">
+               <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm" style="font-size:20px">
+                  <h4 class="mtext-109 cl2 p-b-12">
+                     Search with  ' <c:out value="${searchWord}"/> '
+                  </h4>
+                  <hr>
+                  <table>
+                     <tr class="table_head">
+                        <th class="column-0" >Product Id</th>
+                                    <th class="column-1" style="padding-left:50px">Name</th>
+                                    <th class="column-2"><p style="padding-left:75px">Brand</p></th>
+                                    <th class="column-3"><p style="padding-left:60px">Price</p></th>
+                        </tr>
+                       
+						<c:if test="${ListByName.size() == 0 }">
+						<tfoot>
+						<tr>
+						<td colspan="3">현재 데이터가 없습니다.</td>
+						</tr>
+						</tfoot>
+						</c:if>
+						<!-- //request.getAttribute("List") == ${List} -->
+						<tbody> 
+						<c:forEach var="product" items="${ListByName}" varStatus="status">
+						<tr class="table_row" style="height:70px;">
+						<td class="column-0" style="padding-left:30px">
+                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                      <font style="font-size:20px">
+                                      	<c:out value="${product.productId}"/>
+                                      </font>
+                                 </a>
+                        </td>
+                       <td class="column-1" style="padding-left:50px"><c:out value="${product.name}"/></td>
+                       <td class="column-2" style="padding-left:87px"><c:out value="${product.brand}"/></td>   
+                       <td class="column-3" style="padding-left:87px"><c:out value="${product.price}"/></td>
+                 
+						</tr>
+						</c:forEach>
+						</tbody>
+						</table>
+               </div>
             </div>
          </div>
-
-         
-                  </div>
-               </div>
+      </div>
+   </form>               
+               
 </body>
 </html>

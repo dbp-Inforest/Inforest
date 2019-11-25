@@ -27,16 +27,27 @@ public class ViewProductController implements Controller {
 
     	if(request.getMethod().equals("GET")) {
     		String kind = request.getParameter("kind2"); //0,1,2,3
+    		String psearch = request.getParameter("phoneSearch"); //phone.jsp 에서의 검색어
+    		String lsearch = request.getParameter("laptopSearch"); //laptop.jsp 에서의 검색어
+    		String csearch = request.getParameter("cameraSearch"); //camera.jsp 에서의 검색어
+    		String tsearch = request.getParameter("tabletSearch"); //tablet.jsp 에서의 검색어
     		System.out.print(kind + "debugtest");
     		
     		if(kind.equals("0")) { //phone
     			System.out.println(kind + " debugtest in kind = 0");
-    			List<Phone> phoneList = phoneDAO.getPhoneList();
-    			request.setAttribute("phoneList", phoneList);
+    			
+    			List<Phone> phoneList = phoneDAO.getPhoneByName(psearch);
+    			
+    			request.setAttribute("searchWord", psearch);
+    			request.setAttribute("ListByName", phoneList);
+    			
     			return "/product-search.jsp";	
     		}else if(kind.equals("1")){ //laptop
-    			List<Laptop> laptopList = laptopDAO.getLaptopList();
-    			request.setAttribute("laptopList", laptopList);
+    			List<Laptop> laptopList = laptopDAO.getLaptopByName(lsearch);
+    			
+    			request.setAttribute("searchWord", lsearch);
+    			request.setAttribute("ListByName", laptopList);
+    			
     			return "/product-search.jsp";	
     		}else if(kind.equals("2")) { //camera
     			List<Camera> cameraList = cameraDAO.getCameraList();
