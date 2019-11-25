@@ -13,20 +13,28 @@
 <!--===============================================================================================-->
 
 <script>
-	function p_view(kind, targetUri) {
-	    alert(targetUri);   
-	    form.action = targetUri;
+function search(kind, targetUri) {
+	if (form.allSearch.value == "") {
+	      alert("검색어를 입력해주세요");
+	      form.allSearch.focus();
+	      return false;
+	} 
+	form.action = targetUri;
+	
+	 form.kind2.value = kind;
+	form.submit();
+}
 
-	    form.kind2.value = kind;
-	    alert(form.kind2.value);
-
-	    form.submit();
+	function p_view(kind, targetUri) { 
+	    form1.action = targetUri;
+	    form1.kind3.value = kind;
+	    form1.submit();
 	 }
 </script>
 
 </head>
 <body class="animsition">
-       <!-- Header -->
+   <!-- Header -->
    <header class="header-v3">
       <!-- Header desktop -->
       <div class="container-menu-desktop">
@@ -39,7 +47,7 @@
                </a>
               
                <!-- Menu desktop -->
-               <div class="menu-desktop">
+               <div class="menu-desktop" style="float:left">
                   <ul class="main-menu">
                      <li>
                          <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
@@ -52,15 +60,28 @@
                      <li>
                       <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
-					
-					 <li>
+
+                     <li>
                        <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
-                     
-                     <li>
-                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
-                     </li>
-                  </ul>
+                     <%
+                     	if(session.getAttribute("userId") == null) { %>
+	                     <li>
+	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
+	                     </li> 
+	                     </ul> 
+                     <% } else {
+	                	 	if((int)session.getAttribute("position") == 0) { %>
+	                     <li>
+	                        <a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
+	                     </li> 
+                     	<% } %>	
+	                     </ul>
+	                     <div class="menu-desktop" style="float:right">
+	                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
+	                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
+	                     </div>
+					 <% } %>		 
                </div>   
             </nav>
          </div>   
@@ -76,11 +97,20 @@
    </section>   
 
    
-	<div style="height:50px;">&nbsp;</div><div style="height:50px;">&nbsp;</div>
+	   <!-- search form -->
+<form class="p-t-20" style="margin:0 0 0 450px;" name="form"  action="<c:url value='/productSearch' />" >
+<input type="hidden" name="kind2" value="10"/>
+	<div class="flex-w flex-m m-r-20 m-tb-5">
+    	<input class="stext-104 cl2 plh4 size-search bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="allSearch" placeholder="Please write down the search term.">
+		<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+		<button type="button"  onClick="search(4, '<c:url value='/productSearch'/>')">Search</button>
+		</div>
+	</div>
+</form> 
 	
 	
-	<form name="form" action="<c:url value='/productList'/>">
-	<input type="hidden" name="kind2" value="10"/>
+	<form name="form1" action="<c:url value='/productList'/>">
+	<input type="hidden" name="kind3" value="10"/>
 	<div class="flex-w flex-c-m m-tb-10"> <!-- a태그로 하거나  -->
 		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
 			<input type="button" onClick="p_view(0, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value="Phone"/>

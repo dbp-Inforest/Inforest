@@ -78,7 +78,7 @@
       </h2>
    </section>   
 <%
-System.out.println("phone-detail.jsp");
+System.out.println("laptop-detail.jsp");
 %>
    	<!-- Product Detail -->
 	<section class="sec-product-detail bg0 p-t-65 p-b-60">
@@ -87,7 +87,7 @@ System.out.println("phone-detail.jsp");
 				<div class="tab01">
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" role="tablist">
-						<!-- 세부적인 product 정보 (phone, laptop, camera, tablet 다 다름 -->
+						<!-- 세부적인 product 정보 (, laptop, camera, tablet 다 다름 -->
 						<li class="nav-item p-b-10" style="font-size:20px">
 							Additional information
 						</li>
@@ -103,25 +103,25 @@ System.out.println("phone-detail.jsp");
 									<ul class="p-lr-28 p-lr-15-sm">
 									
 						<div>
-						<h3 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${phoneDetail.brand}"/></h3>
-						<h4 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${phoneDetail.name}"/></h4>
+						<h3 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${laptopDetail.brand}"/></h3>
+						<h4 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${laptopDetail.name}"/></h4>
 						<span class="mtext-106 cl2">
-							<c:out value="${phoneDetail.price}"/>
+							<c:out value="${laptopDetail.price}"/>
 						</span>
 
 
 						<div style="height:50px;">&nbsp;</div>
 							<p class="stext-100 cl3 p-t-23">
-								 KIND : Phone
+								 KIND : Laptop
 							</p>
 							<p class="stext-100 cl3 p-t-23">
-								 COLOR : <c:out value="${phoneDetail.color}"/>
+								 COLOR : <c:out value="${laptopDetail.color}"/>
 							</p>
 							<p class="stext-100 cl3 p-t-23">
-								 WEIGHT : <c:out value="${phoneDetail.weight}"/> 
+								 WEIGHT : <c:out value="${laptopDetail.weight}"/> 
 							</p>
 							<p class="stext-100 cl3 p-t-23">
-								 RELEASED DATE : <c:out value="${phoneDetail.released_date}"/>
+								 RELEASED DATE : <c:out value="${laptopDetail.released_date}"/>
 							</p>
 						</div>
 						
@@ -129,11 +129,11 @@ System.out.println("phone-detail.jsp");
 						<div style="height:50px;">&nbsp;</div>
 							<li class="flex-w flex-t p-b-7">
 								<span class="stext-102 cl3 size-205">
-												Battery
+												Purpose
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pBattery}"/> 
+											<c:out value="${laptopDetail.lPurpose}"/> 
 								</span>
 							</li>
 
@@ -143,7 +143,7 @@ System.out.println("phone-detail.jsp");
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pMemory}"/> 
+											<c:out value="${laptopDetail.lRAMMemory}"/> 
 								</span>
 							</li>
 
@@ -153,37 +153,37 @@ System.out.println("phone-detail.jsp");
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pDisplay}"/> 
+											<c:out value="${laptopDetail.lDisplay}"/> 
 								</span>
 							</li>
 
 							<li class="flex-w flex-t p-b-7">
 								<span class="stext-102 cl3 size-205">
-												Ram
+												SSD
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pRAM}"/> 
+											<c:out value="${laptopDetail.lSSD}"/> 
 								</span>
 							</li>
 
 							<li class="flex-w flex-t p-b-7">
 								<span class="stext-102 cl3 size-205">
-												Size
+												CPU
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pSize}"/>
+											<c:out value="${laptopDetail.lCPU}"/>
 								</span>
 							</li>
 										
 							<li class="flex-w flex-t p-b-7">
 								<span class="stext-102 cl3 size-205">
-												Camera
+												OS
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pCamera}"/>
+											<c:out value="${laptopDetail.lOS}"/>
 								</span>
 							</li>
 							

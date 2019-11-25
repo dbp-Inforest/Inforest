@@ -1,9 +1,9 @@
 package model.dto;
 
-public class ProductLike extends Product {
+public class Ranking {
 
 	private String productId = null;
-	private String userId = null;
+	private int likeCount = 0;
 	
 	public String getProductId() {
 		return productId;
@@ -11,10 +11,10 @@ public class ProductLike extends Product {
 	public void setProductId(String productId) {
 		this.productId = productId;
 	}
-	public String getUserId() {
-		return userId;
+	public int getLikeCount() {
+		return likeCount;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
 	}
 }

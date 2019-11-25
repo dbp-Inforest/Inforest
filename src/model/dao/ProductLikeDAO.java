@@ -3,115 +3,309 @@ package model.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import model.dao.ProductLikeDAO;
 import model.dto.Camera;
 import model.dto.ProductLike;
-
+import model.dto.Ranking;
+//
+//class LikeList {
+//	private String pId;
+//	private int likeCount;
+//	
+//	public void setPid(String pId) {
+//        this.pId = pId;
+//       
+//    }
+//	
+//	public void setLikeCount(int likeCount) {
+//		this.likeCount = likeCount;
+//	}
+//	
+//	public String getPId() {
+//		return pId;
+//    }
+// 
+//	public int getLikeCount() {
+//		return likeCount;
+//	}
+//}
 
 public class ProductLikeDAO {
-
+	Ranking lList = new Ranking();
+	List<Ranking> list = new ArrayList<Ranking>();		// LikeList 객체들을 담기위한 list 객체
+	int like_count;	//좋아요 수
+	
 	private JDBCUtil jdbcUtil = null;
 	
-	private static String query = 	"SELECT PRODUCT_ID, USER_ID " +
-	  								" FROM PRODUCT_LIKE ";
+	private static String phone_q = 	"SELECT P.PRODUCT_ID, P.USER_ID " +
+										" FROM PRODUCT_LIKE P, PHONE PH " +
+										" WHERE P.PRODUCT_ID = PH.PRODUCT_ID ";
+	
+	private static String laptop_q = 	"SELECT P.PRODUCT_ID, P.USER_ID " +
+										" FROM PRODUCT_LIKE P, LAPTOP L " +
+										" WHERE P.PRODUCT_ID = L.PRODUCT_ID ";
+	
+	private static String camera_q = 	"SELECT P.PRODUCT_ID, P.USER_ID " +
+										" FROM PRODUCT_LIKE P, CAMERA C " +
+										" WHERE P.PRODUCT_ID = C.PRODUCT_ID ";
+	
+	private static String tablet_q = 	"SELECT P.PRODUCT_ID, P.USER_ID " +
+										" FROM PRODUCT_LIKE P, TABLET T " +
+										" WHERE P.PRODUCT_ID = T.PRODUCT_ID ";
+	
 	public ProductLikeDAO() {
 		jdbcUtil = new JDBCUtil();
 	}
-	
-	
-	public ProductLike getProductLikeByName(String plname) {
-		String searchQuery = query + "WHERE PRODUCT_LIKE.plname = ?";
-		Object[] param = new Object[] {plname};
 		
-		jdbcUtil.setSql(searchQuery);
-		jdbcUtil.setParameters(param);
-	
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();
-			ProductLike dto = new ProductLike();
-			while (rs.next()) {
-				dto.setProductId(rs.getString("PRODUCT_ID"));
-				dto.setUserId(rs.getString("USER_ID"));
-			}
-			return dto;
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();
-		}
-		return null;
-	}
-
-	//
-	public List<Camera> getCameraRanking(){
-		
-		String allQuery = query + ", " + "FROM CAMERA"
-							+ "WHERE PRODUCT.NAME = ? ";	
-		
-		jdbcUtil.setSql(allQuery);		// JDBCUtil 에 query 설정
-		
+	public List<Ranking> getPhoneLikeList() {
+		jdbcUtil.setSql(phone_q);		// JDBCUtil 에 query 설정
+			
 		try { 
-			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행			
-			List<Camera> list = new ArrayList<Camera>();		// Camera 객체들을 담기위한 list 객체
+			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행		
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
+			ProductLike dto = new ProductLike();		
 			while (rs.next()) {	
-				Camera dto = new Camera();		// 하나의 Camera 객체 생성 후 정보 설정
-				dto.setProductId(rs.getString("CAMERA_ID"));
-				dto.setcBattery(rs.getString("CAMERA_BATTERY"));
-				dto.setcPixel(rs.getDouble("CAMERA_PIXEL"));
-				dto.setcBurstshot(rs.getDouble("CAMERA_BURSTSHOT"));
-				dto.setcDisplay(rs.getDouble("CAMERA_DISPLAY"));
-				dto.setcLens(rs.getString("CAMERA_LENS"));
-				dto.setcVibration(rs.getString("CAMERA_VIBRATION"));
-				dto.setColor(rs.getString("CAMERA_COLOR"));
-				dto.setpKind(rs.getInt("CAMERA_KIND"));
-				dto.setPrice(rs.getString("CAMERA_PRICE"));
-				dto.setBrand(rs.getString("CAMERA_BRAND"));
-				dto.setReleased_date(rs.getDate("CAMERA_RELEASED_DATE"));
-				dto.setWeight(rs.getDouble("CAMERA_WEIGHT"));
-				list.add(dto);		// list 객체에 정보를 설정한 Camera 객체 저장
+						// 하나의 ProductLike 객체 생성 후 정보 설정
+				dto.setProductId(rs.getString("PRODUCT_ID"));
+				dto.setUserId(rs.getString("USER_ID"));	
+				
+				String pId = dto.getProductId();
+				System.out.println("pId: " + pId);
+				if (map.containsKey(pId)) {	//key 값이 이미 존재하면(true)
+					like_count = map.get(pId);	//value값 (map.get(pId)) : "like_count"
+					like_count ++;	//카운트 += 1;
+				}
+				else {	//key 값이 존재안하면 (false)
+					map.put(pId, 0);	//해당 제품의 좋아요 수는 0으로 초기화
+					System.out.println("첫 키 추가");
+				}
 			}
-			return list;		// 카메라 정보를 저장한 dto 들의 목록을 반환
+			
+			
+			List<String> keySetList = new ArrayList<>(map.keySet());
+		    //value 내림차순 //
+		    Collections.sort(keySetList, new Comparator<String>() {
+		        @Override
+		        public int compare(String o1, String o2) {
+		           return map.get(o2).compareTo(map.get(o1));
+		        }
+		    });
+		    
+		    System.out.println("===========<< 내림차순 test 결과창 >>============");
+		    for ( String key : map.keySet() ) {
+		        System.out.println("방법1) key : " + key +" / value : " + map.get(key));
+		    }
+		    System.out.println("=======================");
+		    
+		    int c = 0;
+		    for ( String key : map.keySet() ) {
+		    	if(c > 10) {
+		    		break;
+		    	}
+		    	else {
+		    		lList.setProductId(key);
+		    		lList.setLikeCount(map.get(key));
+		    		list.add(lList);
+		    		c ++;
+		    	}
+		    }
+		    return list;
+		    
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
 		}		
+				
 		return null;	
-		
 	}
 	
-	// 좋아요 수를 많이 받은 카메라 상품을 1위부터 10위까지 보여줌 
-	// 제품 이름과 사진을 출력 
-	public List<ProductLike> getProductLikeList() {
-		// 기본 쿼리와 합쳐짐 	
-		String newquery = "select p.name " +
-				"from (select p.name from product_like l, product p group by p.name " 
-				+ "order by count(l.PRODUCT_ID) )"
-				+	" where rownum <= 10"; 
-		
-		jdbcUtil.setSql(newquery);		// JDBCUtil 에 query 설정
-		
+	public List<Ranking> getLaptopLikeList() {
+		jdbcUtil.setSql(laptop_q);		// JDBCUtil 에 query 설정
+			
 		try { 
-			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행			
-			List<ProductLike> list = new ArrayList<ProductLike>();		// ProductLike 객체들을 담기위한 list 객체
+			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행		
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
+			ProductLike dto = new ProductLike();		
 			while (rs.next()) {	
-				ProductLike dto = new ProductLike();		// 하나의 ProductLike 객체 생성 후 정보 설정
+						// 하나의 ProductLike 객체 생성 후 정보 설정
 				dto.setProductId(rs.getString("PRODUCT_ID"));
-				dto.setUserId("USER_ID");
-				list.add(dto);		// list 객체에 정보를 설정한 ProductLike 객체 저장
+				dto.setUserId("USER_ID");	
+				
+				String pId = dto.getProductId();
+				if (map.containsKey(pId)) {	//key 값이 이미 존재하면(true)
+					like_count = map.get(pId);	//value값 (map.get(pId)) : "like_count"
+					like_count ++;	//카운트 += 1;
+				}
+				else {	//key 값이 존재안하면 (false)
+					map.put(pId, 0);	//해당 제품의 좋아요 수는 0으로 초기화
+				}
 			}
-			return list;		// 좋아요 정보를 저장한 dto들의 목록을 반환
+			
+			
+			List<String> keySetList = new ArrayList<>(map.keySet());
+		    //value 내림차순 //
+		    Collections.sort(keySetList, new Comparator<String>() {
+		        @Override
+		        public int compare(String o1, String o2) {
+		           return map.get(o2).compareTo(map.get(o1));
+		        }
+		    });
+		    
+		    System.out.println("===========<< 내림차순 test 결과창 >>============");
+		    for ( String key : map.keySet() ) {
+		        System.out.println("방법1) key : " + key +" / value : " + map.get(key));
+		    }
+		    System.out.println("=======================");
+		    
+		    int c = 0;
+		    for ( String key : map.keySet() ) {
+		    	if(c > 10) {
+		    		break;
+		    	}
+		    	else {
+		    		lList.setProductId(key);
+		    		lList.setLikeCount(map.get(key));
+		    		list.add(lList);
+		    		c ++;
+		    	}
+		    }
+		    return list;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
 		}		
+				
 		return null;	
 	}
-
 	
+	public List<Ranking> getCameraLikeList() {
+		jdbcUtil.setSql(camera_q);		// JDBCUtil 에 query 설정
+			
+		try { 
+			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행		
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
+			ProductLike dto = new ProductLike();		
+			while (rs.next()) {	
+						// 하나의 ProductLike 객체 생성 후 정보 설정
+				dto.setProductId(rs.getString("PRODUCT_ID"));
+				dto.setUserId("USER_ID");	
+				
+				String pId = dto.getProductId();
+				if (map.containsKey(pId)) {	//key 값이 이미 존재하면(true)
+					like_count = map.get(pId);	//value값 (map.get(pId)) : "like_count"
+					like_count ++;	//카운트 += 1;
+				}
+				else {	//key 값이 존재안하면 (false)
+					map.put(pId, 0);	//해당 제품의 좋아요 수는 0으로 초기화
+				}
+			}
+			
+			
+			List<String> keySetList = new ArrayList<>(map.keySet());
+		    //value 내림차순 //
+		    Collections.sort(keySetList, new Comparator<String>() {
+		        @Override
+		        public int compare(String o1, String o2) {
+		           return map.get(o2).compareTo(map.get(o1));
+		        }
+		    });
+		    
+		    System.out.println("===========<< 내림차순 test 결과창 >>============");
+		    for ( String key : map.keySet() ) {
+		        System.out.println("방법1) key : " + key +" / value : " + map.get(key));
+		    }
+		    System.out.println("=======================");
+		    
+		    int c = 0;
+		    for ( String key : map.keySet() ) {
+		    	if(c > 10) {
+		    		break;
+		    	}
+		    	else {
+		    		lList.setProductId(key);
+		    		lList.setLikeCount(map.get(key));
+		    		list.add(lList);
+		    		c ++;
+		    	}
+		    }
+		    return list;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
+		}		
+				
+		return null;	
+	}
+	
+	public List<Ranking> getTabletLikeList() {
+		jdbcUtil.setSql(tablet_q);		// JDBCUtil 에 query 설정
+			
+		try { 
+			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행		
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
+			ProductLike dto = new ProductLike();		
+			while (rs.next()) {	
+						// 하나의 ProductLike 객체 생성 후 정보 설정
+				dto.setProductId(rs.getString("PRODUCT_ID"));
+				dto.setUserId("USER_ID");	
+				
+				String pId = dto.getProductId();
+				if (map.containsKey(pId)) {	//key 값이 이미 존재하면(true)
+					like_count = map.get(pId);	//value값 (map.get(pId)) : "like_count"
+					like_count ++;	//카운트 += 1;
+				}
+				else {	//key 값이 존재안하면 (false)
+					map.put(pId, 0);	//해당 제품의 좋아요 수는 0으로 초기화
+				}
+			}
+			
+			
+			List<String> keySetList = new ArrayList<>(map.keySet());
+		    //value 내림차순 //
+		    Collections.sort(keySetList, new Comparator<String>() {
+		        @Override
+		        public int compare(String o1, String o2) {
+		           return map.get(o2).compareTo(map.get(o1));
+		        }
+		    });
+		    
+		    System.out.println("===========<< 내림차순 test 결과창 >>============");
+		    for ( String key : map.keySet() ) {
+		        System.out.println("방법1) key : " + key +" / value : " + map.get(key));
+		    }
+		    System.out.println("=======================");
+		    
+		    int c = 0;
+		    for ( String key : map.keySet() ) {
+		    	if(c > 10) {
+		    		break;
+		    	}
+		    	else {
+		    		lList.setProductId(key);
+		    		lList.setLikeCount(map.get(key));
+		    		list.add(lList);
+		    		c ++;
+		    	}
+		    }
+		    return list;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
+		}		
+				
+		return null;	
+	}
+/*
 	public int insertProductLike(ProductLike productLike) {
 		int result = 0;
 		String insertQuery = "INSERT INTO PRODUCT_LIKE (PRODUCT_ID, USER_ID) " +
@@ -139,8 +333,8 @@ public class ProductLikeDAO {
 		return result;		// insert 에 의해 반영된 레코드 수 반환	
 	}
 
-
-	
+*/
+	/*
 	public int deleteProductLike(int uid, int pid) { //질문
 		String deleteQuery = "DELETE FROM PRODUCT_LIKE WHERE USER_ID = ? AND PRODUCT_ID = ? ";
 		
@@ -192,5 +386,6 @@ public class ProductLikeDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+*/
+	
 }

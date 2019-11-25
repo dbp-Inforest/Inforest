@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@page import = "java.util.List" %>
+<%@page import = "model.dao.*" %>
+<%@page import = "model.dto.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -64,9 +66,7 @@
          Rank
       </h2>
    </section>   
-
-      
-
+ 
 <!-- Rank -->
 <!-- 이미지 크기는 80*80 픽셀 (.jpg) -->
 <form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -515px;">
@@ -84,96 +84,18 @@
                                     <th class="column-1" style="padding-left:20px"><p style="padding-left:10px">Image</p></th>
                                     <th class="column-2"><p style="padding-left:40px">Name</p></th>
                         </tr>
+                        <c:forEach var = "phone" items="${phoneR}" varStatus="status">
                         <tr class="table_row">
-                                       <td class="column-0">1</td>
+                                       <td class="column-0"><c:out value="${phone}"/></td>
                                     <td class="column-1" style="padding-left:20px">
                                        <div class="how-itemcart1">
                                           <img src="images/phone_img.jpg" alt="IMG">
                                        </div>
                                     </td>
-                                    <td class="column-2">iPhone 11</td>   
+                                    <td class="column-2"><c:out value="${phone.productId}"/></td>   
                               </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">2</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">iPhone 11 pro</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">3</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">iPhone 11 pro MAX</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">4</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">iPhone XS</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">5</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">iPhone XS MAX</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">6</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">iPhone XR</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">7</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">iPhone X</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">8</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">Galaxy S10e</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">9</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">Galaxy S10</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">10</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">Galaxy S10+</td>
-                                </tr>
+                              </c:forEach>
+                              
                   </table>
                </div>
             </div>

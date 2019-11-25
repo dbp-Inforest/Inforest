@@ -217,7 +217,7 @@ public class CameraDAO {
 	public List<Camera> getCameraByName(String cName) {
 		// 기본 쿼리와 합쳐져  cName을 포함하는 name을 가진 Camera 정보를 가져오는 테이블
 		String searchQuery = query + "FROM CAMERA, PRODUCT "
-				+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.NAME = ? ";
+				+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.NAME LIKE ?";
 		
 		Object[] param = new Object[] { "%" + cName + "%"};
 

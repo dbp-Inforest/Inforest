@@ -78,7 +78,7 @@
       </h2>
    </section>   
 <%
-System.out.println("phone-detail.jsp");
+System.out.println("camera-detail.jsp");
 %>
    	<!-- Product Detail -->
 	<section class="sec-product-detail bg0 p-t-65 p-b-60">
@@ -103,25 +103,25 @@ System.out.println("phone-detail.jsp");
 									<ul class="p-lr-28 p-lr-15-sm">
 									
 						<div>
-						<h3 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${phoneDetail.brand}"/></h3>
-						<h4 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${phoneDetail.name}"/></h4>
+						<h3 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${cameraDetail.brand}"/></h3>
+						<h4 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${cameraDetail.name}"/></h4>
 						<span class="mtext-106 cl2">
-							<c:out value="${phoneDetail.price}"/>
+							<c:out value="${cameraDetail.price}"/>
 						</span>
 
 
 						<div style="height:50px;">&nbsp;</div>
 							<p class="stext-100 cl3 p-t-23">
-								 KIND : Phone
+								 KIND : Camera
 							</p>
 							<p class="stext-100 cl3 p-t-23">
-								 COLOR : <c:out value="${phoneDetail.color}"/>
+								 COLOR : <c:out value="${cameraDetail.color}"/>
 							</p>
 							<p class="stext-100 cl3 p-t-23">
-								 WEIGHT : <c:out value="${phoneDetail.weight}"/> 
+								 WEIGHT : <c:out value="${cameraDetail.weight}"/> 
 							</p>
 							<p class="stext-100 cl3 p-t-23">
-								 RELEASED DATE : <c:out value="${phoneDetail.released_date}"/>
+								 RELEASED DATE : <c:out value="${cameraDetail.released_date}"/>
 							</p>
 						</div>
 						
@@ -133,17 +133,17 @@ System.out.println("phone-detail.jsp");
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pBattery}"/> 
+											<c:out value="${cameraDetail.cBattery}"/> 
 								</span>
 							</li>
 
 							<li class="flex-w flex-t p-b-7">
 								<span class="stext-102 cl3 size-205">
-												Memory
+												Lens
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pMemory}"/> 
+											<c:out value="${cameraDetail.cLens}"/> 
 								</span>
 							</li>
 
@@ -153,37 +153,37 @@ System.out.println("phone-detail.jsp");
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pDisplay}"/> 
+											<c:out value="${cameraDetail.cDisplay}"/> 
 								</span>
 							</li>
 
 							<li class="flex-w flex-t p-b-7">
 								<span class="stext-102 cl3 size-205">
-												Ram
+												Pixel
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pRAM}"/> 
+											<c:out value="${cameraDetail.cPixel}"/> 
 								</span>
 							</li>
 
 							<li class="flex-w flex-t p-b-7">
 								<span class="stext-102 cl3 size-205">
-												Size
+												Vibration
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pSize}"/>
+											<c:out value="${cameraDetail.cVibration}"/>
 								</span>
 							</li>
 										
 							<li class="flex-w flex-t p-b-7">
 								<span class="stext-102 cl3 size-205">
-												Camera
+												Burstshot
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-											<c:out value="${phoneDetail.pCamera}"/>
+											<c:out value="${cameraDetail.cBurstshot}"/>
 								</span>
 							</li>
 							

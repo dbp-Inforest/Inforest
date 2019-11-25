@@ -11,24 +11,32 @@
    <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
+<style>
+	#account-table {
+	  font-size: 30px;
+	  text-align : center;
+	  width : 400px;
+	  height : 50px;
+	}
+</style>
 </head>
 <body class="animsition">
-      <!-- Header -->
-  <header class="header-v3">
+   <!-- Header -->
+   <header class="header-v3">
       <!-- Header desktop -->
       <div class="container-menu-desktop">
          <div class="wrap-menu-desktop how-shadow1">
             <nav class="limiter-menu-desktop p-l-45">
-                 
+               
                <!-- Logo desktop -->      
                <a href="home.jsp" class="logo">
-                     <img src="images/icons/logo.png" alt="IMG-LOGO">
-                     </a>
-
+                  <img src="images/icons/logo.png" alt="IMG-LOGO">
+               </a>
+              
                <!-- Menu desktop -->
-               <div class="menu-desktop">
+               <div class="menu-desktop" style="float:left">
                   <ul class="main-menu">
-                      <li>
+                     <li>
                          <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
                      </li>
 
@@ -40,15 +48,28 @@
                       <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
 
-                      <li>
+                     <li>
                        <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
-                     
-                     <li>
-                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
-                     </li>
-                  </ul>
-               </div>
+                     <%
+                     	if(session.getAttribute("userId") == null) { %>
+	                     <li>
+	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
+	                     </li> 
+	                     </ul> 
+                     <% } else {
+	                	 	if((int)session.getAttribute("position") == 0) { %>
+	                     <li>
+	                        <a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
+	                     </li> 
+                     	<% } %>	
+	                     </ul>
+	                     <div class="menu-desktop" style="float:right">
+	                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
+	                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
+	                     </div>
+					 <% } %>		 
+               </div>   
             </nav>
          </div>   
       </div>
@@ -60,176 +81,149 @@
       <h2 class="ltext-105 cl0 txt-center">
          Mypage
       </h2>
-   </section>   
-
-   <!-- Shoping Cart -->
+   </section>  
+    
+	<br><br>
+	<form name="form" action="<c:url value='/signUpdate'/>">
+ 	<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+       <div class="p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+       		<h4 class="mtext-109 cl2 p-b-30">
+                My Accounts
+            </h4>
+            <table id="account-table">
+	          <div class="flex-w flex-t bor12 p-b-13">
+	            <div class="size-210">
+	            	<tr id="account-table" ><th id="account-table">
+	            	<div class="stext-117 cl2">
+	                           ID  :
+	                </div></th>
+	               <td id="account-table">
+	               <div class="stext-117 cl2">
+                         		애쁠
+	                </div></td></tr>
+	                </div>
+	                <tr></tr>
+	                <div class="size-210">
+	            	<tr id="account-table"><th id="account-table">
+	            	<div class="stext-117 cl2">
+	                           NAME  :
+	                 </div></th>
+	                 <td id="account-table">
+	                 <div class="stext-117 cl2">
+	                           	愛+
+	                 </div></td></tr></div>
+	                 <tr></tr>
+	                 <div>
+	            	<tr id="account-table"><th id="account-table">
+	            	<div class="stext-117 cl2">
+	                           POSITION  :
+	                 </div></th>
+	                 <td id="account-table"><div class="stext-117 cl2">
+	                        	  ADMIN
+	                 </div></td></tr>                               
+	              </div>
+	            </div>
+           </table>
+           <br><br>
+           <input type="hidden" name="kind2" value="10"/>
+	       <div class="flex-w flex-t p-b-13">
+				<!-- User Update -->
+					<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" onClick="manageView(0, '<c:url value='/insertProduct'/>')">
+					        User Update </button>
+				<!-- User Delete -->
+				<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" onClick="manageView(0, '<c:url value='/insertProduct'/>')">
+					User Delete </button>   
+			</div>         
+         </div>
+       </div>
+   </form>
+   <br><br>
+   <!-- ProductLike -->
    <form class="bg0 p-t-75 p-b-85">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
-               <div class="m-l-25 m-r--38 m-lr-0-xl">
+      <span class="container">
+         <span class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+            <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+                 <h4 class="mtext-109 cl2 p-b-30">
+                     My Products
+                  </h4>
                   <div class="wrap-table-shopping-cart">
                      <table class="table-shopping-cart">
                         <tr class="table_head">
-                           <th class="column-1">Product</th>
-                           <th class="column-2"></th>
-                           <th class="column-3">Price</th>
-                           <th class="column-4">Quantity</th>
-                           <th class="column-5">Total</th>
+                           <th class="column-1">Kind</th>
+                           <th class="column-2">Product</th>
+                           <th class="column-3"></th>
+                           <th class="column-4">Brand</th>
+                           <th class="column-5">Price</th>
                         </tr>
 
                         <tr class="table_row">
                            <td class="column-1">
+								Phone
+                           </td>
+                           <td class="column-2">
                               <div class="how-itemcart1">
-                                 <img src="images/item-cart-04.jpg" alt="IMG">
+                                 <img src="images/phone_img.jpg" alt="IMG"> 
                               </div>
                            </td>
-                           <td class="column-2">Fresh Strawberries</td>
-                           <td class="column-3">$ 36.00</td>
-                           <td class="column-4">
-                              <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                 <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                    <i class="fs-16 zmdi zmdi-minus"></i>
-                                 </div>
-
-                                 <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1">
-
-                                 <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                    <i class="fs-16 zmdi zmdi-plus"></i>
-                                 </div>
-                              </div>
-                           </td>
-                           <td class="column-5">$ 36.00</td>
+                           <td class="column-3">IPhone 11</td>
+                           <td class="column-4">APPLE</td>
+                           <td class="column-5">990, 000부터</td>
                         </tr>
 
                         <tr class="table_row">
-                           <td class="column-1">
+                              <td class="column-1">
+								Laptop
+                           </td>
+                           <td class="column-2">
                               <div class="how-itemcart1">
-                                 <img src="images/item-cart-05.jpg" alt="IMG">
+                                 <img src="images/laptop_img.jpg" alt="IMG"> 
                               </div>
                            </td>
-                           <td class="column-2">Lightweight Jacket</td>
-                           <td class="column-3">$ 16.00</td>
-                           <td class="column-4">
-                              <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                 <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                    <i class="fs-16 zmdi zmdi-minus"></i>
-                                 </div>
-
-                                 <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1">
-
-                                 <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                    <i class="fs-16 zmdi zmdi-plus"></i>
-                                 </div>
-                              </div>
-                           </td>
-                           <td class="column-5">$ 16.00</td>
+                           <td class="column-3">맥북에어</td>
+                           <td class="column-4">APPLE</td>
+                           <td class="column-5">1,890,000</td>
                         </tr>
                      </table>
                   </div>
-
-                  <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-                     <div class="flex-w flex-m m-r-20 m-tb-5">
-                        <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
-                           
-                        <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                           Apply coupon
-                        </div>
-                     </div>
-
-                     <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                        Update Cart
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+					<br>
+					<center>
+	                  	<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                     	GO TO CLICK "LIKE"
+                  		</button>				
+					</center>
+                 </div>
+            </span>
+		</span>
+		<br><br>
+		<span class="container">
+            <span class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
                <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
                   <h4 class="mtext-109 cl2 p-b-30">
-                     Cart Totals
+                     My Comments
                   </h4>
 
                   <div class="flex-w flex-t bor12 p-b-13">
                      <div class="size-208">
                         <span class="stext-110 cl2">
-                           Subtotal:
+                           Comment List:
                         </span>
                      </div>
-
-                     <div class="size-209">
-                        <span class="mtext-110 cl2">
-                           $79.65
-                        </span>
-                     </div>
-                  </div>
-
-                  <div class="flex-w flex-t bor12 p-t-15 p-b-30">
-                     <div class="size-208 w-full-ssm">
-                        <span class="stext-110 cl2">
-                           Shipping:
-                        </span>
-                     </div>
-
-                     <div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-                        <p class="stext-111 cl6 p-t-2">
-                           There are no shipping methods available. Please double check your address, or contact us if you need any help.
-                        </p>
-                        
-                        <div class="p-t-15">
-                           <span class="stext-112 cl8">
-                              Calculate Shipping
-                           </span>
-
-                           <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-                              <select class="js-select2" name="time">
-                                 <option>Select a country...</option>
-                                 <option>USA</option>
-                                 <option>UK</option>
-                              </select>
-                              <div class="dropDownSelect2"></div>
-                           </div>
-
-                           <div class="bor8 bg0 m-b-12">
-                              <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state" placeholder="State /  country">
-                           </div>
-
-                           <div class="bor8 bg0 m-b-22">
-                              <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode" placeholder="Postcode / Zip">
-                           </div>
-                           
-                           <div class="flex-w">
-                              <div class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
-                                 Update Totals
-                              </div>
-                           </div>
-                              
-                        </div>
-                     </div>
-                  </div>
-
                   <div class="flex-w flex-t p-t-27 p-b-33">
-                     <div class="size-208">
-                        <span class="mtext-101 cl2">
-                           Total:
-                        </span>
-                     </div>
-
-                     <div class="size-209 p-t-1">
-                        <span class="mtext-110 cl2">
-                           $79.65
-                        </span>
+                     <div class="size-400">
+                           	아이폰 11 너무 좋아요!!! 인덕션 최고
                      </div>
                   </div>
-
-                  <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                     Proceed to Checkout
-                  </button>
-               </div>
-            </div>
-         </div>
-      </div>
-   </form>
+                   </div>
+                  <br><br>
+					<center>
+	                  <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+	                     GO TO WRITE COMMENT
+	                  </button>
+                  </center>
+              
+	      </span>
+	    </span>
+	   </form>
       
    <!-- Back to top -->
    <div class="btn-back-to-top" id="myBtn">

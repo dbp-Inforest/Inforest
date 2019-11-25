@@ -14,44 +14,72 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+
+<script>
+function search(kind, targetUri) {
+	if (form.tabletSearch.value == "") {
+	      alert("검색어를 입력해주세요");
+	      form.tabletSearch.focus();
+	      return false;
+	} 
+	form.action = targetUri;
+	form.kind2.value = kind;
+	form.submit();
+}
+
+
+</script>
 </head>
 <body class="animsition">
-      <!-- Header -->
+   <!-- Header -->
    <header class="header-v3">
       <!-- Header desktop -->
       <div class="container-menu-desktop">
-         <div class ="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop container">
+         <div class="wrap-menu-desktop how-shadow1">
+            <nav class="limiter-menu-desktop p-l-45">
                
                <!-- Logo desktop -->      
-               <a href="<c:url value='/main'/>"class="logo">
-                     <img src="images/icons/logo.png" alt="IMG-LOGO">
-                     </a>
-
+               <a href="home.jsp" class="logo">
+                  <img src="images/icons/logo.png" alt="IMG-LOGO">
+               </a>
+              
                <!-- Menu desktop -->
-               <div class="menu-desktop">
+               <div class="menu-desktop" style="float:left">
                   <ul class="main-menu">
                      <li>
-                              <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
-                           </li>
+                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
+                     </li>
 
-                           <li>
-                               <a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
-                           </li>
-      
-                           <li>
-                               <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
-                           </li>
-      
-                           <li>
-                                <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
-                           </li>
-                           
-                           <li>
-                                 <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
-                           </li> 
-                  </ul>
-               </div>
+                     <li>
+                      <a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
+                     </li>
+
+                     <li>
+                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
+                     </li>
+
+                     <li>
+                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
+                     </li>
+                     <%
+                     	if(session.getAttribute("userId") == null) { %>
+	                     <li>
+	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
+	                     </li> 
+	                     </ul> 
+                     <% } else {
+	                	 	if((int)session.getAttribute("position") == 0) { %>
+	                     <li>
+	                        <a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
+	                     </li> 
+                     	<% } %>	
+	                     </ul>
+	                     <div class="menu-desktop" style="float:right">
+	                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
+	                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
+	                     </div>
+					 <% } %>		 
+               </div>   
             </nav>
          </div>   
       </div>
@@ -78,8 +106,20 @@
    </section>  
    
  
-   
-   <form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -510px;">
+   <!-- search form -->
+<form class="p-t-20" style="margin:0 0 0 450px;" name="form"  action="<c:url value='/productSearch' />" >
+<input type="hidden" name="kind2" value="10"/>
+	<div class="flex-w flex-m m-r-20 m-tb-5">
+    	<input class="stext-104 cl2 plh4 size-search bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="tabletSearch" placeholder="Please write down the search term.">
+		<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+		<button type="button"  onClick="search(3, '<c:url value='/productSearch'/>')">Search</button>
+		</div>
+	</div>
+</form>  
+
+
+
+   <form class="bg0 p-t-30 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -510px;">
       <div class="container" >
          <div class="row"  style="display:inline">
             <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:1050px">
