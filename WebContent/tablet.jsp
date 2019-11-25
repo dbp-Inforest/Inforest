@@ -90,8 +90,8 @@
                   <hr>
                     <table>
                      <tr class="table_head">
-                        <th class="column-0" >Name</th>
-                                    <th class="column-1" style="padding-left:50px">Product Id</th>
+                        <th class="column-0" >Product Id</th>
+                                    <th class="column-1" style="padding-left:50px">Name</th>
                                     <th class="column-2"><p style="padding-left:75px">Brand</p></th>
                                     <th class="column-3"><p style="padding-left:60px">Price</p></th>
                         </tr>
@@ -108,13 +108,13 @@
 						<c:forEach var="tablet" items="${tabletList}" varStatus="status">
 						<tr class="table_row" style="height:70px;">
 						<td class="column-0" style="padding-left:30px">
-                                <a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                       <font style="font-size:20px">
-                                      	<c:out value="${tablet.name}"/>
+                                      	<c:out value="${tablet.productId}"/>
                                       </font>
                                  </a>
                         </td>
-                       <td class="column-1" style="padding-left:50px"><c:out value="${tablet.productId }"/></td>
+                       <td class="column-1" style="padding-left:50px"><c:out value="${tablet.name}"/></td>
                        <td class="column-2" style="padding-left:87px"><c:out value="${tablet.brand}"/></td>   
                        <td class="column-3" style="padding-left:87px"><c:out value="${tablet.price}"/></td>
                  

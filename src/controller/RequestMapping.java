@@ -33,6 +33,7 @@ public class RequestMapping {
         
         /* Product 관련  Mapping*/
         mappings.put("/productList", new ListProductController());
+        mappings.put("/productDetail", new DetailProductController());
         mappings.put("/phone", new ForwardController("/phone.jsp"));
         
         /* Home Header 관련  Mapping*/

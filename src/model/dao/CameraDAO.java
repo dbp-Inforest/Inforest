@@ -256,7 +256,7 @@ public class CameraDAO {
 
 
 	// 모델명으로 정보를 검색하여 해당 태블릿의 정보를 갖고 있는 Camera 객체를 반환하는 메소드
-	public List<Camera> getCameraById(String cId) {
+	public Camera getCameraById(String cId) {
 		// 기본 쿼리와 합쳐져  tId를 포함하는 name을 가진 CAMERA 정보를 가져오는 테이블
 		String searchQuery = query + "FROM CAMERA, PRODUCT "
 				+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.PRODUCT_ID = ? ";
@@ -267,9 +267,8 @@ public class CameraDAO {
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행
-			List<Camera> list = new ArrayList<Camera>();		// Camera 객체들을 담기위한 list 객체
+			Camera dto = new Camera();		// Camera 객체들을 담기위한 list 객체
 			if (rs.next()) {						// 찾은 학생의 정보를 Camera 객체에 설정
-				Camera dto = new Camera();
 				dto.setProductId(rs.getString("CAMERA_ID"));
 				dto.setcBattery(rs.getString("CAMERA_BATTERY"));
 				dto.setcBurstshot(rs.getDouble("CAMERA_BURSTSHOT"));
@@ -284,9 +283,8 @@ public class CameraDAO {
 				dto.setBrand(rs.getString("CAMERA_BRAND"));
 				dto.setReleased_date(rs.getDate("CAMERA_RELEASED_DATE"));
 				dto.setWeight(rs.getDouble("CAMERA_WEIGHT"));
-				list.add(dto);
 			}
-			return list;				// 찾은 학생의 정보를 담고 있는 Camera 객체 반환
+			return dto;				// 찾은 학생의 정보를 담고 있는 Camera 객체 반환
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -294,4 +292,6 @@ public class CameraDAO {
 		}
 		return null;
 	}
+	
+	
 }
