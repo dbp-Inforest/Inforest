@@ -13,14 +13,30 @@
 <!--===============================================================================================-->
 
 <script>
+function search(kind, targetUri) {
+	if (form.allSearch.value == "") {
+	      alert("검색어를 입력해주세요");
+	      form.allSearch.focus();
+	      return false;
+	} 
+	form.action = targetUri;
+	
+	 form.kind2.value = kind;
+	 alert(form.kind2.value);
+	
+	form.submit();
+}
+
 	function p_view(kind, targetUri) {
 	    alert(targetUri);   
-	    form.action = targetUri;
+	    form1.action = targetUri;
 
-	    form.kind2.value = kind;
-	    alert(form.kind2.value);
+	    alert(kind);
+	    
+	    form1.kind3.value = kind;
+	    alert(form1.kind3.value);
 
-	    form.submit();
+	    form1.submit();
 	 }
 </script>
 
@@ -76,11 +92,20 @@
    </section>   
 
    
-	<div style="height:50px;">&nbsp;</div><div style="height:50px;">&nbsp;</div>
+	   <!-- search form -->
+<form class="p-t-20" style="margin:0 0 0 450px;" name="form"  action="<c:url value='/productSearch' />" >
+<input type="hidden" name="kind2" value="10"/>
+	<div class="flex-w flex-m m-r-20 m-tb-5">
+    	<input class="stext-104 cl2 plh4 size-search bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="allSearch" placeholder="Please write down the search term.">
+		<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+		<button type="button"  onClick="search(4, '<c:url value='/productSearch'/>')">Search</button>
+		</div>
+	</div>
+</form> 
 	
 	
-	<form name="form" action="<c:url value='/productList'/>">
-	<input type="hidden" name="kind2" value="10"/>
+	<form name="form1" action="<c:url value='/productList'/>">
+	<input type="hidden" name="kind3" value="10"/>
 	<div class="flex-w flex-c-m m-tb-10"> <!-- a태그로 하거나  -->
 		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
 			<input type="button" onClick="p_view(0, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value="Phone"/>

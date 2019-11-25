@@ -90,6 +90,9 @@
 						</c:if>
 						<!-- //request.getAttribute("List") == ${List} -->
 						<tbody> 
+						
+						
+						<c:if test="${kind < 4 }">
 						<c:forEach var="product" items="${ListByName}" varStatus="status">
 						<tr class="table_row" style="height:70px;">
 						<td class="column-0" style="padding-left:30px">
@@ -105,6 +108,77 @@
                  
 						</tr>
 						</c:forEach>
+						</c:if>
+						
+						
+						
+						
+						
+						
+						
+						<c:if test="${kind == 4 }">
+						<c:forEach var="product" items="${PhoneListByName}" varStatus="status">
+						<tr class="table_row" style="height:70px;">
+						<td class="column-0" style="padding-left:30px">
+                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                      <font style="font-size:20px">
+                                      	<c:out value="${product.productId}"/>
+                                      </font>
+                                 </a>
+                        </td>
+                       <td class="column-1" style="padding-left:50px"><c:out value="${product.name}"/></td>
+                       <td class="column-2" style="padding-left:87px"><c:out value="${product.brand}"/></td>   
+                       <td class="column-3" style="padding-left:87px"><c:out value="${product.price}"/></td>
+                 
+						</tr>
+						</c:forEach>
+						<c:forEach var="product" items="${LaptopListByName}" varStatus="status">
+						<tr class="table_row" style="height:70px;">
+						<td class="column-0" style="padding-left:30px">
+                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                      <font style="font-size:20px">
+                                      	<c:out value="${product.productId}"/>
+                                      </font>
+                                 </a>
+                        </td>
+                       <td class="column-1" style="padding-left:50px"><c:out value="${product.name}"/></td>
+                       <td class="column-2" style="padding-left:87px"><c:out value="${product.brand}"/></td>   
+                       <td class="column-3" style="padding-left:87px"><c:out value="${product.price}"/></td>
+                 
+						</tr>
+						</c:forEach>
+						<c:forEach var="product" items="${CameraListByName}" varStatus="status">
+						<tr class="table_row" style="height:70px;">
+						<td class="column-0" style="padding-left:30px">
+                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                      <font style="font-size:20px">
+                                      	<c:out value="${product.productId}"/>
+                                      </font>
+                                 </a>
+                        </td>
+                       <td class="column-1" style="padding-left:50px"><c:out value="${product.name}"/></td>
+                       <td class="column-2" style="padding-left:87px"><c:out value="${product.brand}"/></td>   
+                       <td class="column-3" style="padding-left:87px"><c:out value="${product.price}"/></td>
+                 
+						</tr>
+						</c:forEach>
+						<c:forEach var="product" items="${TabletListByName}" varStatus="status">
+						<tr class="table_row" style="height:70px;">
+						<td class="column-0" style="padding-left:30px">
+                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                      <font style="font-size:20px">
+                                      	<c:out value="${product.productId}"/>
+                                      </font>
+                                 </a>
+                        </td>
+                       <td class="column-1" style="padding-left:50px"><c:out value="${product.name}"/></td>
+                       <td class="column-2" style="padding-left:87px"><c:out value="${product.brand}"/></td>   
+                       <td class="column-3" style="padding-left:87px"><c:out value="${product.price}"/></td>
+                 
+						</tr>
+						</c:forEach>
+						</c:if>
+						
 						</tbody>
 						</table>
                </div>

@@ -23,7 +23,7 @@ public class ListProductController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
        
     	if(request.getMethod().equals("GET")) {
-    		String kind = request.getParameter("kind2"); //0,1,2,3
+    		String kind = request.getParameter("kind3"); //0,1,2,3
     		System.out.print(kind + "debugtest");
     		
     		if(kind.equals("0")) { //phone

@@ -26,11 +26,12 @@ public class ViewProductController implements Controller {
 		// TODO Auto-generated method stub
 
     	if(request.getMethod().equals("GET")) {
-    		String kind = request.getParameter("kind2"); //0,1,2,3
+    		String kind = request.getParameter("kind2"); //0,1,2,3,4
     		String psearch = request.getParameter("phoneSearch"); //phone.jsp 에서의 검색어
     		String lsearch = request.getParameter("laptopSearch"); //laptop.jsp 에서의 검색어
     		String csearch = request.getParameter("cameraSearch"); //camera.jsp 에서의 검색어
     		String tsearch = request.getParameter("tabletSearch"); //tablet.jsp 에서의 검색어
+    		String allsearch = request.getParameter("allSearch"); //product.jsp 에서의 검색어
     		System.out.print(kind + "debugtest");
     		
     		if(kind.equals("0")) { //phone
@@ -40,6 +41,7 @@ public class ViewProductController implements Controller {
     			
     			request.setAttribute("searchWord", psearch);
     			request.setAttribute("ListByName", phoneList);
+    			request.setAttribute("kind", kind);
     			
     			return "/product-search.jsp";	
     		}else if(kind.equals("1")){ //laptop
@@ -47,6 +49,7 @@ public class ViewProductController implements Controller {
     			
     			request.setAttribute("searchWord", lsearch);
     			request.setAttribute("ListByName", laptopList);
+    			request.setAttribute("kind", kind);
     			
     			return "/product-search.jsp";	
     		}else if(kind.equals("2")) { //camera
@@ -54,6 +57,7 @@ public class ViewProductController implements Controller {
     			
     			request.setAttribute("searchWord", csearch);
     			request.setAttribute("ListByName", cameraList);
+    			request.setAttribute("kind", kind);
     			
     			return "/product-search.jsp";		
     		}else if(kind.equals("3")) { //tablet
@@ -61,6 +65,20 @@ public class ViewProductController implements Controller {
     			
     			request.setAttribute("searchWord", tsearch);
     			request.setAttribute("ListByName", tabletList);
+    			
+    			return "/product-search.jsp";	
+    		}else if(kind.equals("4")) { //all product
+    			List<Phone> phoneList = phoneDAO.getPhoneByName(allsearch);
+    			List<Laptop> laptopList = laptopDAO.getLaptopByName(allsearch);
+    			List<Camera> cameraList = cameraDAO.getCameraByName(allsearch);
+    			List<Tablet> tabletList = tabletDAO.getTabletByName(allsearch);
+    			
+    			request.setAttribute("searchWord", allsearch);
+    			request.setAttribute("PhoneListByName", phoneList);
+    			request.setAttribute("LaptopListByName", laptopList);
+    			request.setAttribute("CameraListByName", cameraList);
+    			request.setAttribute("TabletListByName", tabletList);
+    			request.setAttribute("kind", kind);
     			
     			return "/product-search.jsp";	
     		}
