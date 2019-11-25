@@ -34,27 +34,27 @@ public class DetailProductController implements Controller{
     	if(request.getMethod().equals("GET")) {
     		String kind = request.getParameter("kind2"); //0,1,2,3
     		String pid = request.getParameter("pId");
-    		System.out.print("kind: "+kind+ " pid: " + pid);
+    		System.out.println("kind: "+kind+ " pid: " + pid);
     		
     		if(kind.equals("0")) { //phone
-    			Phone phoneDetail = phoneDAO.getPhoneById("pId");
+    			Phone phoneDetail = phoneDAO.getPhoneById(pid);
     			request.setAttribute("phoneDetail", phoneDetail);	
-    	        return "/Inforest/product-detail.jsp";	
+    	        return "/product-detail.jsp";	
     			
     		}else if(kind.equals("1")){ //laptop
-    			Laptop laptopDetail = laptopDAO.getLaptopById("pId");
+    			Laptop laptopDetail = laptopDAO.getLaptopById(pid);
     			request.setAttribute("laptopDetail", laptopDetail);	
-    	        return "/Inforest/product-detail.jsp";	
+    	        return "/product-detail.jsp";	
     	        
     	    }else if(kind.equals("2")) { //camera
-    			Camera cameraDetail = cameraDAO.getCameraById("pId");
+    			Camera cameraDetail = cameraDAO.getCameraById(pid);
     			request.setAttribute("cameraDetail", cameraDetail);	
-    	        return "/Inforest/product-detail.jsp";	
+    	        return "/product-detail.jsp";	
     	        
     		}else if(kind.equals("3")) { //tablet
-    			Tablet tabletDetail = tabletDAO.getTabletById("pId");
+    			Tablet tabletDetail = tabletDAO.getTabletById(pid);
     			request.setAttribute("tabletDetail", tabletDetail);	
-    	        return "/Inforest/product-detail.jsp";	
+    	        return "/product-detail.jsp";	
     		}		
 		
     		System.out.println("메인으로 이동");

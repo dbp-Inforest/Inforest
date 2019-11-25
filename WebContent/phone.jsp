@@ -95,13 +95,14 @@
 						<c:forEach var="phone" items="${phoneList}" varStatus="status">
 						<tr class="table_row" style="height:70px;">
 						<td class="column-0" style="padding-left:30px">
-                                <a href="<c:url value='/productDetail'><c:param name='kind2' value='0'/>
-                                										<c:param name='pId' value='${phone.productId}'/>
+                                <a href="<c:url value='/productDetail'><c:param name="kind2" value="0"/>
+                                										<c:param name="pId" value="${phone.productId}"/>
                                 		 </c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                       <font style="font-size:20px">
                                       	<c:out value="${phone.productId}"/>
                                       </font>
                                  </a>
+                
                         </td>
                        <td class="column-1" style="padding-left:50px"><c:out value="${phone.name }"/></td>
                        <td class="column-2" style="padding-left:87px"><c:out value="${phone.brand}"/></td>   

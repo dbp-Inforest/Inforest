@@ -88,24 +88,24 @@ System.out.println("product-detail.jsp");
 									
 						<div>
 						<h3 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${phoneDetail.brand}"/></h3>
-						<h4 class="mtext-105 cl2 js-name-detail p-b-14">V50 ThinQ (LMV500)</h4>
+						<h4 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${phoneDetail.name}"/></h4>
 						<span class="mtext-106 cl2">
-							1, 199, 000부터
+							<c:out value="${phoneDetail.price}"/>
 						</span>
 
 
 						<div style="height:50px;">&nbsp;</div>
 							<p class="stext-100 cl3 p-t-23">
-								 KIND : Tablet
+								 KIND : Phone
 							</p>
 							<p class="stext-100 cl3 p-t-23">
-								 COLOR : 아스트로 블랙
+								 COLOR : <c:out value="${phoneDetail.color}"/>
 							</p>
 							<p class="stext-100 cl3 p-t-23">
-								 WEIGHT : 183g 
+								 WEIGHT : <c:out value="${phoneDetail.weight}"/> 
 							</p>
 							<p class="stext-100 cl3 p-t-23">
-								 RELEASED DATE : 19/02/24
+								 RELEASED DATE : <c:out value="${phoneDetail.released_date}"/>
 							</p>
 						</div>
 						
@@ -117,7 +117,7 @@ System.out.println("product-detail.jsp");
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-												내장형 Li-Ion 4, 000 mAh이다. 또한,  고속충전 기술을 지원한다
+											<c:out value="${phoneDetail.pBattery}"/> 
 								</span>
 							</li>
 
@@ -127,7 +127,7 @@ System.out.println("product-detail.jsp");
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-												128GB
+											<c:out value="${phoneDetail.pMemory}"/> 
 								</span>
 							</li>
 
@@ -137,7 +137,7 @@ System.out.println("product-detail.jsp");
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-												19.5:9 비율 3120 x 1440 해상도를 지원하며 패널 형식은 Plastic AMOLED 방식의 OLED FullVision이다.
+											<c:out value="${phoneDetail.pDisplay}"/> 
 								</span>
 							</li>
 
@@ -147,7 +147,7 @@ System.out.println("product-detail.jsp");
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-												6GB LPDDR4X SDRAM
+											<c:out value="${phoneDetail.pRAM}"/> 
 								</span>
 							</li>
 
@@ -157,7 +157,7 @@ System.out.println("product-detail.jsp");
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-												6.4inch
+											<c:out value="${phoneDetail.pSize}"/>
 								</span>
 							</li>
 										
@@ -167,7 +167,7 @@ System.out.println("product-detail.jsp");
 								</span>
 
 								<span class="stext-102 cl6 size-206">
-												(전면) 800만 화소 카메라를 80도의 화각으로 설정해 기본 카메라로 탑재하고 별도로 500만 화소 카메라를 90도의 화각으로 설정해 광각 카메라로 탑재하여 이 둘로 듀얼 렌즈를 구성했다. 또한,  조리개 밝기는 기본 카메라가 F/1.9이고 광각 카메라가 F/2.2이다.
+											<c:out value="${phoneDetail.pCamera}"/>
 								</span>
 							</li>
 							

@@ -95,11 +95,14 @@
 						<c:forEach var="camera" items="${cameraList}" varStatus="status">
 						<tr class="table_row" style="height:70px;">
 						<td class="column-0" style="padding-left:30px">
-                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a href="<c:url value='/productDetail'> <c:param name="kind2" value="2"/>
+                                										<c:param name="kind2" value="${camera.productId}"/>
+                                </c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                       <font style="font-size:20px">
                                       	<c:out value="${camera.productId}"/>
                                       </font>
                                  </a>
+                          
                         </td>
                        <td class="column-1" style="padding-left:50px"><c:out value="${camera.name}"/></td>
                        <td class="column-2" style="padding-left:87px"><c:out value="${camera.brand}"/></td>   

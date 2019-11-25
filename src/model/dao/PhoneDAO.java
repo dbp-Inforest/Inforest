@@ -264,8 +264,6 @@ public class PhoneDAO{
                  "WHERE H.PRODUCT_ID = P.PRODUCT_ID  AND H.PRODUCT_ID = ?";   
        
          Object[] param = new Object[] {phId};
-
-         System.out.println(phId);
          
          jdbcUtil.setSql(searchQuery);
          jdbcUtil.setParameters(param);
@@ -275,7 +273,6 @@ public class PhoneDAO{
             Phone dto = new Phone();
             System.out.println("PHONEDAO");
             if (rs.next()) { 
-            	System.out.println("여기까지 성공");
                dto.setpBattery(rs.getString("PHONE_BATTERY"));
                dto.setpMemory(rs.getString("PHONE_MEMORY"));
                dto.setpDisplay(rs.getString("PHONE_DISPLAY"));
@@ -292,6 +289,7 @@ public class PhoneDAO{
                dto.setReleased_date(rs.getDate("PHONE_RELEASED_DATE"));
                dto.setWeight(rs.getDouble("PHONE_WEIGHT"));
                dto.setpKind(rs.getInt("PHONE_KIND"));
+               System.out.println("여기까지 성공");
             }else {
             	 System.out.println("No ResultSet"); 
             }
