@@ -95,7 +95,7 @@
 <!-- 로그인 테이블 -->
 <div class="container">
 <div class="row">
-<form class="bg0 p-t-75 p-b-85" name="form" method="POST" action="<c:url value='/user_login'/>" style="position:absolute;left:50%;margin:0 0 0 -310px;">
+<form class="bg0 p-t-75 p-b-85" name="form" method="POST" action="<c:url value='/login'/>" style="position:absolute;left:50%;margin:0 0 0 -310px;">
    <table style="width:750px; margin-left: auto; margin-right: auto;" class="table-sign">
       <tr class="table_row">
          <td class="column-1" >

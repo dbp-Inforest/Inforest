@@ -28,7 +28,7 @@
                </a>
               
                <!-- Menu desktop -->
-               <div class="menu-desktop">
+               <div class="menu-desktop" style="float:left">
                   <ul class="main-menu">
                      <li>
                          <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
@@ -45,11 +45,19 @@
                      <li>
                        <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
-                     	<%= session.getAttribute("userId") %>
+                     <%
+                     	if(session.getAttribute("userId") == null) { %>
                      <li>
-                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
-                     </li>
-                  </ul>
+                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
+                     </li> 
+                     </ul>
+                     <% } else { %>
+                     </ul>
+                     <div class="menu-desktop" style="float:right">
+                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
+                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
+                     </div>
+					 <% } %>
                </div>   
             </nav>
          </div>   

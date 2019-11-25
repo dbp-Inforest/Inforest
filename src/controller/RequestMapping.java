@@ -22,12 +22,12 @@ public class RequestMapping {
         mappings.put("/signIn", new ForwardController("/sign-in.jsp"));   // 로그인
         mappings.put("/signUp", new ForwardController("/sign-up.jsp")); // 회원가입 창
         mappings.put("/register", new RegisterUserController()); // 회원가입 완료 (DB저장)
+        mappings.put("/login", new LoginController());
+        mappings.put("/logout", new LogoutController());
         mappings.put("/user_update_form", new UpdateUserFormController()); //
         mappings.put("/user_update", new UpdateUserController());
         mappings.put("/user_delete", new DeleteUserController());
-        
-        mappings.put("/user_login", new LoginController());
-        mappings.put("/user_logout", new LogoutController());
+       
         mappings.put("/user_list", new ListUserController());
         mappings.put("/user_view", new ViewUserController());
         
