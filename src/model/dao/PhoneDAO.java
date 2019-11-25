@@ -13,18 +13,24 @@ public class PhoneDAO{
 	private JDBCUtil jdbcUtil = null;
 	
 	private static String query = "SELECT H.P_BATTERY AS PHONE_BATTERY, " +
-			  "        H.P_MEMORY AS PHONE_MEMORY, H.P_DISPLAY AS PHONE_DISPLAY, " +
-			  "        H.P_RAM_MEMORY AS PHONE_RAM, H.P_SIZE AS PHONE_SIZE, " +
+			   "        H.P_DISPLAY AS PHONE_DISPLAY, H.P_RAM AS PHONE_RAM," +
+	           "        H.P_MEMORY AS PHONE_MEMORY, H.P_SIZE AS PHONE_SIZE, " +
 			  "        H.P_CAMERA AS PHONE_CAMERA, H.PRODUCT_ID AS PHONE_ID, H.P_OS AS PHONE_OS, " +
 			  "		   P.NAME AS PHONE_NAME, P.COLOR AS PHONE_COLOR, " +
 			  "		   P.PRICE AS PHONE_PRICE,  P.BRAND  AS PHONE_BRAND, " +
 			  " 	   P.RELEASED_DATE  AS PHONE_RELEASED_DATE, P.WEIGHT  AS PHONE_WEIGHT, " +
 			  "		   P.P_KIND  AS PHONE_KIND ";
 	
-	
+	public PhoneDAO() {   
+	      try {
+	         jdbcUtil = new JDBCUtil();   // JDBCUtil 객체 생성;
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }   
+	}
 	public List<Phone> getPhoneList() {
 		// 기본 쿼리와 합쳐짐 
-		String allQuery = query + ", " + "FROM PHONE H, PRODUCT P " +
+		 String allQuery = query + "FROM PHONE H, PRODUCT P " +
 											"WHERE H.PRODUCT_ID = P.PRODUCT_ID ";		
 		jdbcUtil.setSql(allQuery);		// JDBCUtil 에 query 설정
 		
@@ -248,47 +254,51 @@ public class PhoneDAO{
 	}
 
 	
-	public List<Phone> getPhoneById(String phId) {
-		// TODO Auto-generated method stub
-		String searchQuery = query + ", " + "FROM PHONE H, PRODUCT P " +
-		"WHERE H.PRODUCT_ID = P.PRODUCT_ID ";
-		Object[] param = new Object[] {phId};
+	  public List<Phone> getPhoneById(String phId) {
+	      // TODO Auto-generated method stub
+	      String searchQuery = query + "FROM PHONE H, PRODUCT P " +
+	      "WHERE H.PRODUCT_ID = P.PRODUCT_ID AND H.PRODUCT_ID = ? ";
+	      Object[] param = new Object[] {phId};
 
-		jdbcUtil.setSql(searchQuery);
-		jdbcUtil.setParameters(param);
-	
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();
-			List<Phone> list = new ArrayList<Phone>();
-			while (rs.next()) {
-				Phone dto = new Phone();
-				dto.setpBattery(rs.getString("PHONE_BATTERY"));
-				dto.setpMemory(rs.getString("PHONE_MEMORY"));
-				dto.setpDisplay(rs.getString("PHONE_DISPLAY"));
-				dto.setpRAM(rs.getString("PHONE_RAM"));
-				dto.setpSize(rs.getDouble("PHONE_SIZE"));
-				dto.setpCamera(rs.getString("PHONE_CAMERA"));
-				dto.setProductId(rs.getString("PHONE_ID"));
-				dto.setpOS(rs.getString("PHONE_OS"));
-				//--
-				dto.setName(rs.getString("PHONE_NAME"));
-				dto.setColor(rs.getString("PHONE_COLOR"));
-				dto.setPrice(rs.getString("PHONE_PRICE"));
-				dto.setBrand(rs.getString("PHONE_BRAND"));
-				dto.setReleased_date(rs.getDate("PHONE_RELEASED_DATE"));
-				dto.setWeight(rs.getDouble("PHONE_WEIGHT"));
-				dto.setpKind(rs.getInt("PHONE_KIND"));
-				
-				list.add(dto);		// list 객체에 정보를 설정한 LaptopDTO 객체 저장
-			}
-			return list;	
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();
-		}
-		return null;
-	}
+	      System.out.println(phId);
+	      
+	      jdbcUtil.setSql(searchQuery);
+	      jdbcUtil.setParameters(param);
+	   
+	      try {
+	         ResultSet rs = jdbcUtil.executeQuery();
+	         List<Phone> list = new ArrayList<Phone>();
+	         System.out.println("PHONEDAO");
+	         while (rs.next()) {
+	            Phone dto = new Phone();
+	            dto.setpBattery(rs.getString("PHONE_BATTERY"));
+	            dto.setpMemory(rs.getString("PHONE_MEMORY"));
+	            dto.setpDisplay(rs.getString("PHONE_DISPLAY"));
+	            dto.setpRAM(rs.getString("PHONE_RAM"));
+	            dto.setpSize(rs.getDouble("PHONE_SIZE"));
+	            dto.setpCamera(rs.getString("PHONE_CAMERA"));
+	            dto.setProductId(rs.getString("PHONE_ID"));
+	            dto.setpOS(rs.getString("PHONE_OS"));
+	            //--
+	            dto.setName(rs.getString("PHONE_NAME"));
+	            dto.setColor(rs.getString("PHONE_COLOR"));
+	            dto.setPrice(rs.getString("PHONE_PRICE"));
+	            dto.setBrand(rs.getString("PHONE_BRAND"));
+	            dto.setReleased_date(rs.getDate("PHONE_RELEASED_DATE"));
+	            dto.setWeight(rs.getDouble("PHONE_WEIGHT"));
+	            dto.setpKind(rs.getInt("PHONE_KIND"));
+	            
+	            System.out.println(dto.getColor());
+	            list.add(dto);      // list 객체에 정보를 설정한 LaptopDTO 객체 저장
+	         }
+	         System.out.println(list.get(0).getColor());
+	         return list;   
+	      } catch (Exception ex) {
+	         ex.printStackTrace();
+	      } finally {
+	         jdbcUtil.close();
+	      }
+	      return null;
 
 
 
