@@ -25,7 +25,7 @@ public class ListProductController implements Controller {
     		String kind = request.getParameter("kind"); //0,1,2,3,4
     		
     		if(kind.equals("0")) { //phone
-    			List phone = phoneDAO.getPhoneList();
+    			List<Phone> phone = phoneDAO.getPhoneList();
     			request.setAttribute("phone", phone);
     			return "/phone.jsp";	
     		}else if(kind.equals("1")){ //laptop
