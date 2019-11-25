@@ -1,6 +1,1 @@
-
-
-select * from INFOREST_USER;
-
-SELECT USER_ID, PASSWORD,  NAME,  AGE,  GENDER,  POSITION,   INTRODUCE FROM INFOREST_USER 
-where user_id = 'USER1';
+select * from product_like;

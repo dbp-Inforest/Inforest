@@ -38,7 +38,7 @@
                      </li>
 
                      <li>
-                      <a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
+                      <a href="<c:url value='/rankCont'/>" style="text-decoration:none">RANK</a>
                      </li>
 
                      <li>
@@ -84,18 +84,100 @@
                                     <th class="column-1" style="padding-left:20px"><p style="padding-left:10px">Image</p></th>
                                     <th class="column-2"><p style="padding-left:40px">Name</p></th>
                         </tr>
-                        <c:forEach var = "phone" items="${phoneR}" varStatus="status">
-                        <tr class="table_row">
-                                       <td class="column-0"><c:out value="${phone}"/></td>
+                              <tr class="table_row">
+                                       <td class="column-0">1</td>
                                     <td class="column-1" style="padding-left:20px">
                                        <div class="how-itemcart1">
                                           <img src="images/phone_img.jpg" alt="IMG">
                                        </div>
                                     </td>
-                                    <td class="column-2"><c:out value="${phone.productId}"/></td>   
+                                    <td class="column-2">갤럭시</td>   
                               </tr>
-                              </c:forEach>
                               
+                               <tr class="table_row">
+                                       <td class="column-0">2</td>
+                                    <td class="column-1" style="padding-left:20px">
+                                       <div class="how-itemcart1">
+                                          <img src="images/phone_img.jpg" alt="IMG">
+                                       </div>
+                                    </td>
+                                    <td class="column-2">갤럭시2</td>   
+                              </tr>
+                              
+                               <tr class="table_row">
+                                       <td class="column-0">3</td>
+                                    <td class="column-1" style="padding-left:20px">
+                                       <div class="how-itemcart1">
+                                          <img src="images/phone_img.jpg" alt="IMG">
+                                       </div>
+                                    </td>
+                                    <td class="column-2">갤럭시3</td>   
+                              </tr>
+                              
+                               <tr class="table_row">
+                                       <td class="column-0">4</td>
+                                    <td class="column-1" style="padding-left:20px">
+                                       <div class="how-itemcart1">
+                                          <img src="images/phone_img.jpg" alt="IMG">
+                                       </div>
+                                    </td>
+                                    <td class="column-2">갤럭시4</td>   
+                              </tr>
+                              
+                               <tr class="table_row">
+                                       <td class="column-0">5</td>
+                                    <td class="column-1" style="padding-left:20px">
+                                       <div class="how-itemcart1">
+                                          <img src="images/phone_img.jpg" alt="IMG">
+                                       </div>
+                                    </td>
+                                    <td class="column-2">갤럭시5</td>   
+                              </tr>
+                              <tr class="table_row">
+                                       <td class="column-0">6</td>
+                                    <td class="column-1" style="padding-left:20px">
+                                       <div class="how-itemcart1">
+                                          <img src="images/phone_img.jpg" alt="IMG">
+                                       </div>
+                                    </td>
+                                    <td class="column-2">갤럭시6</td>   
+                              </tr>
+                              <tr class="table_row">
+                                       <td class="column-0">7</td>
+                                    <td class="column-1" style="padding-left:20px">
+                                       <div class="how-itemcart1">
+                                          <img src="images/phone_img.jpg" alt="IMG">
+                                       </div>
+                                    </td>
+                                    <td class="column-2">갤럭시7</td>   
+                              </tr>
+                              <tr class="table_row">
+                                       <td class="column-0">8</td>
+                                    <td class="column-1" style="padding-left:20px">
+                                       <div class="how-itemcart1">
+                                          <img src="images/phone_img.jpg" alt="IMG">
+                                       </div>
+                                    </td>
+                                    <td class="column-2">갤럭시8</td>   
+                              </tr>
+                              <tr class="table_row">
+                                       <td class="column-0">9</td>
+                                    <td class="column-1" style="padding-left:20px">
+                                       <div class="how-itemcart1">
+                                          <img src="images/phone_img.jpg" alt="IMG">
+                                       </div>
+                                    </td>
+                                    <td class="column-2">갤럭시9</td>   
+                              </tr>
+                              <tr class="table_row">
+                                       <td class="column-0">10</td>
+                                    <td class="column-1" style="padding-left:20px">
+                                       <div class="how-itemcart1">
+                                          <img src="images/phone_img.jpg" alt="IMG">
+                                       </div>
+                                    </td>
+                                    <td class="column-2">갤럭시10</td>   
+                              </tr>
                   </table>
                </div>
             </div>

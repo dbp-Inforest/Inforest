@@ -33,20 +33,19 @@ public class RankingProductController implements Controller{
 		List<Ranking> tabletLikeList = ProductLikeDAO.getTabletLikeList();
 		
 		
-		List phone = phoneDAO.getPhoneList();
-		List laptop = laptopDAO.getLaptopList();
-		List camera = cameraDAO.getCameraList();
-		List tablet = tabletDAO.getTabletList();
-		request.setAttribute("phone", phone);
-		request.setAttribute("laptop", laptop);
-		request.setAttribute("camera", camera);
+//		List phone = phoneDAO.getPhoneList();
+//		List laptop = laptopDAO.getLaptopList();
+//		List camera = cameraDAO.getCameraList();
+//		List tablet = tabletDAO.getTabletList();
+//		request.setAttribute("phone", phone);
+//		request.setAttribute("laptop", laptop);
+//		request.setAttribute("camera", camera);
 		request.setAttribute("phoneR", phoneLikeList);
 		request.setAttribute("laptopR", laptopLikeList);
 		request.setAttribute("cameraR", cameraLikeList);
 		request.setAttribute("tabletR", tabletLikeList);
 			
-		
-        return "redirect: /rank";	
+		return "redirect:/rank";	
 	}
 
 }

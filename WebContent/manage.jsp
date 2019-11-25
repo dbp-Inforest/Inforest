@@ -49,7 +49,7 @@
                      </li>
 
                      <li>
-                      <a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
+                     <a href="<c:url value='/rankCont'/>" style="text-decoration:none">RANK</a>
                      </li>
 
                      <li>
