@@ -162,7 +162,6 @@ function userList(targetUri) {
       <td class="column-2">
       <div class="flex-l-m flex-w w-full p-t-10 m-lr--7">   
           &nbsp;&nbsp;&nbsp;<input type="radio" name="position" value="0">&nbsp; ADMIN &nbsp;&nbsp;&nbsp;
-         &nbsp;&nbsp;&nbsp;<input type="radio" name="position" value="1">&nbsp; EDITOR &nbsp;&nbsp;&nbsp;
          <input type="radio" name="position" value="2">&nbsp; USER
          <!-- <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder=""> -->
       </div>   

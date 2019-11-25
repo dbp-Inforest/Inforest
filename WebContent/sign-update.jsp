@@ -175,7 +175,6 @@ function userList(targetUri) {
       <td class="column-2">
       <div class="flex-l-m flex-w w-full p-t-10 m-lr--7">   
           &nbsp;&nbsp;&nbsp;<input type="radio" name="position" value="0">&nbsp; ADMIN &nbsp;&nbsp;&nbsp;
-         &nbsp;&nbsp;&nbsp;<input type="radio" name="position" value="1">&nbsp; EDITOR &nbsp;&nbsp;&nbsp;
          <input type="radio" name="position" value="2">&nbsp; USER
          <!-- <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder=""> -->
       </div>   
@@ -195,12 +194,12 @@ function userList(targetUri) {
    <tr class="table_row">
       <td class="column-1">
          <div class="flex-c-m stext-101 cl2 size-submit bg8 bor13 hov-btn3  trans-04 pointer m-tb-5">
-        <button type="button" onClick="userList('<c:url value='/management'/>')">BACK</button>
+        <button type="button" onClick="userList('<c:url value='/mypage'/>')">BACK</button>
                </div>
       </td>
       <td class="column-2">
          <div class="flex-c-m stext-101 cl2 size-submit bg8 bor13 hov-btn3  trans-04 pointer m-tb-10">
-            <button type="button" value="회원 가입" onClick="userList('<c:url value='/user_update'/>')">Sign Up</button>
+            <button type="button" value="회원 가입" onClick="userList('<c:url value='/user_update'/>')">UPDATE</button>
          </div>
       </td>
    </tr>
