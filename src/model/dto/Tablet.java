@@ -5,7 +5,7 @@ public class Tablet extends Product {
 	private String tBattery = null;
 	private String tMemory = null;
 	private String tOS = null;
-	private double tSize = (Double) null;
+	private double tSize = 0;
 	private String productId = null;
 	
 	public String getProductId() {

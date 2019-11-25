@@ -72,7 +72,7 @@
    		System.out.println(cameraList.get(0).getName());
    		List<Camera> cameraList2 = cameraDAO.getCameraByName("알파");
    		System.out.println(cameraList.get(0).getName());
-   		List<Camera> cameraList3 = cameraDAO.getCameraByName("알파");
+   		List<Camera> cameraList3 = cameraDAO.getCameraById("알파");
    		System.out.println(cameraList.get(0).getName());
    %>
  

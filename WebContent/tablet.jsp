@@ -58,6 +58,18 @@
    </header>
 
 
+   <%
+   		TabletDAO tabletDAO = new TabletDAO();
+   		Tablet tablet = new Tablet();
+   		
+   		List<Tablet> tabletList = tabletDAO.getTabletList();
+   		System.out.println(tabletList.get(0).getName());
+   		List<Tablet> tabletList2 = tabletDAO.getTabletByName("탭");
+   		System.out.println(tabletList2.get(0).getName());
+   		List<Tablet> tabletList3 = tabletDAO.getTabletById("A");
+   		System.out.println(tabletList3.get(0).getName());
+   %>
+   
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/product_bg.jpg');">
       <h2 class="ltext-105 cl0 txt-center">

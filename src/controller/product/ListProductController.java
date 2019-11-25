@@ -22,25 +22,14 @@ public class ListProductController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
        
-    	
     	if(request.getMethod().equals("GET")) {
+    		String kind = request.getParameter("kind2"); //0,1,2,3
+    		System.out.print(kind + "debugtest");
     		
-    		//String kind = request.getParameter("kind"); //0,1,2,3
-    		//System.out.print(kind + "debugtest");
-    		
-    		
-    		
-       		System.out.print("GET-PHONE으로");
-       		return "redirect:/main";
-       	}
-    	System.out.print("phone으로");
-    	return "redirect:/main";
-    	
-    		
-    		/*
     		if(kind.equals("0")) { //phone
-    			//List<Phone> phone = phoneDAO.getPhoneList();
-    			//request.setAttribute("phone", phone);
+    			System.out.println(kind + " debugtest in kind = 0");
+    			List<Phone> phone = phoneDAO.getPhoneList();
+    			request.setAttribute("phone", phone);
     			return "/phone.jsp";	
     		}else if(kind.equals("1")){ //laptop
     			List<Laptop> laptop = laptopDAO.getLaptopList();
@@ -55,11 +44,15 @@ public class ListProductController implements Controller {
     			request.setAttribute("tablet", tablet);
     			return "/tablet.jsp";	
     		}
-    		*/
     		
-    		//List<Phone> phone = phoneDAO.getPhoneList();
-    		//request.setAttribute("phone", phone);
-    		
+    		List<Phone> phone = phoneDAO.getPhoneList();
+    		request.setAttribute("phone", phone);
+    		 		
+       		System.out.print("GET-PHONE으로");
+       		return "redirect:/main";
+       	}
+    	System.out.print("phone으로");
+    	return "redirect:/main";
     	
     		
     }

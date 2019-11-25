@@ -37,18 +37,21 @@ public class CameraDAO {
 	
 	public List<Camera> getCameraList() {
 		// PRODUCT 테이블을 상속받았기 때문에 전체 태블릿 정보를 가져옴
-		String allQuery = query + "FROM CAMERA, PRODUCT"
-							+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID";		
+		String allQuery = query + "FROM CAMERA, PRODUCT "
+							+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID";	
+		
 		jdbcUtil.setSql(allQuery);		// JDBCUtil 에 query 설정
 		
 		try { 
 			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행			
 			List<Camera> list = new ArrayList<Camera>();		// Camera 객체들을 담기위한 list 객체
+	
 			while (rs.next()) {	
 				Camera dto = new Camera();		// 하나의 Camera 객체 생성 후 정보 설정
 				dto.setProductId(rs.getString("CAMERA_ID"));
 				dto.setcBattery(rs.getString("CAMERA_BATTERY"));
 				dto.setcPixel(rs.getDouble("CAMERA_PIXEL"));
+				dto.setName(rs.getString("CAMERA_NAME"));
 				dto.setcBurstshot(rs.getDouble("CAMERA_BURSTSHOT"));
 				dto.setcDisplay(rs.getDouble("CAMERA_DISPLAY"));
 				dto.setcLens(rs.getString("CAMERA_LENS"));
@@ -59,6 +62,7 @@ public class CameraDAO {
 				dto.setBrand(rs.getString("CAMERA_BRAND"));
 				dto.setReleased_date(rs.getDate("CAMERA_RELEASED_DATE"));
 				dto.setWeight(rs.getDouble("CAMERA_WEIGHT"));
+				
 				list.add(dto);		// list 객체에 정보를 설정한 Camera 객체 저장
 			}
 			return list;		// 카메라 정보를 저장한 dto 들의 목록을 반환
@@ -212,9 +216,8 @@ public class CameraDAO {
 	// 카메라의 이름으로 정보를 검색하여 해당 카메라의 정보를 갖고 있는 Camera 객체를 반환하는 메소드
 	public List<Camera> getCameraByName(String cName) {
 		// 기본 쿼리와 합쳐져  cName을 포함하는 name을 가진 Camera 정보를 가져오는 테이블
-		String searchQuery = query + "FROM CAMERA, PRODUCT"
-				+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID "
-				+ "AND PRODUCT.NAME = ? ";
+		String searchQuery = query + "FROM CAMERA, PRODUCT "
+				+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.NAME = ? ";
 		
 		Object[] param = new Object[] { "%" + cName + "%"};
 
@@ -255,9 +258,8 @@ public class CameraDAO {
 	// 모델명으로 정보를 검색하여 해당 태블릿의 정보를 갖고 있는 Camera 객체를 반환하는 메소드
 	public List<Camera> getCameraById(String cId) {
 		// 기본 쿼리와 합쳐져  tId를 포함하는 name을 가진 CAMERA 정보를 가져오는 테이블
-		String searchQuery = query + "FROM CAMERA, PRODUCT"
-				+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID "
-				+ "AND PRODUCT.PRODUCT_ID = ? ";
+		String searchQuery = query + "FROM CAMERA, PRODUCT "
+				+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.PRODUCT_ID = ? ";
 		
 		jdbcUtil.setSql(searchQuery);	// JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { ("%" + cId + "%") };		// 태블릿을 찾기 위한 조건으로 이름을 설정
