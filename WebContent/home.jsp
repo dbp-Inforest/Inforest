@@ -51,13 +51,10 @@
                       <a href="product.jsp" style="text-decoration:none">PRODUCT</a>
                      </li>
                      <li>
-                      <a href="post.jsp" style="text-decoration:none">POST</a>
-                     </li>
-                     <li>
                        <a href="mypage.jsp" style="text-decoration:none">MY PAGE</a>
                      </li> 
                      <li>
-                       <a href="sign-in" style="text-decoration:none">SIGN IN</a>
+                       <a href="sign-in.jsp" style="text-decoration:none">SIGN IN</a>
                      </li>  
                   </ul>
                </div>    

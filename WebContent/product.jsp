@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-   <title>Product</title>
+   <title>INFOREST</title>
     <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="css/util.css">
@@ -22,22 +22,22 @@
 
 </head>
 <body class="animsition">
-      <!-- Header -->
+       <!-- Header -->
    <header class="header-v3">
       <!-- Header desktop -->
       <div class="container-menu-desktop">
-         <div class ="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop container">
+         <div class="wrap-menu-desktop how-shadow1">
+            <nav class="limiter-menu-desktop p-l-45">
                
                <!-- Logo desktop -->      
                <a href="home.jsp" class="logo">
-                     <img src="images/icons/logo.png" alt="IMG-LOGO">
+                  <img src="images/icons/logo.png" alt="IMG-LOGO">
                </a>
-
+              
                <!-- Menu desktop -->
                <div class="menu-desktop">
                   <ul class="main-menu">
-              <li>
+                     <li>
                          <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
                      </li>
 
@@ -48,12 +48,8 @@
                      <li>
                       <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
-
-                     <li>
-                      <a href="<c:url value='/post'/>" style="text-decoration:none">POST</a>
-                     </li>
-
-                     <li>
+					
+					 <li>
                        <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
                      
@@ -61,11 +57,12 @@
                         <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
                      </li>
                   </ul>
-               </div>
+               </div>   
             </nav>
          </div>   
       </div>
    </header>
+
 
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/product_bg.jpg');">

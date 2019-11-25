@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-   <title>Sign Up</title>
+   <title>INFOREST</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="css/util.css">
@@ -47,49 +47,44 @@ function userList(targetUri) {
 
 </head>
 <body>
-      <!-- Header -->
+    <!-- Header -->
    <header class="header-v3">
       <!-- Header desktop -->
       <div class="container-menu-desktop">
-         <div class ="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop container">
+         <div class="wrap-menu-desktop how-shadow1">
+            <nav class="limiter-menu-desktop p-l-45">
                
                <!-- Logo desktop -->      
                <a href="home.jsp" class="logo">
-                    <img src="images/icons/logo.png" alt="IMG-LOGO">
+                  <img src="images/icons/logo.png" alt="IMG-LOGO">
                </a>
-
+              
                <!-- Menu desktop -->
                <div class="menu-desktop">
                   <ul class="main-menu">
-                      <li>
-                      <button type="button" onClick="userList('<c:url value='/main'/>')" style="text-decoration:none">HOME</button>
+                     <li>
+                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
                      </li>
 
                      <li>
-                       <button type="button" onClick="userList('<c:url value='/rank'/>')" style="text-decoration:none">RANK</button>
-                     </li>
+                      <a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
+                      </li>
 
                      <li>
-                       <button type="button" onClick="userList('<c:url value='/product'/>')" style="text-decoration:none">PRODUCT</button>
-                     </li>
-
-                     <li>
-                        <button type="button" onClick="userList('<c:url value='/post'/>')" style="text-decoration:none">POST</button>
-                     </li>
-
-                     <li>
-                        <button type="button" onClick="userList('<c:url value='/mypage'/>')" style="text-decoration:none">MYPAGE</button>
+                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
                      
                      <li>
-                        <button type="button" onClick="userList('<c:url value='/signIn'/>')" style="text-decoration:none">SIGN-IN</button>
-                    </li>
+                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
+                     </li>
                      
+                     <li>
+                     	<a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
+                     </li>
                   </ul>
-               </div>
-            </nav>
-         </div>   
+               </div>   
+			</nav>
+          </div>   
       </div>
    </header>
 
@@ -97,7 +92,7 @@ function userList(targetUri) {
 
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/sign_bg.png');">
-      <h2 class="ltext-105 cl0 txt-center">
+   	<h2 class="ltext-105 cl0 txt-center">
          Sign Up
       </h2>
    </section>   

@@ -43,10 +43,6 @@
 		                     </li>
 		
 		                     <li>
-		                     	 <a href="<c:url value='/post'/>" style="text-decoration:none">POST</a>
-		                     </li>
-		
-		                     <li>
 		                     	  <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
 		                     </li>
 		                     

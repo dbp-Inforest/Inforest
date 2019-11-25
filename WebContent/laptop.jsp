@@ -15,12 +15,10 @@
 <body class="animsition">
 		<!-- Header -->
 	<header class="header-v3">
-		<!-- Header desktop -->
-		<div class="container-menu-desktop">
-			<div class ="wrap-menu-desktop how-shadow1">
-				<nav class="limiter-menu-desktop container">
-					
-					<!-- Logo desktop -->		
+      <!-- Header desktop -->
+      <div class="container-menu-desktop trans-03">
+         <div class="wrap-menu-desktop">
+            <nav class="limiter-menu-desktop p-l-45">		<!-- Logo desktop -->		
 					<a href="home.jsp" class="logo">
                  	<img src="images/icons/logo.png" alt="IMG-LOGO">
                		</a>
@@ -39,12 +37,7 @@
 		                     <li>
 		                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
 		                     </li>
-		
-		                     <li>
-		                      <a href="<c:url value='/post'/>" style="text-decoration:none">POST</a>
-		                     </li>
-		
-		                     <li>
+							  <li>
 		                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
 		                     </li>
 		                     

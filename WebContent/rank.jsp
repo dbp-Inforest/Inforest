@@ -43,11 +43,7 @@
                       <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
 
-                     <li>
-                      <a href="<c:url value='/post'/>" style="text-decoration:none">POST</a>
-                     </li>
-
-                     <li>
+                    <li>
                        <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
                      

@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-   <title>Product Detail</title>
+   <title>INFOREST</title>
     <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="css/util.css">
@@ -43,11 +43,7 @@
                       <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
 
-                     <li>
-                      <a href="<c:url value='/post'/>" style="text-decoration:none">POST</a>
-                     </li>
-
-                     <li>
+					<li>
                        <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
                      

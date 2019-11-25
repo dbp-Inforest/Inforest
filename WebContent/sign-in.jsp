@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-   <title>Sign In</title>
+   <title>INFOREST</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="css/util.css">
@@ -39,47 +39,42 @@
 
 
 <body>
-      <!-- Header -->
+     <!-- Header -->
    <header class="header-v3">
       <!-- Header desktop -->
       <div class="container-menu-desktop">
-         <div class ="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop container">
+         <div class="wrap-menu-desktop how-shadow1">
+            <nav class="limiter-menu-desktop p-l-45">
                
                <!-- Logo desktop -->      
                <a href="home.jsp" class="logo">
-                     <img src="images/icons/logo.png" alt="IMG-LOGO">
+                  <img src="images/icons/logo.png" alt="IMG-LOGO">
                </a>
-
+              
                <!-- Menu desktop -->
                <div class="menu-desktop">
-                 <ul class="main-menu">
+                  <ul class="main-menu">
                      <li>
-                      <button type="button" onClick="userCreate('<c:url value='/main'/>')" style="text-decoration:none">HOME</button>
+                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
                      </li>
 
                      <li>
-                       <button type="button" onClick="userCreate('<c:url value='/rank'/>')" style="text-decoration:none">RANK</button>
+                      <a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
                      </li>
 
                      <li>
-                       <button type="button" onClick="userCreate('<c:url value='/product'/>')" style="text-decoration:none">PRODUCT</button>
+                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
 
-                     <li>
-                        <button type="button" onClick="userCreate('<c:url value='/post'/>')" style="text-decoration:none">POST</button>
-                     </li>
-
-                     <li>
-                        <button type="button" onClick="userCreate('<c:url value='/mypage'/>')" style="text-decoration:none">MYPAGE</button>
+                    <li>
+                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
                      
                      <li>
-                        <button type="button" onClick="userCreate('<c:url value='/signIn'/>')" style="text-decoration:none">SIGN-IN</button>
-                    </li>
-                     
+                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
+                     </li>
                   </ul>
-               </div>
+               </div>   
             </nav>
          </div>   
       </div>
