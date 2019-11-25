@@ -11,7 +11,6 @@
    <link rel="stylesheet" type="text/css" href="css/util.css">
    <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-
 </head>
 <body class="animsition">
    <!-- Header -->
@@ -66,23 +65,7 @@
             </nav>
          </div>   
       </div>
-   </header>        <li>
-                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
-                     </li>
-
-                     <li>
-                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
-                     </li>
-                     
-                     <li>
-                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
-                     </li>
-                  </ul>
-               </div>
-            </nav>
-         </div>   
-      </div>
-   </header>
+   </header>      
 
  
    <!-- Title page -->
