@@ -75,7 +75,7 @@
 	<div style="height:50px;">&nbsp;</div><div style="height:50px;">&nbsp;</div>
 	
 	
-	<form action="/productList">
+	<form action="<c:url value='/productList'/>">
 	<div class="flex-w flex-c-m m-tb-10">
 		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
 			<input type="button" onClick="p_view('<c:url value='/productList'><c:param name='kind' value='0'/></c:url>')" style="font-size:25pt; background-color:transparent;" value="Phone"/>
@@ -100,11 +100,7 @@
 			<div class="flex-w flex-sb-m p-b-52">
 
 				
-				
-				
-				
-				
-				
+
 				<!-- Search product -->
 				<!--
 				<div class="dis-none panel-search w-full p-t-10 p-b-15">
@@ -158,8 +154,9 @@
 						</div>
 					</div>
 				</div> -->
-				<%//} %>
+			<%//} %>	
 		</div>
+	</div>
 	</div>
 </body>
 </html>
