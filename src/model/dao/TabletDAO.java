@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.DAOFactory;
-import model.dao.TabletDAO;
 import model.dto.*;
 
 import java.sql.*;
@@ -30,8 +29,12 @@ public class TabletDAO{
 								         "PRODUCT.P_KIND AS TABLET_KIND ";		
 
 	// TabletDAOImpl 생성자
-	public TabletDAO() {			
-		jdbcUtil = new JDBCUtil();		// TabletDAOImpl 객체 생성 시 JDBCUtil 객체 생성
+	public TabletDAO() {   
+		try {
+	        jdbcUtil = new JDBCUtil();   // JDBCUtil 객체 생성;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }   
 	}
 	
 	// 전체 태블릿을 List으로 반환하는 메소드

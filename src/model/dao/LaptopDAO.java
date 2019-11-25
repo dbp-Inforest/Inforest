@@ -21,6 +21,14 @@ public class LaptopDAO{
 			  " 	   P.RELEASED_DATE  AS LAPTOP_RELEASED_DATE, P.WEIGHT  AS LAPTOP_WEIGHT, " +
 			  "		   P.P_KIND  AS LAPTOP_KIND ";
 	
+	public LaptopDAO() {   
+		try {
+	        jdbcUtil = new JDBCUtil();   // JDBCUtil 按眉 积己;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }   
+	}
+	   
 	public List<Laptop> getLaptopList() {
 		// 扁夯 孽府客 钦媚咙 
 		String allQuery = query + ", " + "FROM LAPTOP l, PRODUCT P " +

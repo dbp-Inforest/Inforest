@@ -57,12 +57,6 @@
       </div>
    </header>
 
-	<%
-		CameraDAO = new CameraDAO();
-		CameraDTO = new CameraDTO();
-	
-	%>
-
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/product_bg.jpg');">
       <h2 class="ltext-105 cl0 txt-center">
@@ -70,6 +64,17 @@
       </h2>
    </section>  
    
+   <%
+   		CameraDAO cameraDAO = new CameraDAO();
+   		Camera camera = new Camera();
+   		
+   		List<Camera> cameraList = cameraDAO.getCameraList();
+   		System.out.println(cameraList.get(0).getName());
+   		List<Camera> cameraList2 = cameraDAO.getCameraByName("알파");
+   		System.out.println(cameraList.get(0).getName());
+   		List<Camera> cameraList3 = cameraDAO.getCameraByName("알파");
+   		System.out.println(cameraList.get(0).getName());
+   %>
  
    
    <form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -510px;">

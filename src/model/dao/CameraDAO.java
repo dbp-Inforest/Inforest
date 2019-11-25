@@ -27,9 +27,13 @@ public class CameraDAO {
 	         "PRODUCT.WEIGHT AS CAMERA_WEIGHT, " +
 	         "PRODUCT.P_KIND AS CAMERA_KIND ";		
 	
-	public CameraDAO() {
-		jdbcUtil = new JDBCUtil();
-	}	
+	public CameraDAO() {   
+		try {
+	        jdbcUtil = new JDBCUtil();   // JDBCUtil 객체 생성;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }   
+	}
 	
 	public List<Camera> getCameraList() {
 		// PRODUCT 테이블을 상속받았기 때문에 전체 태블릿 정보를 가져옴
