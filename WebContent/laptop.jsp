@@ -21,10 +21,7 @@ function search(kind, targetUri) {
 	      return false;
 	} 
 	form.action = targetUri;
-	
-	 form.kind2.value = kind;
-	 alert(form.kind2.value);
-	
+	form.kind2.value = kind;
 	form.submit();
 }
 

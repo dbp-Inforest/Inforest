@@ -22,20 +22,12 @@ function search(kind, targetUri) {
 	form.action = targetUri;
 	
 	 form.kind2.value = kind;
-	 alert(form.kind2.value);
-	
 	form.submit();
 }
 
-	function p_view(kind, targetUri) {
-	    alert(targetUri);   
+	function p_view(kind, targetUri) { 
 	    form1.action = targetUri;
-
-	    alert(kind);
-	    
 	    form1.kind3.value = kind;
-	    alert(form1.kind3.value);
-
 	    form1.submit();
 	 }
 </script>
