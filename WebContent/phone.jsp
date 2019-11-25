@@ -21,7 +21,7 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
-					<a href="home.jsp" class="logo">
+					<a href="<c:url value='/main'/>"class="logo">
                   	<img src="images/icons/inforest_logo.png" alt="IMG-LOGO">
                		</a>
 
@@ -29,27 +29,27 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="home.jsp">HOME</a>
+								<a href="<c:url value='/main'/>" style="color:white">HOME</a>
 							</li>
 
 							<li>
-								<a href="rank.jsp">RANK</a>
+								<a href="<c:url value='/rank'/>" style="color:white">RANK</a>
 							</li>
 
 							<li>
-								<a href="product.jsp">PRODUCT</a>
+								<a href="<c:url value='/product'/>" style="color:white">PRODUCT</a>
 							</li>
 
 							<li>
-								<a href="post.jsp">POST</a>
+								<a href="<c:url value='/post'/>" style="color:white">POST</a>
 							</li>
 
 							<li>
-								<a href="mypage.jsp">MYPAGE</a>
+								<a href="<c:url value='/mypage'/>" style="color:white">MYPAGE</a>
 							</li>
 							
 							<li>
-                        		<a href="sign-in.jsp">SIGN IN</a>
+                        		<a href="<c:url value='/signIn'/>" style="color:white">SIGN IN</a>
                      		</li>  
 						</ul>
 					</div>
@@ -211,9 +211,9 @@
 						</table>
 					</div>
 				</div>
-				</div>
-				</div>
-				</form>
+			</div>
+		</div>
+	</form>
 	
 	
 	
