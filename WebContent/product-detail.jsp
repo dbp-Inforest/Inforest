@@ -30,27 +30,23 @@
 
                <!-- Menu desktop -->
                <div class="menu-desktop">
-                  <ul class="main-menu">
-                 <li>
-                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
-                     </li>
-
-                     <li>
-                      <a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
-                     </li>
-
-                     <li>
-                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
-                     </li>
-
-					<li>
-                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
-                     </li>
-                     
-                     <li>
-                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
-                     </li>
-                  </ul>
+                 <ul class="main-menu">
+	                 <li>
+	                     <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
+	                 </li>
+	                 <li>
+	                 	<a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
+	                 </li>
+	                 <li>
+	                     <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
+	                 </li>
+	                 <li>
+	                     <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
+	                 </li>            
+	                 <li>
+	                     <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
+	                 </li>
+                 </ul>
                </div>
             </nav>
          </div>   
@@ -96,89 +92,84 @@
 						</span>
 
 
-<div style="height:50px;">&nbsp;</div>
-						<p class="stext-100 cl3 p-t-23">
-							 KIND : Tablet
-						</p>
-						<p class="stext-100 cl3 p-t-23">
-							 COLOR : 아스트로 블랙
-						</p>
-						<p class="stext-100 cl3 p-t-23">
-							 WEIGHT : 183g 
-						</p>
-						<p class="stext-100 cl3 p-t-23">
-							 RELEASED DATE : 19/02/24
-						</p>
+						<div style="height:50px;">&nbsp;</div>
+							<p class="stext-100 cl3 p-t-23">
+								 KIND : Tablet
+							</p>
+							<p class="stext-100 cl3 p-t-23">
+								 COLOR : 아스트로 블랙
+							</p>
+							<p class="stext-100 cl3 p-t-23">
+								 WEIGHT : 183g 
+							</p>
+							<p class="stext-100 cl3 p-t-23">
+								 RELEASED DATE : 19/02/24
+							</p>
 						</div>
 						
 						
-						
 						<div style="height:50px;">&nbsp;</div>
-						
-						
-						
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
+							<li class="flex-w flex-t p-b-7">
+								<span class="stext-102 cl3 size-205">
 												Battery
-											</span>
+								</span>
 
-											<span class="stext-102 cl6 size-206">
+								<span class="stext-102 cl6 size-206">
 												내장형 Li-Ion 4, 000 mAh이다. 또한,  고속충전 기술을 지원한다
-											</span>
-										</li>
+								</span>
+							</li>
 
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
+							<li class="flex-w flex-t p-b-7">
+								<span class="stext-102 cl3 size-205">
 												Memory
-											</span>
+								</span>
 
-											<span class="stext-102 cl6 size-206">
+								<span class="stext-102 cl6 size-206">
 												128GB
-											</span>
-										</li>
+								</span>
+							</li>
 
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
+							<li class="flex-w flex-t p-b-7">
+								<span class="stext-102 cl3 size-205">
 												Display
-											</span>
+								</span>
 
-											<span class="stext-102 cl6 size-206">
+								<span class="stext-102 cl6 size-206">
 												19.5:9 비율 3120 x 1440 해상도를 지원하며 패널 형식은 Plastic AMOLED 방식의 OLED FullVision이다.
-											</span>
-										</li>
+								</span>
+							</li>
 
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
+							<li class="flex-w flex-t p-b-7">
+								<span class="stext-102 cl3 size-205">
 												Ram
-											</span>
+								</span>
 
-											<span class="stext-102 cl6 size-206">
+								<span class="stext-102 cl6 size-206">
 												6GB LPDDR4X SDRAM
-											</span>
-										</li>
+								</span>
+							</li>
 
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
+							<li class="flex-w flex-t p-b-7">
+								<span class="stext-102 cl3 size-205">
 												Size
-											</span>
+								</span>
 
-											<span class="stext-102 cl6 size-206">
+								<span class="stext-102 cl6 size-206">
 												6.4inch
-											</span>
-										</li>
+								</span>
+							</li>
 										
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
+							<li class="flex-w flex-t p-b-7">
+								<span class="stext-102 cl3 size-205">
 												Camera
-											</span>
+								</span>
 
-											<span class="stext-102 cl6 size-206">
+								<span class="stext-102 cl6 size-206">
 												(전면) 800만 화소 카메라를 80도의 화각으로 설정해 기본 카메라로 탑재하고 별도로 500만 화소 카메라를 90도의 화각으로 설정해 광각 카메라로 탑재하여 이 둘로 듀얼 렌즈를 구성했다. 또한,  조리개 밝기는 기본 카메라가 F/1.9이고 광각 카메라가 F/2.2이다.
-											</span>
-										</li>
-										
-										
-										<div style="height:50px;">&nbsp;</div><div style="height:50px;">&nbsp;</div>
+								</span>
+							</li>
+							
+							<div style="height:50px;">&nbsp;</div><div style="height:50px;">&nbsp;</div>
 										<!-- 여기 ADD TO 'LIKE' 버튼 누르면 관심 상품에 등록될 수 있도록..? -->
 						<div class="p-t-33">
 							<div class="flex-w flex-r-m p-b-10">
