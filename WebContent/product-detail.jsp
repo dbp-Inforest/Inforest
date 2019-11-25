@@ -61,7 +61,9 @@
          Product Details
       </h2>
    </section>   
-
+<%
+System.out.println("product-detail.jsp");
+%>
    	<!-- Product Detail -->
 	<section class="sec-product-detail bg0 p-t-65 p-b-60">
 			<div>
@@ -85,7 +87,7 @@
 									<ul class="p-lr-28 p-lr-15-sm">
 									
 						<div>
-						<h3 class="mtext-105 cl2 js-name-detail p-b-14">LG</h3>
+						<h3 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${phoneDetail.brand}"/></h3>
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">V50 ThinQ (LMV500)</h4>
 						<span class="mtext-106 cl2">
 							1, 199, 000부터

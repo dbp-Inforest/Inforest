@@ -34,7 +34,7 @@ public class DetailProductController implements Controller{
     	if(request.getMethod().equals("GET")) {
     		String kind = request.getParameter("kind2"); //0,1,2,3
     		String pid = request.getParameter("pId");
-    		System.out.print(kind + pid + "debugtest");
+    		System.out.print("kind: "+kind+ " pid: " + pid);
     		
     		if(kind.equals("0")) { //phone
     			Phone phoneDetail = phoneDAO.getPhoneById("pId");

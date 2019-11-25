@@ -274,7 +274,8 @@ public class PhoneDAO{
             ResultSet rs = jdbcUtil.executeQuery();
             Phone dto = new Phone();
             System.out.println("PHONEDAO");
-            if (rs.next()) {
+            if (rs.next()) { 
+            	System.out.println("여기까지 성공");
                dto.setpBattery(rs.getString("PHONE_BATTERY"));
                dto.setpMemory(rs.getString("PHONE_MEMORY"));
                dto.setpDisplay(rs.getString("PHONE_DISPLAY"));
@@ -291,10 +292,11 @@ public class PhoneDAO{
                dto.setReleased_date(rs.getDate("PHONE_RELEASED_DATE"));
                dto.setWeight(rs.getDouble("PHONE_WEIGHT"));
                dto.setpKind(rs.getInt("PHONE_KIND"));
-               
-               System.out.println(dto.getColor());    // list 객체에 정보를 설정한 LaptopDTO 객체 저장
+            }else {
+            	 System.out.println("No ResultSet"); 
             }
-            return dto;   
+                 
+               return dto;   
          } catch (Exception ex) {
             ex.printStackTrace();
          } finally {

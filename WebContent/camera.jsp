@@ -64,17 +64,6 @@
       </h2>
    </section>  
    
-   <%
-   		CameraDAO cameraDAO = new CameraDAO();
-   		Camera camera = new Camera();
-   		
-   		List<Camera> cameraList = cameraDAO.getCameraList();
-   		System.out.println(cameraList.get(0).getName());
-   		List<Camera> cameraList2 = cameraDAO.getCameraByName("알파");
-   		System.out.println(cameraList.get(0).getName());
-   		List<Camera> cameraList3 = cameraDAO.getCameraById("알파");
-   		System.out.println(cameraList.get(0).getName());
-   %>
  
    
    <form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -510px;">

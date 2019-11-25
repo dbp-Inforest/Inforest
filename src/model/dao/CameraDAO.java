@@ -268,7 +268,7 @@ public class CameraDAO {
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행
 			Camera dto = new Camera();		// Camera 객체들을 담기위한 list 객체
-			if (rs.next()) {						// 찾은 학생의 정보를 Camera 객체에 설정
+			while (rs.next()) {						// 찾은 학생의 정보를 Camera 객체에 설정
 				dto.setProductId(rs.getString("CAMERA_ID"));
 				dto.setcBattery(rs.getString("CAMERA_BATTERY"));
 				dto.setcBurstshot(rs.getDouble("CAMERA_BURSTSHOT"));
