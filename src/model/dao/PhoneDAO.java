@@ -103,72 +103,72 @@ public class PhoneDAO{
 
    public int updatePhone(Phone phone) {
       
-      String updateQuery = "UPDATE LAPTOP SET ";
+      String updateQuery = "UPDATE PHONE SET ";
       int index = 0;
       Object[] tempParam = new Object[10];      // update 문에 사용할 매개변수를 저장할 수 있는 임시 배열
       
       if (phone.getBrand() != null) {      // 브랜드가 설정되어 있을 경우
-         updateQuery += "PHONE_BRAND = ?, ";      // update 문에 브랜드 수정 부분 추가
+         updateQuery += "BRAND = ?, ";      // update 문에 브랜드 수정 부분 추가
          tempParam[index++] = phone.getBrand();      // 매개변수에 수정할 이름 추가
       }
       if (phone.getColor() != null) {      // 색깔이 설정되어 있을 경우
-         updateQuery += "PHONE_COLOR = ?, ";      // update 문에 색깔 수정 부분 추가
+         updateQuery += "COLOR = ?, ";      // update 문에 색깔 수정 부분 추가
          tempParam[index++] = phone.getColor();      // 매개변수에 수정할 색깔 추가
       }
       if (phone.getName() != null) {      // 이름이 설정되어 있을 경우
-         updateQuery += "PHONE_NAME = ?, ";      // update 문에 이름 수정 부분 추가
+         updateQuery += "NAME = ?, ";      // update 문에 이름 수정 부분 추가
          tempParam[index++] = phone.getName();      // 매개변수에 수정할 휴대폰 추가
       }
       if (phone.getpBattery() != null) {      // 배터리가 설정되어 있을 경우
-         updateQuery += "PHONE_BATTERY = ?, ";      // update 문에 배터리수정 부분 추가
+         updateQuery += "P_BATTERY = ?, ";      // update 문에 배터리수정 부분 추가
          tempParam[index++] = phone.getpBattery();      // 매개변수에 수정할 배터리 추가
       }
       if (phone.getpCamera() != null) {      // camera가 설정되어 있을 경우
-         updateQuery += "PHONE_CAMERA = ?, ";      // update 문에 camera 수정 부분 추가
+         updateQuery += "P_CAMERA = ?, ";      // update 문에 camera 수정 부분 추가
          tempParam[index++] = phone.getpCamera();      // 매개변수에 수정할 camera 추가
       }
       if (phone.getpDisplay() != null) {      // display가 설정되어 있을 경우
-         updateQuery += "PHONE_DISPLAY = ?, ";      // update 문에 display 수정 부분 추가
+         updateQuery += "P_DISPLAY = ?, ";      // update 문에 display 수정 부분 추가
          tempParam[index++] = phone.getpDisplay();      // 매개변수에 수정할 diaplay 추가
       }
       if (phone.getpKind() == 1) {      // pKind가 설정되어 있을 경우
-         updateQuery += "PHONE_KIND = ?, ";      // update 문에 pKind 수정 부분 추가
+         updateQuery += "P_KIND = ?, ";      // update 문에 pKind 수정 부분 추가
          tempParam[index++] = phone.getpKind();      // 매개변수에 수정할 pKind 추가
       }
       if (phone.getpMemory() != null) {      // 메모리가 설정되어 있을 경우
-         updateQuery += "PHONE_MEMORY = ?, ";      // update 문에 메모리 수정 부분 추가
+         updateQuery += "P_MEMORY = ?, ";      // update 문에 메모리 수정 부분 추가
          tempParam[index++] = phone.getpMemory();      // 매개변수에 수정할 메모리 추가
       }
       if (phone.getpOS() != null) {      // os가 설정되어 있을 경우
-         updateQuery += "PHONE_OS = ?, ";      // update 문에 os 수정 부분 추가
+         updateQuery += "P_OS = ?, ";      // update 문에 os 수정 부분 추가
          tempParam[index++] = phone.getpOS();      // 매개변수에 수정할 os 추가
       }
       if (phone.getpRAM() != null) {      // ram이 설정되어 있을 경우
-         updateQuery += "PHONE_RAM = ?, ";      // update 문에 ram 수정 부분 추가
+         updateQuery += "P_RAM = ?, ";      // update 문에 ram 수정 부분 추가
          tempParam[index++] = phone.getpRAM();      // 매개변수에 수정할 ram 추가
       }   
       if (phone.getPrice() != null) {      // price가 설정되어 있을 경우
-         updateQuery += "PHONE_PRICE = ?, ";      // update 문에 price 수정 부분 추가
+         updateQuery += "PRICE = ?, ";      // update 문에 price 수정 부분 추가
          tempParam[index++] = phone.getPrice();      // 매개변수에 수정할 price 추가
       }   
       if (phone.getpSize() > 0) {      // size가 설정되어 있을 경우
-         updateQuery += "PHONE_SIZE = ?, ";      // update 문에 size 수정 부분 추가
+         updateQuery += "P_SIZE = ?, ";      // update 문에 size 수정 부분 추가
          tempParam[index++] = phone.getpSize();      // 매개변수에 수정할 size 추가
       }
       if (phone.getProductId() != null) {      // id가 설정되어 있을 경우
-         updateQuery += "PHONE_ID = ?, ";      // update 문에 id 수정 부분 추가
+         updateQuery += "PRODUCT_ID = ?, ";      // update 문에 id 수정 부분 추가
          tempParam[index++] = phone.getProductId();      // 매개변수에 수정할 id 추가
       }   
       if (phone.getReleased_date() != null) {      // 출시일이 설정되어 있을 경우
-         updateQuery += "PHONE_RELEASED_DATE = ?, ";      // update 문에 출시일 수정 부분 추가
+         updateQuery += "RELEASED_DATE = ?, ";      // update 문에 출시일 수정 부분 추가
          tempParam[index++] = phone.getReleased_date();      // 매개변수에 수정할 출시 추가
       }
       if (phone.getWeight() > 0) {      // 무게가 설정되어 있을 경우
-         updateQuery += "PHONE_WEIGHT = ?, ";      // update 문에 무게 수정 부분 추가
+         updateQuery += "WEIGHT = ?, ";      // update 문에 무게 수정 부분 추가
          tempParam[index++] = phone.getWeight();      // 매개변수에 수정할 무게 추가
       }
       
-      updateQuery += "WHERE LAPTOP_ID = ? ";      // update 문에 조건 지정
+      updateQuery += "WHERE PRODUCT_ID = ? ";      // update 문에 조건 지정
       updateQuery = updateQuery.replace(", WHERE", " WHERE");      // update 문의 where 절 앞에 있을 수 있는 , 제거
       
       tempParam[index++] = phone.getProductId();      // 찾을 조건에 해당하는 에 대한 매개변수 추가
@@ -195,7 +195,7 @@ public class PhoneDAO{
    }
 
    public int deletePhone(int phProductId) {
-      String deleteQuery = "DELETE FROM PHONE WHERE PHONE_ID = ?";
+      String deleteQuery = "DELETE FROM PHONE WHERE PRODUCT_ID = ?";
       
       jdbcUtil.setSql(deleteQuery);         // JDBCUtil 에 query 문 설정
       Object[] param = new Object[] {phProductId};
@@ -216,7 +216,8 @@ public class PhoneDAO{
 
    public Phone getPhoneByName(String phName) {
       // TODO Auto-generated method stub
-      String searchQuery = query + "WHERE PHONE.phName = ?";
+      String searchQuery = query + "FROM PHONE H, PRODUCT P " +
+              "WHERE H.PRODUCT_ID = P.PRODUCT_ID  AND P.NAME = ?";  
       Object[] param = new Object[] {phName};
 
       jdbcUtil.setSql(searchQuery);
@@ -257,7 +258,8 @@ public class PhoneDAO{
      public List<Phone> getPhoneById(String phId) {
          // TODO Auto-generated method stub
          String searchQuery = query + "FROM PHONE H, PRODUCT P " +
-         "WHERE H.PRODUCT_ID = P.PRODUCT_ID AND H.PRODUCT_ID = ? ";
+                 "WHERE H.PRODUCT_ID = P.PRODUCT_ID  AND H.PRODUCT_ID = ?";   
+       
          Object[] param = new Object[] {phId};
 
          System.out.println(phId);
