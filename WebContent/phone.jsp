@@ -90,7 +90,7 @@ function search(kind, targetUri) {
 <form class="p-t-20" style="margin:0 0 0 450px;" name="form"  action="<c:url value='/productSearch' />" >
 <input type="hidden" name="kind2" value="10"/>
 	<div class="flex-w flex-m m-r-20 m-tb-5">
-    	<input class="stext-104 cl2 plh4 size-search bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="phoneSearch" placeholder="Please write down phone's name">
+    	<input class="stext-104 cl2 plh4 size-search bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="phoneSearch" placeholder="Please write down the search term.">
 		<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
 		<button type="button"  onClick="search(0, '<c:url value='/productSearch'/>')">Search</button>
 		</div>
@@ -99,7 +99,7 @@ function search(kind, targetUri) {
    
    
    
-   <form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -510px;">
+   <form class="bg0 p-t-30 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -510px;">
       <div class="container" >
          <div class="row"  style="display:inline">
             <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:1050px">

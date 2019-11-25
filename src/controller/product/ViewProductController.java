@@ -50,12 +50,18 @@ public class ViewProductController implements Controller {
     			
     			return "/product-search.jsp";	
     		}else if(kind.equals("2")) { //camera
-    			List<Camera> cameraList = cameraDAO.getCameraList();
-    			request.setAttribute("cameraList", cameraList);
+    			List<Camera> cameraList = cameraDAO.getCameraByName(csearch);
+    			
+    			request.setAttribute("searchWord", csearch);
+    			request.setAttribute("ListByName", cameraList);
+    			
     			return "/product-search.jsp";		
     		}else if(kind.equals("3")) { //tablet
-    			List<Tablet> tabletList = tabletDAO.getTabletList();
-    			request.setAttribute("tabletList", tabletList);
+    			List<Tablet> tabletList = tabletDAO.getTabletByName(tsearch);
+    			
+    			request.setAttribute("searchWord", tsearch);
+    			request.setAttribute("ListByName", tabletList);
+    			
     			return "/product-search.jsp";	
     		}
     		
