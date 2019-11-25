@@ -26,7 +26,8 @@ public class UpdateUserController implements Controller {
     	log.debug("Update User : {}", updateUser);
 
 		InforestUserDAO manager = new InforestUserDAO();
-		manager.updateInforestUser(updateUser);			
+		manager.updateInforestUser(updateUser);
+		System.out.println("유저 수정 완료!");
         return "redirect:/management";			
     }
 }

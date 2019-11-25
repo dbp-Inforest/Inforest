@@ -171,7 +171,7 @@ public class InforestUserDAO {
 	/**
 	 * 사용자 ID에 해당하는 사용자를 삭제.
 	 */
-	public int deleteInforestUser(int uId) {
+	public int deleteInforestUser(String uId) {
 		String deleteQuery = "DELETE FROM Inforest_User WHERE USER_ID = ?";
 		
 		jdbcUtil.setSql(deleteQuery);			// JDBCUtil 에 query 문 설정
