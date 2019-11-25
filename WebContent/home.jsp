@@ -41,48 +41,23 @@
               
                <div class="menu-desktop">
                   <ul class="main-menu">
-<<<<<<< HEAD
-                    <li>
-                         <a href="<c:url value='/main'/>" style="color:white">HOME</a>
-=======
-                     <li>
-                        <a href="home.jsp">HOME</a>
->>>>>>> branch 'master' of https://github.com/dbp-Inforest/Inforest.git
+                   	 <li>
+                      <a href="<c:url value='/main'/>" style="color:white">HOME</a>
                      </li>
-
                      <li>
-<<<<<<< HEAD
                       <a href="<c:url value='/rank'/>" style="color:white">RANK</a>
-                        </li>
-=======
-                        <a href="rank.jsp">RANK</a>
                      </li>
->>>>>>> branch 'master' of https://github.com/dbp-Inforest/Inforest.git
-
                      <li>
-<<<<<<< HEAD
                       <a href="<c:url value='/product'/>" style="color:white">PRODUCT</a>
-                          </li>
-=======
-                        <a href="product.jsp">PRODUCT</a>
                      </li>
->>>>>>> branch 'master' of https://github.com/dbp-Inforest/Inforest.git
-
                      <li>
-<<<<<<< HEAD
                       <a href="<c:url value='/post'/>" style="color:white">POST</a>
-                       </li>
-=======
-                        <a href="post.jsp">POST</a>
                      </li>
->>>>>>> branch 'master' of https://github.com/dbp-Inforest/Inforest.git
-
                      <li>
                        <a href="<c:url value='/mypage'/>" style="color:white">MY PAGE</a>
-                         </li>
-                     
-                       <li>
-                        <a href="sign-in.jsp">SIGN IN</a>
+                     </li> 
+                     <li>
+                       <a href="<c:url value='/signIn'/>" style="color:white">SIGN IN</a>
                      </li>  
                   </ul>
                </div>    
