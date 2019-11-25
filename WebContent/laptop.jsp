@@ -7,11 +7,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>INFOREST</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+   <title>INFOREST</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" type="text/css" href="css/util.css">
+   <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -57,15 +57,15 @@
    </header>
 
    <%
-   		LaptopDAO laptopDAO = new LaptopDAO();
-   		Laptop laptop = new Laptop();
-   		
-   		List<Laptop> tabletList = laptopDAO.getLaptopList();
-   		System.out.println(tabletList.get(0).getName());
-   		List<Laptop> tabletList2 = laptopDAO.getLaptopByName("그램");
-   		System.out.println(tabletList2.get(0).getName());
-   		Laptop tabletList3 = laptopDAO.getLaptopById("NT930XBV-A58A");
-   		System.out.println(tabletList3.getName());
+         LaptopDAO laptopDAO = new LaptopDAO();
+         Laptop laptop = new Laptop();
+         
+         List<Laptop> tabletList = laptopDAO.getLaptopList();
+         System.out.println(tabletList.get(0).getName());
+         List<Laptop> tabletList2 = laptopDAO.getLaptopByName("그램");
+         System.out.println(tabletList2.get(0).getName());
+         Laptop tabletList3 = laptopDAO.getLaptopById("NT930XBV-A58A");
+         System.out.println(tabletList3.getName());
    %>
    
    
@@ -95,32 +95,35 @@
                                     <th class="column-3"><p style="padding-left:60px">Price</p></th>
                         </tr>
                        
-						<c:if test="${laptopList.size() == 0 }">
-						<tfoot>
-						<tr>
-						<td colspan="3">현재 데이터가 없습니다.</td>
-						</tr>
-						</tfoot>
-						</c:if>
-						<!-- //request.getAttribute("List") == ${List} -->
-						<tbody> 
-						<c:forEach var="laptop" items="${laptopList}" varStatus="status">
-						<tr class="table_row" style="height:70px;">
-						<td class="column-0" style="padding-left:30px">
-                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                  <c:if test="${laptopList.size() == 0 }">
+                  <tfoot>
+                  <tr>
+                  <td colspan="3">현재 데이터가 없습니다.</td>
+                  </tr>
+                  </tfoot>
+                  </c:if>
+                  <!-- //request.getAttribute("List") == ${List} -->
+                  <tbody> 
+                  <c:forEach var="laptop" items="${laptopList}" varStatus="status">
+                  <tr class="table_row" style="height:70px;">
+                  <td class="column-0" style="padding-left:30px">
+                                <a href="<c:url value='/productDetail'> <c:param name="kind2" value="1"/>
+                                                              <c:param name="pId" value="${laptop.productId}"/>
+                                </c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                       <font style="font-size:20px">
-                                      	<c:out value="${laptop.productId}"/>
+                                         <c:out value="${laptop.productId}"/>
                                       </font>
-                                 </a>
+                                 </a>                  
+          
                         </td>
                        <td class="column-1" style="padding-left:50px"><c:out value="${laptop.name}"/></td>
                        <td class="column-2" style="padding-left:87px"><c:out value="${laptop.brand}"/></td>   
                        <td class="column-3" style="padding-left:87px"><c:out value="${laptop.price}"/></td>
                  
-						</tr>
-						</c:forEach>
-						</tbody>
-						</table>
+                  </tr>
+                  </c:forEach>
+                  </tbody>
+                  </table>
                   
                   
                   

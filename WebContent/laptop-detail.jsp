@@ -62,7 +62,7 @@
       </h2>
    </section>   
 <%
-System.out.println("product-detail.jsp");
+System.out.println("laptop-detail.jsp");
 %>
    	<!-- Product Detail -->
 	<section class="sec-product-detail bg0 p-t-65 p-b-60">

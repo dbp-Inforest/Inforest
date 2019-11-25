@@ -39,22 +39,22 @@ public class DetailProductController implements Controller{
     		if(kind.equals("0")) { //phone
     			Phone phoneDetail = phoneDAO.getPhoneById(pid);
     			request.setAttribute("phoneDetail", phoneDetail);	
-    	        return "/product-detail.jsp";	
+    	        return "/phone-detail.jsp";	
     			
     		}else if(kind.equals("1")){ //laptop
     			Laptop laptopDetail = laptopDAO.getLaptopById(pid);
     			request.setAttribute("laptopDetail", laptopDetail);	
-    	        return "/product-detail.jsp";	
+    	        return "/laptop-detail.jsp";	
     	        
     	    }else if(kind.equals("2")) { //camera
     			Camera cameraDetail = cameraDAO.getCameraById(pid);
     			request.setAttribute("cameraDetail", cameraDetail);	
-    	        return "/product-detail.jsp";	
+    	        return "/camera-detail.jsp";	
     	        
     		}else if(kind.equals("3")) { //tablet
     			Tablet tabletDetail = tabletDAO.getTabletById(pid);
     			request.setAttribute("tabletDetail", tabletDetail);	
-    	        return "/product-detail.jsp";	
+    	        return "/tablet-detail.jsp";	
     		}		
 		
     		System.out.println("메인으로 이동");

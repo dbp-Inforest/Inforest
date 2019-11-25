@@ -13,6 +13,24 @@
    <link rel="stylesheet" type="text/css" href="css/util.css">
    <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<script>
+function search(kind, targetUri) {
+	if (form.phoneSearch.value == "") {
+	      alert("검색어를 입력해주세요");
+	      form.phoneSearch.focus();
+	      return false;
+	} 
+	form.action = targetUri;
+	
+	 form.kind2.value = kind;
+	 alert(form.kind2.value);
+	
+	form.submit();
+}
+
+
+</script>
+
 </head>
 <body class="animsition">
       <!-- Header -->
@@ -65,6 +83,21 @@
          Phone
       </h2>
    </section>      
+   
+   
+ 
+<!-- search form -->
+<form class="p-t-20" style="margin:0 0 0 450px;" name="form"  action="<c:url value='/productSearch' />" >
+<input type="hidden" name="kind2" value="10"/>
+	<div class="flex-w flex-m m-r-20 m-tb-5">
+    	<input class="stext-104 cl2 plh4 size-search bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="phoneSearch" placeholder="Please write down phone's name">
+		<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+		<button type="button"  onClick="search(0, '<c:url value='/productSearch'/>')">Search</button>
+		</div>
+	</div>
+</form>  
+   
+   
    
    <form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -510px;">
       <div class="container" >

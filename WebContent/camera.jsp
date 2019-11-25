@@ -8,11 +8,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>INFOREST</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+   <title>INFOREST</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" type="text/css" href="css/util.css">
+   <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -83,23 +83,23 @@
                                     <th class="column-3"><p style="padding-left:60px">Price</p></th>
                         </tr>
                        
-						<c:if test="${cameraList.size() == 0 }">
-						<tfoot>
-						<tr>
-						<td colspan="3">현재 데이터가 없습니다.</td>
-						</tr>
-						</tfoot>
-						</c:if>
-						<!-- //request.getAttribute("List") == ${List} -->
-						<tbody> 
-						<c:forEach var="camera" items="${cameraList}" varStatus="status">
-						<tr class="table_row" style="height:70px;">
-						<td class="column-0" style="padding-left:30px">
+                  <c:if test="${cameraList.size() == 0 }">
+                  <tfoot>
+                  <tr>
+                  <td colspan="3">현재 데이터가 없습니다.</td>
+                  </tr>
+                  </tfoot>
+                  </c:if>
+                  <!-- //request.getAttribute("List") == ${List} -->
+                  <tbody> 
+                  <c:forEach var="camera" items="${cameraList}" varStatus="status">
+                  <tr class="table_row" style="height:70px;">
+                  <td class="column-0" style="padding-left:30px">
                                 <a href="<c:url value='/productDetail'> <c:param name="kind2" value="2"/>
-                                										<c:param name="kind2" value="${camera.productId}"/>
+                                                              <c:param name="pId" value="${camera.productId}"/>
                                 </c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                       <font style="font-size:20px">
-                                      	<c:out value="${camera.productId}"/>
+                                         <c:out value="${camera.productId}"/>
                                       </font>
                                  </a>
                           
@@ -108,10 +108,10 @@
                        <td class="column-2" style="padding-left:87px"><c:out value="${camera.brand}"/></td>   
                        <td class="column-3" style="padding-left:87px"><c:out value="${camera.price}"/></td>
                  
-						</tr>
-						</c:forEach>
-						</tbody>
-						</table>
+                  </tr>
+                  </c:forEach>
+                  </tbody>
+                  </table>
                  
                   <!-- <table>
                      <tr class="table_head">

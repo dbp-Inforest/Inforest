@@ -2521,6 +2521,11 @@ input.num-product::-webkit-inner-spin-button {
   height: 45px;
 }
 
+.size-search {
+  width: 500px;
+  height: 45px;	
+}
+
 .size-sign {
   width: 70%;
   height: 45px;

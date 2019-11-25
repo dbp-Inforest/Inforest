@@ -27,6 +27,6 @@ public class UpdateUserController implements Controller {
 
 		InforestUserDAO manager = new InforestUserDAO();
 		manager.updateInforestUser(updateUser);			
-        return "redirect:/Inforest/mypage";			
+        return "redirect:/management";			
     }
 }
