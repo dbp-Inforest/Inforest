@@ -35,6 +35,7 @@ public class RequestMapping {
         mappings.put("/productList", new ListProductController());
         mappings.put("/productDetail", new DetailProductController());
         mappings.put("/phone", new ForwardController("/phone.jsp"));
+        mappings.put("/productSearch", new ViewProductController());
         
         /* Home Header 관련  Mapping*/
         mappings.put("/rank", new ForwardController("/rank.jsp"));   //rank.jsp이동
