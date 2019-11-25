@@ -14,8 +14,6 @@
 
 
 
-
-
 <script>
 function userCreate() {
    if (form.userId.value == "") {

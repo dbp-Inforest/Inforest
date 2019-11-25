@@ -10,6 +10,13 @@
    <link rel="stylesheet" type="text/css" href="css/util.css">
    <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<script>
+	function userCreate(targetUri) {
+	    alert(targetUri);   
+	    form.action = targetUri;
+	    form.submit();
+	 }
+</script>
 </head>
 <body>
    
@@ -28,33 +35,35 @@
                <!-- Menu desktop -->
                <div class="menu-desktop">
                   <ul class="main-menu">
-                     <li>
-                        <a href="<c:url value='/main'/>">HOME</a>
+                    <li>
+                         <a href="<c:url value='/main'/>" style="color:white">HOME</a>
                      </li>
 
                      <li>
-                        <a href="<c:url value='/rank'/>">RANK</a>
-                     </li>
+                      <a href="<c:url value='/rank'/>" style="color:white">RANK</a>
+                        </li>
 
                      <li>
-                        <a href="<c:url value='/product'/>">PRODUCT</a>
-                     </li>
+                      <a href="<c:url value='/product'/>" style="color:white">PRODUCT</a>
+                          </li>
 
                      <li>
-                        <a href="<c:url value='/post'/>">POST</a>
-                     </li>
+                      <a href="<c:url value='/post'/>" style="color:white">POST</a>
+                       </li>
 
                      <li>
-                        <a href="mypage.jsp">MYPAGE</a>
-                     </li>        
+                       <a href="<c:url value='/mypage'/>" style="color:white">MY PAGE</a>
+                         </li>
                      
                        <li>
                         <a href="sign-in.jsp">SIGN IN</a>
                      </li>  
                   </ul>
-
-
                </div>    
+			</nav>
+		</div>
+	</div>
+
 
          <!-- Modal Search -->
       <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">

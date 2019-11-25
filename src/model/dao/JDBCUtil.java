@@ -18,6 +18,9 @@ public class JDBCUtil {
    private PreparedStatement pstmt = null;
    private CallableStatement cstmt = null;
    private ResultSet rs = null;
+   private int resultSetType = ResultSet.TYPE_FORWARD_ONLY,
+			resultSetConcurrency = ResultSet.CONCUR_READ_ONLY;
+
 
    // 기본 생성자
    public JDBCUtil() {
@@ -215,4 +218,11 @@ public class JDBCUtil {
       System.out.println("NumActive: " + bds.getNumActive());
       System.out.println("NumIdle: " + bds.getNumIdle());
    }
+
+   public void setSqlAndParameters(String sql, Object[] parameters) {
+		this.sql = sql;
+		this.parameters = parameters;
+		this.resultSetType = ResultSet.TYPE_FORWARD_ONLY;
+		this.resultSetConcurrency = ResultSet.CONCUR_READ_ONLY;
+	}
 }
