@@ -47,11 +47,10 @@ public class ProductLikeDAO {
 	//
 	public List<Camera> getCameraRanking(){
 		
-		/*String allQuery = query + ", " + "FROM CAMERA"
+		String allQuery = query + ", " + "FROM CAMERA"
 							+ "WHERE PRODUCT.NAME = ? ";	
-		*/
 		
-		//jdbcUtil.setSql(allQuery);		// JDBCUtil 에 query 설정
+		jdbcUtil.setSql(allQuery);		// JDBCUtil 에 query 설정
 		
 		try { 
 			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행			
