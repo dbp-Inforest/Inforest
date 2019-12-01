@@ -8,14 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import controller.Controller;
 import controller.user.UserSessionUtils;
-import model.dao.CameraDAO;
-import model.dao.LaptopDAO;
-import model.dao.PhoneDAO;
-import model.dao.TabletDAO;
-import model.dto.Camera;
-import model.dto.Laptop;
-import model.dto.Phone;
-import model.dto.Tablet;
+import model.dao.*;
+import model.dto.*;
 
 public class ListProductController implements Controller {
 	// private static final int countPerPage = 100;	// 한 화면에 출력할 사용자 수
@@ -27,32 +21,39 @@ public class ListProductController implements Controller {
 	
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-       		
-    		String kind = request.getParameter("kind"); //0,1,2,3,4
+       
+    	if(request.getMethod().equals("GET")) {
+    		String kind = request.getParameter("kind3"); //0,1,2,3
+    		System.out.print(kind + "debugtest");
     		
     		if(kind.equals("0")) { //phone
-    			List phone = phoneDAO.getPhoneList();
-    			request.setAttribute("phone", phone);
+    			System.out.println(kind + " debugtest in kind = 0");
+    			List<Phone> phoneList = phoneDAO.getPhoneList();
+    			request.setAttribute("phoneList", phoneList);
+    			return "/phone.jsp";	
     		}else if(kind.equals("1")){ //laptop
-    			List laptop = laptopDAO.getLaptopList();
-    			request.setAttribute("laptop", laptop);
+    			List<Laptop> laptopList = laptopDAO.getLaptopList();
+    			request.setAttribute("laptopList", laptopList);
+    			return "/laptop.jsp";	
     		}else if(kind.equals("2")) { //camera
-    			List camera = cameraDAO.getCameraList();
-    			request.setAttribute("camera", camera);
+    			List<Camera> cameraList = cameraDAO.getCameraList();
+    			request.setAttribute("cameraList", cameraList);
+    			return "/camera.jsp";	
     		}else if(kind.equals("3")) { //tablet
-    			List tablet = tabletDAO.getTabletList();
-    			request.setAttribute("tablet", tablet);
-    		}else if(kind.equals("4")) { //all
-    			List phone = phoneDAO.getPhoneList();
-    			List laptop = laptopDAO.getLaptopList();
-    			List camera = cameraDAO.getCameraList();
-    			List tablet = tabletDAO.getTabletList();
-    			request.setAttribute("phone", phone);
-    			request.setAttribute("laptop", laptop);
-    			request.setAttribute("camera", camera);
-    			request.setAttribute("tablet", tablet);
+    			List<Tablet> tabletList = tabletDAO.getTabletList();
+    			request.setAttribute("tabletList", tabletList);
+    			return "/tablet.jsp";	
     		}
-    			
-            return "/Inforest/product.jsp";			
+    		
+    		List<Phone> phone = phoneDAO.getPhoneList();
+    		request.setAttribute("phone", phone);
+    		 		
+       		System.out.print("GET-PHONE으로");
+       		return "redirect:/main";
+       	}
+    	System.out.print("phone으로");
+    	return "redirect:/main";
+    	
+    		
     }
 }

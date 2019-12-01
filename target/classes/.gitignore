@@ -1,6 +1,2 @@
 /controller/
-/filter/
-/logback.xml
 /model/
-/product/
-/schema.sql

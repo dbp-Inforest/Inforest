@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import = "java.util.List" %>
+<%@page import = "model.dao.*" %>
+<%@page import = "model.dto.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,50 +15,77 @@
 <!--===============================================================================================-->
 </head>
 <body>
-   
    <!-- Header -->
    <header class="header-v3">
       <!-- Header desktop -->
-      <div class="container-menu-desktop trans-03">
-         <div class="wrap-menu-desktop">
+      <div class="container-menu-desktop">
+         <div class="wrap-menu-desktop how-shadow1">
             <nav class="limiter-menu-desktop p-l-45">
                
                <!-- Logo desktop -->      
                <a href="home.jsp" class="logo">
-                  <img src="images/icons/inforest_logo.png" alt="IMG-LOGO">
+                  <img src="images/icons/logo.png" alt="IMG-LOGO">
                </a>
-
+              
                <!-- Menu desktop -->
-               <div class="menu-desktop">
+               <div class="menu-desktop" style="float:left">
                   <ul class="main-menu">
                      <li>
-                        <a href="home.jsp">HOME</a>
+                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
                      </li>
 
                      <li>
-                        <a href="rank.jsp">RANK</a>
+                      <a href="<c:url value='/rankCont'/>" style="text-decoration:none">RANK</a>
                      </li>
 
                      <li>
-                        <a href="product.jsp">PRODUCT</a>
+                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
 
                      <li>
-                        <a href="post.jsp">POST</a>
+                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
+                     <%
+                     	if(session.getAttribute("userId") == null) { %>
+	                     <li>
+	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
+	                     </li> 
+	                     </ul> 
+                     <% } else {
+	                	 	if((int)session.getAttribute("position") == 0) { %>
+	                     <li>
+	                        <a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
+	                     </li> 
+                     	<% } %>	
+	                     </ul>
+	                     <div class="menu-desktop" style="float:right">
+	                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
+	                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
+	                     </div>
+					 <% } %>		 
+               </div>   
+            </nav>
+         </div>   
+      </div>
+   </header>
 
-                     <li>
-                        <a href="mypage.jsp">MYPAGE</a>
-                     </li>        
-                     
-                       <li>
-                        <a href="sign-in.jsp">SIGN IN</a>
-                     </li>  
-                  </ul>
-
-
-               </div>    
-
+<!--
+                      {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a href="" class="nav-link"><img src="{% static 'user_icon.png' %}" id="img1" width="20px" height="20px"> {{ user.username }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span>LOGOUT</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'signup' %}"><span class="glyphicon glyphicon-new-window"></span> SIGN UP</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a>
+                            </li>
+                        {% endif %}
+  -->
          <!-- Modal Search -->
       <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
          <button class="flex-c-m btn-hide-modal-search trans-04">
@@ -87,102 +117,5 @@
          <div class="wrap-slick1-dots p-lr-10"></div>
       </div>
    </section>
-   
-
-
-
-<!--===============================================================================================-->   
-   <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-   <script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-   <script src="vendor/bootstrap/js/popper.js"></script>
-   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-   <script src="vendor/select2/select2.min.js"></script>
-   <script>
-      $(".js-select2").each(function(){
-         $(this).select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $(this).next('.dropDownSelect2')
-         });
-      })
-   </script>
-<!--===============================================================================================-->
-   <script src="vendor/daterangepicker/moment.min.js"></script>
-   <script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-   <script src="vendor/slick/slick.min.js"></script>
-   <script src="js/slick-custom.js"></script>
-<!--===============================================================================================-->
-   <script src="vendor/parallax100/parallax100.js"></script>
-   <script>
-        $('.parallax100').parallax100();
-   </script>
-<!--===============================================================================================-->
-   <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-   <script>
-      $('.gallery-lb').each(function() { // the containers for all your galleries
-         $(this).magnificPopup({
-              delegate: 'a', // the selector for gallery item
-              type: 'image',
-              gallery: {
-                 enabled:true
-              },
-              mainClass: 'mfp-fade'
-          });
-      });
-   </script>
-<!--===============================================================================================-->
-   <script src="vendor/isotope/isotope.pkgd.min.js"></script>
-<!--===============================================================================================-->
-   <script src="vendor/sweetalert/sweetalert.min.js"></script>
-   <script>
-      $('.js-addwish-b2').on('click', function(e){
-         e.preventDefault();
-      });
-      $('.js-addwish-b2').each(function(){
-         var nameProduct = $(this).parent().parent().find('.js-name-b2').jsp();
-         $(this).on('click', function(){
-            swal(nameProduct, "is added to wishlist !", "success");
-            $(this).addClass('js-addedwish-b2');
-            $(this).off('click');
-         });
-      });
-      $('.js-addwish-detail').each(function(){
-         var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').jsp();
-         $(this).on('click', function(){
-            swal(nameProduct, "is added to wishlist !", "success");
-            $(this).addClass('js-addedwish-detail');
-            $(this).off('click');
-         });
-      });
-      /*---------------------------------------------*/
-      $('.js-addcart-detail').each(function(){
-         var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').jsp();
-         $(this).on('click', function(){
-            swal(nameProduct, "is added to cart !", "success");
-         });
-      });
-   </script>
-<!--===============================================================================================-->
-   <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-   <script>
-      $('.js-pscroll').each(function(){
-         $(this).css('position','relative');
-         $(this).css('overflow','hidden');
-         var ps = new PerfectScrollbar(this, {
-            wheelSpeed: 1,
-            scrollingThreshold: 1000,
-            wheelPropagation: false,
-         });
-         $(window).on('resize', function(){
-            ps.update();
-         })
-      });
-   </script>
-<!--===============================================================================================-->
-   <script src="js/main.js"></script>
-
 </body>
 </html>
