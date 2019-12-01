@@ -9,8 +9,8 @@ public class Product {
 	private String price = null;
 	private String brand = null;
 	private Date released_date = null;
-	private double weight = (Double) null;
-	private int pKind = (Integer) null;
+	private double weight = 0;
+	private int pKind = 0;
 	
 	
 	

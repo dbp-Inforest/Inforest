@@ -5,13 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.User;
 import model.dao.InforestUserDAO;
 import model.dto.InforestUser;
 import model.service.PasswordMismatchException;
 import model.service.UserAnalysis;
-import model.service.UserDAOImpl;
-import model.service.UserManager;
 import model.service.UserNotFoundException;
 import model.dto.InforestUser;
 
@@ -27,7 +24,7 @@ import model.dto.InforestUser;
 
 public class InforestUserDAO {
 
-	private JDBCUtil jdbcUtil = null;
+	private static JDBCUtil jdbcUtil = null;
 	private static InforestUserDAO userDAO = null;
 
 	public InforestUserDAO() {	
@@ -38,13 +35,13 @@ public class InforestUserDAO {
 		}	
 	}
 	
-	private static String query = "SELECT INFORESTUSER.USER_ID, " +
-								  "       INFORESTUSER.PASSWORD, " +
-								  "       INFORESTUSER.NAME, " +
-								  "       INFORESTUSER.AGE " +
-								  "       INFORESTUSER.GENDER, " +
-								  "       INFORESTUSER.POSITION, " +
-								  "       INFORESTUSER.INTRODUCE " +
+	private static String query = "SELECT USER_ID, " +
+								  "       PASSWORD, " +
+								  "       NAME, " +
+								  "       AGE, " +
+								  "       GENDER, " +
+								  "       POSITION, " +
+								  "       INTRODUCE " +
 								  "FROM INFOREST_USER ";
 	
 
@@ -174,7 +171,7 @@ public class InforestUserDAO {
 	/**
 	 * 사용자 ID에 해당하는 사용자를 삭제.
 	 */
-	public int deleteInforestUser(int uId) {
+	public int deleteInforestUser(String uId) {
 		String deleteQuery = "DELETE FROM Inforest_User WHERE USER_ID = ?";
 		
 		jdbcUtil.setSql(deleteQuery);			// JDBCUtil 에 query 문 설정
@@ -228,8 +225,8 @@ public class InforestUserDAO {
 	 * 주어진 사용자 ID에 해당하는 사용자 정보를 데이터베이스에서 찾아 User 도메인 클래스에 
 	 * 저장하여 반환.
 	 */
-	public InforestUser getInforestUserById(String uId) throws SQLException, UserNotFoundException {
-		String searchQuery = query + "WHERE INFOREST_USER.USER_ID = ?";
+	public static InforestUser getInforestUserById(String uId) throws SQLException, UserNotFoundException {
+		String searchQuery = query + "WHERE USER_ID = ?";
 		Object[] param = new Object[] { uId };
 
 		jdbcUtil.setSql(searchQuery);
@@ -237,17 +234,17 @@ public class InforestUserDAO {
 			
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
-			InforestUser dto = new InforestUser();
-			while (rs.next()) {
-				dto.setUserId(rs.getString("USER_ID"));
-				dto.setPassword(rs.getString("PASSWORD"));
-				dto.setName(rs.getString("NAME"));
-				dto.setAge(rs.getInt("AGE"));
-				dto.setGender(rs.getInt("GENDER"));
-				dto.setPosition(rs.getInt("POSITION"));
-				dto.setIntroduce(rs.getString("INTRODUCE"));
-			}				
-			return dto;			
+			if (rs.next()) {
+				InforestUser user = new InforestUser(		// User 객체를 생성하여 학생 정보를 저장
+						uId,
+						rs.getString("PASSWORD"),
+						rs.getString("NAME"),
+						rs.getInt("AGE"),
+						rs.getInt("GENDER"),
+						rs.getInt("POSITION"),
+						rs.getString("INTRODUCE"));
+				return user;
+			}						
 		} catch (Exception ex) {					
 			ex.printStackTrace();				
 		} finally {				
@@ -277,7 +274,35 @@ public class InforestUserDAO {
 		return false;
 	}
 	
-	public boolean login(String userId, String password)
+
+	public static InforestUser findUser(String userId) throws SQLException {
+        String sql = query + "WHERE USER_ID=? ";  
+        
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			if (rs.next()) {						// 학생 정보 발견
+				InforestUser user = new InforestUser(		// User 객체를 생성하여 학생 정보를 저장
+					userId,
+					rs.getString("PASSWORD"),
+					rs.getString("NAME"),
+					rs.getInt("AGE"),
+					rs.getInt("GENDER"),
+					rs.getInt("POSITION"),
+					rs.getString("INTRODUCE"));
+		
+				return user;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return null;
+	}
+	
+	public static boolean login(String userId, String password)
 			throws SQLException, UserNotFoundException, PasswordMismatchException {
 			InforestUser user = getInforestUserById(userId);
 

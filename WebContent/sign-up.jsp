@@ -5,14 +5,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-   <title>Sign Up</title>
+   <title>INFOREST</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="css/util.css">
    <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-
-
 
 
 
@@ -49,49 +47,44 @@ function userList(targetUri) {
 
 </head>
 <body>
-      <!-- Header -->
+    <!-- Header -->
    <header class="header-v3">
       <!-- Header desktop -->
       <div class="container-menu-desktop">
-         <div class ="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop container">
+         <div class="wrap-menu-desktop how-shadow1">
+            <nav class="limiter-menu-desktop p-l-45">
                
                <!-- Logo desktop -->      
                <a href="home.jsp" class="logo">
-                     <img src="images/icons/inforest_logo.png" alt="IMG-LOGO">
-                     </a>
-
+                  <img src="images/icons/logo.png" alt="IMG-LOGO">
+               </a>
+              
                <!-- Menu desktop -->
                <div class="menu-desktop">
                   <ul class="main-menu">
-                      <li>
-                      <button type="button" onClick="userList('<c:url value='/main'/>')" style="color:white">HOME</button>
+                     <li>
+                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
                      </li>
 
                      <li>
-                       <button type="button" onClick="userList('<c:url value='/rank'/>')" style="color:white">RANK</button>
-                     </li>
+                      <a href="<c:url value='/rankCont'/>" style="text-decoration:none">RANK</a>
+                      </li>
 
                      <li>
-                       <button type="button" onClick="userList('<c:url value='/product'/>')" style="color:white">PRODUCT</button>
-                     </li>
-
-                     <li>
-                        <button type="button" onClick="userList('<c:url value='/post'/>')" style="color:white">POST</button>
-                     </li>
-
-                     <li>
-                        <button type="button" onClick="userList('<c:url value='/mypage'/>')" style="color:white">MYPAGE</button>
+                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
                      
                      <li>
-                        <button type="button" onClick="userList('<c:url value='/signIn'/>')" style="color:white">SIGN-IN</button>
-                    </li>
+                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
+                     </li>
                      
+                     <li>
+                     	<a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
+                     </li>
                   </ul>
-               </div>
-            </nav>
-         </div>   
+               </div>   
+			</nav>
+          </div>   
       </div>
    </header>
 
@@ -99,7 +92,7 @@ function userList(targetUri) {
 
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/sign_bg.png');">
-      <h2 class="ltext-105 cl0 txt-center">
+   	<h2 class="ltext-105 cl0 txt-center">
          Sign Up
       </h2>
    </section>   
@@ -169,7 +162,6 @@ function userList(targetUri) {
       <td class="column-2">
       <div class="flex-l-m flex-w w-full p-t-10 m-lr--7">   
           &nbsp;&nbsp;&nbsp;<input type="radio" name="position" value="0">&nbsp; ADMIN &nbsp;&nbsp;&nbsp;
-         &nbsp;&nbsp;&nbsp;<input type="radio" name="position" value="1">&nbsp; EDITOR &nbsp;&nbsp;&nbsp;
          <input type="radio" name="position" value="2">&nbsp; USER
          <!-- <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder=""> -->
       </div>   
@@ -189,7 +181,7 @@ function userList(targetUri) {
    <tr class="table_row">
       <td class="column-1">
          <div class="flex-c-m stext-101 cl2 size-submit bg8 bor13 hov-btn3  trans-04 pointer m-tb-5">
-        <button type="button" onClick="userList('<c:url value='/signIn'/>')">Back To Log-In</button>
+        <button type="button" onClick="userList('<c:url value='/signIn'/>')">Back To Login</button>
                </div>
       </td>
       <td class="column-2">

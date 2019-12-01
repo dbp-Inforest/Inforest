@@ -5,14 +5,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-   <title>Sign In</title>
+   <title>INFOREST</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="css/util.css">
    <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-
-
 
 <script>
    function login() {
@@ -41,47 +39,42 @@
 
 
 <body>
-      <!-- Header -->
+     <!-- Header -->
    <header class="header-v3">
       <!-- Header desktop -->
       <div class="container-menu-desktop">
-         <div class ="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop container">
+         <div class="wrap-menu-desktop how-shadow1">
+            <nav class="limiter-menu-desktop p-l-45">
                
                <!-- Logo desktop -->      
                <a href="home.jsp" class="logo">
-                     <img src="images/icons/inforest_logo.png" alt="IMG-LOGO">
-                     </a>
-
+                  <img src="images/icons/logo.png" alt="IMG-LOGO">
+               </a>
+              
                <!-- Menu desktop -->
                <div class="menu-desktop">
-                 <ul class="main-menu">
+                  <ul class="main-menu">
                      <li>
-                      <button type="button" onClick="userCreate('<c:url value='/main'/>')" style="color:white">HOME</button>
+                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
                      </li>
 
                      <li>
-                       <button type="button" onClick="userCreate('<c:url value='/rank'/>')" style="color:white">RANK</button>
+                     <a href="<c:url value='/rankCont'/>" style="text-decoration:none">RANK</a>
                      </li>
 
                      <li>
-                       <button type="button" onClick="userCreate('<c:url value='/product'/>')" style="color:white">PRODUCT</button>
+                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
 
-                     <li>
-                        <button type="button" onClick="userCreate('<c:url value='/post'/>')" style="color:white">POST</button>
-                     </li>
-
-                     <li>
-                        <button type="button" onClick="userCreate('<c:url value='/mypage'/>')" style="color:white">MYPAGE</button>
+                    <li>
+                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
                      
                      <li>
-                        <button type="button" onClick="userCreate('<c:url value='/signIn'/>')" style="color:white">SIGN-IN</button>
-                    </li>
-                     
+                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
+                     </li>
                   </ul>
-               </div>
+               </div>   
             </nav>
          </div>   
       </div>
@@ -125,13 +118,13 @@
       <tr class="table_row">
       <td class="column-1">
          <div class="flex-c-m stext-101 cl2 size-submit bg8 bor13 hov-btn3  trans-04 pointer m-tb-5">
-       <button type="button" onClick="userCreate('<c:url value='/register_form'/>')">GO TO SIGHN-UP</button>
+       <button type="button" onClick="userCreate('<c:url value='/signUp'/>')">GO TO SIGN-UP</button>
                  
          </div>
       </td>
       <td class="column-2">
          <div class="flex-c-m stext-101 cl2 size-submit bg8 bor13 hov-btn3  trans-04 pointer m-tb-10">
-            <button type="button">LOGIN</button>
+            <button type="button" onclick="login()")>LOGIN</button>
          </div>
       </td>
    </tr>

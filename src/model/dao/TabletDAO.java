@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.DAOFactory;
-import model.dao.TabletDAO;
 import model.dto.*;
 
 import java.sql.*;
@@ -30,14 +29,18 @@ public class TabletDAO{
 								         "PRODUCT.P_KIND AS TABLET_KIND ";		
 
 	// TabletDAOImpl 생성자
-	public TabletDAO() {			
-		jdbcUtil = new JDBCUtil();		// TabletDAOImpl 객체 생성 시 JDBCUtil 객체 생성
+	public TabletDAO() {   
+		try {
+	        jdbcUtil = new JDBCUtil();   // JDBCUtil 객체 생성;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }   
 	}
 	
 	// 전체 태블릿을 List으로 반환하는 메소드
 	public List<Tablet> getTabletList() {
 		// PRODUCT 테이블을 상속받았기 때문에 전체 태블릿 정보를 가져옴
-		String allQuery = query + ", " + "FROM TABLET, PRODUCT"
+		String allQuery = query + "FROM TABLET, PRODUCT "
 							+ "WHERE TABLET.PRODUCT_ID = PRODUCT.PRODUCT_ID";		
 		jdbcUtil.setSql(allQuery);		// JDBCUtil 에 query 설정
 		
@@ -72,19 +75,20 @@ public class TabletDAO{
 	// 태블릿의 이름으로 정보를 검색하여 해당 태블릿의 정보를 갖고 있는 TabletDTO 객체를 반환하는 메소드
 	public List<Tablet> getTabletByName(String tname) {
 		// 기본 쿼리와 합쳐져  tname을 포함하는 name을 가진 tablet 정보를 가져오는 테이블
-		String searchQuery = query + ", " + "FROM TABLET, PRODUCT"
-				+ "WHERE TABLET.PRODUCT_ID = PRODUCT.PRODUCT_ID "
-				+ "AND PRODUCT.NAME = ? ";	 
+		String searchQuery = query + "FROM TABLET, PRODUCT "
+				+ "WHERE TABLET.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.NAME LIKE ? ";	 
 		jdbcUtil.setSql(searchQuery);	// JDBCUtil 에 query 문 설정
-		Object[] param = new Object[] { ("%" + tname + "%") };		// 태블릿을 찾기 위한 조건으로 이름을 설정
+		System.out.println("tname: " + tname);
+		Object[] param = new Object[] { "%" + tname + "%" };		// 태블릿을 찾기 위한 조건으로 이름을 설정
 		jdbcUtil.setParameters(param);				// JDBCUtil 에 query문의 매개변수 값으로 사용할 매개변수 설정
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행
 			List<Tablet> list = new ArrayList<Tablet>();		// TabletDTO 객체들을 담기위한 list 객체
-			if (rs.next()) {						// 찾은 카메라의 정보를 TabletDTO 객체에 설정
+			while (rs.next()) {						// 찾은 카메라의 정보를 TabletDTO 객체에 설정
 				Tablet dto = new Tablet();
 				dto.setProductId(rs.getString("TABLET_ID"));
+				System.out.println("dto : " + dto.getProductId());
 				dto.settBattery(rs.getString("TABLET_BATTERY"));
 				dto.settMemory(rs.getString("TABLET_MEMORY"));
 				dto.settOS(rs.getString("TABLET_OS"));
@@ -109,20 +113,19 @@ public class TabletDAO{
 
 	
 	// 모델명으로 정보를 검색하여 해당 태블릿의 정보를 갖고 있는 TabletDTO 객체를 반환하는 메소드
-	public List<Tablet> getTabletById(String tId) {
+	public Tablet getTabletById(String tId) {
 		// 기본 쿼리와 합쳐져  tId를 포함하는 name을 가진 tablet 정보를 가져오는 테이블
-		String searchQuery = query + ", " + "FROM TABLET, PRODUCT"
-				+ "WHERE TABLET.PRODUCT_ID = PRODUCT.PRODUCT_ID "
-				+ "AND PRODUCT.PRODUCT_ID = ? ";	 
+		String searchQuery = query + "FROM TABLET, PRODUCT "
+				+ "WHERE TABLET.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.PRODUCT_ID = ?"; 	 
 		jdbcUtil.setSql(searchQuery);	// JDBCUtil 에 query 문 설정
-		Object[] param = new Object[] { ("%" + tId + "%") };		// 태블릿을 찾기 위한 조건으로 이름을 설정
+		System.out.println("tId: " + tId);
+		Object[] param = new Object[] { tId };		// 태블릿을 찾기 위한 조건으로 이름을 설정
 		jdbcUtil.setParameters(param);				// JDBCUtil 에 query문의 매개변수 값으로 사용할 매개변수 설정
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 문 실행
-			List<Tablet> list = new ArrayList<Tablet>();		// TabletDTO 객체들을 담기위한 list 객체
+			Tablet dto = new Tablet();		// TabletDTO 객체들을 담기위한 list 객체
 			if (rs.next()) {						// 찾은 학생의 정보를 TabletDTO 객체에 설정
-				Tablet dto = new Tablet();
 				dto.setProductId(rs.getString("TABLET_ID"));
 				dto.settBattery(rs.getString("TABLET_BATTERY"));
 				dto.settMemory(rs.getString("TABLET_MEMORY"));
@@ -135,9 +138,8 @@ public class TabletDAO{
 				dto.setBrand(rs.getString("TABLET_BRAND"));
 				dto.setReleased_date(rs.getDate("TABLET_RELEASED_DATE"));
 				dto.setWeight(rs.getDouble("TABLET_WEIGHT"));
-				list.add(dto);
 			}
-			return list;				// 찾은 학생의 정보를 담고 있는 TabletDTO 객체 반환
+			return dto;				// 찾은 학생의 정보를 담고 있는 TabletDTO 객체 반환
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -228,11 +230,11 @@ public class TabletDAO{
 			tempParam[index++] = tablet.gettSize();		// 매개변수에 수정할 크기 추가
 		}
 		if (tablet.getWeight() >= 0) {		// 무게가 설정되어 있을 경우
-			updateQuery += "WEIGHT = ?, ";		// update 문에 무게 수정 부분 추가
+			updateQuery += "WEIGHT = ? ";		// update 문에 무게 수정 부분 추가
 			tempParam[index++] = tablet.getWeight();		// 매개변수에 수정할 무게 추가
 		}
 		
-		updateQuery += "WHERE PRODUCT_ID = ? ";		// update 문에 조건 지정
+		updateQuery += " WHERE PRODUCT_ID = ? ";		// update 문에 조건 지정
 		updateQuery = updateQuery.replace(", WHERE", " WHERE");		// update 문의 where 절 앞에 있을 수 있는 , 제거
 		
 		tempParam[index++] = tablet.getProductId();		// 찾을 조건에 해당하는 학번에 대한 매개변수 추가
