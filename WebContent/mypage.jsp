@@ -37,59 +37,8 @@
 
 </head>
 <body class="animsition">
-   <!-- Header -->
-   <header class="header-v3">
-      <!-- Header desktop -->
-      <div class="container-menu-desktop">
-         <div class="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop p-l-45">
-               
-               <!-- Logo desktop -->      
-               <a href="home.jsp" class="logo">
-                  <img src="images/icons/logo.png" alt="IMG-LOGO">
-               </a>
-              
-               <!-- Menu desktop -->
-               <div class="menu-desktop" style="float:left">
-                  <ul class="main-menu">
-                     <li>
-                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
-                     </li>
-
-                     <li>
-                      <a href="<c:url value='/rank'/>" style="text-decoration:none">RANK</a>
-                     </li>
-
-                     <li>
-                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
-                     </li>
-
-                     <li>
-                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
-                     </li>
-                     <%
-                     	if(session.getAttribute("userId") == null) { %>
-	                     <li>
-	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
-	                     </li> 
-	                     </ul> 
-                     <% } else {
-	                	 	if((int)session.getAttribute("position") == 0) { %>
-	                     <li>
-	                        <a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
-	                     </li> 
-                     	<% } %>	
-	                     </ul>
-	                     <div class="menu-desktop" style="float:right">
-	                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
-	                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
-	                     </div>
-					 <% } %>		 
-               </div>   
-            </nav>
-         </div>   
-      </div>
-   </header>
+	<!-- Header import -->
+	<jsp:include page="/WEB-INF/views/header.jsp"/>
 
 
    <!-- Title page -->
@@ -149,17 +98,22 @@
            </table>
            <br><br>
            <input type="hidden" name="userId" value="<%= session.getAttribute("userId") %>"/>
-           <form name="form" action="<c:url value='/signUpdate'/>">
-	       <div class="flex-w flex-t p-b-13">
-				<!-- User Update -->		
+	       <form name="form" action="<c:url value='/signUpdate'/>">	
+	       		<div class="size-204 flex-w flex-m respon6-next">
+				<!-- User Update -->	
 				<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" onClick="manageView(<%= session.getAttribute("userId") %>, '<c:url value='/user_update'/>')">
 					        User Update </button>
+				</div>
+			</form>
+			<br>
 				<!-- User Delete -->
-				<form name="form" action="<c:url value='/user_delete'/>">
+			<form name="form" action="<c:url value='/user_delete'/>">
+				<div class="size-204 flex-w flex-m respon6-next">
 				<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" onClick="manageView(<%= session.getAttribute("userId") %>, '<c:url value='/user_delete'/>')">
-					User Delete </button>   
-			</div>    
-			</form>     
+					User Delete </button>
+				</div>
+			</form>  
+			</div>        
          </div>
        </div>
    <br><br>
@@ -230,12 +184,12 @@
                   <div class="flex-w flex-t bor12 p-b-13">
                      <div class="size-208">
                         <span class="stext-110 cl2">
-                           Comment List:
+                           Comment List: user
                         </span>
                      </div>
                   <div class="flex-w flex-t p-t-27 p-b-33">
                      <div class="size-400">
-                           	아이폰 11 너무 좋아요!!! 인덕션 최고
+                           	아이폰 11 너무 좋아요!!! 인덕션 최고 내용
                      </div>
                   </div>
                    </div>

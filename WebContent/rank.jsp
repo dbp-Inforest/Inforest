@@ -18,48 +18,9 @@
 </head>
 <body class="animsition">
    
-   <!-- Header -->
-   <header class="header-v3">
-      <!-- Header desktop -->
-      <div class="container-menu-desktop">
-         <div class="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop p-l-45">
-               
-               <!-- Logo desktop -->      
-               <a href="home.jsp" class="logo">
-                  <img src="images/icons/logo.png" alt="IMG-LOGO">
-               </a>
-              
-               <!-- Menu desktop -->
-               <div class="menu-desktop">
-                  <ul class="main-menu">
-                     <li>
-                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
-                     </li>
+   <!-- Header import -->
+   <jsp:include page="/WEB-INF/views/header.jsp"/>
 
-                     <li>
-                      <a href="<c:url value='/rankCont'/>" style="text-decoration:none">RANK</a>
-                     </li>
-
-                     <li>
-                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
-                     </li>
-
-                    <li>
-                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
-                     </li>
-                     
-                     <li>
-                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
-                     </li>
-                  </ul>
-               </div>   
-            </nav>
-         </div>   
-      </div>
-   </header>
-
-   
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/rank_bg.png'); " >
       <h2 class="ltext-105 cl0 txt-center">
@@ -67,9 +28,9 @@
       </h2>
    </section>   
  
-<!-- Rank -->
-<!-- 이미지 크기는 80*80 픽셀 (.jpg) -->
-<form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -515px;">
+	<!-- Rank -->
+	<!-- 이미지 크기는 80*80 픽셀 (.jpg) -->
+	<form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -515px;">
 		<div class="container" >
 			<div class="row"  style="display:inline">
 				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:500px">

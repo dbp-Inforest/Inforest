@@ -16,30 +16,30 @@ public class DeleteUserController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-		String deleteId = request.getParameter("userId");
+    	HttpSession session = request.getSession();	
+		String deleteId = (String)session.getAttribute("userId");
     	log.debug("Delete User : {}", deleteId);
 
-		InforestUserDAO manager = new InforestUserDAO();
-		int rslt = manager.deleteInforestUser(deleteId);
-		HttpSession session = request.getSession();	
+		InforestUserDAO userDAO = new InforestUserDAO();
+		int rslt = userDAO.deleteInforestUser(deleteId);
+		
 	
-		/* 나중에 구현할 내용
+		
 		if ((UserSessionUtils.isLoginUser("admin", session) && 	// 로그인한 사용자가 관리자이고 	
 			 !deleteId.equals("admin"))							// 삭제 대상이 일반 사용자인 경우, 
 			   || 												// 또는 
 			(!UserSessionUtils.isLoginUser("admin", session) &&  // 로그인한 사용자가 관리자가 아니고 
 			  UserSessionUtils.isLoginUser(deleteId, session))) { // 로그인한 사용자가 삭제 대상인 경우 (자기 자신을 삭제)
 				
-			manager.remove(deleteId);				// 사용자 정보 삭제
+			userDAO.deleteInforestUser(deleteId);				// 사용자 정보 삭제
 			if (UserSessionUtils.isLoginUser("admin", session))	// 로그인한 사용자가 관리자 	
-				return "redirect:/user/list";		// 사용자 리스트로 이동
+				return "redirect:/management";		// 사용자 리스트로 이동
 			else 									// 로그인한 사용자는 이미 삭제됨
-				return "redirect:/user/logout";		// logout 처리
+				return "redirect:/logout";		// logout 처리
 		}
-		*/
 		
 		/* 삭제가 불가능한 경우 */
-		InforestUser user = manager.getInforestUserById(deleteId);	// 사용자 정보 검색
+		InforestUser user = userDAO.getInforestUserById(deleteId);	// 사용자 정보 검색
 		request.setAttribute("user", user);						
 		request.setAttribute("deleteFailed", true);
 		String msg = (UserSessionUtils.isLoginUser("admin", session)) 

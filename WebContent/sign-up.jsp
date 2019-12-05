@@ -12,91 +12,43 @@
    <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
-
-
 <script>
-function userCreate() {
-   if (form.userId.value == "") {
-      alert("사용자 ID를 입력하십시오.");
-      form.userId.focus();
-      return false;
-   } 
-   if (form.password.value == "") {
-      alert("비밀번호를 입력하십시오.");
-      form.password.focus();
-      return false;
-   }
-   if (form.name.value == "") {
-      alert("이름을 입력하십시오.");
-      form.name.focus();
-      return false;
-   }
-   form.submit();
-}
-
-function userList(targetUri) {
-      form.action = targetUri;
-      form.submit();
-   }
-   
-   
+	function userCreate() {
+	   if (form.userId.value == "") {
+	      alert("사용자 ID를 입력하십시오.");
+	      form.userId.focus();
+	      return false;
+	   } 
+	   if (form.password.value == "") {
+	      alert("비밀번호를 입력하십시오.");
+	      form.password.focus();
+	      return false;
+	   }
+	   if (form.name.value == "") {
+	      alert("이름을 입력하십시오.");
+	      form.name.focus();
+	      return false;
+	   }
+	   form.submit();
+	}
+	
+	function userList(targetUri) {
+	      form.action = targetUri;
+	      form.submit();
+	}  
 </script>
-
-
-
-
 </head>
 <body>
-    <!-- Header -->
-   <header class="header-v3">
-      <!-- Header desktop -->
-      <div class="container-menu-desktop">
-         <div class="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop p-l-45">
-               
-               <!-- Logo desktop -->      
-               <a href="home.jsp" class="logo">
-                  <img src="images/icons/logo.png" alt="IMG-LOGO">
-               </a>
-              
-               <!-- Menu desktop -->
-               <div class="menu-desktop">
-                  <ul class="main-menu">
-                     <li>
-                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
-                     </li>
 
-                     <li>
-                      <a href="<c:url value='/rankCont'/>" style="text-decoration:none">RANK</a>
-                      </li>
-
-                     <li>
-                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
-                     </li>
-                     
-                     <li>
-                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
-                     </li>
-                     
-                     <li>
-                     	<a href="<c:url value='/signIn'/>" style="text-decoration:none">SIGN IN</a>
-                     </li>
-                  </ul>
-               </div>   
-			</nav>
-          </div>   
-      </div>
-   </header>
-
+   <!-- Header import -->
+   <jsp:include page="/WEB-INF/views/header.jsp"/>
    
-
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/sign_bg.png');">
-   	<h2 class="ltext-105 cl0 txt-center">
-         Sign Up
-      </h2>
+	   	<h2 class="ltext-105 cl0 txt-center">
+	         Sign Up
+	    </h2>
    </section>   
-
 
 <div style="height:50px;">&nbsp;</div>
 
@@ -111,7 +63,7 @@ function userList(targetUri) {
          ID
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="userId" placeholder="">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="userId" placeholder="ID를 입력하세요">
       </td>
    </tr>
 
@@ -120,7 +72,7 @@ function userList(targetUri) {
          PASSWORD
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="password" name="password" placeholder="">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="password" name="password" placeholder="비밀번호를 입력하세요(8자이상)">
       </td>
    </tr>
    
@@ -129,7 +81,7 @@ function userList(targetUri) {
          NAME
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="name" placeholder="">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="name" placeholder="이름을 입력하세요">
       </td>
    </tr>
    
@@ -138,7 +90,7 @@ function userList(targetUri) {
          AGE
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="age" placeholder="">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="age" placeholder="나이를 입력하세요">
       </td>
    </tr>
    

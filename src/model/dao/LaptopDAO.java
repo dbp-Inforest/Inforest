@@ -193,24 +193,35 @@ public class LaptopDAO{
 	}
 
 
-	public int deleteLaptop(int lProductId) {
-		String deleteQuery = "DELETE FROM LAPTOP WHERE PRODUCT_ID = ?";
-		
-		jdbcUtil.setSql(deleteQuery);			// JDBCUtil 에 query 문 설정
-		Object[] param = new Object[] {lProductId};
-		jdbcUtil.setParameters(param);			// JDBCUtil 에 매개변수 설정
-		
-		try {
-			int result = jdbcUtil.executeUpdate();		// delete 문 실행
-			return result;						// delete 에 의해 반영된 레코드 수 반환
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();		
-		} finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
-		}
-		return 0;
+	public void deleteLaptop(String lProductId) {
+	      String deleteQuery1 = "DELETE FROM LAPTOP WHERE PRODUCT_ID = ? ";
+	      String deleteQuery2 = "DELETE FROM PRODUCT WHERE PRODUCT_ID = ? ";
+	      
+	      try {
+	         jdbcUtil.setSql(deleteQuery1);         // JDBCUtil 에 query 문 설정
+	         Object[] param = new Object[] { lProductId };
+	         jdbcUtil.setParameters(param);         // JDBCUtil 에 매개변수 설정
+	         int result = jdbcUtil.executeUpdate();      // delete 문 실행
+	         if( result != 0 ) {
+	             System.out.println("product 삭제 완료"); 
+	         }
+	         
+	         jdbcUtil.setSql(deleteQuery2);         // JDBCUtil 에 query 문 설정
+	         jdbcUtil.setParameters(param);         // JDBCUtil 에 매개변수 설정
+	         result = jdbcUtil.executeUpdate();      // delete 문 실행
+	         if( result != 0 ) {
+	             System.out.println("Laptop 삭제 완료"); 
+	         }
+	         
+	         return; // delete 에 의해 반영된 레코드 수 반환
+	      } catch (Exception ex) {
+	         jdbcUtil.rollback();
+	         ex.printStackTrace();      
+	      } finally {
+	         jdbcUtil.commit();
+	         jdbcUtil.close();      // ResultSet, PreparedStatement, Connection 반환
+	      }
+	      return;		
 	}
 
 

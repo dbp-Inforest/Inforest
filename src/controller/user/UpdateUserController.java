@@ -28,6 +28,6 @@ public class UpdateUserController implements Controller {
 		InforestUserDAO manager = new InforestUserDAO();
 		manager.updateInforestUser(updateUser);
 		System.out.println("유저 수정 완료!");
-        return "redirect:/management";			
+        return "redirect:/mypage";			
     }
 }

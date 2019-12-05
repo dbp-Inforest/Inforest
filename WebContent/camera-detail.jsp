@@ -14,72 +14,20 @@
 
 </head>
 <body class="animsition">
+   <!-- Header import -->
+   <jsp:include page="/WEB-INF/views/header.jsp"/>
    
-   <!-- Header -->
-   <header class="header-v3">
-      <!-- Header desktop -->
-      <div class="container-menu-desktop">
-         <div class="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop p-l-45">
-               
-               <!-- Logo desktop -->      
-               <a href="home.jsp" class="logo">
-                  <img src="images/icons/logo.png" alt="IMG-LOGO">
-               </a>
-              
-               <!-- Menu desktop -->
-               <div class="menu-desktop" style="float:left">
-                  <ul class="main-menu">
-                     <li>
-                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
-                     </li>
-
-                     <li>
-             	        <a href="<c:url value='/rankCont'/>" style="text-decoration:none">RANK</a>
-                     </li>
-
-                     <li>
-                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
-                     </li>
-
-                     <li>
-                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
-                     </li>
-                     <%
-                     	if(session.getAttribute("userId") == null) { %>
-	                     <li>
-	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
-	                     </li> 
-	                     </ul> 
-                     <% } else {
-	                	 	if((int)session.getAttribute("position") == 0) { %>
-	                     <li>
-	                        <a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
-	                     </li> 
-                     	<% } %>	
-	                     </ul>
-	                     <div class="menu-desktop" style="float:right">
-	                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
-	                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
-	                     </div>
-					 <% } %>		 
-               </div>   
-            </nav>
-         </div>   
-      </div>
-   </header>
-
-  
-
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/product_bg.jpg');">
       <h2 class="ltext-105 cl0 txt-center">
          Product Details
       </h2>
    </section>   
+   
 <%
 System.out.println("camera-detail.jsp");
 %>
+
    	<!-- Product Detail -->
 	<section class="sec-product-detail bg0 p-t-65 p-b-60">
 			<div>
@@ -118,7 +66,7 @@ System.out.println("camera-detail.jsp");
 								 COLOR : <c:out value="${cameraDetail.color}"/>
 							</p>
 							<p class="stext-100 cl3 p-t-23">
-								 WEIGHT : <c:out value="${cameraDetail.weight}"/> 
+								 WEIGHT : <c:out value="${cameraDetail.weight}"/>g
 							</p>
 							<p class="stext-100 cl3 p-t-23">
 								 RELEASED DATE : <c:out value="${cameraDetail.released_date}"/>
@@ -191,11 +139,22 @@ System.out.println("camera-detail.jsp");
 										<!-- 여기 ADD TO 'LIKE' 버튼 누르면 관심 상품에 등록될 수 있도록..? -->
 						<div class="p-t-33">
 							<div class="flex-w flex-r-m p-b-10">
+							<% if((int)session.getAttribute("position") == 2) { %>
 								<div class="size-204 flex-w flex-m respon6-next">
 									<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 										ADD TO 'LIKE'
 									</button>
 								</div>
+							<% } else if((int)session.getAttribute("position") == 0) { %>
+								<div class="size-204 flex-w flex-m respon6-next">
+									<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                     					UPDATE
+                					</button>	
+                					<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                     					DELETE
+               						</button>	
+								</div>
+							<% } %>
 							</div>	
 						</div>
 									</ul>

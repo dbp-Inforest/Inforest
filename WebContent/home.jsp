@@ -15,77 +15,9 @@
 <!--===============================================================================================-->
 </head>
 <body>
-   <!-- Header -->
-   <header class="header-v3">
-      <!-- Header desktop -->
-      <div class="container-menu-desktop">
-         <div class="wrap-menu-desktop how-shadow1">
-            <nav class="limiter-menu-desktop p-l-45">
-               
-               <!-- Logo desktop -->      
-               <a href="home.jsp" class="logo">
-                  <img src="images/icons/logo.png" alt="IMG-LOGO">
-               </a>
-              
-               <!-- Menu desktop -->
-               <div class="menu-desktop" style="float:left">
-                  <ul class="main-menu">
-                     <li>
-                         <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
-                     </li>
+	<!-- Header import -->
+	<jsp:include page="/WEB-INF/views/header.jsp"/>
 
-                     <li>
-                      <a href="<c:url value='/rankCont'/>" style="text-decoration:none">RANK</a>
-                     </li>
-
-                     <li>
-                      <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
-                     </li>
-
-                     <li>
-                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
-                     </li>
-                     <%
-                     	if(session.getAttribute("userId") == null) { %>
-	                     <li>
-	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
-	                     </li> 
-	                     </ul> 
-                     <% } else {
-	                	 	if((int)session.getAttribute("position") == 0) { %>
-	                     <li>
-	                        <a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
-	                     </li> 
-                     	<% } %>	
-	                     </ul>
-	                     <div class="menu-desktop" style="float:right">
-	                     	<font style="color:white"><%= session.getAttribute("userId") %> 님 안녕하세요. </font> &nbsp;
-	                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
-	                     </div>
-					 <% } %>		 
-               </div>   
-            </nav>
-         </div>   
-      </div>
-   </header>
-
-<!--
-                      {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a href="" class="nav-link"><img src="{% static 'user_icon.png' %}" id="img1" width="20px" height="20px"> {{ user.username }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span>LOGOUT</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'signup' %}"><span class="glyphicon glyphicon-new-window"></span> SIGN UP</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a>
-                            </li>
-                        {% endif %}
-  -->
          <!-- Modal Search -->
       <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
          <button class="flex-c-m btn-hide-modal-search trans-04">
@@ -103,9 +35,6 @@
          </form>
       </div>
    </header>
-
-
-
 
    <!-- Slider -->
    <section class="section-slide">

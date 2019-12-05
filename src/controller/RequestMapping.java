@@ -39,6 +39,15 @@ public class RequestMapping {
         mappings.put("/productSearch", new ViewProductController());
         mappings.put("/rankCont", new RankingProductController());
         
+        /* Admin Management 관련 Mapping */
+        mappings.put("/product_insert", new ForwardController("/product-insert.jsp")); // 제품 등록 페이지로 forwarding
+        mappings.put("/insertProduct", new CreateProductController()); // 제품 등록
+        
+        mappings.put("/product_update", new ForwardController("/product-update.jsp")); // 제품 수정 페이지로 forwarding
+        mappings.put("/updateProduct", new UpdateProductController()); // 제품 수정
+        
+        mappings.put("/deleteProduct", new DeleteProductController()); // 제품 삭제
+        
         /* Home Header 관련  Mapping*/
         mappings.put("/rank", new ForwardController("/rank.jsp"));   //rank.jsp이동
         mappings.put("/product", new ForwardController("/product.jsp"));   //product.jsp이동

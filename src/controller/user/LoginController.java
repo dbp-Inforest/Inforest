@@ -11,21 +11,25 @@ import model.service.PasswordMismatchException;
 import model.service.UserNotFoundException;
 
 public class LoginController implements Controller {
-    @Override
+    @SuppressWarnings("static-access")
+	@Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	
+    	HttpSession session = request.getSession();
     	String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
-		InforestUser user = new InforestUser();
 		InforestUserDAO userDAO = new InforestUserDAO();
+		InforestUser user = userDAO.getInforestUserById(userId);
 		
+		System.out.println("login controller");
 		try {
 			if(userDAO.login(userId, password) == true) {
-				HttpSession session = request.getSession();
-				user = userDAO.getInforestUserById(userId);
 	            session.setAttribute(UserSessionUtils.USER_SESSION_KEY, userId);
+	            session.setAttribute(UserSessionUtils.USER_NAME_KEY, user.getName());
 	            session.setAttribute(UserSessionUtils.USER_POSITION_KEY, user.getPosition());
 	            System.out.println("userPosition : " + user.getPosition());
+	            System.out.println("login success : " + user.getUserId());
+	            
 				return "redirect:/main";
 			}	
 			return "/sign-in.jsp";
