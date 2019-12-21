@@ -3,7 +3,6 @@ package model.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.DAOFactory;
 import model.dto.*;
 
 import java.sql.*;
