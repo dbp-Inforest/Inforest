@@ -42,21 +42,32 @@
                       <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
 
+					<c:if test="${userId != null}">
                      <li>
                        <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
+                     </c:if>
+                    
+                     <c:if test="${userId == null}">
+                     <li>
+                     	 <a href="<c:url value='/signIn'/>" style="text-decoration:none">MY PAGE</a>
+                     </li>
+                     </c:if> 
+                     
                      <c:if test="${userId == null}">
 	                     <li>
 	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
 	                     </li> 
 	                     </ul> 
 	                 </c:if>
+	                 
 	                 <c:if test="${userId != null}">
 	                 	<c:if test="${position == 0}">
 	                 		<li>
 	                        	<a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
 	                     	</li> 
 	                 	</c:if>
+	                 	
 	                 		<li>
 		                 		<font style="color:white"><%= session.getAttribute("name") %> 님 안녕하세요. </font> &nbsp;
 	                 		</li>
