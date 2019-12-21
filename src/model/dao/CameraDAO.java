@@ -279,8 +279,8 @@ public class CameraDAO {
 		String searchQuery = query + "FROM CAMERA, PRODUCT "
 				+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.PRODUCT_ID = ? ";
 		
+		Object[] param = new Object[] {cId};		// 태블릿을 찾기 위한 조건으로 이름을 설정
 		jdbcUtil.setSql(searchQuery);	// JDBCUtil 에 query 문 설정
-		Object[] param = new Object[] { ("%" + cId + "%") };		// 태블릿을 찾기 위한 조건으로 이름을 설정
 		jdbcUtil.setParameters(param);				// JDBCUtil 에 query문의 매개변수 값으로 사용할 매개변수 설정
 		
 		try {
