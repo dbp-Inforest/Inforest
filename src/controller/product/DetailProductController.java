@@ -19,6 +19,8 @@ import model.dto.PComment;
 import model.dto.Phone;
 import model.dto.Tablet;
 
+import model.service.UserAnalysis;
+
 public class DetailProductController implements Controller{
    
    private PhoneDAO phoneDAO = new PhoneDAO(); 
@@ -35,26 +37,32 @@ public class DetailProductController implements Controller{
 	   
       String kind = request.getParameter("kind2"); //0,1,2,3
       String pid = request.getParameter("pId");
+
       List<PComment> plist = pcommentDAO.getPCommentList();
+      UserAnalysis userAnalysis;
       
       if(request.getMethod().equals("GET")) { // GET request Ã³¸®          
           if(kind.equals("0")) { //phone
+        	 userAnalysis = new UserAnalysis(pid, kind);
              Phone phoneDetail = phoneDAO.getPhoneById(pid);
              request.setAttribute("phoneDetail", phoneDetail);
              request.setAttribute("plist", plist);
                return "/phone-detail.jsp";   
              
           }else if(kind.equals("1")){ //laptop
+        	 userAnalysis = new UserAnalysis(pid, kind);
              Laptop laptopDetail = laptopDAO.getLaptopById(pid);
              request.setAttribute("laptopDetail", laptopDetail);   
                return "/laptop-detail.jsp";   
                
            }else if(kind.equals("2")) { //camera
+        	 userAnalysis = new UserAnalysis(pid, kind);  
              Camera cameraDetail = cameraDAO.getCameraById(pid);
              request.setAttribute("cameraDetail", cameraDetail);   
                return "/camera-detail.jsp";   
                
           }else if(kind.equals("3")) { //tablet
+        	 userAnalysis = new UserAnalysis(pid, kind);
              Tablet tabletDetail = tabletDAO.getTabletById(pid);
              request.setAttribute("tabletDetail", tabletDetail);   
                return "/tablet-detail.jsp";   
