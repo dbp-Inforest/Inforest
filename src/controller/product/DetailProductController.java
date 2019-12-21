@@ -37,8 +37,8 @@ public class DetailProductController implements Controller{
       String pid = request.getParameter("pId");
       List<PComment> commentList = pcommentDAO.getPCommentList();
       request.setAttribute("commentList", commentList);
-      
-       if(request.getMethod().equals("GET")) { // GET request 贸府          
+     
+      if(request.getMethod().equals("GET")) { // GET request 贸府          
           if(kind.equals("0")) { //phone
              Phone phoneDetail = phoneDAO.getPhoneById(pid);
              request.setAttribute("phoneDetail", phoneDetail);   
@@ -63,7 +63,7 @@ public class DetailProductController implements Controller{
           System.out.println("皋牢栏肺 捞悼");
           return "redirect:/main";
        }
-       else if(request.getMethod().equals("POST")) { //POST request 贸府 
+       else if(request.getMethod().equals("POST")) { //POST request 贸府 (瘩臂 贸府)
           System.out.println("DetailProductController: POST REQUEST 贸府 矫累 ");
           String review = request.getParameter("review");          
           
