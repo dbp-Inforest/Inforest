@@ -85,11 +85,11 @@ public class PCommentDAO {
       return 0;
    }
 
-   public int deletePComment(int pcProductId) {
+   public int deletePComment(String pcProductId) {
       String deleteQuery = "DELETE FROM P_COMMENT WHERE COMMENT_ID = ?";
-      
-      jdbcUtil.setSql(deleteQuery);         // JDBCUtil 에 query 문 설정
+     
       Object[] param = new Object[] {pcProductId};
+      jdbcUtil.setSql(deleteQuery);         // JDBCUtil 에 query 문 설정
       jdbcUtil.setParameters(param);         // JDBCUtil 에 매개변수 설정
       
       try {
