@@ -57,8 +57,12 @@
 	                        	<a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
 	                     	</li> 
 	                 	</c:if>
-	                 		<font style="color:white"><%= session.getAttribute("name") %> 님 안녕하세요. </font> &nbsp;
-	                     	<font style="color:white"><a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a></font>
+	                 		<li>
+		                 		<font style="color:white"><%= session.getAttribute("name") %> 님 안녕하세요. </font> &nbsp;
+	                 		</li>
+	                 		<li>
+		                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
+	                     	</li>
 						 </ul>
 	                 </c:if>	 
                </div>   
