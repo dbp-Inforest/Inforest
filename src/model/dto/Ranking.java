@@ -4,7 +4,7 @@ public class Ranking {
 
    private String productId;
    private String name;
-   private int likeCount;
+   private int likeCount=0;
    
    public String getProductId() {
       return productId;

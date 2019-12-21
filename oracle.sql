@@ -1,1 +1,1 @@
-select * from product_like;
+select * from inforest_user;
