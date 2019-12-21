@@ -29,142 +29,144 @@
 
    	<!-- Product Detail -->
 	<section class="sec-product-detail bg0 p-t-65 p-b-60">
-			<div>
-				<!-- Tab01 -->
-				<div class="tab01">
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs" role="tablist">
-						<!-- 세부적인 product 정보 (, laptop, camera, tablet 다 다름 -->
-						<li class="nav-item p-b-10" style="font-size:20px">
-							Additional information
-						</li>
-					</ul>
+		<div>
+			<!-- Tab01 -->
+			<div class="tab01">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<!-- 세부적인 product 정보 (, laptop, camera, tablet 다 다름 -->
+					<li class="nav-item p-b-10" style="font-size:20px">
+						Additional information
+					</li>
+				</ul>
 
-					<!-- Tab panes -->
-					<div class="tab-content p-t-43">
+				<!-- Tab panes -->
+				<div class="tab-content p-t-43">
 						
-						<!-- Additional information 내용 -->
-						<div class="tab-pane fade show active" id="information" role="tabpanel">
-							<div class="row">
-								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-									<ul class="p-lr-28 p-lr-15-sm">
+					<!-- Additional information 내용 -->
+					<div class="tab-pane fade show active" id="information" role="tabpanel">
+						<div class="row">
+							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+								<ul class="p-lr-28 p-lr-15-sm">
 									
 						<div>
-						<h3 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${laptopDetail.brand}"/></h3>
-						<h4 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${laptopDetail.name}"/></h4>
-						<span class="mtext-106 cl2">
-							<c:out value="${laptopDetail.price}"/>
-						</span>
-
-
-						<div style="height:50px;">&nbsp;</div>
-							<p class="stext-100 cl3 p-t-23">
-								 KIND : Laptop
-							</p>
-							<p class="stext-100 cl3 p-t-23">
-								 COLOR : <c:out value="${laptopDetail.color}"/>
-							</p>
-							<p class="stext-100 cl3 p-t-23">
-								 WEIGHT : <c:out value="${laptopDetail.weight}"/>g
-							</p>
-							<p class="stext-100 cl3 p-t-23">
-								 RELEASED DATE : <c:out value="${laptopDetail.released_date}"/>
-							</p>
-						</div>
+							<h3 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${laptopDetail.brand}"/></h3>
+							<h4 class="mtext-105 cl2 js-name-detail p-b-14"><c:out value="${laptopDetail.name}"/></h4>
+							<span class="mtext-106 cl2">
+								<c:out value="${laptopDetail.price}"/>
+							</span>
+	
+	
+							<div style="height:50px;">&nbsp;</div>
+								<p class="stext-100 cl3 p-t-23">
+									 KIND : Laptop
+								</p>
+								<p class="stext-100 cl3 p-t-23">
+									 COLOR : <c:out value="${laptopDetail.color}"/>
+								</p>
+								<p class="stext-100 cl3 p-t-23">
+									 WEIGHT : <c:out value="${laptopDetail.weight}"/>g
+								</p>
+								<p class="stext-100 cl3 p-t-23">
+									 RELEASED DATE : <c:out value="${laptopDetail.released_date}"/>
+								</p>
+							</div>
 						
 						
-						<div style="height:50px;">&nbsp;</div>
-							<li class="flex-w flex-t p-b-7">
-								<span class="stext-102 cl3 size-205">
-												Purpose
-								</span>
-
-								<span class="stext-102 cl6 size-206">
-											<c:out value="${laptopDetail.lPurpose}"/> 
-								</span>
-							</li>
-
-							<li class="flex-w flex-t p-b-7">
-								<span class="stext-102 cl3 size-205">
-												Memory
-								</span>
-
-								<span class="stext-102 cl6 size-206">
-											<c:out value="${laptopDetail.lRAMMemory}"/> 
-								</span>
-							</li>
-
-							<li class="flex-w flex-t p-b-7">
-								<span class="stext-102 cl3 size-205">
-												Display
-								</span>
-
-								<span class="stext-102 cl6 size-206">
-											<c:out value="${laptopDetail.lDisplay}"/> 
-								</span>
-							</li>
-
-							<li class="flex-w flex-t p-b-7">
-								<span class="stext-102 cl3 size-205">
-												SSD
-								</span>
-
-								<span class="stext-102 cl6 size-206">
-											<c:out value="${laptopDetail.lSSD}"/> 
-								</span>
-							</li>
-
-							<li class="flex-w flex-t p-b-7">
-								<span class="stext-102 cl3 size-205">
-												CPU
-								</span>
-
-								<span class="stext-102 cl6 size-206">
-											<c:out value="${laptopDetail.lCPU}"/>
-								</span>
-							</li>
-										
-							<li class="flex-w flex-t p-b-7">
-								<span class="stext-102 cl3 size-205">
-												OS
-								</span>
-
-								<span class="stext-102 cl6 size-206">
-											<c:out value="${laptopDetail.lOS}"/>
-								</span>
-							</li>
+							<div style="height:50px;">&nbsp;</div>
+								<li class="flex-w flex-t p-b-7">
+									<span class="stext-102 cl3 size-205">
+													Purpose
+									</span>
+	
+									<span class="stext-102 cl6 size-206">
+												<c:out value="${laptopDetail.lPurpose}"/> 
+									</span>
+								</li>
+	
+								<li class="flex-w flex-t p-b-7">
+									<span class="stext-102 cl3 size-205">
+													Memory
+									</span>
+	
+									<span class="stext-102 cl6 size-206">
+												<c:out value="${laptopDetail.lRAMMemory}"/> 
+									</span>
+								</li>
+	
+								<li class="flex-w flex-t p-b-7">
+									<span class="stext-102 cl3 size-205">
+													Display
+									</span>
+	
+									<span class="stext-102 cl6 size-206">
+												<c:out value="${laptopDetail.lDisplay}"/> 
+									</span>
+								</li>
+	
+								<li class="flex-w flex-t p-b-7">
+									<span class="stext-102 cl3 size-205">
+													SSD
+									</span>
+	
+									<span class="stext-102 cl6 size-206">
+												<c:out value="${laptopDetail.lSSD}"/> 
+									</span>
+								</li>
+	
+								<li class="flex-w flex-t p-b-7">
+									<span class="stext-102 cl3 size-205">
+													CPU
+									</span>
+	
+									<span class="stext-102 cl6 size-206">
+												<c:out value="${laptopDetail.lCPU}"/>
+									</span>
+								</li>
+											
+								<li class="flex-w flex-t p-b-7">
+									<span class="stext-102 cl3 size-205">
+													OS
+									</span>
+	
+									<span class="stext-102 cl6 size-206">
+												<c:out value="${laptopDetail.lOS}"/>
+									</span>
+								</li>
 							
 							<div style="height:50px;">&nbsp;</div><div style="height:50px;">&nbsp;</div>
-										<!-- 여기 ADD TO 'LIKE' 버튼 누르면 관심 상품에 등록될 수 있도록..? -->
-						<div class="p-t-33">
-							<div class="flex-w flex-r-m p-b-10">
-							<% if((int)session.getAttribute("position") == 2) { %>
-								<div class="size-204 flex-w flex-m respon6-next">
-									<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-										ADD TO 'LIKE'
-									</button>
-								</div>
-							<% } else if((int)session.getAttribute("position") == 0) { %>
-								<div class="size-204 flex-w flex-m respon6-next">
-									<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                     					UPDATE
-                					</button>	
-                					<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                     					DELETE
-               						</button>	
-								</div>
-							<% } %>
-							</div>	
-						</div>
-									</ul>
-								</div>
+							<!-- 여기 ADD TO 'LIKE' 버튼 누르면 관심 상품에 등록될 수 있도록..? -->
+							<form name="form" method="POST"
+								action="<c:url value='/product' />">
+								<input type="hidden" name="pId" value="${phoneDetail.productId}" />
+								<input type="hidden" name="kind" value="1" />
+								<c:if test="${position == 2}">
+									<div class="size-204 flex-w flex-m respon6-next">
+										<button
+											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+											ADD TO 'LIKE'</button>
+									</div>
+								</c:if>
+								<c:if test="${position == 0}">
+									<div class="size-204 flex-w flex-m respon6-next">
+										<button
+											class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
+											onClick="detailAction('<c:url value='/laptop_update'/>')">UPDATE
+										</button>
+										<button
+											class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
+											onClick="detailAction('<c:url value='/deleteProduct'/>')">DELETE
+										</button>
+									</div>
+								</c:if>
+							</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		
-	</section>
+		</div>
+</section>
 	
 	
 	

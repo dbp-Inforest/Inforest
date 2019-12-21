@@ -3,7 +3,7 @@ package model.dto;
 public class Camera extends Product{
 
 	private double cDisplay;
-	private double cPixel;
+	private int cPixel;
 	private String cBattery;
 	private String cVibration;
 	private double cBurstshot;
@@ -19,7 +19,7 @@ public class Camera extends Product{
 	public double getcPixel() {
 		return cPixel;
 	}
-	public void setcPixel(double cPixel) {
+	public void setcPixel(int cPixel) {
 		this.cPixel = cPixel;
 	}
 	public String getcBattery() {

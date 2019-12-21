@@ -49,13 +49,14 @@ public class CreateProductController implements Controller {
 		    	case 1:
 		    		Laptop laptop = new Laptop(); 		    		
 		    		LaptopDAO laptopDAO = new LaptopDAO();
-		    		laptop.setlPurpose(request.getParameter("pName"));
-		    		laptop.setlDisplay(request.getParameter("pName"));
-		    		laptop.setlCPU(request.getParameter("pName"));
-		    		laptop.setlRAMMemory(request.getParameter("pName"));
-		    		laptop.setlOS(request.getParameter("pName"));
-		    		laptop.setProductId(request.getParameter("pName"));
-		    		laptop.setlSSD(request.getParameter("pName"));
+		    		System.out.println("자 여기까지 왔다 객체만듬");
+		    		laptop.setlPurpose(request.getParameter("lPurpose"));
+		    		laptop.setlDisplay(request.getParameter("lDisplay"));
+		    		laptop.setlCPU(request.getParameter("lCPU"));
+		    		laptop.setlRAMMemory(request.getParameter("lRAMMemory"));
+		    		laptop.setlOS(request.getParameter("lOS"));
+		    		laptop.setProductId(request.getParameter("productId"));
+		    		laptop.setlSSD(request.getParameter("lSSD"));
 		            //--
 		    		laptop.setName(request.getParameter("pName"));
 		    		laptop.setColor(request.getParameter("pColor"));
@@ -71,15 +72,14 @@ public class CreateProductController implements Controller {
 		    	case 2:
 		    		Camera camera = new Camera();	    		
 		    		CameraDAO cameraDAO = new CameraDAO();
-		    		camera.setProductId(request.getParameter("pName"));
-		    		camera.setcBattery(request.getParameter("pName"));
-		    		camera.setcPixel(Double.valueOf(request.getParameter("pName")));
-		    		camera.setName(request.getParameter("pName"));
-		    		camera.setcBurstshot(Double.valueOf(request.getParameter("pName")));
-		    		camera.setcDisplay(Double.valueOf(request.getParameter("pName")));
-		    		camera.setcLens(request.getParameter("pName"));
-		    		camera.setcVibration(request.getParameter("pName"));
-					
+		    		System.out.println("자 여기까지 왔다 객체만듬");
+		    		camera.setProductId(request.getParameter("productId"));
+		    		camera.setcBattery(request.getParameter("cBattery"));
+		    		camera.setcPixel(Integer.valueOf(request.getParameter("cPixel")));
+		    		camera.setcBurstshot(Double.valueOf(request.getParameter("cBurstshot")));
+		    		camera.setcDisplay(Double.valueOf(request.getParameter("cDisplay")));
+		    		camera.setcLens(request.getParameter("cLens"));
+		    		camera.setcVibration(request.getParameter("cVibration"));
 		            //--
 		    		camera.setName(request.getParameter("pName"));
 		    		camera.setColor(request.getParameter("pColor"));
@@ -95,10 +95,11 @@ public class CreateProductController implements Controller {
 		    	case 3:
 		    		Tablet tablet = new Tablet();
 		    		TabletDAO tabletDAO = new TabletDAO();
-		    		tablet.settBattery(request.getParameter("pName"));
-		    		tablet.settMemory(request.getParameter("pName"));
-		    		tablet.settOS(request.getParameter("pName"));
-		    		tablet.settSize(Double.valueOf(request.getParameter("pName")));    		
+		    		tablet.settBattery(request.getParameter("tBattery"));
+		    		tablet.settMemory(request.getParameter("tMemory"));
+		    		tablet.settOS(request.getParameter("tOS"));
+		    		tablet.settSize(Double.valueOf(request.getParameter("tSize"))); 
+		    		tablet.setProductId(request.getParameter("productId"));
 		            //--
 		    		tablet.setName(request.getParameter("pName"));
 		    		tablet.setColor(request.getParameter("pColor"));
