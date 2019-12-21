@@ -15,6 +15,7 @@ import model.dao.CameraDAO;
 import model.dao.InforestUserDAO;
 import model.dao.LaptopDAO;
 import model.dao.PhoneDAO;
+import model.dao.TabletDAO;
 import model.dto.Camera;
 import model.dto.InforestUser;
 import model.dto.Laptop;
@@ -59,22 +60,70 @@ public class UpdateProductController implements Controller {
 		    		System.out.println("폰 수정 완료!");
 		    		break;
 		    	case 1:
-		    		Laptop laptop = new Laptop(); 
-		    		
+		    		Laptop laptop = new Laptop(); 		    		
 		    		LaptopDAO laptopDAO = new LaptopDAO();
-		    		laptopDAO.insertLaptop(laptop);
-		            log.debug("Create Product : {}", laptop);
+		    		System.out.println("자 여기까지 왔다 객체만듬");
+		    		laptop.setlPurpose(request.getParameter("lPurpose"));
+		    		laptop.setlDisplay(request.getParameter("lDisplay"));
+		    		laptop.setlCPU(request.getParameter("lCPU"));
+		    		laptop.setlRAMMemory(request.getParameter("lRAMMemory"));
+		    		laptop.setlOS(request.getParameter("lOS"));
+		    		laptop.setProductId(request.getParameter("productId"));
+		    		laptop.setlSSD(request.getParameter("lSSD"));
+		            //--
+		    		laptop.setName(request.getParameter("pName"));
+		    		laptop.setColor(request.getParameter("pColor"));
+		    		laptop.setPrice(request.getParameter("pPrice"));
+		    		laptop.setBrand(request.getParameter("pBrand"));
+		    		laptop.setReleased_date(Date.valueOf(request.getParameter("pDate")));
+		    		laptop.setWeight(Double.valueOf(request.getParameter("pWeight")));
+		    		laptop.setpKind(Integer.valueOf(request.getParameter("pKind")));
+		    		
+		    		laptopDAO.updateLaptop(laptop);
+		            log.debug("Update Product : {}", laptop);
 		    		break;
 		    	case 2:
-		    		Camera camera = new Camera();
-		    		
+		    		Camera camera = new Camera();	    		
 		    		CameraDAO cameraDAO = new CameraDAO();
-		    		cameraDAO.insertCamera(camera);
-		            log.debug("Create Product : {}", camera);
+		    		System.out.println("자 여기까지 왔다 객체만듬");
+		    		camera.setProductId(request.getParameter("productId"));
+		    		camera.setcBattery(request.getParameter("cBattery"));
+		    		camera.setcPixel(Integer.valueOf(request.getParameter("cPixel")));
+		    		camera.setcBurstshot(Double.valueOf(request.getParameter("cBurstshot")));
+		    		camera.setcDisplay(Double.valueOf(request.getParameter("cDisplay")));
+		    		camera.setcLens(request.getParameter("cLens"));
+		    		camera.setcVibration(request.getParameter("cVibration"));
+		            //--
+		    		camera.setName(request.getParameter("pName"));
+		    		camera.setColor(request.getParameter("pColor"));
+		    		camera.setPrice(request.getParameter("pPrice"));
+		    		camera.setBrand(request.getParameter("pBrand"));
+		    		camera.setReleased_date(Date.valueOf(request.getParameter("pDate")));
+		    		camera.setWeight(Double.valueOf(request.getParameter("pWeight")));
+		    		camera.setpKind(Integer.valueOf(request.getParameter("pKind")));
+		    		
+		    		cameraDAO.updateCamera(camera);
+		            log.debug("Update Product : {}", camera);
 		    		break;
 		    	case 3:
 		    		Tablet tablet = new Tablet();
-		            log.debug("Create Product : {}", tablet);
+		    		TabletDAO tabletDAO = new TabletDAO();
+		    		tablet.settBattery(request.getParameter("tBattery"));
+		    		tablet.settMemory(request.getParameter("tMemory"));
+		    		tablet.settOS(request.getParameter("tOS"));
+		    		tablet.settSize(Double.valueOf(request.getParameter("tSize"))); 
+		    		tablet.setProductId(request.getParameter("productId"));
+		            //--
+		    		tablet.setName(request.getParameter("pName"));
+		    		tablet.setColor(request.getParameter("pColor"));
+		    		tablet.setPrice(request.getParameter("pPrice"));
+		    		tablet.setBrand(request.getParameter("pBrand"));
+		    		tablet.setReleased_date(Date.valueOf(request.getParameter("pDate")));
+		    		tablet.setWeight(Double.valueOf(request.getParameter("pWeight")));
+		    		tablet.setpKind(Integer.valueOf(request.getParameter("pKind")));
+		    		
+		    		tabletDAO.updateTablet(tablet);
+		            log.debug("Update Product : {}", tablet);
 		    		break;
 		    	default:
 		    		System.out.println("자 여기까지 왔다 default문");

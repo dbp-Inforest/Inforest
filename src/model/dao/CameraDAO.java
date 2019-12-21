@@ -50,7 +50,7 @@ public class CameraDAO {
 				Camera dto = new Camera();		// 하나의 Camera 객체 생성 후 정보 설정
 				dto.setProductId(rs.getString("CAMERA_ID"));
 				dto.setcBattery(rs.getString("CAMERA_BATTERY"));
-				dto.setcPixel(rs.getDouble("CAMERA_PIXEL"));
+				dto.setcPixel(rs.getInt("CAMERA_PIXEL"));
 				dto.setName(rs.getString("CAMERA_NAME"));
 				dto.setcBurstshot(rs.getDouble("CAMERA_BURSTSHOT"));
 				dto.setcDisplay(rs.getDouble("CAMERA_DISPLAY"));
@@ -77,34 +77,42 @@ public class CameraDAO {
 	// Camera 객체에 담겨 있는 태블릿의 정보를 기반으로 태블릿 정보를 Camera 테이블에 삽입하는 메소드
 	public int insertCamera(Camera Camera) {
 		int result = 0;
-		// 트렌젝션? 사용해야하나
-		String insertQuery = "INSERT INTO Camera (PRODUCT_ID, C_DISPLAY, C_PIXEL, C_BATTERY, C_VIBRATION, C_BURSTSHOT, C_LENS) "
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?) "  
-				+ "INSERT INTO PRODUCT(PRODUCT_ID, NAME, COLOR, PRICE, BRAND, RELEASED_DATE, WEIGHT, P_KIND)"
-				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+
+	    String insertQuery1 = "INSERT INTO Camera (PRODUCT_ID, C_DISPLAY, C_PIXEL, C_BATTERY, C_VIBRATION, C_BURSTSHOT, C_LENS) "
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?) ";
+	      
+	    String insertQuery2 = "INSERT INTO PRODUCT(PRODUCT_ID, NAME, COLOR, PRICE, BRAND, RELEASED_DATE, WEIGHT, P_KIND)"
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 		
+	      
 		// query 문에 사용할 매개변수 값을 갖는 매개변수 배열 생성
-		Object[] param = new Object[] { Camera.getProductId(), Camera.getcDisplay(), Camera.getcPixel(), Camera.getcBattery(), Camera.getcVibration(), Camera.getcBurstshot(), Camera.getcLens(),
-				Camera.getProductId(), Camera.getName(), Camera.getColor(), Camera.getPrice(), Camera.getBrand(), Camera.getReleased_date(), Camera.getWeight(), 2 };	
-		
-		jdbcUtil.setSql(insertQuery);			// JDBCUtil 에 insert 문 설정
-		jdbcUtil.setParameters(param);			// JDBCUtil 에 매개변수 설정
-				
-		try {				
-			result = jdbcUtil.executeUpdate();		// insert 문 실행
-			System.out.println(Camera.getProductId() + " 제품명의 정보가 삽입되었습니다.");
-		} catch (SQLException ex) {
-			System.out.println("입력오류 발생!!!");
-			if (ex.getErrorCode() == 1)
-				System.out.println("동일한 제품정보가 이미 존재합니다."); 
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		} finally {		
-			jdbcUtil.commit();
-			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
-		}		
-		return result;		// insert 에 의해 반영된 레코드 수 반환	
+		Object[] param1 = new Object[] { Camera.getProductId(), Camera.getcDisplay(), Camera.getcPixel(), Camera.getcBattery(), Camera.getcVibration(), Camera.getcBurstshot(), Camera.getcLens() };
+	    Object[] param2 = new Object[] { Camera.getProductId(), Camera.getName(), Camera.getColor(), Camera.getPrice(), Camera.getBrand(), Camera.getReleased_date(), Camera.getWeight(), 2 };     
+	    
+	    try {    
+	         jdbcUtil.setSql(insertQuery2);          // JDBCUtil 에 insert 문 설정
+	         jdbcUtil.setParameters(param2);        // JDBCUtil 에 매개변수 설정
+	         result = jdbcUtil.executeUpdate();      // insert 문 실행
+	         
+	         jdbcUtil.setSql(insertQuery1);         // JDBCUtil 에 insert 문 설정
+	         jdbcUtil.setParameters(param1);         // JDBCUtil 에 매개변수 설정
+	         result = jdbcUtil.executeUpdate();      // insert 문 실행
+	         System.out.println(Camera.getProductId() + " 제품정보가 삽입되었습니다.");
+	    }catch (SQLException ex) {
+	         System.out.println("입력오류 발생!!!");
+	         ex.printStackTrace();
+	         if (ex.getErrorCode() == 1)
+	            System.out.println("동일한 제품정보가 이미 존재합니다.");      
+	    } catch (Exception ex) {
+	         jdbcUtil.rollback();
+	         ex.printStackTrace();
+	    } finally {      
+	         jdbcUtil.commit();
+	         jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+	    }      
+	    
+	    return result;      // insert 에 의해 반영된 레코드 수 반환   
+	      		
 	}
 	
 	// Camera 객체에 설정되어 있는 정보를 토대로 테이블의 정보를 수정하는 메소드
@@ -244,7 +252,7 @@ public class CameraDAO {
 				dto.setcBurstshot(rs.getDouble("CAMERA_BURSTSHOT"));
 				dto.setcDisplay(rs.getDouble("CAMERA_DISPLAY"));
 				dto.setcLens(rs.getString("CAMERA_LENS"));
-				dto.setcPixel(rs.getDouble("CAMERA_PIXEL"));
+				dto.setcPixel(rs.getInt("CAMERA_PIXEL"));
 				dto.setcVibration(rs.getString("CAMERA_VIBRATION"));
 				dto.setName(rs.getString("CAMERA_NAME"));
 				dto.setColor(rs.getString("CAMERA_COLOR"));
@@ -284,7 +292,7 @@ public class CameraDAO {
 				dto.setcBurstshot(rs.getDouble("CAMERA_BURSTSHOT"));
 				dto.setcDisplay(rs.getDouble("CAMERA_DISPLAY"));
 				dto.setcLens(rs.getString("CAMERA_LENS"));
-				dto.setcPixel(rs.getDouble("CAMERA_PIXEL"));
+				dto.setcPixel(rs.getInt("CAMERA_PIXEL"));
 				dto.setcVibration(rs.getString("CAMERA_VIBRATION"));
 				dto.setName(rs.getString("CAMERA_NAME"));
 				dto.setColor(rs.getString("CAMERA_COLOR"));

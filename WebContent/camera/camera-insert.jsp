@@ -118,16 +118,16 @@ function productList(targetUri) {
 		  C_DISPLAY
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pBattery" placeholder="디스플레이 정보를 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="cDisplay" placeholder="디스플레이 정보를 입력해주세요">
       </td>
    </tr>
    
    <tr class="table_row">
       <td class="column-1">
-         C_PIXEL
+         C_PIXEL (pixel)
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pMemory" placeholder="픽셀 정보를 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="cPixel" placeholder="픽셀 정보를 입력해주세요">
       </td>
    </tr>
    
@@ -136,16 +136,16 @@ function productList(targetUri) {
          C_BATTERY
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pDisplay" placeholder="배터리 정보에 대해 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="cBattery" placeholder="배터리 정보에 대해 입력해주세요">
       </td>
    </tr>
    
    <tr class="table_row">
       <td class="column-1">
-         C_VIBRATION (GB)
+         C_VIBRATION
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pRam" placeholder="바이브레이션 관련 정보를 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="cVibration" placeholder="바이브레이션 관련 정보를 입력해주세요">
       </td>
    </tr>
    
@@ -154,7 +154,7 @@ function productList(targetUri) {
          C_BURSTSHOT
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pSize" placeholder="버스트샷 관련 정보를 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="cBurstshot" placeholder="버스트샷 관련 정보를 입력해주세요">
       </td>
    </tr>
    
@@ -163,7 +163,7 @@ function productList(targetUri) {
          C_LENS
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pCamera" placeholder="카메라 렌즈 관련 정보를 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="cLens" placeholder="카메라 렌즈 관련 정보를 입력해주세요">
       </td>
    </tr>
              

@@ -116,26 +116,30 @@
                      
                      <div style="height:50px;">&nbsp;</div><div style="height:50px;">&nbsp;</div>
                               <!-- 여기 ADD TO 'LIKE' 버튼 누르면 관심 상품에 등록될 수 있도록..? -->
-                  <div class="p-t-33">
-                     <div class="flex-w flex-r-m p-b-10">
-                        <% if((int)session.getAttribute("position") == 2) { %>
-								<div class="size-204 flex-w flex-m respon6-next">
-									<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-										ADD TO 'LIKE'
-									</button>
-								</div>
-							<% } else if((int)session.getAttribute("position") == 0) { %>
-								<div class="size-204 flex-w flex-m respon6-next">
-									<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                     					UPDATE
-                					</button>	
-                					<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                     					DELETE
-               						</button>	
-								</div>
-							<% } %>
-                     </div>   
-                  </div>
+							<form name="form" method="POST"
+								action="<c:url value='/product' />">
+								<input type="hidden" name="pId" value="${phoneDetail.productId}" />
+								<input type="hidden" name="kind" value="3" />
+								<c:if test="${position == 2}">
+									<div class="size-204 flex-w flex-m respon6-next">
+										<button
+											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+											ADD TO 'LIKE'</button>
+									</div>
+								</c:if>
+								<c:if test="${position == 0}">
+									<div class="size-204 flex-w flex-m respon6-next">
+										<button
+											class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
+											onClick="detailAction('<c:url value='/tablet_update'/>')">UPDATE
+										</button>
+										<button
+											class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
+											onClick="detailAction('<c:url value='/deleteProduct'/>')">DELETE
+										</button>
+									</div>
+								</c:if>
+							</form>
                            </ul>
                         </div>
                      </div>
