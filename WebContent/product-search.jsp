@@ -100,7 +100,10 @@ function likeSearch(productId, num, targetUri, thisKind, thisPage, searchWord) {
                   <c:forEach var="product" items="${ListByName}" varStatus="status">
                   <tr class="table_row" style="height:70px;">
                   <td class="column-0" style="padding-left:30px">
-                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a href="<c:url value='/productDetail'><c:param name="kind2" value="${kind}"/>
+                                                              <c:param name="pId" value="${product.productId}"/>
+                                       </c:url>" 
+                                class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                       <font style="font-size:20px">
                                          <c:out value="${product.productId}"/>
                                       </font>
@@ -138,7 +141,10 @@ function likeSearch(productId, num, targetUri, thisKind, thisPage, searchWord) {
                   <c:forEach var="product_p" items="${PhoneListByName}" varStatus="status_p">
                   <tr class="table_row" style="height:70px;">
                   <td class="column-0" style="padding-left:30px">
-                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a href="<c:url value='/productDetail'><c:param name="kind2" value="0"/>
+                                                              <c:param name="pId" value="${product_p.productId}"/>
+                                       </c:url>" 
+                                class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                       <font style="font-size:20px">
                                          <c:out value="${product_p.productId}"/>
                                       </font>
@@ -168,7 +174,10 @@ function likeSearch(productId, num, targetUri, thisKind, thisPage, searchWord) {
                   <c:forEach var="product_l" items="${LaptopListByName}" varStatus="status_l">
                   <tr class="table_row" style="height:70px;">
                   <td class="column-0" style="padding-left:30px">
-                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a href="<c:url value='/productDetail'><c:param name="kind2" value="1"/>
+                                                              <c:param name="pId" value="${product_l.productId}"/>
+                                       </c:url>" 
+                                class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                       <font style="font-size:20px">
                                          <c:out value="${product_l.productId}"/>
                                       </font>
@@ -199,7 +208,10 @@ function likeSearch(productId, num, targetUri, thisKind, thisPage, searchWord) {
                   <c:forEach var="product_c" items="${CameraListByName}" varStatus="status_c">
                   <tr class="table_row" style="height:70px;">
                   <td class="column-0" style="padding-left:30px">
-                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a href="<c:url value='/productDetail'><c:param name="kind2" value="2"/>
+                                                              <c:param name="pId" value="${product_c.productId}"/>
+                                       </c:url>" 
+                                class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                       <font style="font-size:20px">
                                          <c:out value="${product_c.productId}"/>
                                       </font>
@@ -228,7 +240,10 @@ function likeSearch(productId, num, targetUri, thisKind, thisPage, searchWord) {
                   <c:forEach var="product_t" items="${TabletListByName}" varStatus="status_t">
                   <tr class="table_row" style="height:70px;">
                   <td class="column-0" style="padding-left:30px">
-                                <a href="<c:url value='/productDetail'/>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a href="<c:url value='/productDetail'><c:param name="kind2" value="3"/>
+                                                              <c:param name="pId" value="${product_t.productId}"/>
+                                       </c:url>" 
+                                class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                       <font style="font-size:20px">
                                          <c:out value="${product_t.productId}"/>
                                       </font>
