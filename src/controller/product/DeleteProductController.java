@@ -21,6 +21,7 @@ public class DeleteProductController implements Controller {
 	private LaptopDAO laptopDAO = new LaptopDAO();
 	private CameraDAO cameraDAO = new CameraDAO();
 	private TabletDAO tabletDAO = new TabletDAO();
+	private PCommentDAO pcommentDAO = new PCommentDAO();
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -59,6 +60,12 @@ public class DeleteProductController implements Controller {
     		System.out.println("메인으로 이동");
     		return "redirect:/main";
 		
+    	}
+    	else if(request.getMethod().equals("GET")) { //DELETE COMMENT
+    		kind = (String)request.getParameter("reviewId");
+    		System.out.println("댓삭시작"+ kind);
+    		pcommentDAO.deletePComment(kind);
+    		return "redirect:/productList?kind3=" + kind;
     	}
     	return "redirect:/productList?kind3=" + kind;
 	}

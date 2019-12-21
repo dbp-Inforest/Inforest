@@ -191,48 +191,74 @@
 							<span class="container">
 							<span class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
 								<h5 class="mtext-108 cl2 p-b-30">Comment List</h5>
-								<c:forEach var="comment" items="${commentList}">
+					<div class="flex-w flex-t bor12 p-b-13">
+                        <table>
+                           <thead>
+                              <tr>
+                               <th><div class="flex-w flex-t p-t-27 p-b-33"><div class="size-400">User</div></div></th>   
+                               <th><div class="flex-w flex-t p-t-27 p-b-33"><div class="size-400">Review</div></div></th>
+                               <th><div class="flex-w flex-t p-t-27 p-b-33"><div class="size-400">Regist_Date</div></div></th>
+                               <th><div class="flex-w flex-t p-t-27 p-b-33"><div class="size-400"></div></div></th>
+                              </tr>
+                        </thead>
+                        <tbody>
+          
+                        		<c:forEach var="comment" items="${commentList}">
 									<c:if test="${comment.productId == phoneDetail.productId}">
+									<tr>
 										<div class="flex-w flex-t bor12 p-b-13">
-											<div class="size-208">
+											<td><div class="size-208">
 												<div class="size-400">
 													<c:out value="${comment.userId}" />
 												</div>
-											</div>
-											<div class="flex-w flex-t p-t-27 p-b-33">
+											</div></td>
+											<td><div class="flex-w flex-t p-t-27 p-b-33">
 												<div class="size-400">
 													<c:out value="${comment.review}" />
 												</div>
-											</div>
-											<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" type="button" onClick="myCheck()">
-													Delete
-											</button>
+											</div></td>
+											<td><div class="flex-w flex-t p-t-27 p-b-33">
+												<div class="size-400">
+													<c:out value="${comment.registDate}" />
+												</div>
+											</div></td>
+ 											<td><div class="flex-w flex-t p-t-27 p-b-33"><div class="size-400">
+                                             <a href="<c:url value='/deleteProduct'><c:param name="reviewId" value="${comment.commentId}"/>
+                                                         </c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                        <font style="font-size:15px">
+                                                           <c:out value="Delete"/>
+                                                        </font>
+                                                      </a>   
+                                              </div></div>
+                                             </td>
+
 										</div>
-									</c:if>
+									</tr></c:if>
 								</c:forEach>
-								<br>
-								<br>
-
-								<center>
-								<!-- Add review -->
-								<h5 class="mtext-108 cl2 p-b-7">Add a review</h5>
-
-								<p class="stext-102 cl6">You can write comments by logging in.</p>
-								<form class="w-full" name="form1" method="POST" action="<c:url value='/productDetail'>
+                        			 <tr>
+                                       <td colspan="4" value = "댓글 추가">
+                                                   <h5 class="mtext-108 cl2 p-b-7">Add a review</h5>
+                                                   <p class="stext-102 cl6">You can write comments by logging in.</p>
+                                                   <form class="w-full" name="form1" method="POST" action="<c:url value='/productDetail'>
 									<c:param name="kind2" value="0"/>
                                     <c:param name="pId" value="${phoneDetail.productId}"/> </c:url>">
-									<div class="row p-b-25">
-										<div class="col-12 p-b-5">
-											<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
-										</div>
-									</div>
-									
-									<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" type="button" onClick="myCheck()">
-										Submit
-									</button>
-
-								</form>
-								</center>
+                                                   <div class="row p-b-25">
+                                                   <div class="col-12 p-b-5">
+                                                      <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
+                                                   </div>
+                                                   </div>
+                                                
+                                                   <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" type="button" onClick="myCheck()">
+                                                      Submit
+                                                   </button>
+                                       </form>
+                                       </td></tr>
+                        
+						</tbody>	
+						</table></div>
+	
+								<br>
+								<br>
 							</span>
 							</span>
 						</div>
