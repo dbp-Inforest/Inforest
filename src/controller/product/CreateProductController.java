@@ -47,21 +47,68 @@ public class CreateProductController implements Controller {
 		            log.debug("Create Product : {}", phone);
 		    		break;
 		    	case 1:
-		    		Laptop laptop = new Laptop(); 
-		    		
+		    		Laptop laptop = new Laptop(); 		    		
 		    		LaptopDAO laptopDAO = new LaptopDAO();
+		    		laptop.setlPurpose(request.getParameter("pName"));
+		    		laptop.setlDisplay(request.getParameter("pName"));
+		    		laptop.setlCPU(request.getParameter("pName"));
+		    		laptop.setlRAMMemory(request.getParameter("pName"));
+		    		laptop.setlOS(request.getParameter("pName"));
+		    		laptop.setProductId(request.getParameter("pName"));
+		    		laptop.setlSSD(request.getParameter("pName"));
+		            //--
+		    		laptop.setName(request.getParameter("pName"));
+		    		laptop.setColor(request.getParameter("pColor"));
+		    		laptop.setPrice(request.getParameter("pPrice"));
+		    		laptop.setBrand(request.getParameter("pBrand"));
+		    		laptop.setReleased_date(Date.valueOf(request.getParameter("pDate")));
+		    		laptop.setWeight(Double.valueOf(request.getParameter("pWeight")));
+		    		laptop.setpKind(Integer.valueOf(request.getParameter("pKind")));
+		    		
 		    		laptopDAO.insertLaptop(laptop);
 		            log.debug("Create Product : {}", laptop);
 		    		break;
 		    	case 2:
-		    		Camera camera = new Camera();
-		    		
+		    		Camera camera = new Camera();	    		
 		    		CameraDAO cameraDAO = new CameraDAO();
+		    		camera.setProductId(request.getParameter("pName"));
+		    		camera.setcBattery(request.getParameter("pName"));
+		    		camera.setcPixel(Double.valueOf(request.getParameter("pName")));
+		    		camera.setName(request.getParameter("pName"));
+		    		camera.setcBurstshot(Double.valueOf(request.getParameter("pName")));
+		    		camera.setcDisplay(Double.valueOf(request.getParameter("pName")));
+		    		camera.setcLens(request.getParameter("pName"));
+		    		camera.setcVibration(request.getParameter("pName"));
+					
+		            //--
+		    		camera.setName(request.getParameter("pName"));
+		    		camera.setColor(request.getParameter("pColor"));
+		    		camera.setPrice(request.getParameter("pPrice"));
+		    		camera.setBrand(request.getParameter("pBrand"));
+		    		camera.setReleased_date(Date.valueOf(request.getParameter("pDate")));
+		    		camera.setWeight(Double.valueOf(request.getParameter("pWeight")));
+		    		camera.setpKind(Integer.valueOf(request.getParameter("pKind")));
+		    		
 		    		cameraDAO.insertCamera(camera);
 		            log.debug("Create Product : {}", camera);
 		    		break;
 		    	case 3:
 		    		Tablet tablet = new Tablet();
+		    		TabletDAO tabletDAO = new TabletDAO();
+		    		tablet.settBattery(request.getParameter("pName"));
+		    		tablet.settMemory(request.getParameter("pName"));
+		    		tablet.settOS(request.getParameter("pName"));
+		    		tablet.settSize(Double.valueOf(request.getParameter("pName")));    		
+		            //--
+		    		tablet.setName(request.getParameter("pName"));
+		    		tablet.setColor(request.getParameter("pColor"));
+		    		tablet.setPrice(request.getParameter("pPrice"));
+		    		tablet.setBrand(request.getParameter("pBrand"));
+		    		tablet.setReleased_date(Date.valueOf(request.getParameter("pDate")));
+		    		tablet.setWeight(Double.valueOf(request.getParameter("pWeight")));
+		    		tablet.setpKind(Integer.valueOf(request.getParameter("pKind")));
+		    		
+		    		tabletDAO.insertTablet(tablet);
 		            log.debug("Create Product : {}", tablet);
 		    		break;
 		    	default:

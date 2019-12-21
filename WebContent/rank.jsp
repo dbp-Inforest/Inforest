@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import = "java.util.List" %>
-<%@page import = "model.dao.*" %>
-<%@page import = "model.dto.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import = "java.util.*" %>
+<%@ page import = "model.dao.*" %>
+<%@ page import = "model.dto.*" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,16 +12,16 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+   <link rel="stylesheet" type="text/css" href="css/util.css">
+   <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
 </head>
 <body class="animsition">
    
    <!-- Header import -->
-   <jsp:include page="/WEB-INF/views/header.jsp"/>
-
+   <jsp:include page="/WEB-INF/views/header.jsp" />
+  
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/rank_bg.png'); " >
       <h2 class="ltext-105 cl0 txt-center">
@@ -28,222 +29,108 @@
       </h2>
    </section>   
  
-	<!-- Rank -->
-	<!-- 이미지 크기는 80*80 픽셀 (.jpg) -->
-	<form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -515px;">
-		<div class="container" >
-			<div class="row"  style="display:inline">
-				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:500px">
-					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-						<h4 class="mtext-109 cl2 p-b-12">
-                     Phone
+<!-- Rank -->
+<!-- 이미지 크기는 80*80 픽셀 (.jpg) -->
+<form class="bg0 p-t-75 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -515px;">
+      <div class="container" >
+         <div class="row"  style="display:inline">
+            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:500px">
+               <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+                  <h4 class="mtext-109 cl2 p-b-12">
+                    <center> Phone </center>
                   </h4>
                   <hr>
-                  <table>
-                     <tr class="table_head">
-                        <th class="column-0">Rank</th>
-                                    <th class="column-1" style="padding-left:20px"><p style="padding-left:10px">Image</p></th>
-                                    <th class="column-2"><p style="padding-left:40px">Name</p></th>
-                        </tr>
-                              <tr class="table_row">
-                                       <td class="column-0">1</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">갤럭시</td>   
-                              </tr>
-                              
-                               <tr class="table_row">
-                                       <td class="column-0">2</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">갤럭시2</td>   
-                              </tr>
-                              
-                               <tr class="table_row">
-                                       <td class="column-0">3</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">갤럭시3</td>   
-                              </tr>
-                              
-                               <tr class="table_row">
-                                       <td class="column-0">4</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">갤럭시4</td>   
-                              </tr>
-                              
-                               <tr class="table_row">
-                                       <td class="column-0">5</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">갤럭시5</td>   
-                              </tr>
-                              <tr class="table_row">
-                                       <td class="column-0">6</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">갤럭시6</td>   
-                              </tr>
-                              <tr class="table_row">
-                                       <td class="column-0">7</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">갤럭시7</td>   
-                              </tr>
-                              <tr class="table_row">
-                                       <td class="column-0">8</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">갤럭시8</td>   
-                              </tr>
-                              <tr class="table_row">
-                                       <td class="column-0">9</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">갤럭시9</td>   
-                              </tr>
-                              <tr class="table_row">
-                                       <td class="column-0">10</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/phone_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">갤럭시10</td>   
-                              </tr>
+                 <table width="350">
+                     <tr class="table_head" height="30">
+                        <th class="column-0" style="color:black">Rank</th>
+                        <th class="column-1" style="padding-left:20px; color:black"><p style="padding-left:10px">Name</p></th>
+                        <th class="column-2"><p style="padding-left:40px">
+                       
+                        <font color="black">Like</font>
+                        <font color="red">♡</font>
+                        </p></th>
+                      </tr>
+                      
+                       <% 
+                             List<Ranking> Topten_p = (List<Ranking>)request.getAttribute("phoneR");
+                       
+                             for(int i = 0; i < 10; i++) {   //top10 출력
+                       %>
+                             
+                              <tr class="table_row" height="35" >
+                                       <td class="column-0" style="color:black"><b><center>
+                       <%= 
+                              i+1            
+                       %>
+                       <!-- 랭킹 순위 [1-10] -->      
+                                 
+                                      </center> </b></td>
+                                    <td class="column-1" style="padding-left:20px"><center>
+                                   <a href="<c:url value='/productDetail'><c:param name="kind2" value="0"/>
+                                   <c:param name="pId" value="<%= Topten_p.get(i).getProductId() %>"/></c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                        <%=
+                                              Topten_p.get(i).getName()
+                                    %>  
+                                </a> </center>  </td>
+                                    <td class="column-2" style="padding-left:40px"><center>
+                                         <%= Topten_p.get(i).getLikeCount() %>
+                                   </center></td>
+                               </tr>
+                       <%
+                          } 
+                       %>
+                       
                   </table>
                </div>
             </div>
+            
+            
           <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:500px">
-					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-						<h4 class="mtext-109 cl2 p-b-12">
-                     LapTop
+               <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+                  <h4 class="mtext-109 cl2 p-b-12">
+                     <center>LapTop</center>
                   </h4>
                   <hr>
-                  <table>
-                     <tr class="table_head">
-                        <th class="column-0">Rank</th>
-                                    <th class="column-1" style="padding-left:20px"><p style="padding-left:10px">Image</p></th>
-                                    <th class="column-2"><p style="padding-left:40px">Name</p></th>
-                        </tr>
-                        <tr class="table_row">
-                                       <td class="column-0">1</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/laptop_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">울트라PC</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">2</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/laptop_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">울트라기어</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">3</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/laptop_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">그램2in1</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">4</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/laptop_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">울트라PC</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">5</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/laptop_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">그램2in1</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">6</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/laptop_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">Always</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">7</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/laptop_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">Odyssey</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">8</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/laptop_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">삼성노트북3</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">9</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/laptop_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">삼성노트북5</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">10</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/laptop_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">Galaxy S10+</td>
-                                </tr>
+                   <table width="350">
+                     <tr class="table_head" height="30">
+                        <th class="column-0" style="color:black">Rank</th>
+                        <th class="column-1" style="padding-left:20px; color:black"><p style="padding-left:10px">Name</p></th>
+                        <th class="column-2"><p style="padding-left:40px">
+                       
+                        <font color="black">Like</font>
+                         <font color="red">♡</font>
+                        </p></th>
+                      </tr>
+                      
+                       <% 
+                             List<Ranking> Topten_l = (List<Ranking>)request.getAttribute("laptopR");
+                       
+                             for(int i = 0; i < 10; i++) {   //top10 출력
+                       %>
+                             
+                              <tr class="table_row" height="35" >
+                                       <td class="column-0" style="color:black"><b><center>
+                       <%= 
+                              i+1            
+                       %>
+                       <!-- 랭킹 순위 [1-10] -->      
+                                 
+                                      </center> </b></td>
+                                    <td class="column-1" style="padding-left:20px"><center>
+                                   <a href="<c:url value='/productDetail'><c:param name="kind2" value="1"/>
+                                   <c:param name="pId" value="<%= Topten_l.get(i).getProductId() %>"/></c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                        <%=
+                                              Topten_l.get(i).getName()
+                                    %>  
+                                </a> </center>  </td>
+                                    <td class="column-2" style="padding-left:40px"><center>
+                                         <%= Topten_l.get(i).getLikeCount() %>
+                                   </center></td>
+                               </tr>
+                       <%
+                          } 
+                       %>
+                       
                   </table>
                </div>
             </div>
@@ -251,213 +138,101 @@
       </div>
       <div class="container">
          <div class="row" style="display:inline">
-				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:500px">
-					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-						<h4 class="mtext-109 cl2 p-b-12">
-                     Camera
+            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:500px">
+               <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+                  <h4 class="mtext-109 cl2 p-b-12">
+                    <center> Camera </center>
                   </h4>
                   <hr>
-                  <table>
-                     <tr class="table_head">
-                        <th class="column-0">Rank</th>
-                                    <th class="column-1" style="padding-left:20px"><p style="padding-left:10px">Image</p></th>
-                                    <th class="column-2"><p style="padding-left:40px">Name</p></th>
-                        </tr>
-                        <tr class="table_row">
-                                       <td class="column-0">1</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/camera_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">iPhone 11</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">2</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/camera_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">iPhone 11 pro</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">3</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/camera_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">iPhone 11 pro MAX</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">4</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/camera_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">iPhone XS</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">5</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/camera_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">iPhone XS MAX</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">6</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/camera_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">iPhone XR</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">7</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/camera_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">iPhone X</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">8</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/camera_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">Galaxy S10e</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">9</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/camera_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">Galaxy S10</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">10</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/camera_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">Galaxy S10+</td>
-                                </tr>
+                    <table width="350">
+                     <tr class="table_head" height="30">
+                        <th class="column-0" style="color:black">Rank</th>
+                        <th class="column-1" style="padding-left:20px; color:black"><p style="padding-left:10px">Name</p></th>
+                        <th class="column-2"><p style="padding-left:40px">
+                       
+                        <font color="black">Like</font>
+                        <font color="red">♡</font>
+                        </p></th>
+                      </tr>
+                      
+                       <% 
+                             List<Ranking> Topten_c = (List<Ranking>)request.getAttribute("cameraR");
+                       
+                             for(int i = 0; i < 10; i++) {   //top10 출력
+                       %>
+                             
+                              <tr class="table_row" height="35" >
+                                       <td class="column-0" style="color:black"><b><center>
+                       <%= 
+                              i+1            
+                       %>
+                       <!-- 랭킹 순위 [1-10] -->      
+                                 
+                                      </center> </b></td>
+                                    <td class="column-1" style="padding-left:20px"><center>
+                                   <a href="<c:url value='/productDetail'><c:param name="kind2" value="2"/>
+                                   <c:param name="pId" value="<%= Topten_c.get(i).getProductId() %>"/></c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                        <%=
+                                              Topten_c.get(i).getName()
+                                    %>  
+                                </a> </center>  </td>
+                                    <td class="column-2" style="padding-left:40px"><center>
+                                         <%= Topten_c.get(i).getLikeCount() %>
+                                   </center></td>
+                               </tr>
+                       <%
+                          } 
+                       %>
+                       
                   </table>
                </div>
             </div>
             <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50"  style="display:inline;float:left;width:500px">
-					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-						<h4 class="mtext-109 cl2 p-b-12">
-                     Tablet
+               <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+                  <h4 class="mtext-109 cl2 p-b-12">
+                    <center> Tablet </center>
                   </h4>
                   <hr>
-                  <table>
-                     <tr class="table_head">
-                        <th class="column-0">Rank</th>
-                                    <th class="column-1" style="padding-left:20px"><p style="padding-left:10px">Image</p></th>
-                                    <th class="column-2"><p style="padding-left:40px">Name</p></th>
-                        </tr>
-                        <tr class="table_row">
-                                       <td class="column-0">1</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/tablet_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">iPhone 11</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">2</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/tablet_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">iPhone 11 pro</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">3</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/tablet_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">iPhone 11 pro MAX</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">4</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/tablet_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">iPhone XS</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">5</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/tablet_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">iPhone XS MAX</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">6</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/tablet_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">iPhone XR</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">7</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/tablet_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">iPhone X</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">8</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/tablet_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">Galaxy S10e</td>
-                                </tr>
-                                <tr class="table_row">
-                                       <td class="column-0">9</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/tablet_img.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">Galaxy S10</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">10</td>
-                                    <td class="column-1" style="padding-left:20px">
-                                       <div class="how-itemcart1">
-                                          <img src="images/tablet_img.jpg" alt="IMG">
-                                      </div>
-                                    </td>
-                                    <td class="column-2">Galaxy S10+</td>
-                                </tr>
+                 <table width="350">
+                     <tr class="table_head" height="30">
+                        <th class="column-0" style="color:black">Rank</th>
+                        <th class="column-1" style="padding-left:20px; color:black"><p style="padding-left:10px">Name</p></th>
+                        <th class="column-2"><p style="padding-left:40px">
+                        
+                        <font color="black">Like</font>
+                        <font color="red">♡</font>
+                        </p></th>
+                      </tr>
+                      
+                       <% 
+                             List<Ranking> Topten_t = (List<Ranking>)request.getAttribute("tabletR");
+                       
+                             for(int i = 0; i < 10; i++) {   //top10 출력
+                       %>
+                             
+                              <tr class="table_row" height="35" >
+                                       <td class="column-0" style="color:black"><b><center>
+                       <%= 
+                              i+1            
+                       %>
+                       <!-- 랭킹 순위 [1-10] -->      
+                                 
+                                      </center> </b></td>
+                                    <td class="column-1" style="padding-left:20px"><center>
+                                   <a href="<c:url value='/productDetail'><c:param name="kind2" value="3"/>
+                                   <c:param name="pId" value="<%= Topten_t.get(i).getProductId() %>"/></c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                        <%=
+                                              Topten_t.get(i).getName()
+                                    %>  
+                                </a> </center>  </td>
+                                    <td class="column-2" style="padding-left:40px"><center>
+                                         <%= Topten_t.get(i).getLikeCount() %>
+                                   </center></td>
+                               </tr>
+                       <%
+                          } 
+                       %>
+                       
                   </table>
                </div>
             </div>
@@ -465,48 +240,6 @@
       </div>
    </form>
 
-
-
-<!-- Ranking -->
-<!-- 
-<form class="bg0 p-t-75 p-b-85">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
-               <div class="m-l-25 m-r--38 m-lr-0-xl">
-                  <div class="wrap-table-shopping-cart">
-                     <table class="table-shopping-cart">
-                        <tr class="table_head">
-                           <th class="column-0">Rank</th>
-                                    <th class="column-1">Product</th>
-                                    <th class="column-2"></th>
-                        </tr>
-                        <tr class="table_row">
-                                       <td class="column-0">1</td>
-                                    <td class="column-1">
-                                       <div class="how-itemcart1">
-                                          <img src="images/item-cart-04.jpg" alt="IMG">
-                                       </div>
-                                    </td>
-                                    <td class="column-2">Fresh Strawberries</td>   
-                              </tr>
-                              <tr class="table_row">
-                                    <td class="column-0">2</td>
-                                    <td class="column-1">
-                                       <div class="how-itemcart1">
-                                          <img src="images/item-cart-05.jpg" alt="IMG">
-                                      </div>
-                                   </td>
-                                    <td class="column-2">Lightweight Jacket</td>
-                                </tr>
-                           </table>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </form>
- -->
 
 
 

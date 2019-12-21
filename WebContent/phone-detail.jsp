@@ -162,7 +162,7 @@
 								<div class="size-204 flex-w flex-m respon6-next">
 									<button
 										class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
-										onClick="detailAction('<c:url value='/product_update'/>')">UPDATE
+										onClick="detailAction('<c:url value='/phone_update'/>')">UPDATE
 									</button>
 									<button
 										class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"

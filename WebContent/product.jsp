@@ -14,28 +14,28 @@
 
 <script>
 function search(kind, targetUri) {
-	if (form.allSearch.value == "") {
-	      alert("검색어를 입력해주세요");
-	      form.allSearch.focus();
-	      return false;
-	} 
-	form.action = targetUri;
-	
-	 form.kind2.value = kind;
-	form.submit();
+   if (form.allSearch.value == "") {
+         alert("검색어를 입력해주세요");
+         form.allSearch.focus();
+         return false;
+   } 
+   form.action = targetUri;
+   
+    form.kind2.value = kind;
+   form.submit();
 }
 
-	function p_view(kind, targetUri) { 
-	    form1.action = targetUri;
-	    form1.kind3.value = kind;
-	    form1.submit();
-	 }
+   function p_view(kind, targetUri) { 
+       form1.action = targetUri;
+       form1.kind3.value = kind;
+       form1.submit();
+    }
 </script>
 
 </head>
 <body class="animsition">
-   <!-- Header import -->
-   <jsp:include page="/WEB-INF/views/header.jsp"/>
+	<!-- Header import -->
+	<jsp:include page="/WEB-INF/views/header.jsp" />
 
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/product_bg.jpg');">
@@ -43,98 +43,36 @@ function search(kind, targetUri) {
          Product
       </h2>
    </section>   
+
    
-   <!-- search form -->
-   <form class="p-t-20" style="margin:0 0 0 450px;" name="form"  action="<c:url value='/productSearch' />" >
-		<input type="hidden" name="kind2" value="10"/>
-		<div class="flex-w flex-m m-r-20 m-tb-5">
-	    	<input class="stext-104 cl2 plh4 size-search bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="allSearch" placeholder="Please write down the search term.">
-			<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-			<button type="button"  onClick="search(4, '<c:url value='/productSearch'/>')">Search</button>
-			</div>
-		</div>
+      <!-- search form -->
+	<form class="p-t-20" style="margin:0 0 0 450px;" name="form"  action="<c:url value='/productSearch' />" >
+	<input type="hidden" name="kind2" value="10"/>
+	   <div class="flex-w flex-m m-r-20 m-tb-5">
+	       <input class="stext-104 cl2 plh4 size-search bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="allSearch" placeholder="Please write down the search term.">
+	      <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+	      <button type="button"  onClick="search(4, '<c:url value='/productSearch'/>')">Search</button>
+	      </div>
+	   </div>
 	</form> 
-	
-	
-	<form name="form1" action="<c:url value='/productList'/>">
-	<input type="hidden" name="kind3" value="10"/>
-	<div class="flex-w flex-c-m m-tb-10"> <!-- a태그로 하거나  -->
-		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type="button" onClick="p_view(0, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value="Phone"/>
-		</div>
-		<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type="button" onClick="p_view(1, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value="Laptop"/>
-		</div>
-		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type="button" onClick="p_view(2, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value="Camera"/>
-		</div>
-		<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type="button" onClick="p_view(3, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value='Tablet'/>
-		</div>
-	</div>
-	</form>
-	
-	<!-- Product -->
-	<div class="bg0 m-t-23 p-b-140">
-		<div class="container">
-			<div class="flex-w flex-sb-m p-b-52">
-
-				<!-- Search product -->
-				<!--
-				<div class="dis-none panel-search w-full p-t-10 p-b-15">
-					<form action="product-search.jsp">
-					<div class="bor8 dis-flex p-l-15">
-						<select name='searchWhat'>
-  						<option value='' selected>-Choose-</option>
-  						<option value='0'>Model</option>
-  						<option value='1'>Name</option>
-						</select>
-						<input name="searchWord" class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
-					</div>	
-					</form>
-				</div>	
-				-->
-
-			<!-- PRODUCT 목록 -->
-			<% // for(int i = 0; i < 25; i++) { %>
-			<!--  
-			<div class="row isotope-grid">
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item 0">--> <!-- 옆에 괄호 안에 phone을 laptop, camera, tablet으로 바꾸면 됨 -->
-					<!-- Block2 -->
-					<!--  
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">-->
-									<!-- phone 제품명 가져오기 (name) -->
-								<!--
-								</a>
-
-								<span class="stext-105 cl3">  -->
-									<!-- phone 가격 가져오기 (price) -->
-									<!-- 
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div> -->
-			<%//} %>	
-		</div>
-	</div>
-	</div>
+   
+   
+   <form name="form1" action="<c:url value='/productList'/>">
+   <input type="hidden" name="kind3" value="10"/>
+   <div class="flex-w flex-c-m m-tb-10"> <!-- a태그로 하거나  -->
+      <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
+         <input type="button" onClick="p_view(0, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value="Phone"/>
+      </div>
+      <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
+         <input type="button" onClick="p_view(1, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value="Laptop"/>
+      </div>
+      <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
+         <input type="button" onClick="p_view(2, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value="Camera"/>
+      </div>
+      <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
+         <input type="button" onClick="p_view(3, '<c:url value='/productList'/>')" style="font-size:25pt; background-color:transparent;" value='Tablet'/>
+      </div>
+   </div>
+   </form>
 </body>
 </html>

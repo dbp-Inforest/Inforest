@@ -42,7 +42,16 @@
 	<div class="flex-w flex-c-m m-tb-10">	
 		<!-- Product Insert -->
 		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
-			<input type="button" onClick="manageView('<c:url value='/product_insert'/>')" style="font-size:25pt; background-color:transparent;" value="Insert Product"/>
+			<input type="button" onClick="manageView('<c:url value='/phone_insert'/>')" style="font-size:25pt; background-color:transparent;" value="Insert Phone"/>
+		</div>
+		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
+			<input type="button" onClick="manageView('<c:url value='/laptop_insert'/>')" style="font-size:25pt; background-color:transparent;" value="Insert Laptop"/>
+		</div>
+		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
+			<input type="button" onClick="manageView('<c:url value='/camera_insert'/>')" style="font-size:25pt; background-color:transparent;" value="Insert Camera"/>
+		</div>
+		<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4" style="width:300px;height:200px">
+			<input type="button" onClick="manageView('<c:url value='/tablet_insert'/>')" style="font-size:25pt; background-color:transparent;" value="Insert Tablet"/>
 		</div>
 	</div>
 </form>
