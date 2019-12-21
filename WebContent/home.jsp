@@ -40,7 +40,7 @@
    <section class="section-slide">
       <div class="wrap-slick1 rs2-slick1">
          <div class="slick1">
-         <div class="item-slick1 bg-overlay1" style="background-image: url(images/canon.jpg);" data-thumb="images/canon.jpg" data-caption="New Canon">
+         <div class="item-slick1 bg-overlay1" style="background-image: url(images/forest_bg.jpg);" data-thumb="images/forest_bg.jpg" data-caption="New Canon">
                <div class="container h-full"></div>
             </div>
          <div class="wrap-slick1-dots p-lr-10"></div>
