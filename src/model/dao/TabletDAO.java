@@ -152,19 +152,23 @@ public class TabletDAO{
 
 	public int insertTablet(Tablet tablet) {
 		int result = 0;
-		String insertQuery = "INSERT INTO TABLET (PRODUCT_ID, T_BATTERY, T_MEMORY, T_OS, T_SIZE) "
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?) " 
-				+ "INSERT INTO PRODUCT(PRODUCT_ID, NAME, COLOR, PRICE, BRAND, RELEASED_DATE, WEIGHT, P_KIND)"
+		
+		String insertQuery1 = "INSERT INTO PRODUCT(PRODUCT_ID, NAME, COLOR, PRICE, BRAND, RELEASED_DATE, WEIGHT, P_KIND)"
 				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+		String insertQuery2 = "INSERT INTO TABLET (PRODUCT_ID, T_BATTERY, T_MEMORY, T_OS, T_SIZE) "
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?) " ;
 		
 		// query 문에 사용할 매개변수 값을 갖는 매개변수 배열 생성
-		Object[] param = new Object[] { tablet.getProductId(), tablet.gettBattery(), tablet.gettMemory(), tablet.gettOS(), tablet.gettSize(),
-				tablet.getProductId(), tablet.getName(), tablet.getColor(), tablet.getPrice(), tablet.getBrand(), tablet.getReleased_date(), tablet.getWeight(), 3 };	
-		
-		jdbcUtil.setSql(insertQuery);			// JDBCUtil 에 insert 문 설정
-		jdbcUtil.setParameters(param);			// JDBCUtil 에 매개변수 설정
+		Object[] param1 = new Object[] { tablet.getProductId(), tablet.getName(), tablet.getColor(), tablet.getPrice(), tablet.getBrand(), tablet.getReleased_date(), tablet.getWeight(), 3 };	
+		Object[] param2 = new Object[] { tablet.getProductId(), tablet.gettBattery(), tablet.gettMemory(), tablet.gettOS(), tablet.gettSize(), };	
 				
-		try {				
+		try {
+			jdbcUtil.setSql(insertQuery1);			// JDBCUtil 에 insert 문 설정
+			jdbcUtil.setParameters(param1);			// JDBCUtil 에 매개변수 설정
+			result = jdbcUtil.executeUpdate();		// insert 문 실행
+			
+			jdbcUtil.setSql(insertQuery2);			// JDBCUtil 에 insert 문 설정
+			jdbcUtil.setParameters(param2);			// JDBCUtil 에 매개변수 설정
 			result = jdbcUtil.executeUpdate();		// insert 문 실행
 			System.out.println(tablet.getProductId() + " 제품명의 정보가 삽입되었습니다.");
 		} catch (SQLException ex) {
@@ -185,53 +189,67 @@ public class TabletDAO{
 
 	public int updateTablet(Tablet tablet) {
 		
-		String updateQuery = "UPDATE TABLET SET ";
+		System.out.println("updatePhone 들어와따!!!!!");
 		int index = 0;
-		Object[] tempParam = new Object[15];		// update 문에 사용할 매개변수를 저장할 수 있는 임시 배열
-		
+		String updateQuery1 = "UPDATE PRODUCT SET ";
+	    Object[] tempParam1 = new Object[10]; // update 문에 사용할 매개변수를 저장할 수 있는 임시 배열
+	   
 		if (tablet.getProductId() != null) {		// 이름이 설정되어 있을 경우
-			updateQuery += "PRODUCT_ID = ?, ";		// update 문에 이름 수정 부분 추가
-			tempParam[index++] = tablet.getProductId();		// 매개변수에 수정할 이름 추가
+			updateQuery1 += "PRODUCT_ID = ?, ";		// update 문에 이름 수정 부분 추가
+			tempParam1[index++] = tablet.getProductId();		// 매개변수에 수정할 이름 추가
 		}
 		if (tablet.getBrand() != null) {		// 브랜드가 설정되어 있을 경우
-			updateQuery += "BRAND = ?, ";		// update 문에 브랜드 수정 부분 추가
-			tempParam[index++] = tablet.getBrand();		// 매개변수에 수정할 브랜드 추가
+			updateQuery1 += "BRAND = ?, ";		// update 문에 브랜드 수정 부분 추가
+			tempParam1[index++] = tablet.getBrand();		// 매개변수에 수정할 브랜드 추가
 		}
 		if (tablet.getColor() != null) {		// 색깔이 설정되어 있을 경우
-			updateQuery += "COLOR = ?, ";		// update 문에 색깔 수정 부분 추가
-			tempParam[index++] = tablet.getColor();		// 매개변수에 수정할 색깔 추가
+			updateQuery1 += "COLOR = ?, ";		// update 문에 색깔 수정 부분 추가
+			tempParam1[index++] = tablet.getColor();		// 매개변수에 수정할 색깔 추가
 		}
 		if (tablet.getName() != null) {		// 이름이 설정되어 있을 경우
-			updateQuery += "NAME = ?, ";		// update 문에 이름 수정 부분 추가
-			tempParam[index++] = tablet.getName();		// 매개변수에 수정할 이름 추가
+			updateQuery1 += "NAME = ?, ";		// update 문에 이름 수정 부분 추가
+			tempParam1[index++] = tablet.getName();		// 매개변수에 수정할 이름 추가
 		}
 		if (tablet.getpKind() == 3) {		// 종류가 설정되어 있을 경우
-			updateQuery += "P_KIND = ?, ";		// update문에 종류 수정 부분 추가
-			tempParam[index++] = tablet.getpKind();		// 매개변수에 수정할 종류 추가
+			updateQuery1 += "P_KIND = ?, ";		// update문에 종류 수정 부분 추가
+			tempParam1[index++] = tablet.getpKind();		// 매개변수에 수정할 종류 추가
 		}
 		if (tablet.getReleased_date() != null) {		// 출시일이 설정되어 있을 경우
-			updateQuery += "RELEASED_DATE = ?, ";		// update문에 출시일 수정 부분 추가
-			tempParam[index++] = tablet.getReleased_date();		// 매개변수에 수정할 출시일 추가
+			updateQuery1 += "RELEASED_DATE = ?, ";		// update문에 출시일 수정 부분 추가
+			tempParam1[index++] = tablet.getReleased_date();		// 매개변수에 수정할 출시일 추가
 		}
+		
+	    updateQuery1 += "WHERE PRODUCT_ID = ? ";      // update 문에 조건 지정
+	    updateQuery1 = updateQuery1.replace(", WHERE", " WHERE");      // update 문의 where 절 앞에 있을 수 있는 , 제거
+	    tempParam1[index++] = tablet.getProductId();      // 찾을 조건에 해당하는 에 대한 매개변수 추가
+	      
+	    Object[] newParam1 = new Object[index];
+	    for (int i = 0; i < newParam1.length; i++)      // 매개변수의 개수만큼의 크기를 갖는 배열을 생성하고 매개변수 값 복사
+	         newParam1[i] = tempParam1[i];
+	    
+	    index = 0;  
+		String updateQuery2= "UPDATE TABLET SET ";
+	    Object[] tempParam2 = new Object[10]; // update 문에 사용할 매개변수를 저장할 수 있는 임시 배열
+		   
 		if (tablet.gettBattery() != null) {		// 배터리가 설정되어 있을 경우
-			updateQuery += "T_BATTERY = ?, ";		// update 문에 배터리 수정 부분 추가
-			tempParam[index++] = tablet.gettBattery();		// 매개변수에 수정할 배터리 추가
+			updateQuery2 += "T_BATTERY = ?, ";		// update 문에 배터리 수정 부분 추가
+			tempParam2[index++] = tablet.gettBattery();		// 매개변수에 수정할 배터리 추가
 		}
 		if (tablet.gettMemory() != null) {		// 메모리가 설정되어 있을 경우
-			updateQuery += "T_MEMORY = ?, ";		// update 문에 메모리 수정 부분 추가
-			tempParam[index++] = tablet.gettMemory();		// 매개변수에 수정할 메모리 추가
+			updateQuery2 += "T_MEMORY = ?, ";		// update 문에 메모리 수정 부분 추가
+			tempParam2[index++] = tablet.gettMemory();		// 매개변수에 수정할 메모리 추가
 		}
 		if (tablet.gettOS() != null) {		// 운영체제가 설정되어 있을 경우
-			updateQuery += "T_OS = ?, ";		// update 문에 운영체제 수정 부분 추가
-			tempParam[index++] = tablet.gettOS();		// 매개변수에 수정할 운영체제 추가
+			updateQuery2 += "T_OS = ?, ";		// update 문에 운영체제 수정 부분 추가
+			tempParam2[index++] = tablet.gettOS();		// 매개변수에 수정할 운영체제 추가
 		}
 		if (tablet.gettSize() >= 0) {		// 크기가 설정되어 있을 경우
-			updateQuery += "T_SIZE = ?, ";		// update 문에 크기 수정 부분 추가
-			tempParam[index++] = tablet.gettSize();		// 매개변수에 수정할 크기 추가
+			updateQuery2 += "T_SIZE = ?, ";		// update 문에 크기 수정 부분 추가
+			tempParam2[index++] = tablet.gettSize();		// 매개변수에 수정할 크기 추가
 		}
 		if (tablet.getWeight() >= 0) {		// 무게가 설정되어 있을 경우
-			updateQuery += "WEIGHT = ? ";		// update 문에 무게 수정 부분 추가
-			tempParam[index++] = tablet.getWeight();		// 매개변수에 수정할 무게 추가
+			updateQuery2 += "WEIGHT = ? ";		// update 문에 무게 수정 부분 추가
+			tempParam2[index++] = tablet.getWeight();		// 매개변수에 수정할 무게 추가
 		}
 		
 		updateQuery += " WHERE PRODUCT_ID = ? ";		// update 문에 조건 지정

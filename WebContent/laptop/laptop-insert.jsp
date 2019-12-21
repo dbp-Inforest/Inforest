@@ -35,7 +35,7 @@ function productList(targetUri) {
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/product_bg.jpg');">
       <h2 class="ltext-105 cl0 txt-center">
-         Product Insert
+         Laptop Insert
       </h2>
    </section> 
    
@@ -53,7 +53,7 @@ function productList(targetUri) {
          PRODUCT_ID
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="productId" placeholder="핸드폰 모델명을 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="productId" placeholder="모델명을 입력해주세요">
       </td>
    </tr>
 
@@ -62,7 +62,7 @@ function productList(targetUri) {
          NAME
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pName" placeholder="핸드폰 기종을 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pName" placeholder="제품명을 입력해주세요">
       </td>
    </tr>
    
@@ -71,7 +71,7 @@ function productList(targetUri) {
          P_COLOR
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pColor" placeholder="핸드폰 색깔을 입력하세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pColor" placeholder="색깔을 입력하세요">
       </td>
    </tr>
    
@@ -89,7 +89,7 @@ function productList(targetUri) {
          BRAND
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pBrand" placeholder="핸드폰 브랜드를 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pBrand" placeholder="브랜드를 입력해주세요">
       </td>
    </tr>
    
@@ -107,72 +107,63 @@ function productList(targetUri) {
          WEIGHT (g)
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pWeight" placeholder="핸드폰 무게는 몇 g인가요?">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pWeight" placeholder="무게는 몇 g인가요?">
       </td>
    </tr>
    
    <!-- 여기서부터 개별 컬럼들  -->
-   
+
    <tr class="table_row">
       <td class="column-1">
-		  P_BATTERY
+		  L_PURPOSE
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pBattery" placeholder="배터리는 몇 mAh인가요?">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="lPurpose" placeholder="목적에 대해 입력하세요">
       </td>
    </tr>
    
    <tr class="table_row">
       <td class="column-1">
-         P_MEMORY (GB)
+         L_DISPLAY (GB)
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pMemory" placeholder="메모리 용량은 몇인가요?">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="lDisplay" placeholder="디스플레이 정보에 대해 입력하세요">
       </td>
    </tr>
    
    <tr class="table_row">
       <td class="column-1">
-         P_DISPLAY
+         L_CPU
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pDisplay" placeholder="디스플레이 정보에 대해 입력하세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="lCPU" placeholder="CPU정보에 대해 입력하세요">
       </td>
    </tr>
    
    <tr class="table_row">
       <td class="column-1">
-         P_RAM (GB)
+         L_RAM_MEMORY (GB)
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pRam" placeholder="핸드폰 RAM은 몇 GB인가요?">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="lRamMemory" placeholder="RAM과  MEMORY에 대해 입력하세요">
       </td>
    </tr>
    
    <tr class="table_row">
       <td class="column-1">
-         P_SIZE
+         L_OS
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pSize" placeholder="핸드폰 사이즈는 몇인가요?">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="lOS" placeholder="운영체제에 대해 입력하세요">
       </td>
    </tr>
    
    <tr class="table_row">
       <td class="column-1">
-         P_CAMERA
+         L_SSD
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pCamera" placeholder="핸드폰 카메라 정보에 대해 입력하세요">
-      </td>
-   </tr>
-   
-   <tr class="table_row">
-      <td class="column-1">
-         P_OS
-      </td>
-      <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pOS" placeholder="핸드폰 운영체제에 대해 입력하세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="lSSD" placeholder="핸드폰 카메라 정보에 대해 입력하세요">
       </td>
    </tr>
                

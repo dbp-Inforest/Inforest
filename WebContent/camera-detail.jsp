@@ -12,6 +12,33 @@
    <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
+<script>
+	function detailAction(targetUri) {
+	    form.action = targetUri;
+	    alert(targetUri);
+	    form.submit();
+	 }
+	
+	function myCheck(){ //빈칸이면 false되도록 
+	    if(form1.review.value == ""){
+	         alert("댓글을 입력하십시오.");
+	         form1.review.focus();
+	         return false;
+	      } 
+	      
+	   var member_id = "<%=(String)session.getAttribute("userId")%>";
+	   alert(member_id);
+	   
+	    if(member_id == "null"){ //로그아웃 상태 
+	       alert("로그인을 한 후에 댓글을 작성할 수 있습니다.");
+	       history.go(0);
+	   }
+	    else{ //로그인 
+	       alert("로그인상태입니다.");
+	       form1.submit();
+	    }
+	}
+</script>
 </head>
 <body class="animsition">
    <!-- Header import -->

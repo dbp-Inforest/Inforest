@@ -74,129 +74,149 @@ public class CameraDAO {
 		return null;	
 	}
 
-	// Camera 객체에 담겨 있는 태블릿의 정보를 기반으로 태블릿 정보를 Camera 테이블에 삽입하는 메소드
-	public int insertCamera(Camera Camera) {
-		int result = 0;
+	   // Camera 객체에 담겨 있는 태블릿의 정보를 기반으로 태블릿 정보를 Camera 테이블에 삽입하는 메소드
+	   public int insertCamera(Camera Camera) {
+	      int result = 0;
 
-	    String insertQuery1 = "INSERT INTO Camera (PRODUCT_ID, C_DISPLAY, C_PIXEL, C_BATTERY, C_VIBRATION, C_BURSTSHOT, C_LENS) "
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?) ";
-	      
-	    String insertQuery2 = "INSERT INTO PRODUCT(PRODUCT_ID, NAME, COLOR, PRICE, BRAND, RELEASED_DATE, WEIGHT, P_KIND)"
-					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-		
-	      
-		// query 문에 사용할 매개변수 값을 갖는 매개변수 배열 생성
-		Object[] param1 = new Object[] { Camera.getProductId(), Camera.getcDisplay(), Camera.getcPixel(), Camera.getcBattery(), Camera.getcVibration(), Camera.getcBurstshot(), Camera.getcLens() };
-	    Object[] param2 = new Object[] { Camera.getProductId(), Camera.getName(), Camera.getColor(), Camera.getPrice(), Camera.getBrand(), Camera.getReleased_date(), Camera.getWeight(), 2 };     
-	    
-	    try {    
-	         jdbcUtil.setSql(insertQuery2);          // JDBCUtil 에 insert 문 설정
-	         jdbcUtil.setParameters(param2);        // JDBCUtil 에 매개변수 설정
-	         result = jdbcUtil.executeUpdate();      // insert 문 실행
+	       String insertQuery1 = "INSERT INTO Camera (PRODUCT_ID, C_DISPLAY, C_PIXEL, C_BATTERY, C_VIBRATION, C_BURSTSHOT, C_LENS) "
+	               + " VALUES (?, ?, ?, ?, ?, ?, ?) ";
 	         
-	         jdbcUtil.setSql(insertQuery1);         // JDBCUtil 에 insert 문 설정
-	         jdbcUtil.setParameters(param1);         // JDBCUtil 에 매개변수 설정
-	         result = jdbcUtil.executeUpdate();      // insert 문 실행
-	         System.out.println(Camera.getProductId() + " 제품정보가 삽입되었습니다.");
-	    }catch (SQLException ex) {
-	         System.out.println("입력오류 발생!!!");
-	         ex.printStackTrace();
-	         if (ex.getErrorCode() == 1)
-	            System.out.println("동일한 제품정보가 이미 존재합니다.");      
-	    } catch (Exception ex) {
-	         jdbcUtil.rollback();
-	         ex.printStackTrace();
-	    } finally {      
-	         jdbcUtil.commit();
-	         jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
-	    }      
-	    
-	    return result;      // insert 에 의해 반영된 레코드 수 반환   
-	      		
-	}
-	
-	// Camera 객체에 설정되어 있는 정보를 토대로 테이블의 정보를 수정하는 메소드
-	
-	public int updateCamera(Camera camera) {
-		
-		String updateQuery = "UPDATE Camera SET ";
-		int index = 0;
-		Object[] tempParam = new Object[15];		// update 문에 사용할 매개변수를 저장할 수 있는 임시 배열
-		
-		if (camera.getProductId() != null) {		// 이름이 설정되어 있을 경우
-			updateQuery += "PRODUCT_ID = ?, ";		// update 문에 이름 수정 부분 추가
-			tempParam[index++] = camera.getProductId();		// 매개변수에 수정할 이름 추가
-		}
-		if (camera.getBrand() != null) {		// 브랜드가 설정되어 있을 경우
-			updateQuery += "BRAND = ?, ";		// update 문에 브랜드 수정 부분 추가
-			tempParam[index++] = camera.getBrand();		// 매개변수에 수정할 브랜드 추가
-		}
-		if (camera.getColor() != null) {		// 색깔이 설정되어 있을 경우
-			updateQuery += "COLOR = ?, ";		// update 문에 색깔 수정 부분 추가
-			tempParam[index++] = camera.getColor();		// 매개변수에 수정할 색깔 추가
-		}
-		if (camera.getName() != null) {		// 이름이 설정되어 있을 경우
-			updateQuery += "NAME = ?, ";		// update 문에 이름 수정 부분 추가
-			tempParam[index++] = camera.getName();		// 매개변수에 수정할 이름 추가
-		}
-		if (camera.getpKind() == 3) {		// 종류가 설정되어 있을 경우
-			updateQuery += "P_KIND = ?, ";		// update문에 종류 수정 부분 추가
-			tempParam[index++] = camera.getpKind();		// 매개변수에 수정할 종류 추가
-		}
-		if (camera.getReleased_date() != null) {		// 출시일이 설정되어 있을 경우
-			updateQuery += "RELEASED_DATE = ?, ";		// update문에 출시일 수정 부분 추가
-			tempParam[index++] = camera.getReleased_date();		// 매개변수에 수정할 출시일 추가
-		}
-		if (camera.getcDisplay() >= 0) {		// 디스플레이가 설정되어 있을 경우
-			updateQuery += "C_DISPLAY = ?, ";		// update 문에 디스플레이 수정 부분 추가
-			tempParam[index++] = camera.getcDisplay();		// 매개변수에 수정할 디스플레이 추가
-		}
-		if (camera.getcPixel() >= 0) {		// 픽셀이 설정되어 있을 경우
-			updateQuery += "C_PIXEL = ?, ";		// update 문에 픽셀 수정 부분 추가
-			tempParam[index++] = camera.getcPixel();		// 매개변수에 수정할 픽셀 추가
-		}
-		if (camera.getcBattery() != null) {		// 배터리가 설정되어 있을 경우
-			updateQuery += "C_BATTERY = ?, ";		// update 문에 배터리 수정 부분 추가
-			tempParam[index++] = camera.getcBattery();		// 매개변수에 수정할 배터리 추가
-		}
-		if (camera.getcVibration() != null) {		// 바이브레이션이 설정되어 있을 경우
-			updateQuery += "C_VIBRATION = ?, ";		// update 문에 바이브레이션 수정 부분 추가
-			tempParam[index++] = camera.getcVibration();		// 매개변수에 수정할 바이브레이션 추가
-		}
-		if (camera.getcBurstshot() >= 0) {		// 버스트샷이 설정되어 있을 경우
-			updateQuery += "C_BURSTSHOT = ?, ";		// update 문에 버스트샷 수정 부분 추가
-			tempParam[index++] = camera.getcBurstshot();		// 매개변수에 수정할 버스트샷 추가
-		}
-		if (camera.getcLens() != null) {		// 렌즈가 설정되어 있을 경우
-			updateQuery += "C_LENS = ? ";		// update 문에 렌즈 수정 부분 추가
-			tempParam[index++] = camera.getcLens();		// 매개변수에 수정할 렌즈 추가
-		}
-		
-		updateQuery += "WHERE PRODUCT_ID = ? ";		// update 문에 조건 지정
-		updateQuery = updateQuery.replace(", WHERE", " WHERE");		// update 문의 where 절 앞에 있을 수 있는 , 제거
-		
-		tempParam[index++] = camera.getProductId();		// 찾을 조건에 해당하는 학번에 대한 매개변수 추가
-		
-		Object[] newParam = new Object[index];
-		for (int i=0; i < newParam.length; i++)		// 매개변수의 개수만큼의 크기를 갖는 배열을 생성하고 매개변수 값 복사
-			newParam[i] = tempParam[i];
-		
-		jdbcUtil.setSql(updateQuery);			// JDBCUtil에 update 문 설정
-		jdbcUtil.setParameters(newParam);		// JDBCUtil 에 매개변수 설정
-		
-		try {
-			int result = jdbcUtil.executeUpdate();		// update 문 실행
-			return result;			// update 에 의해 반영된 레코드 수 반환
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		}
-		finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
-		}		
-		return 0;
-	}
+	       String insertQuery2 = "INSERT INTO PRODUCT(PRODUCT_ID, NAME, COLOR, PRICE, BRAND, RELEASED_DATE, WEIGHT, P_KIND)"
+	               + " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+	      
+	         
+	      // query 문에 사용할 매개변수 값을 갖는 매개변수 배열 생성
+	      Object[] param1 = new Object[] { Camera.getProductId(), Camera.getcDisplay(), Camera.getcPixel(), Camera.getcBattery(), Camera.getcVibration(), Camera.getcBurstshot(), Camera.getcLens() };
+	       Object[] param2 = new Object[] { Camera.getProductId(), Camera.getName(), Camera.getColor(), Camera.getPrice(), Camera.getBrand(), Camera.getReleased_date(), Camera.getWeight(), 2 };     
+	       
+	       try {    
+	            jdbcUtil.setSql(insertQuery2);          // JDBCUtil 에 insert 문 설정
+	            jdbcUtil.setParameters(param2);        // JDBCUtil 에 매개변수 설정
+	            result = jdbcUtil.executeUpdate();      // insert 문 실행
+	            
+	            jdbcUtil.setSql(insertQuery1);         // JDBCUtil 에 insert 문 설정
+	            jdbcUtil.setParameters(param1);         // JDBCUtil 에 매개변수 설정
+	            result = jdbcUtil.executeUpdate();      // insert 문 실행
+	            System.out.println(Camera.getProductId() + " 제품정보가 삽입되었습니다.");
+	       }catch (SQLException ex) {
+	            System.out.println("입력오류 발생!!!");
+	            ex.printStackTrace();
+	            if (ex.getErrorCode() == 1)
+	               System.out.println("동일한 제품정보가 이미 존재합니다.");      
+	       } catch (Exception ex) {
+	            jdbcUtil.rollback();
+	            ex.printStackTrace();
+	       } finally {      
+	            jdbcUtil.commit();
+	            jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+	       }      
+	       
+	       return result;      // insert 에 의해 반영된 레코드 수 반환   
+	               
+	   }
+	   
+	   // Camera 객체에 설정되어 있는 정보를 토대로 테이블의 정보를 수정하는 메소드
+	   
+	   public void updateCamera(Camera camera) {
+	      
+	      int index = 0;
+	      
+	      System.out.println("updatePhone 들어와따!!!!!");
+	      String updateQuery1 = "UPDATE PRODUCT SET ";
+	       Object[] tempParam1 = new Object[10]; // update 문에 사용할 매개변수를 저장할 수 있는 임시 배열
+	      
+	      if (camera.getProductId() != null) {      // 이름이 설정되어 있을 경우
+	         updateQuery1 += "PRODUCT_ID = ?, ";      // update 문에 이름 수정 부분 추가
+	         tempParam1[index++] = camera.getProductId();      // 매개변수에 수정할 이름 추가
+	      }
+	      if (camera.getBrand() != null) {      // 브랜드가 설정되어 있을 경우
+	         updateQuery1 += "BRAND = ?, ";      // update 문에 브랜드 수정 부분 추가
+	         tempParam1[index++] = camera.getBrand();      // 매개변수에 수정할 브랜드 추가
+	      }
+	      if (camera.getColor() != null) {      // 색깔이 설정되어 있을 경우
+	         updateQuery1 += "COLOR = ?, ";      // update 문에 색깔 수정 부분 추가
+	         tempParam1[index++] = camera.getColor();      // 매개변수에 수정할 색깔 추가
+	      }
+	      if (camera.getName() != null) {      // 이름이 설정되어 있을 경우
+	         updateQuery1 += "NAME = ?, ";      // update 문에 이름 수정 부분 추가
+	         tempParam1[index++] = camera.getName();      // 매개변수에 수정할 이름 추가
+	      }
+	      if (camera.getpKind() == 3) {      // 종류가 설정되어 있을 경우
+	         updateQuery1 += "P_KIND = ?, ";      // update문에 종류 수정 부분 추가
+	         tempParam1[index++] = camera.getpKind();      // 매개변수에 수정할 종류 추가
+	      }
+	      if (camera.getReleased_date() != null) {      // 출시일이 설정되어 있을 경우
+	         updateQuery1 += "RELEASED_DATE = ?, ";      // update문에 출시일 수정 부분 추가
+	         tempParam1[index++] = camera.getReleased_date();      // 매개변수에 수정할 출시일 추가
+	      }
+	      
+	       updateQuery1 += "WHERE PRODUCT_ID = ? ";      // update 문에 조건 지정
+	       updateQuery1 = updateQuery1.replace(", WHERE", " WHERE");      // update 문의 where 절 앞에 있을 수 있는 , 제거
+
+	       tempParam1[index++] = camera.getProductId();      // 찾을 조건에 해당하는 에 대한 매개변수 추가
+	         
+	       Object[] newParam1 = new Object[index];
+	       for (int i = 0; i < newParam1.length; i++)      // 매개변수의 개수만큼의 크기를 갖는 배열을 생성하고 매개변수 값 복사
+	          newParam1[i] = tempParam1[i];
+	       
+	       index = 0;
+	       String updateQuery2 = "UPDATE CAMERA SET ";
+	       Object[] tempParam2 = new Object[10];
+	               
+	      if (camera.getcDisplay() >= 0) {      // 디스플레이가 설정되어 있을 경우
+	         updateQuery2 += "C_DISPLAY = ?, ";      // update 문에 디스플레이 수정 부분 추가
+	         tempParam2[index++] = camera.getcDisplay();      // 매개변수에 수정할 디스플레이 추가
+	      }
+	      if (camera.getcPixel() >= 0) {      // 픽셀이 설정되어 있을 경우
+	         updateQuery2 += "C_PIXEL = ?, ";      // update 문에 픽셀 수정 부분 추가
+	         tempParam2[index++] = camera.getcPixel();      // 매개변수에 수정할 픽셀 추가
+	      }
+	      if (camera.getcBattery() != null) {      // 배터리가 설정되어 있을 경우
+	         updateQuery2 += "C_BATTERY = ?, ";      // update 문에 배터리 수정 부분 추가
+	         tempParam2[index++] = camera.getcBattery();      // 매개변수에 수정할 배터리 추가
+	      }
+	      if (camera.getcVibration() != null) {      // 바이브레이션이 설정되어 있을 경우
+	         updateQuery2 += "C_VIBRATION = ?, ";      // update 문에 바이브레이션 수정 부분 추가
+	         tempParam2[index++] = camera.getcVibration();      // 매개변수에 수정할 바이브레이션 추가
+	      }
+	      if (camera.getcBurstshot() >= 0) {      // 버스트샷이 설정되어 있을 경우
+	         updateQuery2 += "C_BURSTSHOT = ?, ";      // update 문에 버스트샷 수정 부분 추가
+	         tempParam2[index++] = camera.getcBurstshot();      // 매개변수에 수정할 버스트샷 추가
+	      }
+	      if (camera.getcLens() != null) {      // 렌즈가 설정되어 있을 경우
+	         updateQuery2 += "C_LENS = ? ";      // update 문에 렌즈 수정 부분 추가
+	         tempParam2[index++] = camera.getcLens();      // 매개변수에 수정할 렌즈 추가
+	      }
+	      
+	      updateQuery2 += "WHERE PRODUCT_ID = ? ";      // update 문에 조건 지정
+	      updateQuery2 = updateQuery2.replace(", WHERE", " WHERE");      // update 문의 where 절 앞에 있을 수 있는 , 제거
+	      
+	      tempParam2[index++] = camera.getProductId();      // 찾을 조건에 해당하는 학번에 대한 매개변수 추가
+	      
+	      Object[] newParam2 = new Object[index];
+	      for (int i=0; i < newParam2.length; i++)      // 매개변수의 개수만큼의 크기를 갖는 배열을 생성하고 매개변수 값 복사
+	         newParam2[i] = tempParam2[i];
+	      
+	       try {
+	            System.out.println("update try문 들어와따!!!!!");
+	             jdbcUtil.setSql(updateQuery1);         // JDBCUtil에 update 문 설정
+	             jdbcUtil.setParameters(newParam1);      // JDBCUtil 에 매개변수 설정
+	             int result = jdbcUtil.executeUpdate();      // update 문 실행
+	             
+	             jdbcUtil.setSql(updateQuery2);         // JDBCUtil에 update 문 설정
+	             jdbcUtil.setParameters(newParam2);      // JDBCUtil 에 매개변수 설정
+	             result += jdbcUtil.executeUpdate();
+	             return;         // update 에 의해 반영된 레코드 수 반환
+	        } catch (Exception ex) {
+	             jdbcUtil.rollback();
+	             ex.printStackTrace();
+	        }
+	          finally {
+	             jdbcUtil.commit();
+	             jdbcUtil.close();      // ResultSet, PreparedStatement, Connection 반환
+	        }      
+	        return;
+	   }
 
 	
 	// product_id를 전달받아 해당 카메라의 정보를 삭제하는 메소드
