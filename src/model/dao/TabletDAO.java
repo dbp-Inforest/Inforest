@@ -252,16 +252,16 @@ public class TabletDAO{
 			tempParam2[index++] = tablet.getWeight();		// 매개변수에 수정할 무게 추가
 		}
 		
-		updateQuery += " WHERE PRODUCT_ID = ? ";		// update 문에 조건 지정
-		updateQuery = updateQuery.replace(", WHERE", " WHERE");		// update 문의 where 절 앞에 있을 수 있는 , 제거
+		updateQuery2 += " WHERE PRODUCT_ID = ? ";		// update 문에 조건 지정
+		updateQuery2 = updateQuery2.replace(", WHERE", " WHERE");		// update 문의 where 절 앞에 있을 수 있는 , 제거
 		
-		tempParam[index++] = tablet.getProductId();		// 찾을 조건에 해당하는 학번에 대한 매개변수 추가
+		tempParam2[index++] = tablet.getProductId();		// 찾을 조건에 해당하는 학번에 대한 매개변수 추가
 		
 		Object[] newParam = new Object[index];
 		for (int i=0; i < newParam.length; i++)		// 매개변수의 개수만큼의 크기를 갖는 배열을 생성하고 매개변수 값 복사
-			newParam[i] = tempParam[i];
+			newParam[i] = tempParam2[i];
 		
-		jdbcUtil.setSql(updateQuery);			// JDBCUtil에 update 문 설정
+		jdbcUtil.setSql(updateQuery2);			// JDBCUtil에 update 문 설정
 		jdbcUtil.setParameters(newParam);		// JDBCUtil 에 매개변수 설정
 		
 		try {

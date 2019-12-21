@@ -69,19 +69,25 @@ public class LaptopDAO{
 
 	public int insertLaptop(Laptop laptop) {
 		int result = 0;
-		String insertQuery = "INSERT INTO LAPTOP (L_PURPOSE, L_DISPLAY, L_CPU, L_RAM_MEMORY, L_OS, PRODUCT_ID, L_SSD) " +
+		String insertQuery1 = "INSERT INTO PRODUCT (PRODUCT_ID, NAME, COLOR, PRICE, BRAND, RELEASED_DATE, WEIGHT, P_KIND) " +
+	 			 "VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
+		
+		String insertQuery2 = "INSERT INTO LAPTOP (L_PURPOSE, L_DISPLAY, L_CPU, L_RAM_MEMORY, L_OS, PRODUCT_ID, L_SSD) " +
 							 "VALUES (?, ?, ?, ?, ?, ?, ?) ";
-		insertQuery += "INSERT INTO PRODUCT (PRODUCT_ID, NAME, COLOR, PRICE, BRAND, RELEASED_DATE, WEIGHT, P_KIND) " +
-				 "VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
 		
 		// query 문에 사용할 매개변수 값을 갖는 매개변수 배열 생성 물음표 다 받아오기 
-		Object[] param = new Object[] {laptop.getlPurpose(), laptop.getlDisplay(), laptop.getlCPU(), laptop.getlRAMMemory(),
-				laptop.getlOS(), laptop.getProductId(), laptop.getlSSD(), laptop.getProductId(), laptop.getName(),
-				laptop.getColor(), laptop.getPrice(), laptop.getBrand(), laptop.getReleased_date(), laptop.getWeight(), 1};		
-		jdbcUtil.setSql(insertQuery);			// JDBCUtil 에 insert 문 설정
-		jdbcUtil.setParameters(param);			// JDBCUtil 에 매개변수 설정
-				
+		Object[] param1 = new Object[] {laptop.getProductId(), laptop.getName(), laptop.getColor(), laptop.getPrice(), laptop.getBrand(), laptop.getReleased_date(), laptop.getWeight(), 1};		
+
+		Object[] param2 = new Object[] {laptop.getlPurpose(), laptop.getlDisplay(), laptop.getlCPU(), laptop.getlRAMMemory(),
+				laptop.getlOS(), laptop.getProductId(), laptop.getlSSD()};		
+			
 		try {				
+			jdbcUtil.setSql(insertQuery1);			// JDBCUtil 에 insert 문 설정
+			jdbcUtil.setParameters(param1);			// JDBCUtil 에 매개변수 설정
+			result = jdbcUtil.executeUpdate();		// insert 문 실행
+			
+			jdbcUtil.setSql(insertQuery2);			// JDBCUtil 에 insert 문 설정
+			jdbcUtil.setParameters(param2);			// JDBCUtil 에 매개변수 설정
 			result = jdbcUtil.executeUpdate();		// insert 문 실행
 			System.out.println(laptop.getProductId() + " 제품정보가 삽입되었습니다.");
 		} catch (SQLException ex) {

@@ -40,6 +40,7 @@
 <%
 	CameraDAO cameraDAO = new CameraDAO();
 	Camera camera = cameraDAO.getCameraById((String)request.getParameter("pId"));
+	System.out.println((String)request.getParameter("pId"));
 	System.out.println("안녕 여기는 product-update : " + camera.getProductId());
 %>
 <!-- 제품 추가 테이블 -->
