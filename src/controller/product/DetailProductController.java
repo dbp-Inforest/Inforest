@@ -35,13 +35,13 @@ public class DetailProductController implements Controller{
 	   
       String kind = request.getParameter("kind2"); //0,1,2,3
       String pid = request.getParameter("pId");
-      List<PComment> commentList = pcommentDAO.getPCommentList();
-      request.setAttribute("commentList", commentList);
-     
+      List<PComment> plist = pcommentDAO.getPCommentList();
+      
       if(request.getMethod().equals("GET")) { // GET request 처리          
           if(kind.equals("0")) { //phone
              Phone phoneDetail = phoneDAO.getPhoneById(pid);
-             request.setAttribute("phoneDetail", phoneDetail);   
+             request.setAttribute("phoneDetail", phoneDetail);
+             request.setAttribute("plist", plist);
                return "/phone-detail.jsp";   
              
           }else if(kind.equals("1")){ //laptop
@@ -69,14 +69,18 @@ public class DetailProductController implements Controller{
           
           HttpSession session = request.getSession();
           String id = UserSessionUtils.getLoginUserId(session);
- 
+         
           PComment pcm = new PComment(review, id, pid);
-          pcommentDAO.insertPComment(pcm);
+          int num = pcommentDAO.insertPComment(pcm);
       
           if(kind.equals("0")) { //phone
+        	 
              Phone phoneDetail = phoneDAO.getPhoneById(pid);
+             List<PComment> plist2 = pcommentDAO.getPCommentList();
+             System.out.println(num + "만큼 인서트했다.");
              request.setAttribute("phoneDetail", phoneDetail);   
-               return "/phone-detail.jsp";   
+             request.setAttribute("plist", plist2);
+             return "/phone-detail.jsp";   
              
           }else if(kind.equals("1")){ 
              Laptop laptopDetail = laptopDAO.getLaptopById(pid);

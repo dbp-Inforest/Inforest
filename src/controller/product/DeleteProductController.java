@@ -65,7 +65,7 @@ public class DeleteProductController implements Controller {
     		kind = (String)request.getParameter("reviewId");
     		System.out.println("¥ÒªËΩ√¿€"+ kind);
     		pcommentDAO.deletePComment(kind);
-    		return "redirect:/productList?kind3=" + kind;
+    		return "/productDetail";
     	}
     	return "redirect:/productList?kind3=" + kind;
 	}
