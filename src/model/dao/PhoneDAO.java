@@ -7,6 +7,7 @@ import java.util.List;
 
 import model.dao.PhoneDAO;
 import model.dto.Phone;
+import model.dto.Product;
 
 public class PhoneDAO{
 
@@ -341,6 +342,72 @@ public class PhoneDAO{
          }
          return null;
      }
+   
+   public String getBrandById(String pId) {
+       // TODO Auto-generated method stub
+       String searchQuery = query + "FROM PHONE H, PRODUCT P " +
+               "WHERE H.PRODUCT_ID = P.PRODUCT_ID  AND H.PRODUCT_ID = ?";   
+     
+       
+       
+       jdbcUtil.setSql(searchQuery);
+       Object[] param = new Object[] {pId};
+       jdbcUtil.setParameters(param);
+    
+       try {
+          ResultSet rs = jdbcUtil.executeQuery();
+          String brand = null;
+          System.out.println("PHONEDAO");
+          if (rs.next()) { 
+             brand = rs.getString("PHONE_BRAND");
+             System.out.println("여기까지 성공");
+          }else {
+          	 System.out.println("No ResultSet"); 
+          }
+               
+          return brand;   
+       } catch (Exception ex) {
+          ex.printStackTrace();
+       } finally {
+          jdbcUtil.close();
+       }
+       return null;
+   }
+   
+   
+   public List<Product> getProductByBrand(String brand) {	   
+	   String searchQuery = query + "FROM PHONE H, PRODUCT P " +
+               "WHERE H.PRODUCT_ID = P.PRODUCT_ID  AND P.BRAND = ?";
+			   
+       
+       jdbcUtil.setSql(searchQuery);
+       Object[] param = new Object[] {brand};
+       jdbcUtil.setParameters(param);
+    
+       try {
+           ResultSet rs = jdbcUtil.executeQuery();
+           List<Product> productList = new ArrayList<Product>();
+           while (rs.next()) {
+        	  Product dto = new Product();
+              dto.setProductId(rs.getString("PHONE_ID"));
+              dto.setName(rs.getString("PHONE_NAME"));
+              dto.setColor(rs.getString("PHONE_COLOR"));
+              dto.setPrice(rs.getString("PHONE_PRICE"));
+              dto.setBrand(rs.getString("PHONE_BRAND"));
+              dto.setReleased_date(rs.getDate("PHONE_RELEASED_DATE"));
+              dto.setWeight(rs.getDouble("PHONE_WEIGHT"));
+              dto.setpKind(rs.getInt("PHONE_KIND"));
+              
+              productList.add(dto);
+           }
+           return productList;
+        } catch (Exception ex) {
+           ex.printStackTrace();
+        } finally {
+           jdbcUtil.close();
+        }
+        return null;
+   }
 }
 
 
