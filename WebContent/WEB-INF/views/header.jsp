@@ -41,10 +41,16 @@
                      <li>
                       <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
-
+					<c:if test="${userId != null}">
                      <li>
                        <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
                      </li>
+                      </c:if>
+                      <c:if test="${userId == null}">
+                     <li>
+                       <a href="<c:url value='/signIn'/>" style="text-decoration:none">MY PAGE</a>
+                     </li>
+                      </c:if>
                      <c:if test="${userId == null}">
 	                     <li>
 	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
