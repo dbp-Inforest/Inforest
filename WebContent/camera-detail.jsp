@@ -165,7 +165,7 @@ System.out.println("camera-detail.jsp");
 							<div style="height:50px;">&nbsp;</div><div style="height:50px;">&nbsp;</div>
 										<!-- 여기 ADD TO 'LIKE' 버튼 누르면 관심 상품에 등록될 수 있도록..? -->
 							<form name="form" method="POST" action="<c:url value='/product' />">
-								<input type="hidden" name="pId" value="${phoneDetail.productId}" />
+								<input type="hidden" name="pId" value="${cameraDetail.productId}" />
 								<input type="hidden" name="kind" value="2" />
 								<c:if test="${position == 2}">
 									<div class="size-204 flex-w flex-m respon6-next">

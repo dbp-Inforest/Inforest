@@ -31,30 +31,30 @@
    <!-- Title page -->
    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/product_bg.jpg');">
       <h2 class="ltext-105 cl0 txt-center">
-         Product Update
+         Tablet Update
       </h2>
    </section> 
    
  <div style="height:50px;">&nbsp;</div>
 
 <%
-	PhoneDAO phoneDAO = new PhoneDAO();
-	Phone phone = phoneDAO.getPhoneById((String)request.getParameter("pId"));
-	System.out.println("안녕 여기는 product-update : " + phone.getProductId());
+	TabletDAO tabletDAO = new TabletDAO();
+	Tablet tablet = tabletDAO.getTabletById((String)request.getParameter("pId"));
+	System.out.println("안녕 여기는 product-update : " + tablet.getProductId());
 %>
 
 <!-- 제품 추가 테이블 -->
 <div class="container">
 <div class="row">
 <form class="bg0 p-t-75 p-b-85" name="form" method="POST" action="<c:url value='/insertProduct' />" style="position:absolute;left:50%;margin:0 0 0 -310px;">
-   <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="hidden" name="pKind" value="0">
+   <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="hidden" name="pKind" value="3">
    <table style="width:750px; margin-left: auto; margin-right: auto;" class="table-sign">
    <tr class="table_row">
       <td class="column-1" >
          PRODUCT_ID
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getProductId() %>" type="text" name="productId" placeholder="핸드폰 모델명을 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= tablet.getProductId() %>" type="text" name="productId" placeholder="핸드폰 모델명을 입력해주세요">
       </td>
    </tr>
 
@@ -63,7 +63,7 @@
          NAME
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getName() %>" type="text" name="pName" placeholder="핸드폰 기종을 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= tablet.getName() %>" type="text" name="pName" placeholder="핸드폰 기종을 입력해주세요">
       </td>
    </tr>
    
@@ -72,7 +72,7 @@
          P_COLOR
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getColor() %>" type="text" name="pColor" placeholder="핸드폰 색깔을 입력하세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= tablet.getColor() %>" type="text" name="pColor" placeholder="핸드폰 색깔을 입력하세요">
       </td>
    </tr>
    
@@ -81,7 +81,7 @@
          PRICE
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getPrice() %>" type="text" name="pPrice" placeholder="가격을 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= tablet.getPrice() %>" type="text" name="pPrice" placeholder="가격을 입력해주세요">
       </td>
    </tr>
    
@@ -90,7 +90,7 @@
          BRAND
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pBrand" value="<%= phone.getBrand() %>" placeholder="핸드폰 브랜드를 입력해주세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="pBrand" value="<%= tablet.getBrand() %>" placeholder="핸드폰 브랜드를 입력해주세요">
       </td>
    </tr>
    
@@ -99,7 +99,7 @@
          RELEASED_DATE
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getReleased_date() %>" type="date" name="pDate" placeholder="출시일자  ex ) YY/MM/DD">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= tablet.getReleased_date() %>" type="date" name="pDate" placeholder="출시일자  ex ) YY/MM/DD">
       </td>
    </tr>
    
@@ -108,73 +108,46 @@
          WEIGHT (g)
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getWeight() %>" type="text" name="pWeight" placeholder="핸드폰 무게는 몇 g인가요?">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= tablet.getWeight() %>" type="text" name="pWeight" placeholder="핸드폰 무게는 몇 g인가요?">
       </td>
    </tr>
    
    <tr class="table_row">
       <td class="column-1">
-		  P_BATTERY
+		  T_BATTERY
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getpBattery() %>" type="text" name="pBattery" placeholder="배터리는 몇 mAh인가요?">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="tBattery" value="<%= tablet.gettBattery() %>" placeholder="배터리는 몇 mAh인가요?">
       </td>
    </tr>
    
    <tr class="table_row">
       <td class="column-1">
-         P_MEMORY (GB)
+         T_MEMORY (GB)
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" value="<%= phone.getpMemory() %>" name="pMemory" placeholder="메모리 용량은 몇인가요?">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="tMemory" value="<%= tablet.gettMemory() %>" placeholder="메모리 용량은 몇인가요?">
       </td>
    </tr>
    
    <tr class="table_row">
       <td class="column-1">
-         P_DISPLAY
+         T_SIZE
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getpDisplay() %>" type="text" name="pDisplay" placeholder="디스플레이 정보에 대해 입력하세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="tSize" value="<%= tablet.gettSize() %>" placeholder="사이즈는 몇인가요?">
       </td>
    </tr>
-   
+
    <tr class="table_row">
       <td class="column-1">
-         P_RAM (GB)
+         T_OS
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getpRAM() %>" type="text" name="pRam" placeholder="핸드폰 RAM은 몇 GB인가요?">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="tOS" value="<%= tablet.gettOS() %>" placeholder="운영체제에 대해 입력하세요">
       </td>
    </tr>
-   
-   <tr class="table_row">
-      <td class="column-1">
-         P_SIZE
-      </td>
-      <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getpSize() %>" type="text" name="pSize" placeholder="핸드폰 사이즈는 몇인가요?">
-      </td>
-   </tr>
-   
-   <tr class="table_row">
-      <td class="column-1">
-         P_CAMERA
-      </td>
-      <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getpCamera() %>" type="text" name="pCamera" placeholder="핸드폰 카메라 정보에 대해 입력하세요">
-      </td>
-   </tr>
-   
-   <tr class="table_row">
-      <td class="column-1">
-         P_OS
-      </td>
-      <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" value="<%= phone.getpOS() %>" type="text" name="pOS" placeholder="핸드폰 운영체제에 대해 입력하세요">
-      </td>
-   </tr>
-   <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="hidden" name="kind" value="0">
+   <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="hidden" name="kind" value="3">
                
    <tr class="table_row">
       <td class="column-1">

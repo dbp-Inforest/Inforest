@@ -132,15 +132,6 @@ function productList(targetUri) {
    
    <tr class="table_row">
       <td class="column-1">
-         P_RAM (GB)
-      </td>
-      <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="tRam" placeholder="RAM은 몇 GB인가요?">
-      </td>
-   </tr>
-   
-   <tr class="table_row">
-      <td class="column-1">
          T_SIZE
       </td>
       <td class="column-2">
