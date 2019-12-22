@@ -1,5 +1,7 @@
 package controller.product;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,8 +31,9 @@ public class DeleteProductController implements Controller {
 
 		String kind = null;
 		String pId = null;
+		String reviewId = null;
 		
-    	if(request.getMethod().equals("POST")) {
+/*    	if(request.getMethod().equals("POST")) {
     		kind = (String)request.getParameter("kind"); //0,1,2,3
     		pId = (String)request.getParameter("pId");
     		System.out.println("kind: "+ kind + " pid: " + pId);
@@ -60,12 +63,14 @@ public class DeleteProductController implements Controller {
     		System.out.println("메인으로 이동");
     		return "redirect:/main";
 		
-    	}
-    	else if(request.getMethod().equals("GET")) { //DELETE COMMENT
-    		kind = (String)request.getParameter("reviewId");
-    		System.out.println("댓삭시작"+ kind);
-    		pcommentDAO.deletePComment(kind);
-    		return "/productDetail";
+    	}*/
+    	if(request.getMethod().equals("POST")) { //DELETE COMMENT
+    		reviewId = (String)request.getParameter("reviewId");
+    		kind = (String)request.getParameter("kind2");        
+    		pId = (String)request.getParameter("pId2");
+    		System.out.println("댓삭시작->"+ reviewId + "커멘트 아이디" + kind + "  "+ pId);
+    		pcommentDAO.deletePComment(reviewId);
+    		return "redirect:/productDetail?kind2=" + kind + "&pId=" + pId; 
     	}
     	return "redirect:/productList?kind3=" + kind;
 	}

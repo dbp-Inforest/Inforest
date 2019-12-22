@@ -13,11 +13,11 @@ public class PCommentDAO {
    private static JDBCUtil jdbcUtil = null;
    
    private static String query = "SELECT COMMENT_ID, " +
-           "       RECOMMENDATION AS COMMENT_RECOMMENDATION, " +
-           "       REVIEW AS COMMENT_REVIEW, " +
-           "       USER_ID AS COMMENT_USER, " +
-           "        REGIST_DATE AS COMMENT_REGISTDATE, " +
-           "        PRODUCT_ID AS COMMENT_PRODUCT ";
+           "       RECOMMENDATION, " +
+           "       REVIEW, " +
+           "       USER_ID, " +
+           "        REGIST_DATE, " +
+           "        PRODUCT_ID  ";
     
    public PCommentDAO() {
       try {
@@ -34,14 +34,17 @@ public class PCommentDAO {
       try { 
          ResultSet rs = jdbcUtil.executeQuery();      // query 문 실행         
          List<PComment> list = new ArrayList<PComment>();      // LaptopDTO 객체들을 담기위한 list 객체
+         if(rs == null)
+        	 System.out.println("RS가 NULL입니다!!!!");
+         
          while (rs.next()) {   
             PComment dto = new PComment();      // 하나의 LaptopDTO 객체 생성 후 정보 설정
-            dto.setCommentId(rs.getString("COMMENT_ID"));
-            dto.setRecommandation(rs.getDouble("COMMENT_RECOMMENDATION"));
-            dto.setReview(rs.getString("COMMENT_REVIEW"));
-            dto.setUserId(rs.getString("COMMENT_USER"));
-            dto.setRegistDate(rs.getDate("COMMENT_REGISTDATE"));
-            dto.setProductId(rs.getString("COMMENT_PRODUCT"));
+            dto.setCommentId(rs.getDouble("COMMENT_ID"));
+            dto.setRecommandation(rs.getDouble("RECOMMENDATION"));
+            dto.setReview(rs.getString("REVIEW"));
+            dto.setUserId(rs.getString("USER_ID"));
+            dto.setRegistDate(rs.getDate("REGIST_DATE"));
+            dto.setProductId(rs.getString("PRODUCT_ID"));
             list.add(dto);      // list 객체에 정보를 설정한 LaptopDTO 객체 저장
          }
          return list;      // 학생정보를 저장한 dto들의 목록을 반환
@@ -85,15 +88,15 @@ public class PCommentDAO {
       return 0;
    }
 
-   public int deletePComment(String pcProductId) {
+   public int deletePComment(String cId) {
       String deleteQuery = "DELETE FROM P_COMMENT WHERE COMMENT_ID = ?";
-     
-      Object[] param = new Object[] {pcProductId};
+      int result=0;
+      Object[] param = new Object[] {cId};
       jdbcUtil.setSql(deleteQuery);         // JDBCUtil 에 query 문 설정
       jdbcUtil.setParameters(param);         // JDBCUtil 에 매개변수 설정
       
       try {
-         int result = jdbcUtil.executeUpdate();      // delete 문 실행
+         result = jdbcUtil.executeUpdate();      // delete 문 실행
          return result;                  // delete 에 의해 반영된 레코드 수 반환
       } catch (Exception ex) {
          jdbcUtil.rollback();
@@ -102,7 +105,7 @@ public class PCommentDAO {
          jdbcUtil.commit();
          jdbcUtil.close();      // ResultSet, PreparedStatement, Connection 반환
       }
-      return 0;
+      return result;
    }
 
 /*   public PComment getPCommentByName(String pcName) {
@@ -145,14 +148,14 @@ public class PCommentDAO {
          ResultSet rs = jdbcUtil.executeQuery();
          List<PComment> list = new ArrayList<PComment>();
          while (rs.next()) {
-            PComment dto = new PComment();
-            dto.setCommentId(rs.getString("COMMENT_ID"));
-            dto.setRecommandation(rs.getDouble("COMMENT_RECOMMENDATION"));
-            dto.setReview(rs.getString("COMMENT_REVIEW"));
-            dto.setUserId(rs.getString("COMMENT_USER"));
-            dto.setRegistDate(rs.getDate("COMMENT_REGISTDATE"));
-            dto.setProductId("COMMENT_PRODUCT");
-            list.add(dto);      // list 객체에 정보를 설정한 LaptopDTO 객체 저장
+             PComment dto = new PComment();      // 하나의 LaptopDTO 객체 생성 후 정보 설정
+             dto.setCommentId(rs.getDouble("COMMENT_ID"));
+             dto.setRecommandation(rs.getDouble("RECOMMENDATION"));
+             dto.setReview(rs.getString("REVIEW"));
+             dto.setUserId(rs.getString("USER_ID"));
+             dto.setRegistDate(rs.getDate("REGIST_DATE"));
+             dto.setProductId(rs.getString("PRODUCT_ID"));
+             list.add(dto);      // list 객체에 정보를 설정한 LaptopDTO 객체 저장
          }
          return list;   
       } catch (Exception ex) {

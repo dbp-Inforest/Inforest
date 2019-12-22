@@ -21,7 +21,12 @@
 	    form.submit();
 	 }
 	
-	function myCheck(){ //빈칸이면 false되도록 
+	function deleteAction(targetUri) {
+	    form1.action = targetUri;
+	    alert(targetUri);
+	    form1.submit();
+	 }
+	function myCheck(targetUri){ //빈칸이면 false되도록 
 	    if(form1.review.value == ""){
 	         alert("댓글을 입력하십시오.");
 	         form1.review.focus();
@@ -37,6 +42,7 @@
 	   }
 	    else{ //로그인 
 	       alert("로그인상태입니다.");
+	  	   form1.action = targetUri;
 	       form1.submit();
 	    }
 	}
@@ -141,13 +147,13 @@
 									class="stext-102 cl6 size-206"> <c:out
 											value="${phoneDetail.pCamera}" />
 								</span></li>
-						</div>
+						</div>    
 						</ul>
 
 						<div style="height: 50px;">&nbsp;</div>
 						<div style="height: 50px;">&nbsp;</div>
 						<!-- 여기 ADD TO 'LIKE' 버튼 누르면 관심 상품에 등록될 수 있도록..? -->
-						<form name="form" method="POST"
+						<%-- <form name="form" method="POST"
 							action="<c:url value='/product' />">
 							<input type="hidden" name="pId" value="${phoneDetail.productId}" />
 							<input type="hidden" name="kind" value="0" />
@@ -170,7 +176,7 @@
 									</button>
 								</div>
 							</c:if>
-						</form>
+						</form> --%>
 					</div>
 				</div>
 			</div>
@@ -190,8 +196,13 @@
 							<!-- db에 있는 comment내용과 userid를 getCommentList로 보여주기  -->
 							<span class="container">
 							<span class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-								<h5 class="mtext-108 cl2 p-b-30">Comment List</h5>
-					<div class="flex-w flex-t bor12 p-b-13">
+						<h5 class="mtext-108 cl2 p-b-30">Comment List</h5>
+                       	 <div class="flex-w flex-t bor12 p-b-13">
+           <form  name="form1" method="POST" action="">
+                       	<!--  <input type="hidden" name = "kind2" value = "100"/>
+                       	 <input type="hidden" name = "pId2" value = "100"/> -->
+									<%-- <c:param name="kind2" value="0"/>
+                                    <c:param name="pId2" value="${phoneDetail.productId}"/> --%>
                         <table>
                            <thead>
                               <tr>
@@ -200,10 +211,9 @@
                                <th><div class="flex-w flex-t p-t-27 p-b-33"><div class="size-400">Regist_Date</div></div></th>
                                <th><div class="flex-w flex-t p-t-27 p-b-33"><div class="size-400"></div></div></th>
                               </tr>
-                        </thead>
+                           </thead>
                         <tbody>
-          
-                        		<c:forEach var="comment" items="${commentList}">
+                        		<c:forEach var="comment" items="${plist}" varStatus = "status">
 									<c:if test="${comment.productId == phoneDetail.productId}">
 									<tr>
 										<div class="flex-w flex-t bor12 p-b-13">
@@ -223,12 +233,13 @@
 												</div>
 											</div></td>
  											<td><div class="flex-w flex-t p-t-27 p-b-33"><div class="size-400">
-                                             <a href="<c:url value='/deleteProduct'><c:param name="reviewId" value="${comment.commentId}"/>
-                                                         </c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                                        <font style="font-size:15px">
-                                                           <c:out value="Delete"/>
-                                                        </font>
-                                                      </a>   
+                                             	
+                                             	<button class="flex-c-m stext-101 cl0 size-50 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" 
+                                             	type="button" onClick="deleteAction('<c:url value='/deleteProduct'><c:param name="reviewId" value="${comment.commentId}"/>
+                                             	<c:param name="kind2" value="0"/><c:param name="pId2" value="${phoneDetail.productId}"/>
+                                             	</c:url>')">
+                                                      Delete
+                                                </button>
                                               </div></div>
                                              </td>
 
@@ -239,23 +250,25 @@
                                        <td colspan="4" value = "댓글 추가">
                                                    <h5 class="mtext-108 cl2 p-b-7">Add a review</h5>
                                                    <p class="stext-102 cl6">You can write comments by logging in.</p>
-                                                   <form class="w-full" name="form1" method="POST" action="<c:url value='/productDetail'>
-									<c:param name="kind2" value="0"/>
-                                    <c:param name="pId" value="${phoneDetail.productId}"/> </c:url>">
+                                                   
                                                    <div class="row p-b-25">
                                                    <div class="col-12 p-b-5">
                                                       <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
                                                    </div>
                                                    </div>
                                                 
-                                                   <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" type="button" onClick="myCheck()">
+                                                   <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" 
+                                                   type="button" onClick="myCheck('<c:url value='/productDetail'>
+                                             	<c:param name="pId" value="${phoneDetail.productId}"/>
+                                             	<c:param name="kind" value="0"/>
+                                             	</c:url>')">
                                                       Submit
                                                    </button>
-                                       </form>
+                                    
                                        </td></tr>
-                        
-						</tbody>	
-						</table></div>
+                    
+						</tbody>
+						</table></form></div>
 	
 								<br>
 								<br>

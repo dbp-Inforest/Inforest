@@ -36,73 +36,94 @@ public class DetailProductController implements Controller{
        product-detail.jsp에서 컨트롤러부터 넘겨받은 pid세부정보의 컬럼 하나하나를 값으로 넣어준다. */
 	   
       String kind = request.getParameter("kind2"); //0,1,2,3
-      String pid = request.getParameter("pId");
-
-      List<PComment> plist = pcommentDAO.getPCommentList();
-      UserAnalysis userAnalysis;
+      String pid = request.getParameter("pId"); //list에서 넘긴거 
+     // String plist2 = request.getParameter("plist");
       
+      System.out.println("detail컨트롤러--"+kind+"그리고"+pid);
+      UserAnalysis userAnalysis;
+  
       if(request.getMethod().equals("GET")) { // GET request 처리          
           if(kind.equals("0")) { //phone
+        	 System.out.println("여기는 갯겟겟겟임" + pid);
         	 userAnalysis = new UserAnalysis(pid, kind);
              Phone phoneDetail = phoneDAO.getPhoneById(pid);
-             request.setAttribute("phoneDetail", phoneDetail);
+           
+             List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("plist", plist);
-               return "/phone-detail.jsp";   
+             request.setAttribute("phoneDetail", phoneDetail);
+       
+             return "/phone-detail.jsp";   
              
           }else if(kind.equals("1")){ //laptop
         	 userAnalysis = new UserAnalysis(pid, kind);
              Laptop laptopDetail = laptopDAO.getLaptopById(pid);
+             List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("laptopDetail", laptopDetail);   
+             request.setAttribute("plist", plist);
                return "/laptop-detail.jsp";   
                
            }else if(kind.equals("2")) { //camera
         	 userAnalysis = new UserAnalysis(pid, kind);  
              Camera cameraDetail = cameraDAO.getCameraById(pid);
-             request.setAttribute("cameraDetail", cameraDetail);   
+             List<PComment> plist = pcommentDAO.getPCommentList();
+             request.setAttribute("cameraDetail", cameraDetail); 
+             request.setAttribute("plist", plist);
                return "/camera-detail.jsp";   
                
           }else if(kind.equals("3")) { //tablet
         	 userAnalysis = new UserAnalysis(pid, kind);
              Tablet tabletDetail = tabletDAO.getTabletById(pid);
-             request.setAttribute("tabletDetail", tabletDetail);   
+             List<PComment> plist = pcommentDAO.getPCommentList();
+             request.setAttribute("tabletDetail", tabletDetail);  
+             request.setAttribute("plist", plist);
                return "/tablet-detail.jsp";   
           }      
       
           System.out.println("메인으로 이동");
           return "redirect:/main";
        }
-       else if(request.getMethod().equals("POST")) { //POST request 처리 (댓글 처리)
+       else if(request.getMethod().equals("POST")) { //POST request 처리 (댓글)
           System.out.println("DetailProductController: POST REQUEST 처리 시작 ");
-          String review = request.getParameter("review");          
+          String review = request.getParameter("review");  
+          String kind2 = request.getParameter("kind");   
+          String pId = request.getParameter("pId"); 
           
           HttpSession session = request.getSession();
           String id = UserSessionUtils.getLoginUserId(session);
          
-          PComment pcm = new PComment(review, id, pid);
+          System.out.println(review+ "--" + id + "--" + pId);
+          PComment pcm = new PComment(review, id, pId);
           int num = pcommentDAO.insertPComment(pcm);
       
-          if(kind.equals("0")) { //phone
-        	 
-             Phone phoneDetail = phoneDAO.getPhoneById(pid);
-             List<PComment> plist2 = pcommentDAO.getPCommentList();
+          if(kind2.equals("0")) { //phone
+        	 System.out.println("여기는 포스트포스트폿트으으으임");
+             Phone phoneDetail = phoneDAO.getPhoneById(pId);
+             List<PComment> plist = pcommentDAO.getPCommentList();
              System.out.println(num + "만큼 인서트했다.");
-             request.setAttribute("phoneDetail", phoneDetail);   
-             request.setAttribute("plist", plist2);
-             return "/phone-detail.jsp";   
+             request.setAttribute("plist", plist);
+             request.setAttribute("phoneDetail", phoneDetail);
+             return "/phone-detail.jsp"; 
+             //return "redirect:/productDetail?kind2=" + kind + "&pId=" + pid;   
              
-          }else if(kind.equals("1")){ 
-             Laptop laptopDetail = laptopDAO.getLaptopById(pid);
+          }else if(kind2.equals("1")){ 
+             Laptop laptopDetail = laptopDAO.getLaptopById(pId);
+             List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("laptopDetail", laptopDetail);   
+             request.setAttribute("plist", plist);
                return "/laptop-detail.jsp";   
                
-           }else if(kind.equals("2")) { //camera
-             Camera cameraDetail = cameraDAO.getCameraById(pid);
+           }else if(kind2.equals("2")) { //camera
+             Camera cameraDetail = cameraDAO.getCameraById(pId);
+             List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("cameraDetail", cameraDetail);   
+             request.setAttribute("plist", plist);
                return "/camera-detail.jsp";   
                
-          }else if(kind.equals("3")) { //tablet
-             Tablet tabletDetail = tabletDAO.getTabletById(pid);
-             request.setAttribute("tabletDetail", tabletDetail);   
+          }else if(kind2.equals("3")) { //tablet
+             Tablet tabletDetail = tabletDAO.getTabletById(pId);
+             List<PComment> plist = pcommentDAO.getPCommentList();
+             request.setAttribute("tabletDetail", tabletDetail);  
+             request.setAttribute("plist", plist);
                return "/tablet-detail.jsp";   
           }      
       
