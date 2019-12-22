@@ -30,8 +30,9 @@ function like(productId, num, targetUri) {
    var image = document.getElementById(num);
    
    if (image.src.match("icon-heart-01.png")) {
-      alert("add this to 'like'?");
-      
+	   alert("'좋아요'목록에 추가하시겠습니까?");
+	   alert("'좋아요' 추가!");
+	   
       pform.action = targetUri;
       pform.likeProduct.value = productId;
       pform.division.value = "true";
@@ -40,8 +41,9 @@ function like(productId, num, targetUri) {
       image.src = "<c:url value='/images/icons/icon-heart-02.png' />";
    }
    else {
-      alert("cancel this to 'like'?")
-      
+	   alert("'좋아요'를 취소하시겠습니까?")
+       alert("'좋아요' 취소!");
+	   
       pform.action = targetUri;
       pform.likeProduct.value = productId;
       pform.division.value = "false";
