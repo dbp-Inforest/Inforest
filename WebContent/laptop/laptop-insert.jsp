@@ -46,7 +46,7 @@ function productList(targetUri) {
 <div class="container">
 <div class="row">
 <form class="bg0 p-t-75 p-b-85" name="form" method="POST" action="<c:url value='/insertProduct' />" style="position:absolute;left:50%;margin:0 0 0 -310px;">
-   <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="hidden" name="pKind" value="0">
+   <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="hidden" name="pKind" value="1">
    <table style="width:750px; margin-left: auto; margin-right: auto;" class="table-sign">
    <tr class="table_row">
       <td class="column-1" >
@@ -145,7 +145,7 @@ function productList(targetUri) {
          L_RAM_MEMORY (GB)
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="lRamMemory" placeholder="RAM과  MEMORY에 대해 입력하세요">
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="lRAMMemory" placeholder="RAM과  MEMORY에 대해 입력하세요">
       </td>
    </tr>
    

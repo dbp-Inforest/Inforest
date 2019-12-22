@@ -79,16 +79,14 @@ public class CameraDAO {
 	   public int insertCamera(Camera Camera) {
 	      int result = 0;
 
+	       String insertQuery2 = "INSERT INTO PRODUCT(PRODUCT_ID, NAME, COLOR, PRICE, BRAND, RELEASED_DATE, WEIGHT, P_KIND)"
+	               + " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 	       String insertQuery1 = "INSERT INTO Camera (PRODUCT_ID, C_DISPLAY, C_PIXEL, C_BATTERY, C_VIBRATION, C_BURSTSHOT, C_LENS) "
 	               + " VALUES (?, ?, ?, ?, ?, ?, ?) ";
 	         
-	       String insertQuery2 = "INSERT INTO PRODUCT(PRODUCT_ID, NAME, COLOR, PRICE, BRAND, RELEASED_DATE, WEIGHT, P_KIND)"
-	               + " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-	      
-	         
 	      // query 문에 사용할 매개변수 값을 갖는 매개변수 배열 생성
 	      Object[] param1 = new Object[] { Camera.getProductId(), Camera.getcDisplay(), Camera.getcPixel(), Camera.getcBattery(), Camera.getcVibration(), Camera.getcBurstshot(), Camera.getcLens() };
-	       Object[] param2 = new Object[] { Camera.getProductId(), Camera.getName(), Camera.getColor(), Camera.getPrice(), Camera.getBrand(), Camera.getReleased_date(), Camera.getWeight(), 2 };     
+	      Object[] param2 = new Object[] { Camera.getProductId(), Camera.getName(), Camera.getColor(), Camera.getPrice(), Camera.getBrand(), Camera.getReleased_date(), Camera.getWeight(), 2 };     
 	       
 	       try {    
 	            jdbcUtil.setSql(insertQuery2);          // JDBCUtil 에 insert 문 설정

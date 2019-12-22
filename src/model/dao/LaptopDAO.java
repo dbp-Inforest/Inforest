@@ -108,85 +108,97 @@ public class LaptopDAO{
 	public int updateLaptop(Laptop laptop) {
 		
 		String updateQuery1 = "UPDATE PRODUCT SET ";
-		String updateQuery2 = "UPDATE LAPTOP SET ";
 		int index = 0;
-		Object[] tempParam = new Object[10];		// update 문에 사용할 매개변수를 저장할 수 있는 임시 배열
+		Object[] tempParam1 = new Object[10];		// update 문에 사용할 매개변수를 저장할 수 있는 임시 배열
+
 		
 		if (laptop.getBrand() != null) {		// 브랜드가 설정되어 있을 경우
 			updateQuery1 += "BRAND = ?, ";		// update 문에 브랜드 수정 부분 추가
-			tempParam[index++] = laptop.getBrand();		// 매개변수에 수정할 이름 추가
+			tempParam1[index++] = laptop.getBrand();		// 매개변수에 수정할 이름 추가
 		}
 		if (laptop.getColor() != null) {		// 색깔이 설정되어 있을 경우
 			updateQuery1 += "COLOR = ?, ";		// update 문에 색깔 수정 부분 추가
-			tempParam[index++] = laptop.getColor();		// 매개변수에 수정할 색깔 추가
-		}
-		if (laptop.getlCPU() != null) {		// cpu가 설정되어 있을 경우
-			updateQuery2 += "L_CPU = ?, ";		// update 문에 cpu 수정 부분 추가
-			tempParam[index++] = laptop.getlCPU();		// 매개변수에 수정할 휴대폰 추가
-		}
-		if (laptop.getlDisplay() != null) {		// display가 설정되어 있을 경우
-			updateQuery2 += "L_DISPLAY = ?, ";		// update 문에 display 수정 부분 추가
-			tempParam[index++] = laptop.getlDisplay();		// 매개변수에 수정할 display 추가
-		}
-		if (laptop.getlOS() != null) {		// os가 설정되어 있을 경우
-			updateQuery2 += "L_OS = ?, ";		// update 문에 os 수정 부분 추가
-			tempParam[index++] = laptop.getlOS();		// 매개변수에 수정할 os 추가
-		}
-		if (laptop.getlPurpose() != null) {		// purpose가 설정되어 있을 경우
-			updateQuery2 += "L_PURPOSE = ?, ";		// update 문에 purpose 수정 부분 추가
-			tempParam[index++] = laptop.getlPurpose();		// 매개변수에 수정할 purpose 추가
-		}
-		if (laptop.getlRAMMemory()!= null) {		// 메모리가 설정되어 있을 경우
-			updateQuery2 += "L_RAM_MEMORY = ?, ";		// update 문에 메모리 수정 부분 추가
-			tempParam[index++] = laptop.getlRAMMemory();		// 매개변수에 수정할 메모리 추가
-		}
-		if (laptop.getlSSD() != null) {		// ssd가 설정되어 있을 경우
-			updateQuery2 += "L_SSD = ?, ";		// update 문에 ssd 수정 부분 추가
-			tempParam[index++] = laptop.getlSSD();		// 매개변수에 수정할 ssd 추가
+			tempParam1[index++] = laptop.getColor();		// 매개변수에 수정할 색깔 추가
 		}
 		if (laptop.getName() != null) {		// 이름이 설정되어 있을 경우
 			updateQuery1 += "NAME = ?, ";		// update 문에 이름 수정 부분 추가
-			tempParam[index++] = laptop.getName();		// 매개변수에 수정할 이름 추가
+			tempParam1[index++] = laptop.getName();		// 매개변수에 수정할 이름 추가
 		}
 		if (laptop.getpKind() == 1) {		// pKind가 설정되어 있을 경우
 			updateQuery1 += "P_KIND = ?, ";		// update 문에 pKind 수정 부분 추가
-			tempParam[index++] = laptop.getpKind();		// 매개변수에 수정할 pKind 추가
+			tempParam1[index++] = laptop.getpKind();		// 매개변수에 수정할 pKind 추가
 		}
 		if (laptop.getPrice() != null) {		// price가 설정되어 있을 경우
 			updateQuery1 += "PRICE = ?, ";		// update 문에 price 수정 부분 추가
-			tempParam[index++] = laptop.getPrice();		// 매개변수에 수정할 price 추가
-		}
-		if (laptop.getProductId() != null) {		// id가 설정되어 있을 경우
-			updateQuery2 += "PRODUCT_ID = ?, ";		// update 문에 id 수정 부분 추가
-			tempParam[index++] = laptop.getProductId();		// 매개변수에 수정할 id 추가
+			tempParam1[index++] = laptop.getPrice();		// 매개변수에 수정할 price 추가
 		}
 		if (laptop.getReleased_date() != null) {		// 출시일이 설정되어 있을 경우
-			updateQuery1 += "NAME = ?, ";		// update 문에 출시일 수정 부분 추가
-			tempParam[index++] = laptop.getReleased_date();		// 매개변수에 수정할 출시 추가
+			updateQuery1 += "RELEASED_DATE = ?, ";		// update 문에 출시일 수정 부분 추가
+			tempParam1[index++] = laptop.getReleased_date();		// 매개변수에 수정할 출시 추가
 		}
 		if (laptop.getWeight() > 0) {		// 무게가 설정되어 있을 경우
 			updateQuery1 += "WEIGHT = ?, ";		// update 문에 무게 수정 부분 추가
-			tempParam[index++] = laptop.getWeight();		// 매개변수에 수정할 무게 추가
+			tempParam1[index++] = laptop.getWeight();		// 매개변수에 수정할 무게 추가
 		}
-		
 		updateQuery1 += "WHERE PRODUCT_ID = ? ";		// update 문에 조건 지정
 		updateQuery1 = updateQuery1.replace(", WHERE", " WHERE");		// update 문의 where 절 앞에 있을 수 있는 , 제거
+		tempParam1[index++] = laptop.getProductId();		// 찾을 조건에 해당하는 에 대한 매개변수 추가
+		
+		Object[] newParam1 = new Object[index];
+		for (int i=0; i < newParam1.length; i++)		// 매개변수의 개수만큼의 크기를 갖는 배열을 생성하고 매개변수 값 복사
+			newParam1[i] = tempParam1[i];
+		
+		index = 0;
+		
+		String updateQuery2 = "UPDATE LAPTOP SET ";
+		Object[] tempParam2 = new Object[10];		// update 문에 사용할 매개변수를 저장할 수 있는 임시 배열
+		
+		if (laptop.getlCPU() != null) {		// cpu가 설정되어 있을 경우
+			updateQuery2 += "L_CPU = ?, ";		// update 문에 cpu 수정 부분 추가
+			tempParam2[index++] = laptop.getlCPU();		// 매개변수에 수정할 휴대폰 추가
+		}
+		if (laptop.getlDisplay() != null) {		// display가 설정되어 있을 경우
+			updateQuery2 += "L_DISPLAY = ?, ";		// update 문에 display 수정 부분 추가
+			tempParam2[index++] = laptop.getlDisplay();		// 매개변수에 수정할 display 추가
+		}
+		if (laptop.getlOS() != null) {		// os가 설정되어 있을 경우
+			updateQuery2 += "L_OS = ?, ";		// update 문에 os 수정 부분 추가
+			tempParam2[index++] = laptop.getlOS();		// 매개변수에 수정할 os 추가
+		}
+		if (laptop.getlPurpose() != null) {		// purpose가 설정되어 있을 경우
+			updateQuery2 += "L_PURPOSE = ?, ";		// update 문에 purpose 수정 부분 추가
+			tempParam2[index++] = laptop.getlPurpose();		// 매개변수에 수정할 purpose 추가
+		}
+		if (laptop.getlRAMMemory()!= null) {		// 메모리가 설정되어 있을 경우
+			updateQuery2 += "L_RAM_MEMORY = ?, ";		// update 문에 메모리 수정 부분 추가
+			tempParam2[index++] = laptop.getlRAMMemory();		// 매개변수에 수정할 메모리 추가
+		}
+		if (laptop.getlSSD() != null) {		// ssd가 설정되어 있을 경우
+			updateQuery2 += "L_SSD = ?, ";		// update 문에 ssd 수정 부분 추가
+			tempParam2[index++] = laptop.getlSSD();		// 매개변수에 수정할 ssd 추가
+		}
+		if (laptop.getProductId() != null) {		// id가 설정되어 있을 경우
+			updateQuery2 += "PRODUCT_ID = ?, ";		// update 문에 id 수정 부분 추가
+			tempParam2[index++] = laptop.getProductId();		// 매개변수에 수정할 id 추가
+		}
 		
 		updateQuery2 += "WHERE PRODUCT_ID = ? ";		// update 문에 조건 지정
 		updateQuery2 = updateQuery2.replace(", WHERE", " WHERE");		// update 문의 where 절 앞에 있을 수 있는 , 제거
+		tempParam2[index++] = laptop.getProductId();		// 찾을 조건에 해당하는 에 대한 매개변수 추가
 		
-		tempParam[index++] = laptop.getProductId();		// 찾을 조건에 해당하는 에 대한 매개변수 추가
-		
-		Object[] newParam = new Object[index];
-		for (int i=0; i < newParam.length; i++)		// 매개변수의 개수만큼의 크기를 갖는 배열을 생성하고 매개변수 값 복사
-			newParam[i] = tempParam[i];
-		
-		jdbcUtil.setSql(updateQuery1);			// JDBCUtil에 update 문 설정
-		jdbcUtil.setSql(updateQuery2);	
-		jdbcUtil.setParameters(newParam);		// JDBCUtil 에 매개변수 설정
+		Object[] newParam2 = new Object[index];
+		for (int i=0; i < newParam2.length; i++)		// 매개변수의 개수만큼의 크기를 갖는 배열을 생성하고 매개변수 값 복사
+			newParam2[i] = tempParam2[i];
 		
 		try {
+	    	System.out.println("update try문 들어와따!!!!!");
+			jdbcUtil.setSql(updateQuery1);			// JDBCUtil에 update 문 설정	
+			jdbcUtil.setParameters(newParam1);		// JDBCUtil 에 매개변수 설정
 			int result = jdbcUtil.executeUpdate();		// update 문 실행
+
+			jdbcUtil.setSql(updateQuery2);			// JDBCUtil에 update 문 설정	
+			jdbcUtil.setParameters(newParam2);		// JDBCUtil 에 매개변수 설정
+			result += jdbcUtil.executeUpdate();		// update 문 실행
 			return result;			// update 에 의해 반영된 레코드 수 반환
 		} catch (Exception ex) {
 			jdbcUtil.rollback();

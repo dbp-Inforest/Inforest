@@ -141,10 +141,9 @@
                            
                      
                      <div style="height:50px;">&nbsp;</div><div style="height:50px;">&nbsp;</div>
-                              <!-- 여기 ADD TO 'LIKE' 버튼 누르면 관심 상품에 등록될 수 있도록..? -->
-							<form name="form" method="POST"
-								action="<c:url value='/product' />">
-								<input type="hidden" name="pId" value="${phoneDetail.productId}" />
+                     <!-- 여기 ADD TO 'LIKE' 버튼 누르면 관심 상품에 등록될 수 있도록..? -->
+							<form name="form" method="POST" action="<c:url value='/product' />">
+								<input type="hidden" name="pId" value="${tabletDetail.productId}" />
 								<input type="hidden" name="kind" value="3" />
 								<c:if test="${position == 2}">
 									<div class="size-204 flex-w flex-m respon6-next">
@@ -155,12 +154,10 @@
 								</c:if>
 								<c:if test="${position == 0}">
 									<div class="size-204 flex-w flex-m respon6-next">
-										<button
-											class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
+										<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
 											onClick="detailAction('<c:url value='/tablet_update'/>')">UPDATE
 										</button>
-										<button
-											class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
+										<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
 											onClick="detailAction('<c:url value='/deleteProduct'/>')">DELETE
 										</button>
 									</div>

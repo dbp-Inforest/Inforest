@@ -108,6 +108,7 @@ public class UpdateProductController implements Controller {
 		    	case 3:
 		    		Tablet tablet = new Tablet();
 		    		TabletDAO tabletDAO = new TabletDAO();
+		    		System.out.println("자 여기까지 왔다 객체만듬");
 		    		tablet.settBattery(request.getParameter("tBattery"));
 		    		tablet.settMemory(request.getParameter("tMemory"));
 		    		tablet.settOS(request.getParameter("tOS"));
