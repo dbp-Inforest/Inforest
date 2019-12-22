@@ -28,7 +28,7 @@
                </a>
               
                <!-- Menu desktop -->
-               <div class="menu-desktop" style="float:left">
+               <div style="float:left; width:60%">
                   <ul class="main-menu">
                      <li>
                          <a href="<c:url value='/main'/>" style="text-decoration:none">HOME</a>
@@ -41,37 +41,45 @@
                      <li>
                       <a href="<c:url value='/product'/>" style="text-decoration:none">PRODUCT</a>
                      </li>
-					<c:if test="${userId != null}">
-                     <li>
-                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
-                     </li>
-                      </c:if>
+                                           
                       <c:if test="${userId == null}">
-                     <li>
-                       <a href="<c:url value='/signIn'/>" style="text-decoration:none">MY PAGE</a>
-                     </li>
-                      </c:if>
-                     <c:if test="${userId == null}">
 	                     <li>
 	                        <a href="<c:url value='/signIn'/>" style="text-decoration:none">LOGIN</a>
 	                     </li> 
-	                     </ul> 
 	                 </c:if>
+	                 
 	                 <c:if test="${userId != null}">
 	                 	<c:if test="${position == 0}">
 	                 		<li>
 	                        	<a href="<c:url value='/management'/>" style="text-decoration:none">MANAGEMENT</a>
 	                     	</li> 
 	                 	</c:if>
+	                 	
+                   </ul>
+               </div>   
+               
+               <div style="float:right">
+               	<ul class="main-menu">
 	                 		<li>
 		                 		<font style="color:white"><%= session.getAttribute("name") %> 님 안녕하세요. </font> &nbsp;
 	                 		</li>
+	                 		
+	                 		<c:if test="${userId != null}">
+			                     <li>
+			                       <a href="<c:url value='/mypage'/>" style="text-decoration:none">MY PAGE</a>
+			                     </li>
+			                    </c:if>
+                    
+	                 		
 	                 		<li>
 		                     	<a href="<c:url value='/logout'/>" style="text-decoration:none">LOGOUT</a>
 	                     	</li>
-						 </ul>
-	                 </c:if>	 
-               </div>   
+	                     						 
+	                 </c:if>
+	                 	 
+	              </ul>
+               </div>
+               
             </nav>
          </div>   
       </div>
