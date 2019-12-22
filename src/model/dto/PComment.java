@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class PComment extends Product{
 
-   private String commentId = null;
+   private double commentId = 0;
    private double recommandation = 0;
    private String review = null;
    private String userId = null;
@@ -28,10 +28,10 @@ public class PComment extends Product{
    public void setProductId(String productId) {
       this.productId = productId;
    }
-   public String getCommentId() {
+   public double getCommentId() {
       return commentId;
    }
-   public void setCommentId(String commentId) {
+   public void setCommentId(double commentId) {
       this.commentId = commentId;
    }
    public double getRecommandation() {
@@ -62,6 +62,7 @@ public class PComment extends Product{
    public void setRegistDate(Date registDate) {
       this.registDate = registDate;
    }
+
    
    
 }
