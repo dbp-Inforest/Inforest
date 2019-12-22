@@ -62,9 +62,7 @@ public class PhoneDAO{
 	}
 
 	public int insertPhone(Phone phone) {
-		
 		int result = 0;
-		
 		String insertQuery = "INSERT INTO PHONE (P_BATTERY, P_MEMORY, P_DISPLAY, P_RAM, P_SIZE, P_CAMERA, PRODUCT_ID, P_OS) " +
 							 "VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
 		insertQuery += "INSERT INTO PRODUCT (PRODUCT_ID, NAME, COLOR, PRICE, BRAND, RELEASED_DATE, WEIGHT, P_KIND) " +
