@@ -53,9 +53,9 @@
                       
                        <% 
                              List<Ranking> Topten_p = (List<Ranking>)request.getAttribute("phoneR");
-                       
-                             for(int i = 0; i < 10; i++) {   //top10 출력
-                       %>
+
+                      	 for(int i = 0; i < Topten_p.size(); i++) {   //top10 출력
+               		  %>
                              
                               <tr class="table_row" height="35" >
                                        <td class="column-0" style="color:black"><b><center>
@@ -69,17 +69,30 @@
                                    <a href="<c:url value='/productDetail'><c:param name="kind2" value="0"/>
                                    <c:param name="pId" value="<%= Topten_p.get(i).getProductId() %>"/></c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                         <%=
-                                              Topten_p.get(i).getName()
+                                        		Topten_p.get(i).getName()
                                     %>  
                                 </a> </center>  </td>
                                     <td class="column-2" style="padding-left:40px"><center>
                                          <%= Topten_p.get(i).getLikeCount() %>
                                    </center></td>
                                </tr>
-                       <%
-                          } 
+                        <%
+                       		if(i == 9) break;} 
+                      	 	
+                      	 	if(Topten_p.size() < 10) {
+                      	 		for (int i = Topten_p.size(); i < 10; i++ ){
                        %>
-                       
+                        			<tr class="table_row" height="35" >
+                                       <td class="column-0" style="color:black"><b><center>
+				                       <%= 
+				                              i+1            
+				                       %>
+                                       <td class="column-2" style="color:black"><b><center>-</center> </b></td>
+                                    	<td class="column-2" style="padding-left:40px"><center>-</center></td>
+                             		  </tr>    
+                       <%
+                      	 		}
+                      	 	} %>
                   </table>
                </div>
             </div>
@@ -104,9 +117,9 @@
                       
                        <% 
                              List<Ranking> Topten_l = (List<Ranking>)request.getAttribute("laptopR");
-                       
-                             for(int i = 0; i < 10; i++) {   //top10 출력
-                       %>
+
+                      		 for(int i = 0; i < Topten_l.size(); i++) {   //top10 출력
+               		  %>
                              
                               <tr class="table_row" height="35" >
                                        <td class="column-0" style="color:black"><b><center>
@@ -127,15 +140,29 @@
                                          <%= Topten_l.get(i).getLikeCount() %>
                                    </center></td>
                                </tr>
-                       <%
-                          } 
+                        <%
+                       		if(i == 9) break;} 
+                      	 	
+                      	 	if(Topten_l.size() < 10) {
+                      	 		for (int i = Topten_l.size(); i < 10; i++ ){
                        %>
-                       
+                        <tr class="table_row" height="35" >
+                                       <td class="column-0" style="color:black"><b><center>
+                       <%= 
+                              i+1            
+                       %>
+                                       <td class="column-0" style="color:black"><b><center>-</center> </b></td>
+                                    	<td class="column-2" style="padding-left:40px"><center>-</center></td>
+                             		  </tr>    
+                       <%
+                      	 		}
+                      	 	} %>
                   </table>
                </div>
             </div>
          </div>
       </div>
+      
       <div class="container">
          <div class="row" style="display:inline">
             <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50" style="display:inline;float:left;width:500px">
@@ -155,11 +182,11 @@
                         </p></th>
                       </tr>
                       
-                       <% 
+                        <% 
                              List<Ranking> Topten_c = (List<Ranking>)request.getAttribute("cameraR");
-                       
-                             for(int i = 0; i < 10; i++) {   //top10 출력
-                       %>
+
+                      		 for(int i = 0; i < Topten_c.size(); i++) {   //top10 출력
+               		  %>
                              
                               <tr class="table_row" height="35" >
                                        <td class="column-0" style="color:black"><b><center>
@@ -173,17 +200,30 @@
                                    <a href="<c:url value='/productDetail'><c:param name="kind2" value="2"/>
                                    <c:param name="pId" value="<%= Topten_c.get(i).getProductId() %>"/></c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                         <%=
-                                              Topten_c.get(i).getName()
+                                        		Topten_c.get(i).getName()
                                     %>  
                                 </a> </center>  </td>
                                     <td class="column-2" style="padding-left:40px"><center>
                                          <%= Topten_c.get(i).getLikeCount() %>
                                    </center></td>
                                </tr>
-                       <%
-                          } 
+                        <%
+                       		if(i == 9) break;} 
+                      	 	
+                      	 	if(Topten_c.size() < 10) {
+                      	 		for (int i = Topten_c.size(); i < 10; i++ ){
                        %>
-                       
+                        <tr class="table_row" height="35" >
+                                       <td class="column-0" style="color:black"><b><center>
+                       <%= 
+                              i+1            
+                       %>
+                                       <td class="column-0" style="color:black"><b><center>-</center> </b></td>
+                                    	<td class="column-2" style="padding-left:40px"><center>-</center></td>
+                             		  </tr>    
+                       <%
+                      	 		}
+                      	 	} %>
                   </table>
                </div>
             </div>
@@ -203,12 +243,11 @@
                         <font color="red">♡</font>
                         </p></th>
                       </tr>
-                      
-                       <% 
+                      <% 
                              List<Ranking> Topten_t = (List<Ranking>)request.getAttribute("tabletR");
-                       
-                             for(int i = 0; i < 10; i++) {   //top10 출력
-                       %>
+
+                      		 for(int i = 0; i < Topten_t.size(); i++) {   //top10 출력
+               		  %>
                              
                               <tr class="table_row" height="35" >
                                        <td class="column-0" style="color:black"><b><center>
@@ -222,17 +261,30 @@
                                    <a href="<c:url value='/productDetail'><c:param name="kind2" value="3"/>
                                    <c:param name="pId" value="<%= Topten_t.get(i).getProductId() %>"/></c:url>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                         <%=
-                                              Topten_t.get(i).getName()
+                                        		Topten_t.get(i).getName()
                                     %>  
                                 </a> </center>  </td>
                                     <td class="column-2" style="padding-left:40px"><center>
                                          <%= Topten_t.get(i).getLikeCount() %>
                                    </center></td>
                                </tr>
-                       <%
-                          } 
+                        <%
+                       		if(i == 9) break;} 
+                      	 	
+                      	 	if(Topten_t.size() < 10) {
+                      	 		for (int i = Topten_t.size(); i < 10; i++ ){
                        %>
-                       
+                        <tr class="table_row" height="35" >
+                                       <td class="column-0" style="color:black"><b><center>
+                       <%= 
+                              i+1            
+                       %>
+                                       <td class="column-0" style="color:black"><b><center>-</center> </b></td>
+                                    	<td class="column-2" style="padding-left:40px"><center>-</center></td>
+                             		  </tr>    
+                       <%
+                      	 		}
+                      	 	} %>
                   </table>
                </div>
             </div>
