@@ -307,4 +307,72 @@ public class TabletDAO{
 	      }
 	      return;
 	}
+	
+	
+	
+	public String getBrandById(String tId) {
+	       // TODO Auto-generated method stub
+	       String searchQuery = query + "FROM TABLET, PRODUCT "
+					+ "WHERE TABLET.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.PRODUCT_ID = ?";   
+	       
+	       jdbcUtil.setSql(searchQuery);
+		     
+	       Object[] param = new Object[] {tId};
+	       jdbcUtil.setParameters(param);
+	    
+	       try {
+	          ResultSet rs = jdbcUtil.executeQuery();
+	          String brand = null;
+	          System.out.println("TABLETDAO");
+	          if (rs.next()) { 
+	             brand = rs.getString("TABLET_BRAND");
+	             System.out.println("여기까지 성공");
+	          }else {
+	          	 System.out.println("No ResultSet"); 
+	          }
+	               
+	          return brand;   
+	       } catch (Exception ex) {
+	          ex.printStackTrace();
+	       } finally {
+	          jdbcUtil.close();
+	       }
+	       return null;
+	   }
+	
+	
+	
+	public List<Product> getProductByBrand(String brand) {	   
+		   String searchQuery = query + "FROM TABLET, PRODUCT "
+					+ "WHERE TABLET.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.BRAND = ?";
+				   
+	       
+	       jdbcUtil.setSql(searchQuery);
+	       Object[] param = new Object[] {brand};
+	       jdbcUtil.setParameters(param);
+	    
+	       try {
+	           ResultSet rs = jdbcUtil.executeQuery();
+	           List<Product> productList = new ArrayList<Product>();
+	           while (rs.next()) {
+	        	  Product dto = new Product();
+	              dto.setProductId(rs.getString("TABLET_ID"));
+	              dto.setName(rs.getString("TABLET_NAME"));
+	              dto.setColor(rs.getString("TABLET_COLOR"));
+	              dto.setPrice(rs.getString("TABLET_PRICE"));
+	              dto.setBrand(rs.getString("TABLET_BRAND"));
+	              dto.setReleased_date(rs.getDate("TABLET_RELEASED_DATE"));
+	              dto.setWeight(rs.getDouble("TABLET_WEIGHT"));
+	              dto.setpKind(rs.getInt("TABLET_KIND"));
+	              
+	              productList.add(dto);
+	           }
+	           return productList;
+	        } catch (Exception ex) {
+	           ex.printStackTrace();
+	        } finally {
+	           jdbcUtil.close();
+	        }
+	        return null;
+	   }
 }

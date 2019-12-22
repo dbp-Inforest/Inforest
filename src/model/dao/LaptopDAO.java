@@ -7,6 +7,7 @@ import java.util.List;
 
 import model.dao.LaptopDAO;
 import model.dto.Laptop;
+import model.dto.Product;
 
 public class LaptopDAO{
 
@@ -310,5 +311,71 @@ public class LaptopDAO{
 		return null;
 	}
 
+	
+	public String getBrandById(String lId) {
+	       // TODO Auto-generated method stub
+	       String searchQuery = query + "FROM LAPTOP l, PRODUCT P " +
+					"WHERE l.PRODUCT_ID = P.PRODUCT_ID AND P.PRODUCT_ID = ?";   
+	     
+	      
+	       jdbcUtil.setSql(searchQuery);
+	       Object[] param = new Object[] {lId};
+	       jdbcUtil.setParameters(param);
+	    
+	       try {
+	          ResultSet rs = jdbcUtil.executeQuery();
+	          String brand = null;
+	          System.out.println("LAPTOPDAO");
+	          if (rs.next()) { 
+	             brand = rs.getString("LAPTOP_BRAND");
+	             System.out.println("여기까지 성공");
+	          }else {
+	          	 System.out.println("No ResultSet"); 
+	          }
+	               
+	          return brand;   
+	       } catch (Exception ex) {
+	          ex.printStackTrace();
+	       } finally {
+	          jdbcUtil.close();
+	       }
+	       return null;
+	   }
 
+	
+	public List<Product> getProductByBrand(String brand) {	   
+		   String searchQuery = query + "FROM LAPTOP l, PRODUCT P " +
+					"WHERE l.PRODUCT_ID = P.PRODUCT_ID AND P.BRAND = ?";
+				   
+		   
+		   
+	       
+	       jdbcUtil.setSql(searchQuery);
+	       Object[] param = new Object[] {brand};
+	       jdbcUtil.setParameters(param);
+	    
+	       try {
+	           ResultSet rs = jdbcUtil.executeQuery();
+	           List<Product> productList = new ArrayList<Product>();
+	           while (rs.next()) {
+	        	  Product dto = new Product();
+	              dto.setProductId(rs.getString("LAPTOP_ID"));
+	              dto.setName(rs.getString("LAPTOP_NAME"));
+	              dto.setColor(rs.getString("LAPTOP_COLOR"));
+	              dto.setPrice(rs.getString("LAPTOP_PRICE"));
+	              dto.setBrand(rs.getString("LAPTOP_BRAND"));
+	              dto.setReleased_date(rs.getDate("LAPTOP_RELEASED_DATE"));
+	              dto.setWeight(rs.getDouble("LAPTOP_WEIGHT"));
+	              dto.setpKind(rs.getInt("LAPTOP_KIND"));
+	              
+	              productList.add(dto);
+	           }
+	           return productList;
+	        } catch (Exception ex) {
+	           ex.printStackTrace();
+	        } finally {
+	           jdbcUtil.close();
+	        }
+	        return null;
+	   }
 }

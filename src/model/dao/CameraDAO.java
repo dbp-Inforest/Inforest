@@ -7,6 +7,7 @@ import java.util.List;
 
 import model.dao.CameraDAO;
 import model.dto.Camera;
+import model.dto.Product;
 
 public class CameraDAO {
 
@@ -332,4 +333,70 @@ public class CameraDAO {
 	}
 	
 	
+	public String getBrandById(String cId) {
+	       // TODO Auto-generated method stub
+	       String searchQuery = query + "FROM CAMERA, PRODUCT "
+					+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.PRODUCT_ID = ? ";   
+	     
+	       
+	       
+	       jdbcUtil.setSql(searchQuery);
+	       Object[] param = new Object[] {cId};
+	       jdbcUtil.setParameters(param);
+	    
+	       try {
+	          ResultSet rs = jdbcUtil.executeQuery();
+	          String brand = null;
+	          System.out.println("CAMERADAO");
+	          if (rs.next()) { 
+	             brand = rs.getString("CAMERA_BRAND");
+	             System.out.println("여기까지 성공");
+	          }else {
+	          	 System.out.println("No ResultSet"); 
+	          }
+	               
+	          return brand;   
+	       } catch (Exception ex) {
+	          ex.printStackTrace();
+	       } finally {
+	          jdbcUtil.close();
+	       }
+	       return null;
+	   }
+	
+	public List<Product> getProductByBrand(String brand) {	   
+		   String searchQuery = query + "FROM CAMERA, PRODUCT "
+					+ "WHERE CAMERA.PRODUCT_ID = PRODUCT.PRODUCT_ID AND PRODUCT.BRAND = ? ";
+				   
+		   
+		   
+	       
+	       jdbcUtil.setSql(searchQuery);
+	       Object[] param = new Object[] {brand};
+	       jdbcUtil.setParameters(param);
+	    
+	       try {
+	           ResultSet rs = jdbcUtil.executeQuery();
+	           List<Product> productList = new ArrayList<Product>();
+	           while (rs.next()) {
+	        	  Product dto = new Product();
+	              dto.setProductId(rs.getString("CAMERA_ID"));
+	              dto.setName(rs.getString("CAMERA_NAME"));
+	              dto.setColor(rs.getString("CAMERA_COLOR"));
+	              dto.setPrice(rs.getString("CAMERA_PRICE"));
+	              dto.setBrand(rs.getString("CAMERA_BRAND"));
+	              dto.setReleased_date(rs.getDate("CAMERA_RELEASED_DATE"));
+	              dto.setWeight(rs.getDouble("CAMERA_WEIGHT"));
+	              dto.setpKind(rs.getInt("CAMERA_KIND"));
+	              
+	              productList.add(dto);
+	           }
+	           return productList;
+	        } catch (Exception ex) {
+	           ex.printStackTrace();
+	        } finally {
+	           jdbcUtil.close();
+	        }
+	        return null;
+	   }
 }
