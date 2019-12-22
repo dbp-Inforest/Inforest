@@ -59,12 +59,7 @@ public class ProductLikeDAO {
                while (rs.next()) {   
                         // 하나의 ProductLike 객체 생성 후 정보 설정
                   
-                  System.out.println("현재 리스트 목록>");
-                  for(int k = 0; k < rankList.size(); k++) {
-                     System.out.println("("+k+"번째) pid: " + rankList.get(k).getProductId() + ", like : " + rankList.get(k).getLikeCount());
-                  }
-                  System.out.println("==========================");
-                  String pId = rs.getString("PRODUCT_ID");   //커서로 지금 들어온 값 pId
+                 String pId = rs.getString("PRODUCT_ID");   //커서로 지금 들어온 값 pId
                   String name = rs.getString("NAME");
                   
                   int flag = 0;
@@ -73,16 +68,14 @@ public class ProductLikeDAO {
                         for(int i = 0; i < rankList.size(); i++) {   //리스트 사이즈만큼 반복   -> 리스트안에 pId 있는지 확인
                                                 
                            String getId = rankList.get(i).getProductId().toString();   //리스트 순환 중, 현재의 pId 값
-                           System.out.println("지금 들어온 값(pid): " + pId+" //리스트 순환중 현재의 값: "+ getId +"[추가전]");
+                          
                            if(pId.equals(getId)) {   //리스트안에 지금 들어온 pId가 이미 존재한다면
                               int likeCount = rankList.get(i).getLikeCount();
-                              System.out.println("원래 like : " + likeCount);
+                              
                               likeCount += 1;
                               rankList.get(i).setLikeCount(likeCount);   //like + 1을 setting
-                              System.out.println("추가된 값입니다. 리스트의 pId : " + rankList.get(i).getProductId() + "//  최종 like : " + rankList.get(i).getLikeCount());
-                              
-                              
-                              System.out.println("====================");
+                             
+                           
                               flag = 1;   //리스트안에 지금 들어온 pId가 이미 존재한다면 flag = 1 변경
                               break;
                            }
@@ -94,14 +87,11 @@ public class ProductLikeDAO {
                            
                            dto1.setProductId(pId);   //dto에 pId저장
                            dto1.setName(name);
-                           dto1.setLikeCount(0);
+                           dto1.setLikeCount(1);
                            rankList.add(dto1);
-                           System.out.println("마지막에 새로 추가한 pId : " + rankList.get(size).getProductId() +"//like(0이어야함): " + rankList.get(size).getLikeCount());
-                           
-                           System.out.println("====================");
+                         
                            //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
                         }   
-                        
                         
                    }
                   else   //처음 들어오는 값
@@ -110,19 +100,12 @@ public class ProductLikeDAO {
                      
                      dto2.setProductId(pId);   //dto에 pId저장
                      dto2.setName(name);
-                     dto2.setLikeCount(0);
+                     dto2.setLikeCount(1);
                      rankList.add(dto2);
-                     System.out.println("처음 들어온 값입니다. pId : " + rankList.get(0).getProductId()+"//like(0이어야함): " + rankList.get(0).getLikeCount());
-                     
-                     System.out.println("====================");
+                    
                      //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
                   }
                   
-                  System.out.println("현재 리스트 목록>");
-                  for(int k = 0; k < rankList.size(); k++) {
-                     System.out.println("("+k+"번째) pid: " + rankList.get(k).getProductId() + ", like : " + rankList.get(k).getLikeCount());
-                  }
-                  System.out.println("==========================");
                }
                //rankList 리스트 삽입 끝
                
@@ -142,12 +125,6 @@ public class ProductLikeDAO {
                              }
                       });
                    
-                   System.out.println("내림차순 정렬");
-                      for (int i = 0; i < rankList.size(); i++) {
-                         System.out.println(rankList.get(i).getProductId() + "-> like : " + rankList.get(i).getLikeCount());
-                      }
-                    System.out.println("====================================================");
-
                 return rankList;
                 
             } catch (Exception ex) {
@@ -166,78 +143,80 @@ public class ProductLikeDAO {
          jdbcUtil.setSql(laptop_q);      // JDBCUtil 에 query 설정
             
          try { 
-            ResultSet rs = jdbcUtil.executeQuery();      // query 문 실행      
-            // HashMap<String, Integer> map = new HashMap<String, Integer>();
-            Ranking dto = new Ranking();      
-         
-            while (rs.next()) {   
-                     // 하나의 ProductLike 객체 생성 후 정보 설정
-               
-               String pId = rs.getString("PRODUCT_ID");   //커서로 지금 들어온 값 pId
-               String name = rs.getString("NAME");
-               
-               int flag = 0;
-               if (rankList.size() != 0){            
-                  //리스트 안에 하나이상의 값이 존재한다면
-                     for(int i = 0; i < rankList.size(); i++) {   //리스트 사이즈만큼 반복   -> 리스트안에 pId 있는지 확인
-                                             
-                        String getId = rankList.get(i).getProductId().toString();   //리스트 순환 중, 현재의 pId 값
-                        if(pId.equals(getId)) {   //리스트안에 지금 들어온 pId가 이미 존재한다면
-                           int likeCount = rankList.get(i).getLikeCount();
-                           likeCount += 1;
-                           rankList.get(i).setLikeCount(likeCount);   //like + 1을 setting
-                           
-                           flag = 1;   //리스트안에 지금 들어온 pId가 이미 존재한다면 flag = 1 변경
-                           break;
-                        }
-                     }
-                  //전체 탐색 후 
-                     int size = rankList.size();
-                     if (flag == 0) {   //사이즈 != 0 && 리스트 안에 pId가 없을경우
-                        Ranking dto1 = new Ranking();      
-                        
-                        dto1.setProductId(pId);   //dto에 pId저장
-                        dto1.setName(name);
-                        dto1.setLikeCount(0);
-                        rankList.add(dto1);
-                     //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
-                     }   
-                     
-                     
-                }
-               else   //처음 들어오는 값
-               {
-                  Ranking dto2 = new Ranking();      
-                  
-                  dto2.setProductId(pId);   //dto에 pId저장
-                  dto2.setName(name);
-                  dto2.setLikeCount(0);
-                  rankList.add(dto2);
-                  //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
-               }
-               
-            }
-            //rankList 리스트 삽입 끝
-            
-            //rankList 내림차순 정렬
-               rankList.sort(new Comparator<Ranking>() {
-                          @Override
-                          public int compare(Ranking arg0, Ranking arg1) {
-                                 // TODO Auto-generated method stub
-                                 int age0 = arg0.getLikeCount();
-                                 int age1 = arg1.getLikeCount();
-                                 if (age0 == age1)
-                                       return 0;
-                                 else if (age1 > age0)
-                                       return 1;
-                                 else
-                                       return -1;
-                          }
-                   });
+        	 ResultSet rs = jdbcUtil.executeQuery();      // query 문 실행      
+             // HashMap<String, Integer> map = new HashMap<String, Integer>();
+             Ranking dto = new Ranking();      
+          
+             while (rs.next()) {   
+                      // 하나의 ProductLike 객체 생성 후 정보 설정
                 
-            
-             return rankList;
+               String pId = rs.getString("PRODUCT_ID");   //커서로 지금 들어온 값 pId
+                String name = rs.getString("NAME");
+                
+                int flag = 0;
+                if (rankList.size() != 0){            
+                   //리스트 안에 하나이상의 값이 존재한다면
+                      for(int i = 0; i < rankList.size(); i++) {   //리스트 사이즈만큼 반복   -> 리스트안에 pId 있는지 확인
+                                              
+                         String getId = rankList.get(i).getProductId().toString();   //리스트 순환 중, 현재의 pId 값
+                        
+                         if(pId.equals(getId)) {   //리스트안에 지금 들어온 pId가 이미 존재한다면
+                            int likeCount = rankList.get(i).getLikeCount();
+                            
+                            likeCount += 1;
+                            rankList.get(i).setLikeCount(likeCount);   //like + 1을 setting
+                           
+                         
+                            flag = 1;   //리스트안에 지금 들어온 pId가 이미 존재한다면 flag = 1 변경
+                            break;
+                         }
+                      }
+                   //전체 탐색 후 
+                      int size = rankList.size();
+                      if (flag == 0) {   //사이즈 != 0 && 리스트 안에 pId가 없을경우
+                         Ranking dto1 = new Ranking();      
+                         
+                         dto1.setProductId(pId);   //dto에 pId저장
+                         dto1.setName(name);
+                         dto1.setLikeCount(1);
+                         rankList.add(dto1);
+                       
+                         //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
+                      }   
+                      
+                 }
+                else   //처음 들어오는 값
+                {
+                   Ranking dto2 = new Ranking();      
+                   
+                   dto2.setProductId(pId);   //dto에 pId저장
+                   dto2.setName(name);
+                   dto2.setLikeCount(1);
+                   rankList.add(dto2);
+                  
+                   //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
+                }
+                
+             }
+             //rankList 리스트 삽입 끝
              
+             //rankList 내림차순 정렬
+                rankList.sort(new Comparator<Ranking>() {
+                           @Override
+                           public int compare(Ranking arg0, Ranking arg1) {
+                                  // TODO Auto-generated method stub
+                                  int age0 = arg0.getLikeCount();
+                                  int age1 = arg1.getLikeCount();
+                                  if (age0 == age1)
+                                        return 0;
+                                  else if (age1 > age0)
+                                        return 1;
+                                  else
+                                        return -1;
+                           }
+                    });
+                 
+              return rankList;
          } catch (Exception ex) {
             ex.printStackTrace();
          } finally {
@@ -253,75 +232,80 @@ public class ProductLikeDAO {
          jdbcUtil.setSql(camera_q);      // JDBCUtil 에 query 설정
             
          try { 
-            ResultSet rs = jdbcUtil.executeQuery();      // query 문 실행      
-            // HashMap<String, Integer> map = new HashMap<String, Integer>();
-            Ranking dto = new Ranking();      
-         
-            while (rs.next()) {   
-                     // 하나의 ProductLike 객체 생성 후 정보 설정
-            String pId = rs.getString("PRODUCT_ID");   //커서로 지금 들어온 값 pId
-               String name = rs.getString("NAME");
-               
-               int flag = 0;
-               if (rankList.size() != 0){            
-                  //리스트 안에 하나이상의 값이 존재한다면
-                     for(int i = 0; i < rankList.size(); i++) {   //리스트 사이즈만큼 반복   -> 리스트안에 pId 있는지 확인
-                                             
-                        String getId = rankList.get(i).getProductId().toString();   //리스트 순환 중, 현재의 pId 값
-                        if(pId.equals(getId)) {   //리스트안에 지금 들어온 pId가 이미 존재한다면
-                           int likeCount = rankList.get(i).getLikeCount();
-                           likeCount += 1;
-                           rankList.get(i).setLikeCount(likeCount);   //like + 1을 setting
-                        
-                           flag = 1;   //리스트안에 지금 들어온 pId가 이미 존재한다면 flag = 1 변경
-                           break;
-                        }
-                     }
-                  //전체 탐색 후 
-                     int size = rankList.size();
-                     if (flag == 0) {   //사이즈 != 0 && 리스트 안에 pId가 없을경우
-                        Ranking dto1 = new Ranking();      
-                        
-                        dto1.setProductId(pId);   //dto에 pId저장
-                        dto1.setName(name);
-                        dto1.setLikeCount(0);
-                        rankList.add(dto1);
-                        //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
-                     }   
-                     
-                     
-                }
-               else   //처음 들어오는 값
-               {
-                  Ranking dto2 = new Ranking();      
-                  
-                  dto2.setProductId(pId);   //dto에 pId저장
-                  dto2.setName(name);
-                  dto2.setLikeCount(0);
-                  rankList.add(dto2);
-                  //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
-               }
-               
-            }
-            //rankList 리스트 삽입 끝
-            
-            //rankList 내림차순 정렬
-               rankList.sort(new Comparator<Ranking>() {
-                          @Override
-                          public int compare(Ranking arg0, Ranking arg1) {
-                                 // TODO Auto-generated method stub
-                                 int age0 = arg0.getLikeCount();
-                                 int age1 = arg1.getLikeCount();
-                                 if (age0 == age1)
-                                       return 0;
-                                 else if (age1 > age0)
-                                       return 1;
-                                 else
-                                       return -1;
-                          }
-                   });
+        	 ResultSet rs = jdbcUtil.executeQuery();      // query 문 실행      
+             // HashMap<String, Integer> map = new HashMap<String, Integer>();
+             Ranking dto = new Ranking();      
+          
+             while (rs.next()) {   
+                      // 하나의 ProductLike 객체 생성 후 정보 설정
                 
-            return rankList;
+               String pId = rs.getString("PRODUCT_ID");   //커서로 지금 들어온 값 pId
+                String name = rs.getString("NAME");
+                
+                int flag = 0;
+                if (rankList.size() != 0){            
+                   //리스트 안에 하나이상의 값이 존재한다면
+                      for(int i = 0; i < rankList.size(); i++) {   //리스트 사이즈만큼 반복   -> 리스트안에 pId 있는지 확인
+                                              
+                         String getId = rankList.get(i).getProductId().toString();   //리스트 순환 중, 현재의 pId 값
+                        
+                         if(pId.equals(getId)) {   //리스트안에 지금 들어온 pId가 이미 존재한다면
+                            int likeCount = rankList.get(i).getLikeCount();
+                            
+                            likeCount += 1;
+                            rankList.get(i).setLikeCount(likeCount);   //like + 1을 setting
+                           
+                         
+                            flag = 1;   //리스트안에 지금 들어온 pId가 이미 존재한다면 flag = 1 변경
+                            break;
+                         }
+                      }
+                   //전체 탐색 후 
+                      int size = rankList.size();
+                      if (flag == 0) {   //사이즈 != 0 && 리스트 안에 pId가 없을경우
+                         Ranking dto1 = new Ranking();      
+                         
+                         dto1.setProductId(pId);   //dto에 pId저장
+                         dto1.setName(name);
+                         dto1.setLikeCount(1);
+                         rankList.add(dto1);
+                       
+                         //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
+                      }   
+                      
+                 }
+                else   //처음 들어오는 값
+                {
+                   Ranking dto2 = new Ranking();      
+                   
+                   dto2.setProductId(pId);   //dto에 pId저장
+                   dto2.setName(name);
+                   dto2.setLikeCount(1);
+                   rankList.add(dto2);
+                  
+                   //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
+                }
+                
+             }
+             //rankList 리스트 삽입 끝
+             
+             //rankList 내림차순 정렬
+                rankList.sort(new Comparator<Ranking>() {
+                           @Override
+                           public int compare(Ranking arg0, Ranking arg1) {
+                                  // TODO Auto-generated method stub
+                                  int age0 = arg0.getLikeCount();
+                                  int age1 = arg1.getLikeCount();
+                                  if (age0 == age1)
+                                        return 0;
+                                  else if (age1 > age0)
+                                        return 1;
+                                  else
+                                        return -1;
+                           }
+                    });
+                 
+              return rankList;
              
          } catch (Exception ex) {
             ex.printStackTrace();
@@ -338,103 +322,80 @@ public class ProductLikeDAO {
             jdbcUtil.setSql(tablet_q);      // JDBCUtil 에 query 설정
                
             try { 
-               ResultSet rs = jdbcUtil.executeQuery();      // query 문 실행      
-               // HashMap<String, Integer> map = new HashMap<String, Integer>();
-               Ranking dto = new Ranking();      
-            
-               while (rs.next()) {   
-                        // 하나의 ProductLike 객체 생성 후 정보 설정
-                  
-                  System.out.println("현재 리스트 목록>");
-                  for(int k = 0; k < rankList.size(); k++) {
-                     System.out.println("("+k+"번째) pid: " + rankList.get(k).getProductId() + ", like : " + rankList.get(k).getLikeCount());
-                  }
-                  System.out.println("==========================");
-                  String pId = rs.getString("PRODUCT_ID");   //커서로 지금 들어온 값 pId
-                  String name = rs.getString("NAME");
-                  
-                  int flag = 0;
-                  if (rankList.size() != 0){            
-                     //리스트 안에 하나이상의 값이 존재한다면
-                        for(int i = 0; i < rankList.size(); i++) {   //리스트 사이즈만큼 반복   -> 리스트안에 pId 있는지 확인
-                                                
-                           String getId = rankList.get(i).getProductId().toString();   //리스트 순환 중, 현재의 pId 값
-                           System.out.println("지금 들어온 값(pid): " + pId+" //리스트 순환중 현재의 값: "+ getId +"[추가전]");
-                           if(pId.equals(getId)) {   //리스트안에 지금 들어온 pId가 이미 존재한다면
-                              int likeCount = rankList.get(i).getLikeCount();
-                              System.out.println("원래 like : " + likeCount);
-                              likeCount += 1;
-                              rankList.get(i).setLikeCount(likeCount);   //like + 1을 setting
-                              System.out.println("추가된 값입니다. 리스트의 pId : " + rankList.get(i).getProductId() + "//  최종 like : " + rankList.get(i).getLikeCount());
-                              
-                              
-                              System.out.println("====================");
-                              flag = 1;   //리스트안에 지금 들어온 pId가 이미 존재한다면 flag = 1 변경
-                              break;
-                           }
-                        }
-                     //전체 탐색 후 
-                        int size = rankList.size();
-                        if (flag == 0) {   //사이즈 != 0 && 리스트 안에 pId가 없을경우
-                           Ranking dto1 = new Ranking();      
-                           
-                           dto1.setProductId(pId);   //dto에 pId저장
-                           dto1.setName(name);
-                           dto1.setLikeCount(0);
-                           rankList.add(dto1);
-                           System.out.println("마지막에 새로 추가한 pId : " + rankList.get(size).getProductId() +"//like(0이어야함): " + rankList.get(size).getLikeCount());
-                           
-                           System.out.println("====================");
-                           //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
-                        }   
-                        
-                        
-                   }
-                  else   //처음 들어오는 값
-                  {
-                     Ranking dto2 = new Ranking();      
-                     
-                     dto2.setProductId(pId);   //dto에 pId저장
-                     dto2.setName(name);
-                     dto2.setLikeCount(0);
-                     rankList.add(dto2);
-                     System.out.println("처음 들어온 값입니다. pId : " + rankList.get(0).getProductId()+"//like(0이어야함): " + rankList.get(0).getLikeCount());
-                     
-                     System.out.println("====================");
-                     //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
-                  }
-                  
-                  System.out.println("현재 리스트 목록>");
-                  for(int k = 0; k < rankList.size(); k++) {
-                     System.out.println("("+k+"번째) pid: " + rankList.get(k).getProductId() + ", like : " + rankList.get(k).getLikeCount());
-                  }
-                  System.out.println("==========================");
-               }
-               //rankList 리스트 삽입 끝
-               
-               //rankList 내림차순 정렬
-                  rankList.sort(new Comparator<Ranking>() {
-                             @Override
-                             public int compare(Ranking arg0, Ranking arg1) {
-                                    // TODO Auto-generated method stub
-                                    int age0 = arg0.getLikeCount();
-                                    int age1 = arg1.getLikeCount();
-                                    if (age0 == age1)
-                                          return 0;
-                                    else if (age1 > age0)
-                                          return 1;
-                                    else
-                                          return -1;
-                             }
-                      });
+            	ResultSet rs = jdbcUtil.executeQuery();      // query 문 실행      
+                // HashMap<String, Integer> map = new HashMap<String, Integer>();
+                Ranking dto = new Ranking();      
+             
+                while (rs.next()) {   
+                         // 하나의 ProductLike 객체 생성 후 정보 설정
                    
-                   System.out.println("내림차순 정렬");
-                      for (int i = 0; i < rankList.size(); i++) {
-                         System.out.println(rankList.get(i).getProductId() + "-> like : " + rankList.get(i).getLikeCount());
-                      }
-                    System.out.println("====================================================");
-
-                return rankList;
+                  String pId = rs.getString("PRODUCT_ID");   //커서로 지금 들어온 값 pId
+                   String name = rs.getString("NAME");
+                   
+                   int flag = 0;
+                   if (rankList.size() != 0){            
+                      //리스트 안에 하나이상의 값이 존재한다면
+                         for(int i = 0; i < rankList.size(); i++) {   //리스트 사이즈만큼 반복   -> 리스트안에 pId 있는지 확인
+                                                 
+                            String getId = rankList.get(i).getProductId().toString();   //리스트 순환 중, 현재의 pId 값
+                           
+                            if(pId.equals(getId)) {   //리스트안에 지금 들어온 pId가 이미 존재한다면
+                               int likeCount = rankList.get(i).getLikeCount();
+                               
+                               likeCount += 1;
+                               rankList.get(i).setLikeCount(likeCount);   //like + 1을 setting
+                              
+                            
+                               flag = 1;   //리스트안에 지금 들어온 pId가 이미 존재한다면 flag = 1 변경
+                               break;
+                            }
+                         }
+                      //전체 탐색 후 
+                         int size = rankList.size();
+                         if (flag == 0) {   //사이즈 != 0 && 리스트 안에 pId가 없을경우
+                            Ranking dto1 = new Ranking();      
+                            
+                            dto1.setProductId(pId);   //dto에 pId저장
+                            dto1.setName(name);
+                            dto1.setLikeCount(1);
+                            rankList.add(dto1);
+                          
+                            //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
+                         }   
+                         
+                    }
+                   else   //처음 들어오는 값
+                   {
+                      Ranking dto2 = new Ranking();      
+                      
+                      dto2.setProductId(pId);   //dto에 pId저장
+                      dto2.setName(name);
+                      dto2.setLikeCount(1);
+                      rankList.add(dto2);
+                     
+                      //add해주면서 0으로 초기화 해줬으니까 getLikeCount = 0 이어야 함!!!
+                   }
+                   
+                }
+                //rankList 리스트 삽입 끝
+                
+                //rankList 내림차순 정렬
+                   rankList.sort(new Comparator<Ranking>() {
+                              @Override
+                              public int compare(Ranking arg0, Ranking arg1) {
+                                     // TODO Auto-generated method stub
+                                     int age0 = arg0.getLikeCount();
+                                     int age1 = arg1.getLikeCount();
+                                     if (age0 == age1)
+                                           return 0;
+                                     else if (age1 > age0)
+                                           return 1;
+                                     else
+                                           return -1;
+                              }
+                       });
+                    
+                 return rankList;
                 
             } catch (Exception ex) {
                ex.printStackTrace();
