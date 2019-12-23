@@ -28,15 +28,13 @@
    }
    
    function userCreate(targetUri) {
-      alert(targetUri);   
+      alert("회원가입 하시겠습니까?");   
       form.action = targetUri;
       form.submit();
    }
 </script>
 
-
 </head>
-
 
 <body>
    <!-- Header import -->

@@ -24,8 +24,6 @@ function search(kind, targetUri) {
    form.kind2.value = kind;
    form.submit();
 }
-
-
 function like(productId, num, targetUri) {
    var image = document.getElementById(num);
    
@@ -54,8 +52,8 @@ function like(productId, num, targetUri) {
 }
 
 </script>
-
 </head>
+
 <body class="animsition">
    <!-- Header import -->
    <jsp:include page="/WEB-INF/views/header.jsp"/>
@@ -68,7 +66,6 @@ function like(productId, num, targetUri) {
    </section>      
    
    
- 
 <!-- search form -->
 <form class="p-t-20" style="margin:0 0 0 450px;" name="form"  action="<c:url value='/productSearch' />" >
 <input type="hidden" name="kind2" value="10"/>
@@ -79,8 +76,6 @@ function like(productId, num, targetUri) {
       </div>
    </div>
 </form>  
-   
-   
    
    <form name = "pform" action="" class="bg0 p-t-30 p-b-85" style="position:absolute;left:50%;margin:0 0 0 -510px;">
    

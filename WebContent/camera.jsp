@@ -54,9 +54,6 @@ function like(productId, num, targetUri) {
 }
 </script>
 
-
-
-
 </head>
 <body class="animsition">
 

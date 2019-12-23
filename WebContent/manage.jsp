@@ -19,10 +19,7 @@
 	    form.submit();
 	 }
 </script>
-
-
 </head>
-
 
 <body>
 	<!-- Header import -->

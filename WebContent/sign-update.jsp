@@ -54,7 +54,7 @@
          ID
       </td>
       <td class="column-2">
-         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="userId" placeholder="" value="<%= user.getUserId() %>" disabled>
+         <input class="stext-104 cl2 plh4 size-sign bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="userId" placeholder="" value="<%= user.getUserId() %>" readonly>
       </td>
    </tr>
 
@@ -119,13 +119,13 @@
       <div class="flex-l-m flex-w w-full p-t-10 m-lr--7">   
           &nbsp;&nbsp;&nbsp;
          <% if(user.getPosition() == 0) { %>
-         	<input type="radio" name="position" value="0" checked="checked">&nbsp; ADMIN
+         	<input type="radio" name="position" value="0" checked="checked" onclick="return(false);" >&nbsp; ADMIN
          	&nbsp;&nbsp;&nbsp;
-         	<input type="radio" name="position" value="2">&nbsp; USER
+         	<input type="radio" name="position" value="2" onclick="return(false);">&nbsp; USER
           <% } else {%>
-          	<input type="radio" name="position" value="0">&nbsp; ADMIN
+          	<input type="radio" name="position" value="0" onclick="return(false);">&nbsp; ADMIN
          	&nbsp;&nbsp;&nbsp;
-         	<input type="radio" name="position" value="2" checked="checked">&nbsp; USER
+         	<input type="radio" name="position" value="2" checked="checked" onclick="return(false);">&nbsp; USER
           <% } %>
       </div>   
       </td>

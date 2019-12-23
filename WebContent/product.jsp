@@ -56,7 +56,6 @@ function search(kind, targetUri) {
 	   </div>
 	</form> 
    
-   
    <form name="form1" action="<c:url value='/productList'/>">
    <input type="hidden" name="kind3" value="10"/>
    <div class="flex-w flex-c-m m-tb-10"> <!-- a태그로 하거나  -->

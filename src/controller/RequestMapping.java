@@ -72,6 +72,9 @@ public class RequestMapping {
         mappings.put("/mypage", new ForwardController("/mypage.jsp"));   //mypage.jsp이동
         mappings.put("/management", new ForwardController("/manage.jsp"));   //management.jsp로 이동
 
+        /* 댓글 관련 Mapping */
+        mappings.put("/deleteComment", new DeletePCommentController()); //댓글 삭제
+        
         logger.info("Initialized Request Mapping!");
     }
 

@@ -30,12 +30,12 @@ public class PCommentDAO {
    public List<PComment> getPCommentList() {
       // 기본 쿼리와 합쳐짐 
       String allQuery = query  + "FROM P_COMMENT ";
-      jdbcUtil.setSql(allQuery);      // JDBCUtil 에 query 설정
+      jdbcUtil.setSqlAndParameters(allQuery ,null);       // JDBCUtil 에 query 설정
       try { 
          ResultSet rs = jdbcUtil.executeQuery();      // query 문 실행         
          List<PComment> list = new ArrayList<PComment>();      // LaptopDTO 객체들을 담기위한 list 객체
          if(rs == null)
-        	 System.out.println("RS가 NULL입니다!!!!");
+            System.out.println("RS가 NULL입니다!!!!");
          
          while (rs.next()) {   
             PComment dto = new PComment();      // 하나의 LaptopDTO 객체 생성 후 정보 설정
@@ -84,17 +84,38 @@ public class PCommentDAO {
    }
 
    public int updatePComment(PComment pComment) {
-      // TODO Auto-generated method stub
-      return 0;
+         int result = 0;
+         System.out.println("update문 들어옴");
+         String updateQuery = "UPDATE P_COMMENT " + 
+               "SET REVIEW = ? AND REGIST_DATE = ?" + 
+               "WHERE USER_ID = ?";
+         Object[] param = new Object[] {pComment.getReview(), pComment.getRegistDate(), pComment.getUserId()};
+         
+         jdbcUtil.setSqlAndParameters(updateQuery, param);
+        
+         try {      
+            result = jdbcUtil.executeUpdate();      // insert 문 실행
+            System.out.println(pComment.getUserId() + " 댓글이 수정되었습니다.");}
+         catch (SQLException ex) {
+            System.out.println("SQL 오류 발생");
+            ex.printStackTrace();
+         }
+         catch (Exception ex) {
+            jdbcUtil.rollback();
+            ex.printStackTrace();
+         } finally {      
+            jdbcUtil.commit();
+            jdbcUtil.close();      // ResultSet, PreparedStatement, Connection 반환
+         }      
+         
+         return result;      // update에 의해 반영된 레코드 수 반환   
    }
 
    public int deletePComment(String cId) {
       String deleteQuery = "DELETE FROM P_COMMENT WHERE COMMENT_ID = ?";
       int result=0;
       Object[] param = new Object[] {cId};
-      jdbcUtil.setSql(deleteQuery);         // JDBCUtil 에 query 문 설정
-      jdbcUtil.setParameters(param);         // JDBCUtil 에 매개변수 설정
-      
+      jdbcUtil.setSqlAndParameters( deleteQuery , param); 
       try {
          result = jdbcUtil.executeUpdate();      // delete 문 실행
          return result;                  // delete 에 의해 반영된 레코드 수 반환

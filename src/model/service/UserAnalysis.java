@@ -22,6 +22,8 @@ public class UserAnalysis {
    private TabletDAO tabletDAO = new TabletDAO();
    private ProductLikeDAO productLikeDAO = new ProductLikeDAO();
 
+   private List<Product> list = new ArrayList<Product>();
+
    public UserAnalysis(String productId, String kind) {
       System.out.println("UserAnalysis 까지 넘어옴 id는 : " + productId + " kind는 : " + kind);
       
@@ -41,7 +43,6 @@ public class UserAnalysis {
       
 
       //브랜드명 알아와서 각 kind별로 브랜드 제품 가져온 뒤 List 만들기
-      List<Product> list = new ArrayList<Product>();
       list.addAll(phoneDAO.getProductByBrand(brand));
       list.addAll(laptopDAO.getProductByBrand(brand));
       list.addAll(cameraDAO.getProductByBrand(brand));
@@ -108,48 +109,14 @@ public class UserAnalysis {
             break;
          }
       }
-      
-
-      System.out.println("해당 브랜드  : " + brand + "/ 총 제품수 : " + list.size());
-      System.out.println("<추천 리스트>");
-      System.out.println(list.get(0).getName());
-      System.out.println(list.get(1).getName());
-      System.out.println(list.get(2).getName());
-      System.out.println(list.get(3).getName());
-      System.out.println(list.get(4).getName());
    }
-//   
-//   public UserAnalysis(UserDAOImpl dao) {
-//      super();
-//      this.dao = dao;
-//   }
-//
-//   // an example business method
-//   public List<User> recommendFriends(String userId) throws Exception {
-//      User thisuser = dao.findUser(userId);
-//      if (thisuser == null) {
-//         throw new Exception("invalid user ID!");
-//      }
-//      int m1 = userId.indexOf('@');
-//      if (m1 == -1) return null;
-//      String mserver1 = thisuser.getEmail().substring(m1);
-//      
-//      List<User> friends = new ArrayList<User>();
-//      
-//      List<User> userList = dao.findUserList(1, 10000);
-//      Iterator<User> userIter = userList.iterator();      
-//      while (userIter.hasNext()) {
-//         User user = (User)userIter.next();
-//         
-//         if (user.getUserId().equals(userId)) continue;
-//         int m2 = user.getEmail().indexOf('@');
-//         if (m2 == -1) continue;
-//         String mserver2 = user.getEmail().substring(m2);
-//
-//         if (mserver1.equals(mserver2)) 
-//            friends.add(user);      
-//      }
-//      return friends;
-//   }
+   
+   
+   public List<Product> getList() {
+   return list;
+   }
 
+   public void setList(List<Product> list) {
+   this.list = list;
+   }
 }
