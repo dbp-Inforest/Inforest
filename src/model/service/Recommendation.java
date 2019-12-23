@@ -13,7 +13,7 @@ import java.util.Random;
  * 무시해주세요
  */
 // an example business class
-public class UserAnalysis {
+public class Recommendation {
    Random random = new Random();
    
    private PhoneDAO phoneDAO = new PhoneDAO(); 
@@ -24,7 +24,7 @@ public class UserAnalysis {
 
    private List<Product> list = new ArrayList<Product>();
 
-   public UserAnalysis(String productId, String kind) {
+   public Recommendation(String productId, String kind) {
       System.out.println("UserAnalysis 까지 넘어옴 id는 : " + productId + " kind는 : " + kind);
       
       String brand = null;

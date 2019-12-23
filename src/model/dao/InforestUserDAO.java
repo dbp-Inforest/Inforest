@@ -8,7 +8,7 @@ import java.util.List;
 import model.dao.InforestUserDAO;
 import model.dto.InforestUser;
 import model.service.PasswordMismatchException;
-import model.service.UserAnalysis;
+import model.service.Recommendation;
 import model.service.UserNotFoundException;
 import model.dto.InforestUser;
 

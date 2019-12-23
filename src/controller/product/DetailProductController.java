@@ -19,7 +19,7 @@ import model.dto.PComment;
 import model.dto.Phone;
 import model.dto.Tablet;
 
-import model.service.UserAnalysis;
+import model.service.Recommendation;
 
 public class DetailProductController implements Controller{
    
@@ -40,12 +40,12 @@ public class DetailProductController implements Controller{
      // String plist2 = request.getParameter("plist");
       
       System.out.println("detail牧飘费矾--"+kind+"弊府绊"+pid);
-      UserAnalysis userAnalysis;
+      Recommendation userAnalysis;
   
       if(request.getMethod().equals("GET")) { // GET request 贸府          
           if(kind.equals("0")) { //phone
             System.out.println("咯扁绰 肮百百百烙" + pid);
-            userAnalysis = new UserAnalysis(pid, kind);
+            userAnalysis = new Recommendation(pid, kind);
              Phone phoneDetail = phoneDAO.getPhoneById(pid);
            
              List<PComment> plist = pcommentDAO.getPCommentList();
@@ -55,7 +55,7 @@ public class DetailProductController implements Controller{
              return "/phone-detail.jsp";   
              
           }else if(kind.equals("1")){ //laptop
-            userAnalysis = new UserAnalysis(pid, kind);
+            userAnalysis = new Recommendation(pid, kind);
              Laptop laptopDetail = laptopDAO.getLaptopById(pid);
              List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("laptopDetail", laptopDetail);   
@@ -64,7 +64,7 @@ public class DetailProductController implements Controller{
                return "/laptop-detail.jsp";   
                
            }else if(kind.equals("2")) { //camera
-            userAnalysis = new UserAnalysis(pid, kind);  
+            userAnalysis = new Recommendation(pid, kind);  
              Camera cameraDetail = cameraDAO.getCameraById(pid);
              List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("cameraDetail", cameraDetail); 
@@ -73,7 +73,7 @@ public class DetailProductController implements Controller{
                return "/camera-detail.jsp";   
                
           }else if(kind.equals("3")) { //tablet
-            userAnalysis = new UserAnalysis(pid, kind);
+            userAnalysis = new Recommendation(pid, kind);
              Tablet tabletDetail = tabletDAO.getTabletById(pid);
              List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("tabletDetail", tabletDetail);  
