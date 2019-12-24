@@ -2,7 +2,7 @@
 1. 메인 페이지 로그인
 2. 회원가입 창으로 이동  (sign-up)
 
-  - 회원가입을 ID :cspark 
+  - 회원가입을 ID :cspark0 
               PWD : adminadmin 
               NAME : 창섭 
               AGE: 30 
@@ -27,7 +27,7 @@
 
  5. management 페이지 이동 → insertPhone 클릭
 
-  -  id : 애쁠 / brand : apple / name : p1 / COLOR : 블랙 / KIND : Phone / WEIGHT : 1.0 g
+  -  id : test / brand : apple / name : p1 / COLOR : 블랙 / KIND : Phone / WEIGHT : 1.0 g
 
     / RELEASED DATE : 2019-12-24  / Battery: 1 / Memory : 1 / Display : p1 / Ram : 1 / Size : 1.0
 
