@@ -7,12 +7,7 @@ import java.util.List;
 import model.dao.*;
 import model.dto.*;
 import java.util.Random;
-/**
- * UserAnalysis -> user 관련 비즈니스 로직 구현한 클래스
- * 나중에 business logic 부분 구현할 때 참고할 예정 
- * 무시해주세요
- */
-// an example business class
+
 public class Recommendation {
    Random random = new Random();
    

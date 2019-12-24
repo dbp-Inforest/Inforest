@@ -40,45 +40,45 @@ public class DetailProductController implements Controller{
      // String plist2 = request.getParameter("plist");
       
       System.out.println("detail컨트롤러--"+kind+"그리고"+pid);
-      Recommendation userAnalysis;
+      Recommendation recommend;
   
       if(request.getMethod().equals("GET")) { // GET request 처리          
           if(kind.equals("0")) { //phone
             System.out.println("여기는 갯겟겟겟임" + pid);
-            userAnalysis = new Recommendation(pid, kind);
+            recommend = new Recommendation(pid, kind);
              Phone phoneDetail = phoneDAO.getPhoneById(pid);
            
              List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("plist", plist);
              request.setAttribute("phoneDetail", phoneDetail);
-             request.setAttribute("pRecomm", userAnalysis.getList());
+             request.setAttribute("pRecomm", recommend.getList());
              return "/phone-detail.jsp";   
              
           }else if(kind.equals("1")){ //laptop
-            userAnalysis = new Recommendation(pid, kind);
+            recommend = new Recommendation(pid, kind);
              Laptop laptopDetail = laptopDAO.getLaptopById(pid);
              List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("laptopDetail", laptopDetail);   
              request.setAttribute("plist", plist);
-             request.setAttribute("lRecomm", userAnalysis.getList());
+             request.setAttribute("lRecomm", recommend.getList());
                return "/laptop-detail.jsp";   
                
            }else if(kind.equals("2")) { //camera
-            userAnalysis = new Recommendation(pid, kind);  
+            recommend = new Recommendation(pid, kind);  
              Camera cameraDetail = cameraDAO.getCameraById(pid);
              List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("cameraDetail", cameraDetail); 
              request.setAttribute("plist", plist);
-             request.setAttribute("cRecomm", userAnalysis.getList());
+             request.setAttribute("cRecomm", recommend.getList());
                return "/camera-detail.jsp";   
                
           }else if(kind.equals("3")) { //tablet
-            userAnalysis = new Recommendation(pid, kind);
+            recommend = new Recommendation(pid, kind);
              Tablet tabletDetail = tabletDAO.getTabletById(pid);
              List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("tabletDetail", tabletDetail);  
              request.setAttribute("plist", plist);
-             request.setAttribute("tRecomm", userAnalysis.getList());
+             request.setAttribute("tRecomm", recommend.getList());
                return "/tablet-detail.jsp";   
           }      
       
@@ -105,7 +105,7 @@ public class DetailProductController implements Controller{
              System.out.println(num + "만큼 인서트했다.");
              request.setAttribute("plist", plist);
              request.setAttribute("phoneDetail", phoneDetail);
-             return "/phone-detail.jsp"; 
+             return "/phone/phone-detail.jsp"; 
              //return "redirect:/productDetail?kind2=" + kind + "&pId=" + pid;   
              
           }else if(kind2.equals("1")){ 
@@ -113,21 +113,21 @@ public class DetailProductController implements Controller{
              List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("laptopDetail", laptopDetail);   
              request.setAttribute("plist", plist);
-               return "/laptop-detail.jsp";   
+               return "/laptop/laptop-detail.jsp";   
                
            }else if(kind2.equals("2")) { //camera
              Camera cameraDetail = cameraDAO.getCameraById(pId);
              List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("cameraDetail", cameraDetail);   
              request.setAttribute("plist", plist);
-               return "/camera-detail.jsp";   
+               return "/camera/camera-detail.jsp";   
                
           }else if(kind2.equals("3")) { //tablet
              Tablet tabletDetail = tabletDAO.getTabletById(pId);
              List<PComment> plist = pcommentDAO.getPCommentList();
              request.setAttribute("tabletDetail", tabletDetail);  
              request.setAttribute("plist", plist);
-               return "/tablet-detail.jsp";   
+               return "/tablet/tablet-detail.jsp";   
           }      
       
           System.out.println("메인으로 이동");

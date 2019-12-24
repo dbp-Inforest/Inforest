@@ -52,6 +52,7 @@ function like(productId, num, targetUri) {
 }
 
 </script>
+
 </head>
 
 <body class="animsition">
@@ -64,7 +65,6 @@ function like(productId, num, targetUri) {
          Phone
       </h2>
    </section>      
-   
    
 <!-- search form -->
 <form class="p-t-20" style="margin:0 0 0 450px;" name="form"  action="<c:url value='/productSearch' />" >
