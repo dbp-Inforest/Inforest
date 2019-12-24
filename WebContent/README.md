@@ -1,4 +1,4 @@
-/*- 테스트 방법
+#### 테스트 방법
 1. 메인 페이지 로그인
 2. 회원가입 창으로 이동  (sign-up)
 
@@ -27,7 +27,7 @@
 
  5. management 페이지 이동 → insertPhone 클릭
 
-  -  id : test / brand : apple / name : p1 / COLOR : 블랙 / KIND : Phone / WEIGHT : 1.0 g
+    / id : test / brand : apple / name : p1 / COLOR : 블랙 / KIND : Phone / WEIGHT : 1.0 g
 
     / RELEASED DATE : 2019-12-24  / Battery: 1 / Memory : 1 / Display : p1 / Ram : 1 / Size : 1.0
 
